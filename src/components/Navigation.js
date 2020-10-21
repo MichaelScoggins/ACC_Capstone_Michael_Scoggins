@@ -15,7 +15,6 @@ import { useLocation } from "react-router-dom";
 const Navigation = (props) => {
   const cookies = cookie.parse(document.cookie);
   const location = useLocation();
-  console.log(location.pathname);
 
   const ifNotLoggedIn = () => {
     if (!cookies.loggedIn && location.pathname !== "/login") {
@@ -75,11 +74,11 @@ const Navigation = (props) => {
         </Toolbar>
       </AppBar>
       <Typography color="text-primary">
-        {cookies.loggedIn ? (
+        {cookies.loggedIn && (
           <span>
-            Welcome <span style={{ color: "green" }}>{cookies.user}</span>!
+            Welcome <span style={{ color: "green" }}>{props.user}</span>!
           </span>
-        ) : null}
+        )}
       </Typography>
     </div>
   );

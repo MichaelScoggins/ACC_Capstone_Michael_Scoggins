@@ -1,4 +1,5 @@
 export default {
+  user: "user",
   businesses: [
     {
       id: 1,
@@ -61,5 +62,4 @@ export default {
       lng: -95.752301,
     },
   ],
-  user: "",
 };

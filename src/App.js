@@ -3,7 +3,7 @@ import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import Navigation from "./components/Navigation";
+import Navigation from "./containers/Navigation";
 
 function App() {
   return (

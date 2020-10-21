@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     removeListing: (id) => dispatch(removeListing(id)),
-    setUser: (user) => dispatch(setUser(user)),
+    setUser: (username) => dispatch(setUser(username)),
   };
 };
 
