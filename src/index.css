@@ -28,6 +28,17 @@ code {
   text-decoration: none;
 }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  width: 33%;
+}
+
+.login-button {
+  margin-top: 20px !important;
+}
+
 li {
   list-style: none;
 }

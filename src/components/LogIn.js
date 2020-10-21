@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router";
-import { TextField, Button, Box } from "@material-ui/core";
+import { TextField, Button, Box, Container } from "@material-ui/core";
 
 class App extends Component {
   state = {
@@ -25,16 +24,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Box
-          maxWidth="lg"
-          component="span"
-          m={5}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="column"
-        >
+      <Container>
+        <Box maxWidth="lg">
           <form className="login-form" onSubmit={this.login}>
             <TextField
               required
@@ -65,7 +56,7 @@ class App extends Component {
             </Button>
           </form>
         </Box>
-      </div>
+      </Container>
     );
   }
 }

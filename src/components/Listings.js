@@ -1,4 +1,5 @@
 import React from "react";
+import cookie from "cookie";
 import {
   Container,
   Table,
@@ -12,8 +13,10 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { Link } from "react-router-dom";
 
 const Listings = (props) => {
+  const cookies = cookie.parse(document.cookie);
+
   const deleteButton = (id) => {
-    if (document.cookie === "loggedIn=true") {
+    if (cookies.loggedIn) {
       return (
         <TableCell>
           <DeleteIcon

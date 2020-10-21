@@ -12,8 +12,6 @@ import { Link } from "react-router-dom";
 import AddListing from "../containers/AddListing";
 import { useLocation } from "react-router-dom";
 
-// && props.match.path !== "/login"
-
 const Navigation = (props) => {
   const cookies = cookie.parse(document.cookie);
   const location = useLocation();
@@ -77,14 +75,14 @@ const Navigation = (props) => {
         </Toolbar>
       </AppBar>
       <Typography color="text-primary">
-        {cookies.loggedIn ? <span>Welcome {cookies.user}!</span> : null}
+        {cookies.loggedIn ? (
+          <span>
+            Welcome <span style={{ color: "green" }}>{cookies.user}</span>!
+          </span>
+        ) : null}
       </Typography>
     </div>
   );
 };
 
 export default Navigation;
-
-// <li className="nav-list-item">
-// <Link to="/">Austin Small Businesses</Link>
-// </li>
