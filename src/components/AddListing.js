@@ -14,6 +14,8 @@ class AddListing extends Component {
     description: "",
     address: "",
     operatingHours: "",
+    lat: 0,
+    lng: 0,
   };
 
   toggleDialog = () => this.setState({ open: !this.state.open });
@@ -29,7 +31,6 @@ class AddListing extends Component {
     const business = { ...this.state };
     business.id = this.props.businesses.length + 1;
     delete business.open;
-    console.log("listing", business);
     this.props.addListing(business);
     this.setState({ open: false });
   };

@@ -26,17 +26,19 @@ const Navigation = () => {
   const ifLoggedIn = () => {
     if (document.cookie === "loggedIn=true") {
       return (
-        <Button
-          variant="text"
-          style={{ color: "white" }}
-          className="nav-list-item"
-          onClick={() => {
-            document.cookie = "loggedIn=";
-            window.location.replace("/login");
-          }}
-        >
-          Log Out
-        </Button>
+        <>
+          <Button
+            variant="text"
+            style={{ color: "white" }}
+            className="nav-list-item"
+            onClick={() => {
+              document.cookie = "loggedIn=";
+              window.location.replace("/login");
+            }}
+          >
+            Log Out
+          </Button>
+        </>
       );
     }
   };
@@ -48,26 +50,30 @@ const Navigation = () => {
   };
 
   return (
-    <AppBar position="relative">
-      <Toolbar>
-        <IconButton color="inherit">
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" style={{ flexGrow: "1", color: "white" }}>
-          <Link id="navHeader" to="/">
-            Some Kind of Business App Honestly I Don't Even Know But Click Here
-            to Return to Listings
-          </Link>
-        </Typography>
-        <Typography>
-          <div>{addListingButton()}</div>
-        </Typography>
-        <ul className="nav-list">
-          {ifLoggedIn()}
-          {ifNotLoggedIn()}
-        </ul>
-      </Toolbar>
-    </AppBar>
+    <div>
+      <AppBar position="relative">
+        <Toolbar>
+          <IconButton color="inherit">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" style={{ flexGrow: "1", color: "white" }}>
+            <Link id="navHeader" to="/">
+              Sandwich Maps
+            </Link>
+          </Typography>
+          <Typography>
+            <div>{addListingButton()}</div>
+          </Typography>
+          <ul className="nav-list">
+            {ifLoggedIn()}
+            {ifNotLoggedIn()}
+          </ul>
+        </Toolbar>
+      </AppBar>
+      <Typography color="secondary">
+        {document.cookie === "loggedIn=true" ? <span>Welcome user!</span> : ""}
+      </Typography>
+    </div>
   );
 };
 

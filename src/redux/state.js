@@ -1,7 +1,7 @@
 export default {
   businesses: [
     {
-      id: "1",
+      id: 1,
       name: "Jimmy John's",
       description:
         "Counter-serve chain specializing in sub & club sandwiches, plus signature potato chips.",
@@ -11,7 +11,7 @@ export default {
       lng: -95.718283,
     },
     {
-      id: "2",
+      id: 2,
       name: "Jersey Mike's",
       description:
         "New Jersey-based counter-serve sandwich chain serving jumbo subs filled with cold cuts & toppings.",
@@ -21,7 +21,7 @@ export default {
       lng: -95.778131,
     },
     {
-      id: "3",
+      id: 3,
       name: "Firehouse Subs",
       description:
         "Counter-serve sandwich chain offering made-to-order hot & cold subs, plus a variety of hot sauces.",
@@ -31,7 +31,7 @@ export default {
       lng: -95.733633,
     },
     {
-      id: "4",
+      id: 4,
       name: "Which Wich Superior Sandwiches",
       description:
         "Modern, casual chain known for design-your-own sandwiches & varied bread options.",
@@ -41,7 +41,7 @@ export default {
       lng: -95.751226,
     },
     {
-      id: "5",
+      id: 5,
       name: "ThunderCloud Subs",
       description:
         "Counter-serve chain featuring hot & cold sandwiches plus a variety of salads & soups.",
@@ -51,7 +51,7 @@ export default {
       lng: -97.739584,
     },
     {
-      id: "6",
+      id: 6,
       name: "Schlotzky's",
       description:
         "Counter-serve chain serving deli fare, such as their Original sandwich, specialty pizzas & salads.",

@@ -17,7 +17,6 @@ const Listings = (props) => {
       return (
         <TableCell>
           <DeleteIcon
-            id={props.businesses.id}
             onClick={() => props.removeListing(id)}
             className="icon text-red"
             style={{ cursor: "pointer" }}

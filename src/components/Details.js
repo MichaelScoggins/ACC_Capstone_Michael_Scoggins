@@ -4,7 +4,8 @@ import GoogleMapReact from "google-map-react";
 
 const Details = (props) => {
   const bID = props.match.params.id;
-  const business = props.businesses.find((b) => b.id === bID);
+  const business = props.businesses.find((b) => b.id == bID);
+  console.log(props.businesses);
   const center = {
     lat: business.lat,
     lng: business.lng,
@@ -21,14 +22,7 @@ const Details = (props) => {
   };
 
   return (
-    <Box
-      maxWidth="lg"
-      className="business-container"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      flexDirection="column"
-    >
+    <Container maxWidth="md">
       <Box>
         <Typography>
           <h1 style={{ color: "red" }}>{business.name}</h1>
@@ -40,7 +34,7 @@ const Details = (props) => {
           </h2>
           <h2
             style={{
-              fontWeight: "bold",
+              fontWeight: "800",
               textAlign: "center",
               textDecoration: "underline",
             }}
@@ -60,7 +54,7 @@ const Details = (props) => {
           ></GoogleMapReact>
         </Container>
       </Box>
-    </Box>
+    </Container>
   );
 };
 

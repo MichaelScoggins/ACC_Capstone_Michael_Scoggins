@@ -87,7 +87,7 @@ _Google Maps_
 
 Make sure to reference the Google Maps Documentation.
 
-You will need to get an API key. Here's a URL example that will retrieve the coordinates for your map given a certain address: https://maps.google.com/maps/api/geocode/json?key=<API_KEY>&address=1600+Amphitheatre+Parkway,+Mountain+View,+CA. You will want to follow the instructions closely on setting up credentials for your API key.
+You will need to get an API key. Here's a URL example that will retrieve the coordinates for your map given a certain address: **https://maps.google.com/maps/api/geocode/json?key=<API_KEY>&address=1600+Amphitheatre+Parkway,+Mountain+View,+CA**. You will want to follow the instructions closely on setting up credentials for your API key.
 
 Finally on Google Maps, you can use the sample code they provided or use an NPM package that helps incorporate Maps into React. An example of such an NPM package can be found at google-map-react.
 

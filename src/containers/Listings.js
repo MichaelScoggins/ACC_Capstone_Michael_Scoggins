@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeListing: (index) => dispatch(removeListing(index)),
+    removeListing: (id) => dispatch(removeListing(id)),
   };
 };
 
