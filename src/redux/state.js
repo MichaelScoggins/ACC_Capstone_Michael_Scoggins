@@ -61,4 +61,5 @@ export default {
       lng: -95.752301,
     },
   ],
+  user: "",
 };

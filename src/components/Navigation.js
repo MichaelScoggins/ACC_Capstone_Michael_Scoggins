@@ -1,4 +1,5 @@
 import React from "react";
+import cookie from "cookie";
 import {
   AppBar,
   Toolbar,
@@ -9,12 +10,17 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import AddListing from "../containers/AddListing";
+import { useLocation } from "react-router-dom";
 
 // && props.match.path !== "/login"
 
-const Navigation = () => {
+const Navigation = (props) => {
+  const cookies = cookie.parse(document.cookie);
+  const location = useLocation();
+  console.log(location.pathname);
+
   const ifNotLoggedIn = () => {
-    if (document.cookie !== "loggedIn=true") {
+    if (!cookies.loggedIn && location.pathname !== "/login") {
       return (
         <Button id="loginButton" variant="text" className="nav-list-item">
           <Link to="/login">Log In</Link>
@@ -24,7 +30,7 @@ const Navigation = () => {
   };
 
   const ifLoggedIn = () => {
-    if (document.cookie === "loggedIn=true") {
+    if (cookies.loggedIn) {
       return (
         <>
           <Button
@@ -44,7 +50,7 @@ const Navigation = () => {
   };
 
   const addListingButton = () => {
-    if (document.cookie === "loggedIn=true") {
+    if (cookies.loggedIn) {
       return <AddListing />;
     }
   };
@@ -70,8 +76,8 @@ const Navigation = () => {
           </ul>
         </Toolbar>
       </AppBar>
-      <Typography color="secondary">
-        {document.cookie === "loggedIn=true" ? <span>Welcome user!</span> : ""}
+      <Typography color="text-primary">
+        {cookies.loggedIn ? <span>Welcome {cookies.user}!</span> : null}
       </Typography>
     </div>
   );

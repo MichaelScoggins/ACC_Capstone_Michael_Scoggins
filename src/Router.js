@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 import cookie from "cookie";
-import LogIn from "./components/LogIn";
+import LogIn from "./containers/LogIn";
 import Listings from "./containers/Listings";
 import Details from "./containers/Details";
 import AddListing from "./containers/AddListing";

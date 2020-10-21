@@ -1,3 +1,10 @@
+export const setUser = (user) => {
+  return {
+    type: "SET_USER",
+    value: user,
+  };
+};
+
 export const addListing = (business) => {
   return async (dispatch) => {
     await fetch(

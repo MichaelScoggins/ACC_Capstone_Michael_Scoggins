@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { v4 as uuidv4 } from "uuid";
 import {
   Button,
   TextField,
@@ -29,7 +30,7 @@ class AddListing extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const business = { ...this.state };
-    business.id = this.props.businesses.length + 1;
+    business.id = uuidv4();
     delete business.open;
     this.props.addListing(business);
     this.setState({ open: false });

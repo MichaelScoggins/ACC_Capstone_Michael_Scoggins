@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
-import { TextField, Button, Container, Box } from "@material-ui/core";
+import { TextField, Button, Box } from "@material-ui/core";
 
 class App extends Component {
   state = {
@@ -18,6 +18,9 @@ class App extends Component {
     e.preventDefault();
     document.cookie = "loggedIn=true;max-age=60*1000";
     window.location.replace("/");
+    this.props.setUser(this.state.username);
+    document.cookie = `user=${this.state.username};max-age=60*1000`;
+    console.log(document.cookie.slice(20));
   };
 
   render() {
