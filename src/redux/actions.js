@@ -1,5 +1,4 @@
 export const setUser = (username) => {
-  console.log("action: ", username);
   return {
     type: "SET_USER",
     value: username,
@@ -18,6 +17,22 @@ export const addListing = (business) => {
         const action = {
           type: "ADD_LISTING",
           value: business,
+        };
+        dispatch(action);
+      });
+  };
+};
+
+export const fetchListings = (input) => {
+  return async (dispatch) => {
+    await fetch(
+      `https://strainapi.evanbusse.com/jXftQqp/strains/search/name/${input}`
+    )
+      .then((res) => res.json())
+      .then((response) => {
+        const action = {
+          type: "FETCH_LISTINGS",
+          value: response,
         };
         dispatch(action);
       });

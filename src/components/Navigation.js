@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import cookie from "cookie";
 import {
   AppBar,
@@ -6,13 +7,53 @@ import {
   IconButton,
   Typography,
   Button,
+  InputBase,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import AddListing from "../containers/AddListing";
 import { useLocation } from "react-router-dom";
 
+import { fade, makeStyles } from "@material-ui/core/styles";
+// import Badge from "@material-ui/core/Badge";
+// import MenuItem from "@material-ui/core/MenuItem";
+// import Menu from "@material-ui/core/Menu";
+import SearchIcon from "@material-ui/icons/Search";
+// import AccountCircle from "@material-ui/icons/AccountCircle";
+// import MailIcon from "@material-ui/icons/Mail";
+// import NotificationsIcon from "@material-ui/icons/Notifications";
+// import MoreIcon from "@material-ui/icons/MoreVert";
+import SearchBar from "../containers/SearchBar";
+
+const useStyles = makeStyles((theme) => ({
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "block",
+    },
+  },
+  sectionDesktop: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
+  },
+  sectionMobile: {
+    display: "flex",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+  },
+}));
+
 const Navigation = (props) => {
+  const classes = useStyles();
   const cookies = cookie.parse(document.cookie);
   const location = useLocation();
 
@@ -56,14 +97,22 @@ const Navigation = (props) => {
     <div>
       <AppBar position="relative">
         <Toolbar>
-          <IconButton color="inherit">
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="open drawer"
+          >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" style={{ flexGrow: "1", color: "white" }}>
+          <Typography variant="h6" style={{ color: "white" }}>
             <Link id="navHeader" to="/">
-              Sandwich Maps
+              Higher Intentions
             </Link>
           </Typography>
+          <SearchBar />
+          <div className={classes.grow} />
+          <div className={classes.sectionDesktop}></div>
           <Typography>
             <div>{addListingButton()}</div>
           </Typography>

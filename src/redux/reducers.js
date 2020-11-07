@@ -1,7 +1,9 @@
 import { combineReducers } from "redux";
 
-const businesses = (state = [], action) => {
+const strains = (state = [], action) => {
   switch (action.type) {
+    case "FETCH_LISTINGS":
+      return [action.value];
     case "ADD_LISTING":
       return [...state, action.value];
     case "REMOVE_LISTING":
@@ -14,11 +16,10 @@ const businesses = (state = [], action) => {
 const user = (state = "", action) => {
   switch (action.type) {
     case "SET_USER":
-      console.log("reducer:", action.value);
       return action.value;
     default:
       return state;
   }
 };
 
-export default combineReducers({ businesses, user });
+export default combineReducers({ strains, user });

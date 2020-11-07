@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Navigation from "./containers/Navigation";
+import PrimarySearchAppBar from "./components/PrimarySearchAppBar";
 
 function App() {
   return (

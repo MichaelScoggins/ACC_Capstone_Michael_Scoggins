@@ -46,21 +46,21 @@ const Listings = (props) => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell>Address</TableCell>
-            <TableCell>Operating Hours</TableCell>
+            <TableCell>Species</TableCell>
+            <TableCell>Flavors</TableCell>
+            <TableCell>Effects</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.businesses.map((business, index) => (
-            <TableRow key={business.id}>
+          {props.strains.map((strain, index) => (
+            <TableRow key={strain.id}>
               <TableCell>
-                <Link to={`/details/${business.id}`}>{business.name}</Link>
+                <Link to={`/details/${strain.id}`}>{strain.name}</Link>
               </TableCell>
-              <TableCell>{business.description}</TableCell>
-              <TableCell>{business.address}</TableCell>
-              <TableCell>{business.operatingHours}</TableCell>
-              {deleteButton(business.id)}
+              <TableCell>{strain.description}</TableCell>
+              <TableCell>{strain.address}</TableCell>
+              <TableCell>{strain.operatingHours}</TableCell>
+              {deleteButton(strain.id)}
             </TableRow>
           ))}
         </TableBody>
