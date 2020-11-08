@@ -1,16 +1,18 @@
 import { connect } from "react-redux";
 import Listings from "../components/Listings";
-import { removeListing } from "../redux/actions";
+import { fetchListings, setUser } from "../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
-    businesses: state.businesses,
+    listings: state.strains,
+    user: state.user,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeListing: (id) => dispatch(removeListing(id)),
+    fetchListings: (input) => dispatch(fetchListings(input)),
+    setUser: (username) => dispatch(setUser(username)),
   };
 };
 

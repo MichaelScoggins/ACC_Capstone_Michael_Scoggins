@@ -3,8 +3,9 @@ import React from "react";
 export default function DisplayListingsCard(props) {
   let display;
   display = props.listings.map((x) => {
+    console.log("listings", props.listings);
     console.log("this works", x);
-    console.log("but this doesnt??", x.id);
+    console.log("but this doesnt??", x.name);
     return (
       <li>
         <h2>{x.name}</h2>

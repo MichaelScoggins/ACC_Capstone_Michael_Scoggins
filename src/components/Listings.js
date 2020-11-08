@@ -40,26 +40,25 @@ const Listings = (props) => {
 
   return (
     <Container maxWidth="lg">
-      <h2>Listings</h2>
+      <h2>Strains</h2>
       <div className={classes.root}></div>
       <Table className="listings">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell>Species</TableCell>
-            <TableCell>Flavors</TableCell>
-            <TableCell>Effects</TableCell>
+            <TableCell>Description</TableCell>
+            <TableCell />
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.strains.map((strain, index) => (
+          {props.listings.map((strain) => (
             <TableRow key={strain.id}>
               <TableCell>
                 <Link to={`/details/${strain.id}`}>{strain.name}</Link>
               </TableCell>
-              <TableCell>{strain.description}</TableCell>
-              <TableCell>{strain.address}</TableCell>
-              <TableCell>{strain.operatingHours}</TableCell>
+              <TableCell>{strain.race}</TableCell>
+              <TableCell>{strain.desc}</TableCell>
               {deleteButton(strain.id)}
             </TableRow>
           ))}

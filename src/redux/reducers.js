@@ -3,11 +3,20 @@ import { combineReducers } from "redux";
 const strains = (state = [], action) => {
   switch (action.type) {
     case "FETCH_LISTINGS":
-      return [action.value];
+      return action.value;
     case "ADD_LISTING":
       return [...state, action.value];
     case "REMOVE_LISTING":
-      return [...state.filter((business) => business.id !== action.value)];
+      return [...state.filter((strain) => strain.id !== action.value)];
+    default:
+      return state;
+  }
+};
+
+const effects = (state = [], action) => {
+  switch (action.type) {
+    case "FETCH_EFFECTS":
+      return action.value;
     default:
       return state;
   }
@@ -22,4 +31,4 @@ const user = (state = "", action) => {
   }
 };
 
-export default combineReducers({ strains, user });
+export default combineReducers({ strains, effects, user });

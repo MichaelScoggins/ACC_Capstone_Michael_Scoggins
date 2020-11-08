@@ -74,35 +74,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchBar(props) {
   const classes = useStyles();
-
-  // const [listings, setListings] = React.useState({});
   const [input, setInput] = React.useState("");
 
-  // const fetchStrains = () => {
-  //   return axios
-  //     .get(
-  //       `https://strainapi.evanbusse.com/jXftQqp/strains/search/name/${input}`
-  //     )
-  //     .then((res) => {
-  //       setListings([listings]);
-  //     });
-  // };
-
-  // React.useEffect(() => {
-  //   fetchStrains(input);
-  // }, []);
-
-  // const onInput = (input) => {
-  //   setInput({ input });
-  // };
-
   const handleChange = (e) => {
-    console.log(props.listings);
-    console.log({ input });
     setInput(e.target.value);
-    console.log({ input });
+  };
+
+  const handleSubmit = () => {
     props.fetchListings(input);
-    console.log(props.listings);
   };
 
   return (
@@ -110,15 +89,18 @@ export default function SearchBar(props) {
       <div className={classes.searchIcon}>
         <SearchIcon />
       </div>
-      <InputBase
-        placeholder="Search…"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
-        inputProps={{ "aria-label": "search" }}
-        onChange={handleChange}
-      />
+      <form onKeyUp={handleSubmit}>
+        <InputBase
+          placeholder="Search…"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput,
+          }}
+          inputProps={{ "aria-label": "search" }}
+          onChange={handleChange}
+          value={input}
+        />
+      </form>
     </div>
   );
 }

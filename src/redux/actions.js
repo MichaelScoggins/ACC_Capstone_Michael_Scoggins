@@ -39,6 +39,22 @@ export const fetchListings = (input) => {
   };
 };
 
+export const fetchEffects = (input) => {
+  return async (dispatch) => {
+    await fetch(
+      `https://strainapi.evanbusse.com/jXftQqp/strains/data/effects/${input}`
+    )
+      .then((res) => res.json())
+      .then((response) => {
+        const action = {
+          type: "FETCH_EFFECTS",
+          value: response,
+        };
+        dispatch(action);
+      });
+  };
+};
+
 export const removeListing = (id) => {
   return {
     type: "REMOVE_LISTING",

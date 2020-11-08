@@ -1,36 +1,31 @@
 import React from "react";
 import { Container, Box, Typography } from "@material-ui/core";
-import GoogleMapReact from "google-map-react";
 
 const Details = (props) => {
-  const bID = props.match.params.id;
-  const business = props.businesses.find((b) => b.id == bID);
-  console.log(props.businesses);
-  const center = {
-    lat: business.lat,
-    lng: business.lng,
-  };
-  const zoom = 11;
-
-  const renderMarkers = (map, maps) => {
-    let marker = new maps.Marker({
-      position: { lat: business.lat, lng: business.lng },
-      map,
-      title: business.name,
-    });
-    return marker;
-  };
+  const strainID = props.match.params.id;
+  const strain = props.listings.find((s) => s.id == strainID);
+  props.fetchEffects(strainID);
+  const positiveEffects = props.effects.positive;
+  const negativeEffects = props.effects.negative;
+  const medicalEffects = props.effects.medical;
 
   return (
     <Container maxWidth="md">
       <Box>
         <Typography>
-          <h1 style={{ color: "red" }}>{business.name}</h1>
+          <h1 style={{ color: "green" }}>{strain.name}</h1>
           <hr />
-          <h2 style={{ color: "black" }}>{business.description}</h2>
-          <h2 style={{ color: "red" }}>
-            <span style={{ color: "black" }}>Hours: </span>
-            {business.operatingHours}
+          <h2>
+            Positive Effects: {""}
+            <span style={{ color: "green" }}>{positiveEffects.join(", ")}</span>
+          </h2>
+          <h2>
+            Negative Effects:{" "}
+            <span style={{ color: "red" }}>{negativeEffects.join(", ")}</span>
+          </h2>
+          <h2 style={{ color: "" }}>
+            Helps to treat: {""}
+            <span style={{ color: "orange" }}>{medicalEffects.join(", ")}</span>
           </h2>
           <h2
             style={{
@@ -39,20 +34,9 @@ const Details = (props) => {
               textDecoration: "underline",
             }}
           >
-            {business.address}
+            {}
           </h2>
         </Typography>
-        <Container style={{ height: "50vh", width: "100%" }}>
-          <GoogleMapReact
-            bootstrapURLKeys={{
-              key: `AIzaSyDO4_O1UDOeMQ9P5CvydjO_Rmv8yFdMV2E`,
-            }}
-            defaultCenter={center}
-            defaultZoom={zoom}
-            yesIWantToUseGoogleMapApiInternals
-            onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
-          ></GoogleMapReact>
-        </Container>
       </Box>
     </Container>
   );
