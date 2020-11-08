@@ -15,6 +15,16 @@ import { Link } from "react-router-dom";
 const Listings = (props) => {
   const cookies = cookie.parse(document.cookie);
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      "& > *": {
+        margin: theme.spacing(1),
+      },
+    },
+  }));
+
+  const classes = useStyles();
+
   const deleteButton = (id) => {
     if (cookies.loggedIn) {
       return (
@@ -28,15 +38,6 @@ const Listings = (props) => {
       );
     }
   };
-
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      "& > *": {
-        margin: theme.spacing(1),
-      },
-    },
-  }));
-  const classes = useStyles();
 
   return (
     <Container maxWidth="lg">

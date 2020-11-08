@@ -13,9 +13,18 @@ const strains = (state = [], action) => {
   }
 };
 
-const effects = (state = [], action) => {
+const effects = (state = {}, action) => {
   switch (action.type) {
     case "FETCH_EFFECTS":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
+const flavors = (state = [], action) => {
+  switch (action.type) {
+    case "FETCH_FLAVORS":
       return action.value;
     default:
       return state;
@@ -31,4 +40,4 @@ const user = (state = "", action) => {
   }
 };
 
-export default combineReducers({ strains, effects, user });
+export default combineReducers({ strains, effects, flavors, user });
