@@ -63,6 +63,42 @@ const userSearchInput = (state = "", action) => {
   }
 };
 
+const posPrefs = (state = [], action) => {
+  switch (action.type) {
+    case "POS_PREFS":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
+const avoidPrefs = (state = [], action) => {
+  switch (action.type) {
+    case "AVOID_PREFS":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
+const medPrefs = (state = [], action) => {
+  switch (action.type) {
+    case "MED_PREFS":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
+const flavPrefs = (state = [], action) => {
+  switch (action.type) {
+    case "FLAV_PREFS":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   user,
   allStrains,
@@ -71,4 +107,8 @@ export default combineReducers({
   flavors,
   searchParams,
   userSearchInput,
+  posPrefs,
+  avoidPrefs,
+  medPrefs,
+  flavPrefs,
 });

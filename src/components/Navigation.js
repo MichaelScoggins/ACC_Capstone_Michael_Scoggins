@@ -25,6 +25,10 @@ import SearchIcon from "@material-ui/icons/Search";
 // import MoreIcon from "@material-ui/icons/MoreVert";
 import SearchBar from "../containers/SearchBar";
 import SearchBy from "../containers/SearchBy";
+import PosEffectsChips from "../containers/PosEffectsChips";
+import NegEffectsChips from "../containers/NegEffectsChips";
+import FlavorChips from "../containers/FlavorChips";
+import MedicinalChips from "../containers/MedicinalChips";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -111,8 +115,12 @@ const Navigation = (props) => {
               Higher Intentions
             </Link>
           </Typography>
-          <SearchBy />
           <SearchBar />
+          <PosEffectsChips />
+          <NegEffectsChips />
+          <MedicinalChips />
+          <FlavorChips />
+          <SearchBy />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}></div>
           <Typography>

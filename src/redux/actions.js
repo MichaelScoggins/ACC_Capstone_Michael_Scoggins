@@ -5,24 +5,6 @@ export const setUser = (username) => {
   };
 };
 
-export const addListing = (business) => {
-  return async (dispatch) => {
-    await fetch(
-      `https://maps.google.com/maps/api/geocode/json?key=AIzaSyDO4_O1UDOeMQ9P5CvydjO_Rmv8yFdMV2E&address=${business.address}`
-    )
-      .then((res) => res.json())
-      .then((response) => {
-        business.lat = response.results[0].geometry.location.lat;
-        business.lng = response.results[0].geometry.location.lng;
-        const action = {
-          type: "ADD_LISTING",
-          value: business,
-        };
-        dispatch(action);
-      });
-  };
-};
-
 export const fetchAllStrains = () => {
   return async (dispatch) => {
     await fetch(`https://strainapi.evanbusse.com/jXftQqp/strains/search/all`)
@@ -102,6 +84,34 @@ export const setSearchParams = (searchParams) => {
 export const setUserSearchInput = (input) => {
   return {
     type: "USER_INPUT",
+    value: input,
+  };
+};
+
+export const setPosPrefs = (input) => {
+  return {
+    type: "POS_PREFS",
+    value: input,
+  };
+};
+
+export const setAvoidPrefs = (input) => {
+  return {
+    type: "AVOID_PREFS",
+    value: input,
+  };
+};
+
+export const setMedPrefs = (input) => {
+  return {
+    type: "MED_PREFS",
+    value: input,
+  };
+};
+
+export const setFlavPrefs = (input) => {
+  return {
+    type: "FLAV_PREFS",
     value: input,
   };
 };

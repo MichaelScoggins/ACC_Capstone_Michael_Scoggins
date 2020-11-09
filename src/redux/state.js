@@ -10,4 +10,8 @@ export default {
     medical: [],
   },
   flavors: [],
+  posPrefs: [],
+  avoidPrefs: [],
+  medPrefs: [],
+  flavPrefs: [],
 };
