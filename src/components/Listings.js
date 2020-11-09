@@ -11,6 +11,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Link } from "react-router-dom";
+import Details from "../containers/Details";
 
 const Listings = (props) => {
   const cookies = cookie.parse(document.cookie);
@@ -24,6 +25,10 @@ const Listings = (props) => {
   }));
 
   const classes = useStyles();
+
+  // const handleDetails = (id) => {
+  //   return <Details sID={id} />;
+  // };
 
   const deleteButton = (id) => {
     if (cookies.loggedIn) {
@@ -55,8 +60,12 @@ const Listings = (props) => {
         <TableBody>
           {props.listings.map((strain) => (
             <TableRow key={strain.id}>
-              <TableCell>
-                <Link to={`/details/${strain.id}`}>{strain.name}</Link>
+              <TableCell
+                onClick={() => {
+                  return <Details sID={strain.id} />;
+                }}
+              >
+                {strain.name}
               </TableCell>
               <TableCell>{strain.race}</TableCell>
               <TableCell>{strain.desc}</TableCell>

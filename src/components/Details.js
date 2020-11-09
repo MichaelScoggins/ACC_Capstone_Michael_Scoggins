@@ -1,7 +1,5 @@
 import React from "react";
 import { Container, Box, Typography } from "@material-ui/core";
-import { useLocation } from "react-router-dom";
-
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 
@@ -32,10 +30,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Details(props) {
+  console.log("click");
   const classes = useStyles();
-  const location = useLocation();
 
-  const strainID = props.match.params.id;
+  const strainID = props.sID;
   React.useEffect(() => {
     props.fetchEffects(strainID);
     props.fetchFlavors(strainID);
@@ -55,7 +53,6 @@ export default function Details(props) {
   };
 
   const handleClose = () => {
-    window.history.replaceState(null, "Strains", "/");
     setOpen(false);
   };
 
@@ -97,15 +94,13 @@ export default function Details(props) {
   );
 
   return (
-    <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        {body}
-      </Modal>
-    </div>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
+    >
+      {body}
+    </Modal>
   );
 }
