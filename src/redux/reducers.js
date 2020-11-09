@@ -9,7 +9,7 @@ const user = (state = "", action) => {
   }
 };
 
-const fetchAllStrains = (state = {}, action) => {
+const allStrains = (state = {}, action) => {
   switch (action.type) {
     case "ALL_STRAINS":
       return action.value;
@@ -18,7 +18,7 @@ const fetchAllStrains = (state = {}, action) => {
   }
 };
 
-const fetchUserSearchResults = (state = [], action) => {
+const userSearchResults = (state = [], action) => {
   switch (action.type) {
     case "USER_SEARCH_RESULTS":
       return action.value;
@@ -45,7 +45,7 @@ const flavors = (state = [], action) => {
   }
 };
 
-const setSearchParams = (state = "", action) => {
+const searchParams = (state = "", action) => {
   switch (action.type) {
     case "SEARCH_PARAMS":
       return action.value;
@@ -54,11 +54,21 @@ const setSearchParams = (state = "", action) => {
   }
 };
 
+const userSearchInput = (state = "", action) => {
+  switch (action.type) {
+    case "USER_INPUT":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   user,
-  fetchAllStrains,
-  fetchUserSearchResults,
+  allStrains,
+  userSearchResults,
   effects,
   flavors,
-  setSearchParams,
+  searchParams,
+  userSearchInput,
 });

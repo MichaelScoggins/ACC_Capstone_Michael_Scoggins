@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
     allStrains: state.allStrains,
     searchParams: state.searchParams,
     effects: state.effects,
+    flavors: state.flavors,
   };
 };
 

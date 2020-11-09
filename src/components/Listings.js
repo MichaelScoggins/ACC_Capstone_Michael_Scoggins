@@ -28,10 +28,6 @@ const Listings = (props) => {
 
   const classes = useStyles();
 
-  // const handleDetails = (id) => {
-  //   return <Details sID={id} />;
-  // };
-
   const handleModal = (e) => {
     setID(e.target.id);
     setModal(!showModal);
@@ -50,34 +46,6 @@ const Listings = (props) => {
       );
     }
   };
-
-  // const ifPositive = () => {
-  //   return (
-  //     <TableBody>
-  //       {props.listings.map((strain) => (
-  //         <TableRow key={strain.id}>
-  //           <TableCell
-  //             style={{ cursor: "pointer", color: "green" }}
-  //             id={strain.id}
-  //             onClick={(e) => handleModal(e)}
-  //           >
-  //             {strain.name} ?
-  //           </TableCell>
-  //           <TableCell>{strain.race}</TableCell>
-  //           <TableCell>{strain.desc}</TableCell>
-  //           {deleteButton(strain.id)}
-  //         </TableRow>
-  //       ))}
-  //     </TableBody>
-  //   );
-  // };
-
-  const sortParam = props.searchParams;
-  // const { effects } = props.effects;
-
-  // const posEffects = props.allStrains.filter(effect => {
-  //   return (effect.positive === "positive" || "hungry" || "euphoric" || "happy" || "creative" || "energetic" || "talkative" || "uplifted" || "tingly" || "sleepy" || "focused" || "giggly")
-  // })
 
   const posEffects = () => {
     return (
@@ -100,7 +68,7 @@ const Listings = (props) => {
   // const ifMedical
 
   let display;
-  if (sortParam === "") {
+  if (props.searchParams === "") {
     display = (
       <Container maxWidth="lg">
         {showModal && <Details setModal={setModal} sID={strainID} />}
@@ -123,7 +91,7 @@ const Listings = (props) => {
                   id={strain.id}
                   onClick={(e) => handleModal(e)}
                 >
-                  {strain.name} ?
+                  {strain.name}
                 </TableCell>
                 <TableCell>{strain.race}</TableCell>
                 <TableCell>{strain.desc}</TableCell>
@@ -134,8 +102,7 @@ const Listings = (props) => {
         </Table>
       </Container>
     );
-  } else if (sortParam === "posEffects") {
-    props.fetchAllStrains();
+  } else if (props.searchParams === "posEffects") {
     display = (
       <Container maxWidth="lg">
         {showModal && <Details setModal={setModal} sID={strainID} />}

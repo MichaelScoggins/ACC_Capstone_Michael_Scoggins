@@ -4,6 +4,7 @@ import {
   setUser,
   fetchAllStrains,
   fetchUserSearchResults,
+  setUserSearchInput,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => {
     userSearchResults: state.userSearchResults,
     allStrains: state.allStrains,
     searchParams: state.searchParams,
+    userSearchInput: state.userSearchInput,
     effects: state.effects,
   };
 };
@@ -21,6 +23,7 @@ const mapDispatchToProps = (dispatch) => {
     setUser: (username) => dispatch(setUser(username)),
     fetchAllStrains: () => dispatch(fetchAllStrains()),
     fetchUserSearchResults: (input) => dispatch(fetchUserSearchResults(input)),
+    setUserSearchInput: (input) => dispatch(setUserSearchInput(input)),
   };
 };
 

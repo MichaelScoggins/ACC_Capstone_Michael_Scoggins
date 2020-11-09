@@ -2,6 +2,7 @@ export default {
   user: "user",
   allStrains: {},
   searchParams: "",
+  userSearchInput: "",
   userSearchResults: [],
   effects: {
     positive: [],

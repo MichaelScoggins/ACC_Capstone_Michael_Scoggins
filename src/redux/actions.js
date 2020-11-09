@@ -98,3 +98,10 @@ export const setSearchParams = (searchParams) => {
     value: searchParams,
   };
 };
+
+export const setUserSearchInput = (input) => {
+  return {
+    type: "USER_INPUT",
+    value: input,
+  };
+};

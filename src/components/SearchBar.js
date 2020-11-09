@@ -74,18 +74,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchBar(props) {
   const classes = useStyles();
-  const [input, setInput] = React.useState("");
+  // const [input, setInput] = React.useState("");
 
   const handleChange = (e) => {
-    setInput(e.target.value);
+    props.setUserSearchInput(e.target.value);
   };
 
   const handleSubmit = () => {
-    const param = props.searchParams
-    if (param === "fetchUserSearchResults") {
-      props.
-    }
-    props.fetchUserSearchResults(input);
+    props.fetchUserSearchResults(props.userSearchInput);
   };
 
   return (
@@ -102,7 +98,7 @@ export default function SearchBar(props) {
           }}
           inputProps={{ "aria-label": "search" }}
           onChange={handleChange}
-          value={input}
+          value={props.userSearchInput}
         />
       </form>
     </div>

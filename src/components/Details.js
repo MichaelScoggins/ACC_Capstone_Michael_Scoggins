@@ -37,7 +37,7 @@ export default function Details(props) {
     props.fetchEffects(strainID);
     props.fetchFlavors(strainID);
   }, []);
-  const strain = props.listings.find((s) => s.id == strainID);
+  const strain = props.userSearchResults.find((s) => s.id == strainID);
   const positiveEffects = props.effects.positive;
   const negativeEffects = props.effects.negative;
   const medicalEffects = props.effects.medical;
