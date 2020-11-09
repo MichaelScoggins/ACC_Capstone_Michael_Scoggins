@@ -24,6 +24,7 @@ import SearchIcon from "@material-ui/icons/Search";
 // import NotificationsIcon from "@material-ui/icons/Notifications";
 // import MoreIcon from "@material-ui/icons/MoreVert";
 import SearchBar from "../containers/SearchBar";
+import SearchBy from "../components/SearchBy";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -111,6 +112,7 @@ const Navigation = (props) => {
             </Link>
           </Typography>
           <SearchBar />
+          <SearchBy />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}></div>
           <Typography>

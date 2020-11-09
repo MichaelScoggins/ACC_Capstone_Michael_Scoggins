@@ -1,5 +1,6 @@
 export default {
   user: "user",
+  searchParam: "",
   strains: [],
   effects: {
     positive: [],

@@ -14,6 +14,11 @@ import { Link } from "react-router-dom";
 import Details from "../containers/Details";
 
 const Listings = (props) => {
+  const { sortParam } = props.state
+  let display
+  if (sortParam === "strain") {
+    display = (
+
   const cookies = cookie.parse(document.cookie);
   const [showModal, setModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
@@ -68,7 +73,11 @@ const Listings = (props) => {
         <TableBody>
           {props.listings.map((strain) => (
             <TableRow key={strain.id}>
-              <TableCell id={strain.id} onClick={(e) => handleModal(e)}>
+              <TableCell
+                style={{ cursor: "pointer", color: "green" }}
+                id={strain.id}
+                onClick={(e) => handleModal(e)}
+              >
                 {strain.name}
               </TableCell>
               <TableCell>{strain.race}</TableCell>
