@@ -15,6 +15,8 @@ import Details from "../containers/Details";
 
 const Listings = (props) => {
   const cookies = cookie.parse(document.cookie);
+  const [showModal, setModal] = React.useState(false);
+  const [strainID, setID] = React.useState(null);
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,6 +31,11 @@ const Listings = (props) => {
   // const handleDetails = (id) => {
   //   return <Details sID={id} />;
   // };
+
+  const handleModal = (e) => {
+    setID(e.target.id);
+    setModal(!showModal);
+  };
 
   const deleteButton = (id) => {
     if (cookies.loggedIn) {
@@ -60,11 +67,8 @@ const Listings = (props) => {
         <TableBody>
           {props.listings.map((strain) => (
             <TableRow key={strain.id}>
-              <TableCell
-                onClick={() => {
-                  return <Details sID={strain.id} />;
-                }}
-              >
+              <TableCell id={strain.id} onClick={(e) => handleModal(e)}>
+                {showModal && <Details sID={strainID} />}
                 {strain.name}
               </TableCell>
               <TableCell>{strain.race}</TableCell>

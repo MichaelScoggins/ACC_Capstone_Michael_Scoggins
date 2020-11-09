@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Details(props) {
-  console.log("click");
   const classes = useStyles();
 
   const strainID = props.sID;
@@ -79,11 +78,7 @@ export default function Details(props) {
                 {medicalEffects.join(", ")}
               </span>
             </h2>
-            <h2
-              style={{
-                color: "",
-              }}
-            >
+            <h2 style={{ color: "" }}>
               Flavors: {""}
               <span style={{ color: "yellow" }}>{flavors.join(", ")}</span>
             </h2>
