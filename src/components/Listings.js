@@ -53,6 +53,7 @@ const Listings = (props) => {
 
   return (
     <Container maxWidth="lg">
+      {showModal && <Details setModal={setModal} sID={strainID} />}
       <h2>Strains</h2>
       <div className={classes.root}></div>
       <Table className="listings">
@@ -68,7 +69,6 @@ const Listings = (props) => {
           {props.listings.map((strain) => (
             <TableRow key={strain.id}>
               <TableCell id={strain.id} onClick={(e) => handleModal(e)}>
-                {showModal && <Details sID={strainID} />}
                 {strain.name}
               </TableCell>
               <TableCell>{strain.race}</TableCell>

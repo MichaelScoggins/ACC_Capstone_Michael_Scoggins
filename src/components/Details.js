@@ -8,8 +8,8 @@ function rand() {
 }
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -53,6 +53,7 @@ export default function Details(props) {
 
   const handleClose = () => {
     setOpen(false);
+    props.setModal(false);
   };
 
   const body = (
