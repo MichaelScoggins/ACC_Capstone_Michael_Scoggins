@@ -1,13 +1,27 @@
 import { combineReducers } from "redux";
 
-const strains = (state = [], action) => {
+const user = (state = "", action) => {
   switch (action.type) {
-    case "FETCH_LISTINGS":
+    case "USER":
       return action.value;
-    case "ADD_LISTING":
-      return [...state, action.value];
-    case "REMOVE_LISTING":
-      return [...state.filter((strain) => strain.id !== action.value)];
+    default:
+      return state;
+  }
+};
+
+const fetchAllStrains = (state = {}, action) => {
+  switch (action.type) {
+    case "ALL_STRAINS":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
+const fetchUserSearchResults = (state = [], action) => {
+  switch (action.type) {
+    case "USER_SEARCH_RESULTS":
+      return action.value;
     default:
       return state;
   }
@@ -15,7 +29,7 @@ const strains = (state = [], action) => {
 
 const effects = (state = {}, action) => {
   switch (action.type) {
-    case "FETCH_EFFECTS":
+    case "EFFECTS":
       return action.value;
     default:
       return state;
@@ -24,20 +38,27 @@ const effects = (state = {}, action) => {
 
 const flavors = (state = [], action) => {
   switch (action.type) {
-    case "FETCH_FLAVORS":
+    case "FLAVORS":
       return action.value;
     default:
       return state;
   }
 };
 
-const user = (state = "", action) => {
+const setSearchParams = (state = "", action) => {
   switch (action.type) {
-    case "SET_USER":
+    case "SEARCH_PARAMS":
       return action.value;
     default:
       return state;
   }
 };
 
-export default combineReducers({ strains, effects, flavors, user });
+export default combineReducers({
+  user,
+  fetchAllStrains,
+  fetchUserSearchResults,
+  effects,
+  flavors,
+  setSearchParams,
+});

@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchBy() {
+export default function SearchBy(props) {
   const classes = useStyles();
-  const [searchParam, setSearchParam] = React.useState("");
+  // const [searchParam, setSearchParam] = React.useState("");
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
-    setSearchParam(event.target.value);
+    props.setSearchParams(event.target.value);
   };
 
   const handleClose = () => {
@@ -46,10 +46,10 @@ export default function SearchBy() {
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={searchParam}
+          value={props.searchParams}
           onChange={handleChange}
         >
-          <MenuItem value="strain">
+          <MenuItem value="">
             <em>Strain</em>
           </MenuItem>
           <MenuItem value="posEffects">Positive Effects</MenuItem>

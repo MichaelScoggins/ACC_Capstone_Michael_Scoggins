@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
-import SearchBar from "../components/SearchBar";
+import SearchBy from "../components/SearchBy";
 import {
   setUser,
   fetchAllStrains,
   fetchUserSearchResults,
+  setSearchParams,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -21,7 +22,8 @@ const mapDispatchToProps = (dispatch) => {
     setUser: (username) => dispatch(setUser(username)),
     fetchAllStrains: () => dispatch(fetchAllStrains()),
     fetchUserSearchResults: (input) => dispatch(fetchUserSearchResults(input)),
+    setSearchParams: (searchParams) => dispatch(setSearchParams(searchParams)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBy);

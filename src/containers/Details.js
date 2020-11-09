@@ -1,20 +1,30 @@
 import { connect } from "react-redux";
 import Details from "../components/Details";
-import { fetchEffects, fetchFlavors, setUser } from "../redux/actions";
+import {
+  setUser,
+  fetchAllStrains,
+  fetchUserSearchResults,
+  fetchEffects,
+  fetchFlavors,
+} from "../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
-    listings: state.strains,
+    user: state.user,
+    userSearchResults: state.userSearchResults,
+    allStrains: state.allStrains,
+    searchParams: state.searchParams,
     effects: state.effects,
-    flavors: state.flavors,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    setUser: (username) => dispatch(setUser(username)),
+    fetchAllStrains: () => dispatch(fetchAllStrains()),
+    fetchUserSearchResults: (input) => dispatch(fetchUserSearchResults(input)),
     fetchEffects: (input) => dispatch(fetchEffects(input)),
     fetchFlavors: (input) => dispatch(fetchFlavors(input)),
-    setUser: (username) => dispatch(setUser(username)),
   };
 };
 

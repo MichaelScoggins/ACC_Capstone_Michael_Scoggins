@@ -1,18 +1,26 @@
 import { connect } from "react-redux";
 import DisplayListingsCard from "../components/DisplayListingsCard";
-import { fetchListings, setUser } from "../redux/actions";
+import {
+  setUser,
+  fetchAllStrains,
+  fetchUserSearchResults,
+} from "../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
-    listings: state.strains,
     user: state.user,
+    userSearchResults: state.userSearchResults,
+    allStrains: state.allStrains,
+    searchParams: state.searchParams,
+    effects: state.effects,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchListings: (input) => dispatch(fetchListings(input)),
     setUser: (username) => dispatch(setUser(username)),
+    fetchAllStrains: () => dispatch(fetchAllStrains()),
+    fetchUserSearchResults: (input) => dispatch(fetchUserSearchResults(input)),
   };
 };
 

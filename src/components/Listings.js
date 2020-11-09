@@ -14,11 +14,6 @@ import { Link } from "react-router-dom";
 import Details from "../containers/Details";
 
 const Listings = (props) => {
-  const { sortParam } = props.state
-  let display
-  if (sortParam === "strain") {
-    display = (
-
   const cookies = cookie.parse(document.cookie);
   const [showModal, setModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
@@ -56,39 +51,127 @@ const Listings = (props) => {
     }
   };
 
-  return (
-    <Container maxWidth="lg">
-      {showModal && <Details setModal={setModal} sID={strainID} />}
-      <h2>Strains</h2>
-      <div className={classes.root}></div>
-      <Table className="listings">
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Species</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell />
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.listings.map((strain) => (
-            <TableRow key={strain.id}>
-              <TableCell
-                style={{ cursor: "pointer", color: "green" }}
-                id={strain.id}
-                onClick={(e) => handleModal(e)}
-              >
-                {strain.name}
-              </TableCell>
-              <TableCell>{strain.race}</TableCell>
-              <TableCell>{strain.desc}</TableCell>
-              {deleteButton(strain.id)}
+  // const ifPositive = () => {
+  //   return (
+  //     <TableBody>
+  //       {props.listings.map((strain) => (
+  //         <TableRow key={strain.id}>
+  //           <TableCell
+  //             style={{ cursor: "pointer", color: "green" }}
+  //             id={strain.id}
+  //             onClick={(e) => handleModal(e)}
+  //           >
+  //             {strain.name} ?
+  //           </TableCell>
+  //           <TableCell>{strain.race}</TableCell>
+  //           <TableCell>{strain.desc}</TableCell>
+  //           {deleteButton(strain.id)}
+  //         </TableRow>
+  //       ))}
+  //     </TableBody>
+  //   );
+  // };
+
+  const sortParam = props.searchParams;
+  // const { effects } = props.effects;
+
+  // const posEffects = props.allStrains.filter(effect => {
+  //   return (effect.positive === "positive" || "hungry" || "euphoric" || "happy" || "creative" || "energetic" || "talkative" || "uplifted" || "tingly" || "sleepy" || "focused" || "giggly")
+  // })
+
+  const posEffects = () => {
+    return (
+      props.allStrains.positive === "positive" ||
+      "hungry" ||
+      "euphoric" ||
+      "happy" ||
+      "creative" ||
+      "energetic" ||
+      "talkative" ||
+      "uplifted" ||
+      "tingly" ||
+      "sleepy" ||
+      "focused" ||
+      "giggly"
+    );
+  };
+
+  // const ifNegative
+  // const ifMedical
+
+  let display;
+  if (sortParam === "") {
+    display = (
+      <Container maxWidth="lg">
+        {showModal && <Details setModal={setModal} sID={strainID} />}
+        <h2>Strains</h2>
+        <div className={classes.root}></div>
+        <Table className="listings">
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Species</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell />
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Container>
-  );
+          </TableHead>
+          <TableBody>
+            {props.userSearchResults.map((strain) => (
+              <TableRow key={strain.id}>
+                <TableCell
+                  style={{ cursor: "pointer", color: "green" }}
+                  id={strain.id}
+                  onClick={(e) => handleModal(e)}
+                >
+                  {strain.name} ?
+                </TableCell>
+                <TableCell>{strain.race}</TableCell>
+                <TableCell>{strain.desc}</TableCell>
+                {deleteButton(strain.id)}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Container>
+    );
+  } else if (sortParam === "posEffects") {
+    props.fetchAllStrains();
+    display = (
+      <Container maxWidth="lg">
+        {showModal && <Details setModal={setModal} sID={strainID} />}
+        <h2>Strains</h2>
+        <div className={classes.root}></div>
+        <Table className="listings">
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Species</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell />
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {props.allStrains.filter(posEffects).map((strain) => (
+              <TableRow key={strain.id}>
+                <TableCell
+                  style={{ cursor: "pointer", color: "green" }}
+                  id={strain.id}
+                  onClick={(e) => handleModal(e)}
+                >
+                  {strain.name} ?
+                </TableCell>
+                <TableCell>{strain.race}</TableCell>
+                <TableCell>{strain.desc}</TableCell>
+                {deleteButton(strain.id)}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Container>
+    );
+  }
+
+  return <div>{display}</div>;
 };
 
 export default Listings;

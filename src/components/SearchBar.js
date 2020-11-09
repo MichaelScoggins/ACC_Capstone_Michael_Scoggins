@@ -81,7 +81,11 @@ export default function SearchBar(props) {
   };
 
   const handleSubmit = () => {
-    props.fetchListings(input);
+    const param = props.searchParams
+    if (param === "fetchUserSearchResults") {
+      props.
+    }
+    props.fetchUserSearchResults(input);
   };
 
   return (

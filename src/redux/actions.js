@@ -1,6 +1,6 @@
 export const setUser = (username) => {
   return {
-    type: "SET_USER",
+    type: "USER",
     value: username,
   };
 };
@@ -23,7 +23,21 @@ export const addListing = (business) => {
   };
 };
 
-export const fetchListings = (input) => {
+export const fetchAllStrains = () => {
+  return async (dispatch) => {
+    await fetch(`https://strainapi.evanbusse.com/jXftQqp/strains/search/all`)
+      .then((res) => res.json())
+      .then((response) => {
+        const action = {
+          type: "ALL_STRAINS",
+          value: response,
+        };
+        dispatch(action);
+      });
+  };
+};
+
+export const fetchUserSearchResults = (input) => {
   return async (dispatch) => {
     await fetch(
       `https://strainapi.evanbusse.com/jXftQqp/strains/search/name/${input}`
@@ -31,7 +45,7 @@ export const fetchListings = (input) => {
       .then((res) => res.json())
       .then((response) => {
         const action = {
-          type: "FETCH_LISTINGS",
+          type: "USER_SEARCH_RESULTS",
           value: response,
         };
         dispatch(action);
@@ -47,7 +61,7 @@ export const fetchEffects = (input) => {
       .then((res) => res.json())
       .then((response) => {
         const action = {
-          type: "FETCH_EFFECTS",
+          type: "EFFECTS",
           value: response,
         };
         dispatch(action);
@@ -63,7 +77,7 @@ export const fetchFlavors = (input) => {
       .then((res) => res.json())
       .then((response) => {
         const action = {
-          type: "FETCH_FLAVORS",
+          type: "FLAVORS",
           value: response,
         };
         dispatch(action);
@@ -75,5 +89,12 @@ export const removeListing = (id) => {
   return {
     type: "REMOVE_LISTING",
     value: id,
+  };
+};
+
+export const setSearchParams = (searchParams) => {
+  return {
+    type: "SEARCH_PARAMS",
+    value: searchParams,
   };
 };
