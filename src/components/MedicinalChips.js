@@ -73,7 +73,6 @@ export default function MedicinalChips(props) {
 
   const handleChange = (event) => {
     props.setMedPrefs(event.target.value);
-    console.log("hey", props.medPrefs);
   };
 
   return (
@@ -96,13 +95,13 @@ export default function MedicinalChips(props) {
           )}
           MenuProps={MenuProps}
         >
-          {medicinal.map((name) => (
+          {medicinal.map((effect) => (
             <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, props.medPrefs, theme)}
+              key={effect}
+              value={effect}
+              style={getStyles(effect, props.medPrefs, theme)}
             >
-              {name}
+              {effect}
             </MenuItem>
           ))}
         </Select>

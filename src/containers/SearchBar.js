@@ -15,6 +15,10 @@ const mapStateToProps = (state) => {
     searchParams: state.searchParams,
     userSearchInput: state.userSearchInput,
     effects: state.effects,
+    posPrefs: state.posPrefs,
+    avoidPrefs: state.avoidPrefs,
+    medPrefs: state.medPrefs,
+    flavPrefs: state.flavPrefs,
   };
 };
 

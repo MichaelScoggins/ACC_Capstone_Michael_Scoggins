@@ -80,8 +80,16 @@ export default function SearchBar(props) {
     props.setUserSearchInput(e.target.value);
   };
 
-  const handleSubmit = () => {
-    props.fetchUserSearchResults(props.userSearchInput);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      props.posPrefs.length === 0 &&
+      props.avoidPrefs.length === 0 &&
+      props.medPrefs.length === 0 &&
+      props.flavPrefs.length === 0
+    ) {
+      props.fetchUserSearchResults(props.userSearchInput);
+    }
   };
 
   return (
@@ -89,7 +97,7 @@ export default function SearchBar(props) {
       <div className={classes.searchIcon}>
         <SearchIcon />
       </div>
-      <form onKeyUp={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <InputBase
           placeholder="Search…"
           classes={{

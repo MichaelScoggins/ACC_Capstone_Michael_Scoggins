@@ -6,6 +6,7 @@ import Listings from "./containers/Listings";
 import Details from "./containers/Details";
 import AddListing from "./containers/AddListing";
 import DisplayListingsCard from "./containers/DisplayListingsCard";
+import SignIn from "./components/SignIn";
 
 const checkAuth = () => {
   const cookies = cookie.parse(document.cookie);
@@ -29,6 +30,7 @@ const Router = () => {
       <Route exact path="/" component={Listings} />
       <Route path="/details/:id" component={Details} />
       <Route path="/login" component={LogIn} />
+      <Route path="/SignIn" component={SignIn} />
       <ProtectedRoute path="/add" component={AddListing} />
     </Switch>
   );

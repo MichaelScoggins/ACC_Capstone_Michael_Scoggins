@@ -14,6 +14,18 @@ import { Link } from "react-router-dom";
 import Details from "../containers/Details";
 
 const Listings = (props) => {
+  React.useEffect(() => {
+    props.fetchAllStrains();
+  }, []);
+  console.log(props.allStrains);
+  console.log(props.posPrefs);
+  console.log(
+    Object.values(props.allStrains).filter((strain) =>
+      props.posPrefs.every((effect) => strain.effects.positive.includes(effect))
+    ),
+    "prefs",
+    props.allStrains
+  );
   const cookies = cookie.parse(document.cookie);
   const [showModal, setModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
@@ -47,28 +59,15 @@ const Listings = (props) => {
     }
   };
 
-  const posEffects = () => {
-    return (
-      props.allStrains.positive === "positive" ||
-      "hungry" ||
-      "euphoric" ||
-      "happy" ||
-      "creative" ||
-      "energetic" ||
-      "talkative" ||
-      "uplifted" ||
-      "tingly" ||
-      "sleepy" ||
-      "focused" ||
-      "giggly"
-    );
+  const checkPosEffects = () => {
+    return props.allStrains.positive.includes(props.posEffects);
   };
 
   // const ifNegative
   // const ifMedical
 
   let display;
-  if (props.searchParams === "") {
+  if (props.searchParams !== "") {
     display = (
       <Container maxWidth="lg">
         {showModal && <Details setModal={setModal} sID={strainID} />}
@@ -102,7 +101,12 @@ const Listings = (props) => {
         </Table>
       </Container>
     );
-  } else if (props.searchParams === "posEffects") {
+  } else if (
+    props.posPrefs.length > 0 ||
+    props.avoidPrefs.length > 0 ||
+    props.medPrefs.length > 0 ||
+    props.flavPrefs.length > 0
+  ) {
     display = (
       <Container maxWidth="lg">
         {showModal && <Details setModal={setModal} sID={strainID} />}
@@ -113,25 +117,37 @@ const Listings = (props) => {
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell>Species</TableCell>
-              <TableCell>Description</TableCell>
+              <TableCell>Flavors</TableCell>
+              <TableCell>Positive Effects</TableCell>
+              <TableCell>Negative Effects</TableCell>
+              <TableCell>Medical Conditions Treated</TableCell>
               <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.allStrains.filter(posEffects).map((strain) => (
-              <TableRow key={strain.id}>
-                <TableCell
-                  style={{ cursor: "pointer", color: "green" }}
-                  id={strain.id}
-                  onClick={(e) => handleModal(e)}
-                >
-                  {strain.name} ?
-                </TableCell>
-                <TableCell>{strain.race}</TableCell>
-                <TableCell>{strain.desc}</TableCell>
-                {deleteButton(strain.id)}
-              </TableRow>
-            ))}
+            {Object.entries(props.allStrains)
+              .filter((strain) =>
+                props.posPrefs.every((effect) =>
+                  strain[1].effects.positive.includes(effect)
+                )
+              )
+              .map((x) => (
+                <TableRow key={x[1].id}>
+                  <TableCell
+                    style={{ cursor: "pointer", color: "green" }}
+                    id={x[1].id}
+                    onClick={(e) => handleModal(e)}
+                  >
+                    {x[0]}
+                  </TableCell>
+                  <TableCell>{x[1].race}</TableCell>
+                  <TableCell>{x[1].flavors}</TableCell>
+                  <TableCell>{x[1].effects.positive}</TableCell>
+                  <TableCell>{x[1].effects.negative}</TableCell>
+                  <TableCell>{x[1].effects.medical}</TableCell>
+                  {deleteButton(x.id)}
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </Container>
@@ -142,3 +158,24 @@ const Listings = (props) => {
 };
 
 export default Listings;
+
+// if (strain.effects.positive.includes(props.posEffects) return (
+//   strain.map(strain => (
+//     <div>
+//     <div>{strain.name}</div>
+//     <div>{strain.race}</div>
+//     <div>{strain.effects.positive}</div>
+//     <div>{strain.effects.negative}</div>
+//     <div>{strain.effects.medical}</div>
+//     </div>
+//   ))
+// )
+
+// if (!prefs) return searchElement;
+// if (prefs) return filterElement;
+
+// const prefs =
+//   props.posPrefs.length > 0 ||
+//   props.avoidPrefs.length > 0 ||
+//   props.medPrefs.length > 0 ||
+//   props.flavPrefs.length > 0;

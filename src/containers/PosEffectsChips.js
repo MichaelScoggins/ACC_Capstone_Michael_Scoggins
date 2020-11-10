@@ -4,7 +4,7 @@ import { setPosPrefs } from "../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
-    posEffects: state.posEffects,
+    posPrefs: state.posPrefs,
   };
 };
 

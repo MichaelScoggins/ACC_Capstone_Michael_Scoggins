@@ -40,37 +40,37 @@ const MenuProps = {
 };
 
 const posEffects = [
-  "postive",
-  "hungry",
-  "euphoric",
-  "happy",
-  "creative",
-  "energetic",
-  "talkative",
-  "uplifted",
-  "tingly",
-  "sleepy",
-  "focused",
-  "giggly",
-  "aroused",
+  "Positive",
+  "Hungry",
+  "Euphoric",
+  "Happy",
+  "Creative",
+  "Energetic",
+  "Talkative",
+  "Uplifted",
+  "Tingly",
+  "Sleepy",
+  "Focused",
+  "Giggly",
+  "Aroused",
 ];
 
-function getStyles(name, personName, theme) {
+function getStyles(pref, posPrefs, theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
+      posPrefs.indexOf(pref) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
 }
 
-export default function PosEffectsChips() {
+export default function PosEffectsChips(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+  // const [posPrefs, setPosPrefs] = React.useState([]);
 
   const handleChange = (event) => {
-    setPersonName(event.target.value);
+    props.setPosPrefs(event.target.value);
   };
 
   return (
@@ -81,7 +81,7 @@ export default function PosEffectsChips() {
           labelId="posEffects-chips-label"
           id="posEffects-chips"
           multiple
-          value={personName}
+          value={props.posPrefs}
           onChange={handleChange}
           input={<Input id="select-multiple-chip" />}
           renderValue={(selected) => (
@@ -93,13 +93,13 @@ export default function PosEffectsChips() {
           )}
           MenuProps={MenuProps}
         >
-          {posEffects.map((name) => (
+          {posEffects.map((effect) => (
             <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
+              key={effect}
+              value={effect}
+              style={getStyles(effect, props.posPrefs, theme)}
             >
-              {name}
+              {effect}
             </MenuItem>
           ))}
         </Select>
