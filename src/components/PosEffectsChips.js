@@ -40,7 +40,6 @@ const MenuProps = {
 };
 
 const posEffects = [
-  "Positive",
   "Hungry",
   "Euphoric",
   "Happy",

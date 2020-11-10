@@ -29,6 +29,7 @@ import PosEffectsChips from "../containers/PosEffectsChips";
 import NegEffectsChips from "../containers/NegEffectsChips";
 import FlavorChips from "../containers/FlavorChips";
 import MedicinalChips from "../containers/MedicinalChips";
+import SpeciesPrefsChips from "../containers/SpeciesPrefsChips";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -120,7 +121,7 @@ const Navigation = (props) => {
           <NegEffectsChips />
           <MedicinalChips />
           <FlavorChips />
-          <SearchBy />
+          <SpeciesPrefsChips />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}></div>
           <Typography>

@@ -86,7 +86,8 @@ export default function SearchBar(props) {
       props.posPrefs.length === 0 &&
       props.avoidPrefs.length === 0 &&
       props.medPrefs.length === 0 &&
-      props.flavPrefs.length === 0
+      props.flavPrefs.length === 0 &&
+      props.speciesPrefs.length === 0
     ) {
       props.fetchUserSearchResults(props.userSearchInput);
     }

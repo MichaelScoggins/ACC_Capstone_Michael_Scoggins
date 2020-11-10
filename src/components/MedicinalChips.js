@@ -40,21 +40,21 @@ const MenuProps = {
 };
 
 const medicinal = [
-  "depression",
-  "insomnia",
-  "pain",
-  "stress",
-  "cramps",
-  "lack of appetite",
-  "nausea",
-  "headache",
-  "fatigue",
-  "headaches",
-  "eye pressure",
-  "inflammation",
-  "spasticity",
-  "seizures",
-  "muscle spasms",
+  "Depression",
+  "Insomnia",
+  "Pain",
+  "Stress",
+  "Cramps",
+  "Lack Of Appetite",
+  "Nausea",
+  "Headache",
+  "Fatigue",
+  "Headaches",
+  "Eye Pressure",
+  "Inflammation",
+  "Spasticity",
+  "Seizures",
+  "Muscle Spasms",
 ];
 
 function getStyles(pref, medPrefs, theme) {

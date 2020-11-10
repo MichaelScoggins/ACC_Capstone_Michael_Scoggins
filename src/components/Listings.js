@@ -10,22 +10,13 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { Link } from "react-router-dom";
 import Details from "../containers/Details";
 
 const Listings = (props) => {
   React.useEffect(() => {
     props.fetchAllStrains();
   }, []);
-  console.log(props.allStrains);
-  console.log(props.posPrefs);
-  console.log(
-    Object.values(props.allStrains).filter((strain) =>
-      props.posPrefs.every((effect) => strain.effects.positive.includes(effect))
-    ),
-    "prefs",
-    props.allStrains
-  );
+
   const cookies = cookie.parse(document.cookie);
   const [showModal, setModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
@@ -59,15 +50,14 @@ const Listings = (props) => {
     }
   };
 
-  const checkPosEffects = () => {
-    return props.allStrains.positive.includes(props.posEffects);
-  };
-
-  // const ifNegative
-  // const ifMedical
-
   let display;
-  if (props.searchParams !== "") {
+  if (
+    props.posPrefs.length === 0 &&
+    props.avoidPrefs.length === 0 &&
+    props.medPrefs.length === 0 &&
+    props.flavPrefs.length === 0 &&
+    props.speciesPrefs.length === 0
+  ) {
     display = (
       <Container maxWidth="lg">
         {showModal && <Details setModal={setModal} sID={strainID} />}
@@ -92,7 +82,15 @@ const Listings = (props) => {
                 >
                   {strain.name}
                 </TableCell>
-                <TableCell>{strain.race}</TableCell>
+                <TableCell>
+                  {strain.race === "sativa" ? (
+                    <p style={{ color: "orange" }}>{strain.race}</p>
+                  ) : strain.race === "indica" ? (
+                    <p style={{ color: "purple" }}>{strain.race}</p>
+                  ) : (
+                    <p style={{ color: "brown" }}>{strain.race}</p>
+                  )}
+                </TableCell>
                 <TableCell>{strain.desc}</TableCell>
                 {deleteButton(strain.id)}
               </TableRow>
@@ -105,7 +103,8 @@ const Listings = (props) => {
     props.posPrefs.length > 0 ||
     props.avoidPrefs.length > 0 ||
     props.medPrefs.length > 0 ||
-    props.flavPrefs.length > 0
+    props.flavPrefs.length > 0 ||
+    props.speciesPrefs.length > 0
   ) {
     display = (
       <Container maxWidth="lg">
@@ -126,10 +125,20 @@ const Listings = (props) => {
           </TableHead>
           <TableBody>
             {Object.entries(props.allStrains)
-              .filter((strain) =>
-                props.posPrefs.every((effect) =>
-                  strain[1].effects.positive.includes(effect)
-                )
+              .filter(
+                (strain) =>
+                  props.posPrefs.every((effect) =>
+                    strain[1].effects.positive.includes(effect)
+                  ) &&
+                  props.medPrefs.every((effect) =>
+                    strain[1].effects.medical.includes(effect)
+                  ) &&
+                  props.flavPrefs.every((effect) =>
+                    strain[1].flavors.includes(effect)
+                  ) &&
+                  props.speciesPrefs.some((effect) =>
+                    strain[1].race.includes(effect)
+                  )
               )
               .map((x) => (
                 <TableRow key={x[1].id}>
@@ -140,11 +149,19 @@ const Listings = (props) => {
                   >
                     {x[0]}
                   </TableCell>
-                  <TableCell>{x[1].race}</TableCell>
-                  <TableCell>{x[1].flavors}</TableCell>
-                  <TableCell>{x[1].effects.positive}</TableCell>
-                  <TableCell>{x[1].effects.negative}</TableCell>
-                  <TableCell>{x[1].effects.medical}</TableCell>
+                  <TableCell>
+                    {x[1].race === "sativa" ? (
+                      <p style={{ color: "orange" }}>{x[1].race}</p>
+                    ) : x[1].race === "indica" ? (
+                      <p style={{ color: "purple" }}>{x[1].race}</p>
+                    ) : (
+                      <p style={{ color: "brown" }}>{x[1].race}</p>
+                    )}
+                  </TableCell>
+                  <TableCell>{x[1].flavors.join(", ")}</TableCell>
+                  <TableCell>{x[1].effects.positive.join(", ")}</TableCell>
+                  <TableCell>{x[1].effects.negative.join(", ")}</TableCell>
+                  <TableCell>{x[1].effects.medical.join(", ")}</TableCell>
                   {deleteButton(x.id)}
                 </TableRow>
               ))}
@@ -158,24 +175,3 @@ const Listings = (props) => {
 };
 
 export default Listings;
-
-// if (strain.effects.positive.includes(props.posEffects) return (
-//   strain.map(strain => (
-//     <div>
-//     <div>{strain.name}</div>
-//     <div>{strain.race}</div>
-//     <div>{strain.effects.positive}</div>
-//     <div>{strain.effects.negative}</div>
-//     <div>{strain.effects.medical}</div>
-//     </div>
-//   ))
-// )
-
-// if (!prefs) return searchElement;
-// if (prefs) return filterElement;
-
-// const prefs =
-//   props.posPrefs.length > 0 ||
-//   props.avoidPrefs.length > 0 ||
-//   props.medPrefs.length > 0 ||
-//   props.flavPrefs.length > 0;

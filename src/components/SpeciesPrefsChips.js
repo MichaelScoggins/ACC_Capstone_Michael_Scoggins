@@ -39,35 +39,35 @@ const MenuProps = {
   },
 };
 
-const negEffects = ["Dizzy", "Dry Mouth", "Paranoid", "Dry Eyes", "Anxious"];
+const species = ["sativa", "indica", "hybrid"];
 
-function getStyles(pref, avoidPrefs, theme) {
+function getStyles(pref, speciesPrefs, theme) {
   return {
     fontWeight:
-      avoidPrefs.indexOf(pref) === -1
+      speciesPrefs.indexOf(pref) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
 }
 
-export default function NegEffectsChips(props) {
+export default function SpeciesPrefsChips(props) {
   const classes = useStyles();
   const theme = useTheme();
-  // const [negPrefs, setNegPrefs] = React.useState([]);
+  // const [posPrefs, setPosPrefs] = React.useState([]);
 
   const handleChange = (event) => {
-    props.setAvoidPrefs(event.target.value);
+    props.setSpeciesPrefs(event.target.value);
   };
 
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="negEffects-chips-label">Prefer to Avoid</InputLabel>
+        <InputLabel id="posEffects-chips-label">Indica/Sativa</InputLabel>
         <Select
-          labelId="negEffects-chips-label"
-          id="negEffects-chips"
+          labelId="posEffects-chips-label"
+          id="posEffects-chips"
           multiple
-          value={props.avoidPrefs}
+          value={props.speciesPrefs}
           onChange={handleChange}
           input={<Input id="select-multiple-chip" />}
           renderValue={(selected) => (
@@ -79,13 +79,13 @@ export default function NegEffectsChips(props) {
           )}
           MenuProps={MenuProps}
         >
-          {negEffects.map((effect) => (
+          {species.map((species) => (
             <MenuItem
-              key={effect}
-              value={effect}
-              style={getStyles(effect, props.avoidPrefs, theme)}
+              key={species}
+              value={species}
+              style={getStyles(species, props.speciesPrefs, theme)}
             >
-              {effect}
+              {species}
             </MenuItem>
           ))}
         </Select>

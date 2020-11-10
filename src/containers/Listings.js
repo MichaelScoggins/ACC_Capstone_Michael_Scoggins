@@ -4,6 +4,7 @@ import {
   setUser,
   fetchAllStrains,
   fetchUserSearchResults,
+  setSpeciesPrefs,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -18,6 +19,7 @@ const mapStateToProps = (state) => {
     avoidPrefs: state.avoidPrefs,
     medPrefs: state.medPrefs,
     flavPrefs: state.flavPrefs,
+    speciesPrefs: state.speciesPrefs,
   };
 };
 
@@ -26,6 +28,7 @@ const mapDispatchToProps = (dispatch) => {
     setUser: (username) => dispatch(setUser(username)),
     fetchAllStrains: () => dispatch(fetchAllStrains()),
     fetchUserSearchResults: (input) => dispatch(fetchUserSearchResults(input)),
+    setSpeciesPrefs: (input) => dispatch(setSpeciesPrefs(input)),
   };
 };
 

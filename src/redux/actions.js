@@ -115,3 +115,10 @@ export const setFlavPrefs = (input) => {
     value: input,
   };
 };
+
+export const setSpeciesPrefs = (input) => {
+  return {
+    type: "SPECIES_PREFS",
+    value: input,
+  };
+};

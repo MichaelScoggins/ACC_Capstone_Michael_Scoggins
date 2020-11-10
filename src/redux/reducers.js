@@ -99,6 +99,15 @@ const flavPrefs = (state = [], action) => {
   }
 };
 
+const speciesPrefs = (state = [], action) => {
+  switch (action.type) {
+    case "SPECIES_PREFS":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   user,
   allStrains,
@@ -111,4 +120,5 @@ export default combineReducers({
   avoidPrefs,
   medPrefs,
   flavPrefs,
+  speciesPrefs,
 });

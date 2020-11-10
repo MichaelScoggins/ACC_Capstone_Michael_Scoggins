@@ -19,6 +19,7 @@ const mapStateToProps = (state) => {
     avoidPrefs: state.avoidPrefs,
     medPrefs: state.medPrefs,
     flavPrefs: state.flavPrefs,
+    speciesPrefs: state.speciesPrefs,
   };
 };
 

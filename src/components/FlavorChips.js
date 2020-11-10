@@ -106,7 +106,6 @@ export default function FlavorChips(props) {
 
   const handleChange = (event) => {
     props.setFlavPrefs(event.target.value);
-    console.log(props.flavPrefs);
   };
 
   return (
@@ -129,13 +128,13 @@ export default function FlavorChips(props) {
           )}
           MenuProps={MenuProps}
         >
-          {flavors.map((name) => (
+          {flavors.map((flavor) => (
             <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, props.flavPrefs, theme)}
+              key={flavor}
+              value={flavor}
+              style={getStyles(flavor, props.flavPrefs, theme)}
             >
-              {name}
+              {flavor}
             </MenuItem>
           ))}
         </Select>
