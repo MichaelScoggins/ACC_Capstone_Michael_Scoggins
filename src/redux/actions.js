@@ -67,6 +67,22 @@ export const fetchFlavors = (input) => {
   };
 };
 
+export const fetchDescription = (input) => {
+  return async (dispatch) => {
+    await fetch(
+      `https://strainapi.evanbusse.com/jXftQqp/strains/data/desc/${input}`
+    )
+      .then((res) => res.json())
+      .then((response) => {
+        const action = {
+          type: "STRAIN_DESCRIPTION",
+          value: response.desc,
+        };
+        dispatch(action);
+      });
+  };
+};
+
 export const removeListing = (id) => {
   return {
     type: "REMOVE_LISTING",

@@ -5,6 +5,9 @@ import {
   fetchAllStrains,
   fetchUserSearchResults,
   setSpeciesPrefs,
+  fetchDescription,
+  fetchEffects,
+  fetchFlavors,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -29,6 +32,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchAllStrains: () => dispatch(fetchAllStrains()),
     fetchUserSearchResults: (input) => dispatch(fetchUserSearchResults(input)),
     setSpeciesPrefs: (input) => dispatch(setSpeciesPrefs(input)),
+    fetchDescription: (input) => dispatch(fetchDescription(input)),
+    fetchEffects: (input) => dispatch(fetchEffects(input)),
+    fetchFlavors: (input) => dispatch(fetchFlavors(input)),
   };
 };
 

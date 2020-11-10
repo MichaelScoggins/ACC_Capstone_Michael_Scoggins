@@ -10,6 +10,7 @@ export default {
     medical: [],
   },
   flavors: [],
+  strainDescription: "",
   speciesPrefs: [],
   posPrefs: [],
   avoidPrefs: [],

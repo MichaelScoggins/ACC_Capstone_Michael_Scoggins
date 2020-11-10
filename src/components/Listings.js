@@ -21,6 +21,7 @@ const Listings = (props) => {
   const cookies = cookie.parse(document.cookie);
   const [showModal, setModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
+  const [strainID1, setID1] = React.useState(null);
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,6 +35,13 @@ const Listings = (props) => {
 
   const handleModal = (e) => {
     setID(e.target.id);
+    setModal(!showModal);
+  };
+
+  const handleModal1 = (e) => {
+    setID1(e.target.id);
+    // console.log("poop", strainID1);
+    props.fetchDescription(strainID1);
     setModal(!showModal);
   };
 
@@ -109,7 +117,7 @@ const Listings = (props) => {
   ) {
     display = (
       <Container maxWidth="lg">
-        {showModal && <Details setModal={setModal} sID={strainID} />}
+        {showModal && <Details setModal={setModal} sID1={strainID1} />}
         <h2>Strains</h2>
         <div className={classes.root}></div>
         <Table className="listings">
@@ -148,7 +156,7 @@ const Listings = (props) => {
                   <TableCell
                     style={{ cursor: "pointer", color: "green" }}
                     id={x[1].id}
-                    onClick={(e) => handleModal(e)}
+                    onClick={(e) => handleModal1(e)}
                   >
                     {x[0]}
                   </TableCell>

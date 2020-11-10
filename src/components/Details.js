@@ -3,10 +3,6 @@ import { Container, Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -32,12 +28,14 @@ const useStyles = makeStyles((theme) => ({
 export default function Details(props) {
   const classes = useStyles();
 
-  const strainID = props.sID;
   React.useEffect(() => {
-    props.fetchEffects(strainID);
-    props.fetchFlavors(strainID);
+    props.fetchEffects(props.sID);
+    props.fetchFlavors(props.sID);
   }, []);
-  const strain = props.userSearchResults.find((s) => s.id == strainID);
+  const strain = props.userSearchResults.find((s) => s.id == props.sID);
+  const strain1 = Object.entries(props.allStrains).find(
+    (s) => s[1].id == props.sID1
+  );
   const positiveEffects = props.effects.positive;
   const negativeEffects = props.effects.negative;
   const medicalEffects = props.effects.medical;
@@ -55,39 +53,64 @@ export default function Details(props) {
     setOpen(false);
     props.setModal(false);
   };
+  let body;
 
-  const body = (
-    <div style={modalStyle} className={classes.paper}>
-      <Container maxWidth="md">
-        <Box>
-          <Typography>
-            <h1 style={{ color: "green" }}>{strain.name}</h1>
-            <hr />
-            <h2>
-              Positive Effects: {""}
-              <span style={{ color: "green" }}>
-                {positiveEffects.join(", ")}
-              </span>
-            </h2>
-            <h2>
-              Negative Effects:{" "}
-              <span style={{ color: "red" }}>{negativeEffects.join(", ")}</span>
-            </h2>
-            <h2 style={{ color: "" }}>
-              Helps to treat: {""}
-              <span style={{ color: "orange" }}>
-                {medicalEffects.join(", ")}
-              </span>
-            </h2>
-            <h2 style={{ color: "" }}>
-              Flavors: {""}
-              <span style={{ color: "yellow" }}>{flavors.join(", ")}</span>
-            </h2>
-          </Typography>
-        </Box>
-      </Container>
-    </div>
-  );
+  if (
+    props.posPrefs.length > 0 ||
+    props.avoidPrefs.length > 0 ||
+    props.medPrefs.length > 0 ||
+    props.flavPrefs.length > 0 ||
+    props.speciesPrefs.length > 0
+  ) {
+    props.fetchDescription(props.sID1);
+    body = (
+      <div style={modalStyle} className={classes.paper}>
+        <Container maxWidth="md">
+          <Box>
+            <Typography>
+              <h1 style={{ color: "green" }}>{strain1[0]}</h1>
+              <hr />
+              <p>{props.strainDescription}</p>
+            </Typography>
+          </Box>
+        </Container>
+      </div>
+    );
+  } else
+    body = (
+      <div style={modalStyle} className={classes.paper}>
+        <Container maxWidth="md">
+          <Box>
+            <Typography>
+              <h1 style={{ color: "green" }}>{strain.name}</h1>
+              <hr />
+              <h2>
+                Positive Effects: {""}
+                <span style={{ color: "green" }}>
+                  {positiveEffects.join(", ")}
+                </span>
+              </h2>
+              <h2>
+                Negative Effects:{" "}
+                <span style={{ color: "red" }}>
+                  {negativeEffects.join(", ")}
+                </span>
+              </h2>
+              <h2 style={{ color: "" }}>
+                Helps to treat: {""}
+                <span style={{ color: "orange" }}>
+                  {medicalEffects.join(", ")}
+                </span>
+              </h2>
+              <h2 style={{ color: "" }}>
+                Flavors: {""}
+                <span style={{ color: "yellow" }}>{flavors.join(", ")}</span>
+              </h2>
+            </Typography>
+          </Box>
+        </Container>
+      </div>
+    );
 
   return (
     <Modal

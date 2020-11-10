@@ -6,6 +6,7 @@ import {
   fetchUserSearchResults,
   fetchEffects,
   fetchFlavors,
+  fetchDescription,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -16,6 +17,12 @@ const mapStateToProps = (state) => {
     searchParams: state.searchParams,
     effects: state.effects,
     flavors: state.flavors,
+    posPrefs: state.posPrefs,
+    avoidPrefs: state.avoidPrefs,
+    medPrefs: state.medPrefs,
+    flavPrefs: state.flavPrefs,
+    speciesPrefs: state.speciesPrefs,
+    strainDescription: state.strainDescription,
   };
 };
 
@@ -26,6 +33,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchUserSearchResults: (input) => dispatch(fetchUserSearchResults(input)),
     fetchEffects: (input) => dispatch(fetchEffects(input)),
     fetchFlavors: (input) => dispatch(fetchFlavors(input)),
+    fetchDescription: (input) => dispatch(fetchDescription(input)),
   };
 };
 

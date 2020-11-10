@@ -108,6 +108,15 @@ const speciesPrefs = (state = [], action) => {
   }
 };
 
+const strainDescription = (state = "", action) => {
+  switch (action.type) {
+    case "STRAIN_DESCRIPTION":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   user,
   allStrains,
@@ -121,4 +130,5 @@ export default combineReducers({
   medPrefs,
   flavPrefs,
   speciesPrefs,
+  strainDescription,
 });
