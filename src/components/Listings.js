@@ -13,6 +13,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Details from "../containers/Details";
 
 const Listings = (props) => {
+  console.log(props.speciesPrefs);
   React.useEffect(() => {
     props.fetchAllStrains();
   }, []);
@@ -136,9 +137,11 @@ const Listings = (props) => {
                   props.flavPrefs.every((effect) =>
                     strain[1].flavors.includes(effect)
                   ) &&
-                  props.speciesPrefs.some((effect) =>
-                    strain[1].race.includes(effect)
-                  )
+                  props.avoidPrefs.every(
+                    (effect) => !strain[1].effects.negative.includes(effect)
+                  ) &&
+                  (props.speciesPrefs.length === 0 ||
+                    props.speciesPrefs.includes(strain[1].race))
               )
               .map((x) => (
                 <TableRow key={x[1].id}>
