@@ -30,6 +30,7 @@ import NegEffectsChips from "../containers/NegEffectsChips";
 import FlavorChips from "../containers/FlavorChips";
 import MedicinalChips from "../containers/MedicinalChips";
 import SpeciesPrefsChips from "../containers/SpeciesPrefsChips";
+import FindPerfectStrain from "./FindPerfectStrain";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -117,11 +118,7 @@ const Navigation = (props) => {
             </Link>
           </Typography>
           <SearchBar />
-          <PosEffectsChips />
-          <NegEffectsChips />
-          <MedicinalChips />
-          <FlavorChips />
-          <SpeciesPrefsChips />
+          <FindPerfectStrain />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}></div>
           <Typography>

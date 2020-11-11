@@ -41,7 +41,7 @@ const Listings = (props) => {
   const handleModal1 = (e) => {
     setID1(e.target.id);
     // console.log("poop", strainID1);
-    props.fetchDescription(strainID1);
+    // props.fetchDescription(strainID1);
     setModal(!showModal);
   };
 
@@ -76,7 +76,6 @@ const Listings = (props) => {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell>Species</TableCell>
               <TableCell>Description</TableCell>
               <TableCell />
             </TableRow>
@@ -89,9 +88,7 @@ const Listings = (props) => {
                   id={strain.id}
                   onClick={(e) => handleModal(e)}
                 >
-                  {strain.name}
-                </TableCell>
-                <TableCell>
+                  {strain.name} <hr />
                   {strain.race === "sativa" ? (
                     <p style={{ color: "orange" }}>{strain.race}</p>
                   ) : strain.race === "indica" ? (
@@ -124,7 +121,6 @@ const Listings = (props) => {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell>Species</TableCell>
               <TableCell>Flavors</TableCell>
               <TableCell>Positive Effects</TableCell>
               <TableCell>Negative Effects</TableCell>
@@ -159,8 +155,7 @@ const Listings = (props) => {
                     onClick={(e) => handleModal1(e)}
                   >
                     {x[0]}
-                  </TableCell>
-                  <TableCell>
+                    <hr />
                     {x[1].race === "sativa" ? (
                       <p style={{ color: "orange" }}>{x[1].race}</p>
                     ) : x[1].race === "indica" ? (
