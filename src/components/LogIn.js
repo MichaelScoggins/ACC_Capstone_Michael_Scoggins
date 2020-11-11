@@ -1,68 +1,165 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
-import { TextField, Button, Box, Container } from "@material-ui/core";
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Link,
+  Paper,
+  Box,
+  Grid,
+  Typography,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 
-class App extends Component {
-  state = {
-    username: "",
-    password: "",
-    redirectHome: false,
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://material-ui.com/">
+        Higher Intentions
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: "100vh",
+  },
+  image: {
+    backgroundImage: "url(./../smoking_the_butterflies.jpg)",
+    backgroundRepeat: "no-repeat",
+    backgroundColor:
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
+  paper: {
+    margin: theme.spacing(8, 4),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+const LogIn = (props) => {
+  const classes = useStyles();
+  const [username, setUsername] = React.useState("");
+  const [password, setpassword] = React.useState("");
+  const [redirectHome, setRedirectHome] = React.useState(false);
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
 
-  handleTextChange = (e) => {
-    const state = { ...this.state };
-    state[e.target.name] = e.target.value;
-    this.setState(state);
+  const handlePasswordChange = (e) => {
+    setpassword(e.target.value);
   };
 
-  login = (e) => {
+  const login = (e) => {
     e.preventDefault();
     document.cookie = "loggedIn=true;max-age=60*1000";
-    document.cookie = `user=${this.state.username};max-age=60*1000`;
-    this.props.setUser(this.state.username);
-    this.setState({ redirectHome: true });
+    document.cookie = `user=${username};max-age=60*1000`;
+    props.setUser(username);
+    setRedirectHome(true);
   };
 
-  render() {
-    if (this.state.redirectHome) {
-      return <Redirect to="/" />;
-    }
-    return (
-      <Container>
-        <Box maxWidth="lg">
-          <form className="login-form" onSubmit={this.login}>
+  if (redirectHome) {
+    return <Redirect to="/" />;
+  }
+  return (
+    <Grid container component="main" className={classes.root}>
+      <CssBaseline />
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <form className={classes.form} onSubmit={login}>
             <TextField
+              variant="outlined"
+              margin="normal"
               required
-              onChange={this.handleTextChange}
-              value={this.state.username}
+              onChange={handleUsernameChange}
+              value={username}
+              fullWidth
+              id="username"
               name="username"
               label="Username"
               type="text"
+              autoComplete="email"
+              autoFocus
             />
-            <br />
             <TextField
+              variant="outlined"
+              margin="normal"
               required
-              onChange={this.handleTextChange}
-              value={this.state.password}
+              onChange={handlePasswordChange}
+              value={password}
+              fullWidth
               name="password"
               label="Password"
               type="password"
+              id="password"
+              autoComplete="current-password"
             />
-            <br />
-            <br />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
             <Button
               type="submit"
-              className="login-button"
+              fullWidth
               variant="contained"
               color="primary"
+              className={classes.submit}
             >
-              Login
+              Sign In
             </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+            <Box mt={5}>
+              <Copyright />
+            </Box>
           </form>
-        </Box>
-      </Container>
-    );
-  }
-}
+        </div>
+      </Grid>
+    </Grid>
+  );
+};
 
-export default App;
+export default LogIn;
