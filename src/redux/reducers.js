@@ -9,6 +9,15 @@ const user = (state = "", action) => {
   }
 };
 
+const drawerOpen = (state = "false", action) => {
+  switch (action.type) {
+    case "DRAWER":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 const allStrains = (state = {}, action) => {
   switch (action.type) {
     case "ALL_STRAINS":
@@ -131,4 +140,5 @@ export default combineReducers({
   flavPrefs,
   speciesPrefs,
   strainDescription,
+  drawerOpen,
 });

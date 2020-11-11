@@ -5,6 +5,13 @@ export const setUser = (username) => {
   };
 };
 
+export const toggleDrawer = (input) => {
+  return {
+    type: "DRAWER",
+    value: input,
+  };
+};
+
 export const addListing = (business) => {
   return async (dispatch) => {
     await fetch(

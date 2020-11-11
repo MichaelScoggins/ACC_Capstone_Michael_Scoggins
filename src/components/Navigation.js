@@ -31,6 +31,7 @@ import FlavorChips from "../containers/FlavorChips";
 import MedicinalChips from "../containers/MedicinalChips";
 import SpeciesPrefsChips from "../containers/SpeciesPrefsChips";
 import FindPerfectStrain from "./FindPerfectStrain";
+import Drawer from "../containers/Drawer";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -103,12 +104,14 @@ const Navigation = (props) => {
   return (
     <div>
       <AppBar position="relative">
+        <Drawer />
         <Toolbar>
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={props.toggleDrawer(true)}
           >
             <MenuIcon />
           </IconButton>

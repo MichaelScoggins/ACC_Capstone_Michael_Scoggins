@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Navigation from "../components/Navigation";
+import Drawer from "../components/Drawer";
 import { toggleDrawer } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default connect(mapStateToProps, mapDispatchToProps)(Drawer);
