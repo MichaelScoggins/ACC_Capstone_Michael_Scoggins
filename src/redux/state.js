@@ -1,6 +1,6 @@
 export default {
   user: "user",
-  drawerOpen: "false",
+  drawerOpen: false,
   allStrains: {},
   searchParams: "",
   userSearchInput: "",

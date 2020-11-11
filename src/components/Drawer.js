@@ -24,7 +24,7 @@ export default function Drawer(props) {
   const classes = useStyles();
   // const [drawerOpen, toggleDrawer1] = React.useState(false);
 
-  // const toggleDrawer = (event) => {
+  // const toggleDrawer = (open) => (event) => {
   //   if (
   //     event &&
   //     event.type === "keydown" &&
@@ -33,7 +33,7 @@ export default function Drawer(props) {
   //     return;
   //   }
 
-  //   props.toggleDrawer(true);
+  //   props.toggleDrawer(open);
   // };
 
   const list = () => (

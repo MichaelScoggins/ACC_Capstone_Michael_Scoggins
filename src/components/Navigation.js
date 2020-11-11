@@ -104,7 +104,6 @@ const Navigation = (props) => {
   return (
     <div>
       <AppBar position="relative">
-        <Drawer />
         <Toolbar>
           <IconButton
             edge="start"

@@ -9,7 +9,7 @@ const user = (state = "", action) => {
   }
 };
 
-const drawerOpen = (state = "false", action) => {
+const drawerOpen = (state = false, action) => {
   switch (action.type) {
     case "DRAWER":
       return action.value;
