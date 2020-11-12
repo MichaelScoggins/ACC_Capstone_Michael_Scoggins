@@ -1,12 +1,13 @@
 import React from "react";
-import axios from "axios";
-import cookie from "cookie";
-import { useLocation } from "react-router-dom";
+// import axios from "axios";
+// import cookie from "cookie";
+// import { useLocation } from "react-router-dom";
 import { InputBase } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
+import { Redirect } from "react-router-dom";
 
 import SearchIcon from "@material-ui/icons/Search";
-import ListStrains from "./ListStrains";
+// import ListStrains from "./ListStrains";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -73,6 +74,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SearchBar(props) {
+  const [redirect, setRedirect] = React.useState(false);
+
   const classes = useStyles();
   // const [input, setInput] = React.useState("");
 
@@ -80,17 +83,10 @@ export default function SearchBar(props) {
     props.setUserSearchInput(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      props.posPrefs.length === 0 &&
-      props.avoidPrefs.length === 0 &&
-      props.medPrefs.length === 0 &&
-      props.flavPrefs.length === 0 &&
-      props.speciesPrefs.length === 0
-    ) {
-      props.fetchUserSearchResults(props.userSearchInput);
-    }
+    await props.fetchUserSearchResults(props.userSearchInput);
+    setRedirect(true);
   };
 
   return (
@@ -98,7 +94,7 @@ export default function SearchBar(props) {
       <div className={classes.searchIcon}>
         <SearchIcon />
       </div>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={handleSubmit}>
         <InputBase
           placeholder="Search…"
           classes={{
@@ -106,10 +102,11 @@ export default function SearchBar(props) {
             input: classes.inputInput,
           }}
           inputProps={{ "aria-label": "search" }}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e)}
           value={props.userSearchInput}
         />
       </form>
+      {redirect && <Redirect to="/search" />}
     </div>
   );
 }

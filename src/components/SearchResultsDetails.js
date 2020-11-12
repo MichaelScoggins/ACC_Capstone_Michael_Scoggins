@@ -25,17 +25,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Details(props) {
+export default function SearchResultsDetails(props) {
   const classes = useStyles();
 
   React.useEffect(() => {
     props.fetchEffects(props.sID);
     props.fetchFlavors(props.sID);
   }, []);
+
   const strain = props.userSearchResults.find((s) => s.id == props.sID);
-  const strain1 = Object.entries(props.allStrains).find(
-    (s) => s[1].id == props.sID1
-  );
   const positiveEffects = props.effects.positive;
   const negativeEffects = props.effects.negative;
   const medicalEffects = props.effects.medical;
@@ -53,31 +51,14 @@ export default function Details(props) {
     setOpen(false);
     props.setModal(false);
   };
-  let body;
 
-  if (
-    props.posPrefs.length > 0 ||
-    props.avoidPrefs.length > 0 ||
-    props.medPrefs.length > 0 ||
-    props.flavPrefs.length > 0 ||
-    props.speciesPrefs.length > 0
-  ) {
-    props.fetchDescription(props.sID1);
-    body = (
-      <div style={modalStyle} className={classes.paper}>
-        <Container maxWidth="md">
-          <Box>
-            <Typography>
-              <h1 style={{ color: "green" }}>{strain1[0]}</h1>
-              <hr />
-              <p>{props.strainDescription}</p>
-            </Typography>
-          </Box>
-        </Container>
-      </div>
-    );
-  } else
-    body = (
+  return (
+    <Modal
+      open={open}
+      onClose={() => handleClose()}
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
+    >
       <div style={modalStyle} className={classes.paper}>
         <Container maxWidth="md">
           <Box>
@@ -110,16 +91,6 @@ export default function Details(props) {
           </Box>
         </Container>
       </div>
-    );
-
-  return (
-    <Modal
-      open={open}
-      onClose={() => handleClose()}
-      aria-labelledby="simple-modal-title"
-      aria-describedby="simple-modal-description"
-    >
-      {body}
     </Modal>
   );
 }

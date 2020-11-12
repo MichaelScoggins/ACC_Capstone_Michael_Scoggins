@@ -7,13 +7,34 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
-import Details from "../containers/Details";
+import { makeStyles } from "@material-ui/core/styles";
+import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 
-export default function DisplayPerfectStrainResults() {
+export default function DisplayPerfectStrainResults(props) {
+  const [showModal, setModal] = React.useState(false);
+  const [strainID, setID] = React.useState(null);
+
+  const handleModal = (e) => {
+    setID(e.target.id);
+    setModal(!showModal);
+  };
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      "& > *": {
+        margin: theme.spacing(1),
+      },
+    },
+  }));
+
+  const classes = useStyles();
+
   return (
     <div>
       <Container maxWidth="lg">
-        {showModal && <Details setModal={setModal} sID1={strainID1} />}
+        {showModal && (
+          <PerfectStrainDetails setModal={setModal} sID={strainID} />
+        )}
         <h2>Strains</h2>
         <div className={classes.root}></div>
         <Table className="listings">
@@ -51,7 +72,7 @@ export default function DisplayPerfectStrainResults() {
                   <TableCell
                     style={{ cursor: "pointer", color: "green" }}
                     id={x[1].id}
-                    onClick={(e) => handleModal1(e)}
+                    onClick={(e) => handleModal(e)}
                   >
                     {x[0]}
                     <br />
@@ -67,7 +88,6 @@ export default function DisplayPerfectStrainResults() {
                   <TableCell>{x[1].effects.positive.join(", ")}</TableCell>
                   <TableCell>{x[1].effects.negative.join(", ")}</TableCell>
                   <TableCell>{x[1].effects.medical.join(", ")}</TableCell>
-                  {deleteButton(x.id)}
                 </TableRow>
               ))}
           </TableBody>

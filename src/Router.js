@@ -2,10 +2,10 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 import cookie from "cookie";
 import LogIn from "./containers/LogIn";
-import Listings from "./containers/Listings";
-import Details from "./containers/Details";
 import AddListing from "./containers/AddListing";
-import DisplayListingsCard from "./containers/DisplayListingsCard";
+import DisplayUserSearchResults from "./containers/DisplayUserSearchResults";
+import DisplayPerfectStrainResults from "./containers/DisplayPerfectStrainResults";
+import Home from "./components/Home";
 
 const checkAuth = () => {
   const cookies = cookie.parse(document.cookie);
@@ -26,8 +26,9 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
 const Router = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Listings} />
-      <Route path="/details/:id" component={Details} />
+      <Route exact path="/" component={Home} />
+      <Route path="/search" component={DisplayUserSearchResults} />
+      <Route path="/perfectstrain" component={DisplayPerfectStrainResults} />
       <Route path="/login" component={LogIn} />
       <ProtectedRoute path="/add" component={AddListing} />
     </Switch>

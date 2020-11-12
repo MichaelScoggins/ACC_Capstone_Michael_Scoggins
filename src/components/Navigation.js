@@ -30,7 +30,7 @@ import SearchBar from "../containers/SearchBar";
 // import FlavorChips from "../containers/FlavorChips";
 // import MedicinalChips from "../containers/MedicinalChips";
 // import SpeciesPrefsChips from "../containers/SpeciesPrefsChips";
-import FindPerfectStrain from "./FindPerfectStrain";
+import FindPerfectStrain from "../containers/FindPerfectStrain";
 import NavDrawer from "../containers/NavDrawer";
 
 const useStyles = makeStyles((theme) => ({
@@ -121,7 +121,6 @@ const Navigation = (props) => {
             </Link>
           </Typography>
           <SearchBar />
-          <FindPerfectStrain />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}></div>
           <Typography>
