@@ -63,3 +63,7 @@ li {
 .nav-list-item {
   margin: auto 20px;
 }
+
+#homeTitle {
+  opacity: 1 !important;
+}

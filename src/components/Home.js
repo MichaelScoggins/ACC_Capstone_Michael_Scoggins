@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -126,7 +125,7 @@ export default function Home(props) {
                     props.speciesPrefs.includes(strain[1].race))
               )
               .map((card) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
+                <Grid item key={card[1].id} xs={12} sm={6} md={4}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
@@ -135,19 +134,16 @@ export default function Home(props) {
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {card[1].race}
+                        {card[0]}
                       </Typography>
-                      <Typography>
-                        This is a media card. You can use this section to
-                        describe the content.
-                      </Typography>
+                      <Typography>{card[1].race}</Typography>
                     </CardContent>
                     <CardActions>
                       <Button size="small" color="primary">
                         View
                       </Button>
                       <Button size="small" color="primary">
-                        Edit
+                        Add Your Experience
                       </Button>
                     </CardActions>
                   </Card>
