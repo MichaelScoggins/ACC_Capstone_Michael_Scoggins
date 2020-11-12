@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import cookie from "cookie";
 import {
   AppBar,
@@ -7,7 +7,7 @@ import {
   IconButton,
   Typography,
   Button,
-  InputBase,
+  // InputBase,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
@@ -18,20 +18,20 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 // import Badge from "@material-ui/core/Badge";
 // import MenuItem from "@material-ui/core/MenuItem";
 // import Menu from "@material-ui/core/Menu";
-import SearchIcon from "@material-ui/icons/Search";
+// import SearchIcon from "@material-ui/icons/Search";
 // import AccountCircle from "@material-ui/icons/AccountCircle";
 // import MailIcon from "@material-ui/icons/Mail";
 // import NotificationsIcon from "@material-ui/icons/Notifications";
 // import MoreIcon from "@material-ui/icons/MoreVert";
 import SearchBar from "../containers/SearchBar";
-import SearchBy from "../containers/SearchBy";
-import PosEffectsChips from "../containers/PosEffectsChips";
-import NegEffectsChips from "../containers/NegEffectsChips";
-import FlavorChips from "../containers/FlavorChips";
-import MedicinalChips from "../containers/MedicinalChips";
-import SpeciesPrefsChips from "../containers/SpeciesPrefsChips";
+// import SearchBy from "../containers/SearchBy";
+// import PosEffectsChips from "../containers/PosEffectsChips";
+// import NegEffectsChips from "../containers/NegEffectsChips";
+// import FlavorChips from "../containers/FlavorChips";
+// import MedicinalChips from "../containers/MedicinalChips";
+// import SpeciesPrefsChips from "../containers/SpeciesPrefsChips";
 import FindPerfectStrain from "./FindPerfectStrain";
-import Drawer from "../containers/Drawer";
+import NavDrawer from "../containers/NavDrawer";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -103,7 +103,7 @@ const Navigation = (props) => {
 
   return (
     <div>
-      <Drawer />
+      <NavDrawer />
       <AppBar position="relative">
         <Toolbar>
           <IconButton

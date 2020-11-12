@@ -1,8 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-// import Drawer from "@material-ui/core/Drawer";
+import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
@@ -21,28 +20,27 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Drawer(props) {
+export default function NavDrawer() {
   const classes = useStyles();
-  // const [drawerOpen, toggleDrawer1] = React.useState(false);
+  const [state, setState] = React.useState(false);
 
-  // const toggleDrawer = (open) => (event) => {
-  //   if (
-  //     event &&
-  //     event.type === "keydown" &&
-  //     (event.key === "Tab" || event.key === "Shift")
-  //   ) {
-  //     return;
-  //   }
+  const toggleDrawer = (toggle) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
 
-  //   props.toggleDrawer(open);
-  // };
+    setState(toggle);
+  };
 
-  const list = () => (
+  const list = (anchor) => (
     <div
       className={classes.list}
       role="presentation"
-      onClick={props.toggleDrawer(false)}
-      onKeyDown={props.toggleDrawer(false)}
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
     >
       <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
@@ -69,13 +67,15 @@ export default function Drawer(props) {
   );
 
   return (
-    <SwipeableDrawer
-      anchor="left"
-      open={props.drawerOpen}
-      onClose={props.toggleDrawer(false)}
-      onOpen={props.toggleDrawer(true)}
-    >
-      {list}
-    </SwipeableDrawer>
+    <div>
+      {["left"].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <Button onClick={toggleDrawer(true)}>drawer</Button>
+          <Drawer anchor={anchor} open={state} onClose={toggleDrawer(false)}>
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+    </div>
   );
 }
