@@ -111,7 +111,7 @@ const Navigation = (props) => {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-            onClick={props.toggleDrawer(true)}
+            onClick={() => props.toggleDrawer(true)}
           >
             <MenuIcon />
           </IconButton>

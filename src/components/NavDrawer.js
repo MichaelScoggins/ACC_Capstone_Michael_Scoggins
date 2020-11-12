@@ -32,15 +32,15 @@ export default function NavDrawer(props) {
       return;
     }
 
-    setState(toggle);
+    props.toggleDrawer(toggle);
   };
 
   const list = () => (
     <div
       className={classes.list}
       role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      onClick={() => toggleDrawer(false)}
+      onKeyDown={() => toggleDrawer(false)}
     >
       <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
@@ -69,8 +69,11 @@ export default function NavDrawer(props) {
   return (
     <div>
       <React.Fragment key="left">
-        <Button onClick={toggleDrawer(true)}>drawer</Button>
-        <Drawer anchor="left" open={state} onClose={toggleDrawer(false)}>
+        <Drawer
+          anchor="left"
+          open={props.drawerOpen}
+          onClose={toggleDrawer(false)}
+        >
           {list("left")}
         </Drawer>
       </React.Fragment>
