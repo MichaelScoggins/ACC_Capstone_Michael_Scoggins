@@ -5,7 +5,7 @@ import LogIn from "./containers/LogIn";
 import AddListing from "./containers/AddListing";
 import DisplayUserSearchResults from "./containers/DisplayUserSearchResults";
 import DisplayPerfectStrainResults from "./containers/DisplayPerfectStrainResults";
-import Home from "./components/Home";
+import Home from "./containers/Home";
 
 const checkAuth = () => {
   const cookies = cookie.parse(document.cookie);
