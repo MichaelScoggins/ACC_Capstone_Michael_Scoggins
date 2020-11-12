@@ -11,7 +11,7 @@ const user = (state = "", action) => {
 
 const drawerOpen = (state = false, action) => {
   switch (action.type) {
-    case "DRAWER":
+    case "DRAWER_OPEN":
       return action.value;
     default:
       return state;

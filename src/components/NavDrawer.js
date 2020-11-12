@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NavDrawer() {
+export default function NavDrawer(props) {
   const classes = useStyles();
   const [state, setState] = React.useState(false);
 
@@ -35,7 +35,7 @@ export default function NavDrawer() {
     setState(toggle);
   };
 
-  const list = (anchor) => (
+  const list = () => (
     <div
       className={classes.list}
       role="presentation"
@@ -68,14 +68,12 @@ export default function NavDrawer() {
 
   return (
     <div>
-      {["left"].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(true)}>drawer</Button>
-          <Drawer anchor={anchor} open={state} onClose={toggleDrawer(false)}>
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      <React.Fragment key="left">
+        <Button onClick={toggleDrawer(true)}>drawer</Button>
+        <Drawer anchor="left" open={state} onClose={toggleDrawer(false)}>
+          {list("left")}
+        </Drawer>
+      </React.Fragment>
     </div>
   );
 }

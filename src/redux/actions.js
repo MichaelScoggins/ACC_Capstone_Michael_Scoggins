@@ -7,7 +7,7 @@ export const setUser = (username) => {
 
 export const toggleDrawer = (input) => {
   return {
-    type: "DRAWER",
+    type: "DRAWER_OPEN",
     value: input,
   };
 };
