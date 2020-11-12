@@ -76,6 +76,10 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchBar(props) {
   const [redirect, setRedirect] = React.useState(false);
 
+  React.useEffect(() => {
+    setRedirect(false);
+  });
+
   const classes = useStyles();
   // const [input, setInput] = React.useState("");
 
@@ -83,9 +87,9 @@ export default function SearchBar(props) {
     props.setUserSearchInput(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await props.fetchUserSearchResults(props.userSearchInput);
+    props.fetchUserSearchResults(props.userSearchInput);
     setRedirect(true);
   };
 
@@ -94,7 +98,7 @@ export default function SearchBar(props) {
       <div className={classes.searchIcon}>
         <SearchIcon />
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <InputBase
           placeholder="Search…"
           classes={{
