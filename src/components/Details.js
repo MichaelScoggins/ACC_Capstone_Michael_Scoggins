@@ -115,7 +115,7 @@ export default function Details(props) {
   return (
     <Modal
       open={open}
-      onClose={handleClose}
+      onClose={() => handleClose()}
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
     >
