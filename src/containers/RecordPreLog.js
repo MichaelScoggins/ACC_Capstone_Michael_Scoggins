@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import AddListing from "../components/AddListing";
+import RecordPreLog from "../components/RecordPreLog";
 import { addListing } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddListing);
+export default connect(mapStateToProps, mapDispatchToProps)(RecordPreLog);

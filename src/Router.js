@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 import cookie from "cookie";
 import LogIn from "./containers/LogIn";
-import AddListing from "./containers/AddListing";
+import RecordPreLog from "./containers/RecordPreLog";
 import DisplayUserSearchResults from "./containers/DisplayUserSearchResults";
 import DisplayPerfectStrainResults from "./containers/DisplayPerfectStrainResults";
 import Home from "./containers/Home";
@@ -30,7 +30,7 @@ const Router = () => {
       <Route path="/search" component={DisplayUserSearchResults} />
       <Route path="/perfectstrain" component={DisplayPerfectStrainResults} />
       <Route path="/login" component={LogIn} />
-      <ProtectedRoute path="/add" component={AddListing} />
+      <ProtectedRoute path="/add" component={RecordPreLog} />
     </Switch>
   );
 };

@@ -61,9 +61,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Home(props) {
-  React.useEffect(() => {
-    props.fetchAllStrains();
-  }, []);
+  // React.useEffect(() => {
+  //   props.fetchAllStrains();
+  // }, []);
   console.log(props.allStrains);
   const cards = props.allStrains;
   const classes = useStyles();
@@ -133,17 +133,30 @@ export default function Home(props) {
                       title="Image title"
                     />
                     <CardContent className={classes.cardContent}>
-                      <Typography gutterBottom variant="h5" component="h2">
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="h2"
+                        style={{ cursor: "pointer", color: "green" }}
+                      >
                         {card[0]}
                       </Typography>
-                      <Typography>{card[1].race}</Typography>
+                      <Typography>
+                        {card[1].race === "sativa" ? (
+                          <p style={{ color: "orange" }}>{card[1].race}</p>
+                        ) : card[1].race === "indica" ? (
+                          <p style={{ color: "purple" }}>{card[1].race}</p>
+                        ) : (
+                          <p style={{ color: "brown" }}>{card[1].race}</p>
+                        )}
+                      </Typography>
                     </CardContent>
                     <CardActions>
                       <Button size="small" color="primary">
                         View
                       </Button>
                       <Button size="small" color="primary">
-                        Add Your Experience
+                        Record Your Experience
                       </Button>
                     </CardActions>
                   </Card>
@@ -155,7 +168,7 @@ export default function Home(props) {
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-          Higher Intentions
+          HI
         </Typography>
         <Typography
           variant="subtitle1"

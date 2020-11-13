@@ -11,9 +11,9 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
-import AddListing from "../containers/AddListing";
+import AddListing from "../containers/RecordPreLog";
 import { useLocation } from "react-router-dom";
-
+import LocalFloristIcon from "@material-ui/icons/LocalFlorist";
 import { fade, makeStyles } from "@material-ui/core/styles";
 // import Badge from "@material-ui/core/Badge";
 // import MenuItem from "@material-ui/core/MenuItem";
@@ -30,7 +30,7 @@ import SearchBar from "../containers/SearchBar";
 // import FlavorChips from "../containers/FlavorChips";
 // import MedicinalChips from "../containers/MedicinalChips";
 // import SpeciesPrefsChips from "../containers/SpeciesPrefsChips";
-import FindPerfectStrain from "../containers/FindPerfectStrain";
+// import FindPerfectStrain from "../containers/FindPerfectStrain";
 import NavDrawer from "../containers/NavDrawer";
 
 const useStyles = makeStyles((theme) => ({
@@ -117,7 +117,7 @@ const Navigation = (props) => {
           </IconButton>
           <Typography variant="h6" style={{ color: "white" }}>
             <Link id="navHeader" to="/">
-              Higher Intentions
+              <LocalFloristIcon style={{ fontSize: "30px" }} />
             </Link>
           </Typography>
           <SearchBar />
