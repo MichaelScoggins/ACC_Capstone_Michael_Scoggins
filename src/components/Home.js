@@ -109,6 +109,70 @@ export default function Home(props) {
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
+          <Grid container spacing={4}>
+            {Object.entries(props.allStrains)
+              .filter(
+                (strain) =>
+                  props.posPrefs.every((effect) =>
+                    strain[1].effects.positive.includes(effect)
+                  ) &&
+                  props.medPrefs.every((effect) =>
+                    strain[1].effects.medical.includes(effect)
+                  ) &&
+                  props.flavPrefs.every((effect) =>
+                    strain[1].flavors.includes(effect)
+                  ) &&
+                  props.avoidPrefs.every(
+                    (effect) => !strain[1].effects.negative.includes(effect)
+                  ) &&
+                  (props.speciesPrefs.length === 0 ||
+                    props.speciesPrefs.includes(strain[1].race))
+              )
+              .map((card) => (
+                <Grid item key={card[1].id} xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={
+                        card[1].race === "sativa"
+                          ? "./../smoking_the_butterflies.jpg"
+                          : card[1].race === "indica"
+                          ? "./../spaceman.jpg"
+                          : "./../hybrid_zebra.jpg"
+                      }
+                      title="Image title"
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="h2"
+                        style={{ cursor: "pointer", color: "green" }}
+                      >
+                        {card[0]}
+                      </Typography>
+                      <Typography>
+                        {card[1].race === "sativa" ? (
+                          <p style={{ color: "orange" }}>{card[1].race}</p>
+                        ) : card[1].race === "indica" ? (
+                          <p style={{ color: "purple" }}>{card[1].race}</p>
+                        ) : (
+                          <p style={{ color: "brown" }}>{card[1].race}</p>
+                        )}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" color="primary">
+                        View
+                      </Button>
+                      <Button size="small" color="primary">
+                        Record Your Experience
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
+          </Grid>
         </Container>
       </main>
       {/* Footer */}

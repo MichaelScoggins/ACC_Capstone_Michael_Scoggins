@@ -40,7 +40,6 @@ export default function FindPerfectStrain(props) {
   // };
 
   const handleClickOpen = () => {
-    props.fetchAllStrains();
     setOpen(true);
   };
 
@@ -49,7 +48,9 @@ export default function FindPerfectStrain(props) {
   };
 
   const handleSubmit = () => {
-    setRedirect(true);
+    props.fetchAllStrains();
+    handleClose();
+    // setRedirect(true);
   };
 
   return (
@@ -80,7 +81,7 @@ export default function FindPerfectStrain(props) {
           </Button>
         </DialogActions>
       </Dialog>
-      {redirect && <Redirect to="/perfectstrain" />}
+      {/* {redirect && <Redirect to="/perfectstrain" />} */}
     </div>
   );
 }
