@@ -11,6 +11,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 // import DeleteIcon from "@material-ui/icons/Delete";
 import SearchResultsDetails from "../containers/SearchResultsDetails";
+// import SearchBar from "../containers/SearchBar";
 
 export default function DisplayUserSearchResults(props) {
   const [showModal, setModal] = React.useState(false);

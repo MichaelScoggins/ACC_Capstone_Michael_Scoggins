@@ -34,15 +34,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundImage: "url(./../dank_sativa.jpg)",
-    backgroundRepeat: "no-repeat",
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    opacity: ".5",
+    backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -73,14 +65,12 @@ export default function Home(props) {
   // React.useEffect(() => {
   //   props.fetchAllStrains();
   // }, []);
-  console.log(props.allStrains);
   const cards = props.allStrains;
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative"></AppBar>
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -101,12 +91,17 @@ export default function Home(props) {
               paragraph
             >
               Use our expertly crafted algorithm to search thousands of strains
-              and locate the perfect mood!
+              and locate the perfect mood
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
                   <FindPerfectStrain />
+                </Grid>
+                <Grid item>
+                  <Button variant="contained" color="primary">
+                    Sign Up to Record Your Experiences
+                  </Button>
                 </Grid>
               </Grid>
             </div>

@@ -6,6 +6,7 @@ import RecordPreLog from "./containers/RecordPreLog";
 import DisplayUserSearchResults from "./containers/DisplayUserSearchResults";
 import DisplayPerfectStrainResults from "./containers/DisplayPerfectStrainResults";
 import Home from "./containers/Home";
+import FormTemplate from "./components/FormTemplate";
 
 const checkAuth = () => {
   const cookies = cookie.parse(document.cookie);
@@ -30,7 +31,8 @@ const Router = () => {
       <Route path="/search" component={DisplayUserSearchResults} />
       <Route path="/perfectstrain" component={DisplayPerfectStrainResults} />
       <Route path="/login" component={LogIn} />
-      <ProtectedRoute path="/add" component={RecordPreLog} />
+      <Route path="/form" component={FormTemplate} />
+      <ProtectedRoute path="/add/pre" component={RecordPreLog} />
     </Switch>
   );
 };

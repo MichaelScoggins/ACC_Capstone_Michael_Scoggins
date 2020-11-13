@@ -55,7 +55,7 @@ export default function FindPerfectStrain(props) {
   return (
     <div>
       <Button onClick={handleClickOpen} variant="contained" color="primary">
-        Find The Perfect Strain!
+        Find The Perfect Strain
       </Button>
       <Dialog
         disableBackdropClick
@@ -63,7 +63,7 @@ export default function FindPerfectStrain(props) {
         open={open}
         onClose={handleClose}
       >
-        <DialogTitle>Select Your Preferences!</DialogTitle>
+        <DialogTitle>Select Your Preferences</DialogTitle>
         <DialogContent>
           <PosEffectsChips />
           <NegEffectsChips />

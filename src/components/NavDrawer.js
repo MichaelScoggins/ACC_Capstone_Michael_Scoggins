@@ -10,6 +10,12 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import HomeIcon from "@material-ui/icons/Home";
+import SearchIcon from "@material-ui/icons/Search";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FolderOpenIcon from "@material-ui/icons/FolderOpen";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import LocationSearchingIcon from "@material-ui/icons/LocationSearching";
 
 const useStyles = makeStyles({
   list: {
@@ -22,7 +28,7 @@ const useStyles = makeStyles({
 
 export default function NavDrawer(props) {
   const classes = useStyles();
-  const [state, setState] = React.useState(false);
+  // const [state, setState] = React.useState(false);
 
   const toggleDrawer = (toggle) => (event) => {
     if (
@@ -43,25 +49,45 @@ export default function NavDrawer(props) {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
+        <ListItem button key="home">
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem button key="searchByName">
+          <ListItemIcon>
+            <SearchIcon />
+          </ListItemIcon>
+          <ListItemText primary="Find Strain by Name" />
+        </ListItem>
+        <ListItem button key="perfectStrain">
+          <ListItemIcon>
+            <LocationSearchingIcon />
+          </ListItemIcon>
+          <ListItemText primary="Find Perfect Strain" />
+        </ListItem>
+        <ListItem button key="favorites">
+          <ListItemIcon>
+            <FavoriteBorderIcon />
+          </ListItemIcon>
+          <ListItemText primary="Favorites" />
+        </ListItem>
+        <ListItem button key="archives">
+          <ListItemIcon>
+            <FolderOpenIcon />
+          </ListItemIcon>
+          <ListItemText primary="Archives" />
+        </ListItem>
+        <Divider />
+        <List>
+          <ListItem button key="account">
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <LockOpenIcon />
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary="Account" />
           </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        </List>
       </List>
     </div>
   );

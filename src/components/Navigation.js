@@ -68,7 +68,7 @@ const Navigation = (props) => {
   const ifNotLoggedIn = () => {
     if (!cookies.loggedIn && location.pathname !== "/login") {
       return (
-        <Button id="loginButton" variant="text" className="nav-list-item">
+        <Button id="loginButton" variant="contained" className="nav-list-item">
           <Link to="/login">Log In</Link>
         </Button>
       );
