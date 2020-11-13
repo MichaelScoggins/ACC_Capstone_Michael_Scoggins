@@ -16,6 +16,8 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LocationSearchingIcon from "@material-ui/icons/LocationSearching";
+import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
+import GpsFixedIcon from "@material-ui/icons/GpsFixed";
 
 const useStyles = makeStyles({
   list: {
@@ -55,15 +57,9 @@ export default function NavDrawer(props) {
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
-        <ListItem button key="searchByName">
-          <ListItemIcon>
-            <SearchIcon />
-          </ListItemIcon>
-          <ListItemText primary="Find Strain by Name" />
-        </ListItem>
         <ListItem button key="perfectStrain">
           <ListItemIcon>
-            <LocationSearchingIcon />
+            <GpsFixedIcon />
           </ListItemIcon>
           <ListItemText primary="Find Perfect Strain" />
         </ListItem>

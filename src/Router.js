@@ -7,6 +7,7 @@ import DisplayUserSearchResults from "./containers/DisplayUserSearchResults";
 import DisplayPerfectStrainResults from "./containers/DisplayPerfectStrainResults";
 import Home from "./containers/Home";
 import FormTemplate from "./components/FormTemplate";
+import DisplayAlbum from "./containers/DisplayAlbum";
 
 const checkAuth = () => {
   const cookies = cookie.parse(document.cookie);
@@ -29,7 +30,7 @@ const Router = () => {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/search" component={DisplayUserSearchResults} />
-      <Route path="/perfectstrain" component={DisplayPerfectStrainResults} />
+      <Route path="/perfectstrain" component={DisplayAlbum} />
       <Route path="/login" component={LogIn} />
       <Route path="/form" component={FormTemplate} />
       <ProtectedRoute path="/add/pre" component={RecordPreLog} />
