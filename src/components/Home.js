@@ -13,6 +13,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
+import PerfectStrainDetails from "../containers/PerfectStrainDetails";
+import SearchResultsDetails from "../containers/SearchResultsDetails";
 
 import FindPerfectStrain from "../containers/FindPerfectStrain";
 
@@ -62,15 +64,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Home(props) {
+  const [showModal, setModal] = React.useState(false);
+  const [strainID, setID] = React.useState(null);
+
+  const handleModal = (e) => {
+    setID(e.target.id);
+    setModal(!showModal);
+  };
   // React.useEffect(() => {
   //   props.fetchAllStrains();
   // }, []);
-  const cards = props.allStrains;
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <CssBaseline />
+      {showModal && <SearchResultsDetails setModal={setModal} sID={strainID} />}
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -148,6 +157,8 @@ export default function Home(props) {
                         variant="h5"
                         component="h2"
                         style={{ cursor: "pointer", color: "green" }}
+                        id={card[1].id}
+                        onClick={(e) => handleModal(e)}
                       >
                         {card[0]}
                       </Typography>
