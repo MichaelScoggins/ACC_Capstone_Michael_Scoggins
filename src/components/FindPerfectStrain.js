@@ -52,8 +52,16 @@ export default function FindPerfectStrain(props) {
   };
 
   const handleSubmit = () => {
-    setLoading(true);
-    props.fetchAllStrains();
+    if (
+      props.posPrefs.length > 0 ||
+      props.avoidPrefs.length > 0 ||
+      props.medPrefs.length > 0 ||
+      props.flavPrefs.length > 0 ||
+      props.speciesPrefs.length > 0
+    ) {
+      setLoading(true);
+      props.fetchAllStrains();
+    }
     handleClose();
     // setRedirect(true);
   };
