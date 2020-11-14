@@ -90,6 +90,7 @@ export default function SearchBar(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.fetchUserSearchResults(props.userSearchInput);
+    props.setUserSearchInput("");
     setRedirect(true);
   };
 
