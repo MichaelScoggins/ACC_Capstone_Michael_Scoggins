@@ -18,6 +18,7 @@ import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import FindPerfectStrain from "../containers/FindPerfectStrain";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import IconButton from "@material-ui/core/IconButton";
 
 function Copyright() {
   return (
@@ -81,10 +82,15 @@ export default function Home(props) {
   const classes = useStyles();
   const [showModal, setModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
+  const [strainID1, setID1] = React.useState(null);
 
   const handleModal = (e) => {
     setID(e.target.id);
     setModal(true);
+  };
+
+  const handleAddFav = (e) => {
+    setID1(e.target.id);
   };
 
   return (
@@ -208,6 +214,9 @@ export default function Home(props) {
                         size="small"
                         color="secondary"
                         variant="contained"
+                        className="heartIcon"
+                        id={card[1].id}
+                        onClick={(e) => handleAddFav(e)}
                       >
                         <FavoriteIcon />
                       </Button>

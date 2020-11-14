@@ -9,6 +9,7 @@ import {
   fetchEffects,
   fetchFlavors,
   setUserSearchInput,
+  addFavorite,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -24,6 +25,7 @@ const mapStateToProps = (state) => {
     medPrefs: state.medPrefs,
     flavPrefs: state.flavPrefs,
     speciesPrefs: state.speciesPrefs,
+    favorites: state.favorites,
   };
 };
 
@@ -37,6 +39,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchDescription: (input) => dispatch(fetchDescription(input)),
     fetchEffects: (input) => dispatch(fetchEffects(input)),
     fetchFlavors: (input) => dispatch(fetchFlavors(input)),
+    addFavorite: (input) => dispatch(addFavorite(input)),
   };
 };
 

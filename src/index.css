@@ -67,3 +67,11 @@ li {
 #homeTitle {
   opacity: 1 !important;
 }
+
+/* .heartIcon {
+  color: black;
+} */
+
+.heartIcon:hover {
+  color: red;
+}
