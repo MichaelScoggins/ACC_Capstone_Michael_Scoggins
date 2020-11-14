@@ -74,7 +74,9 @@ const Navigation = (props) => {
           className="nav-list-item"
           color="secondary"
         >
-          <Link to="/login">Log In</Link>
+          <Typography>
+            <Link to="/login">Log In</Link>
+          </Typography>
         </Button>
       );
     }

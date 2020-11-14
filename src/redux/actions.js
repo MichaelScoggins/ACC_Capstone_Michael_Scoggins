@@ -104,6 +104,13 @@ export const fetchDescription = (input) => {
   };
 };
 
+export const addFavorite = (id) => {
+  return {
+    type: "ADD_FAVORITE",
+    value: id,
+  };
+};
+
 export const removeListing = (id) => {
   return {
     type: "REMOVE_LISTING",

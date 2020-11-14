@@ -120,7 +120,7 @@ export default function Home(props) {
                 </Grid>
                 <Grid item>
                   <Button variant="contained" color="primary">
-                    Sign Up to Record Your Experiences
+                    Sign Up to Post Experience
                   </Button>
                 </Grid>
               </Grid>
@@ -174,29 +174,29 @@ export default function Home(props) {
                         id={card[1].id}
                         onClick={(e) => handleModal(e)}
                       >
-                        {card[0]}
+                        <h2>{card[0]}</h2>
                       </Typography>
                       <Typography>
                         {card[1].race === "sativa" ? (
-                          <p style={{ color: "orange" }}>
+                          <h3 style={{ color: "orange" }}>
                             {card[1].race.charAt(0).toUpperCase() +
                               card[1].race.slice(1)}
-                          </p>
+                          </h3>
                         ) : card[1].race === "indica" ? (
-                          <p style={{ color: "purple" }}>
+                          <h3 style={{ color: "purple" }}>
                             {card[1].race.charAt(0).toUpperCase() +
                               card[1].race.slice(1)}
-                          </p>
+                          </h3>
                         ) : (
-                          <p style={{ color: "brown" }}>
+                          <h3 style={{ color: "brown" }}>
                             {card[1].race.charAt(0).toUpperCase() +
                               card[1].race.slice(1)}
-                          </p>
+                          </h3>
                         )}
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small" color="primary">
+                      <Button size="small" color="primary" variant="contained">
                         <Typography
                           id={card[1].id}
                           onClick={(e) => handleModal(e)}
@@ -204,11 +204,19 @@ export default function Home(props) {
                           View
                         </Typography>
                       </Button>
-                      <Button size="small" color="primary">
-                        Record Your Experience
+                      <Button
+                        size="small"
+                        color="secondary"
+                        variant="contained"
+                      >
+                        <FavoriteIcon />
                       </Button>
-                      <Button>
-                        <FavoriteBorderIcon />
+                      <Button
+                        size="small"
+                        style={{ color: "green" }}
+                        variant="contained"
+                      >
+                        <Typography>Record Experience</Typography>
                       </Button>
                     </CardActions>
                   </Card>

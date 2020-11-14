@@ -9,6 +9,15 @@ const user = (state = "", action) => {
   }
 };
 
+const favorites = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_FAVORITE":
+      return [...state, action.value];
+    default:
+      return state;
+  }
+};
+
 const drawerOpen = (state = false, action) => {
   switch (action.type) {
     case "DRAWER_OPEN":
@@ -153,4 +162,5 @@ export default combineReducers({
   strainDescription,
   drawerOpen,
   findPerfectStrainModalOpen,
+  favorites,
 });

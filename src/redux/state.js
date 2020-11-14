@@ -1,5 +1,6 @@
 export default {
   user: "user",
+  favorites: [],
   drawerOpen: false,
   findPerfectStrainModalOpen: false,
   allStrains: {},
