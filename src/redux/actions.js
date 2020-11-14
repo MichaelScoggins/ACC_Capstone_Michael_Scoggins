@@ -12,6 +12,13 @@ export const toggleDrawer = (input) => {
   };
 };
 
+export const toggleFindPerfectStrain = (input) => {
+  return {
+    type: "FIND_PERFECT_STRAIN_MODAL_OPEN",
+    value: input,
+  };
+};
+
 export const addListing = (strain) => {
   return {
     type: "ADD_EXP",

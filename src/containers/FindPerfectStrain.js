@@ -14,6 +14,7 @@ import {
   setFlavPrefs,
   setPosPrefs,
   resetAllStrains,
+  toggleFindPerfectStrain,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -29,6 +30,7 @@ const mapStateToProps = (state) => {
     medPrefs: state.medPrefs,
     flavPrefs: state.flavPrefs,
     speciesPrefs: state.speciesPrefs,
+    findPerfectStrainModalOpen: state.findPerfectStrainModalOpen,
   };
 };
 
@@ -47,6 +49,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchEffects: (input) => dispatch(fetchEffects(input)),
     fetchFlavors: (input) => dispatch(fetchFlavors(input)),
     resetAllStrains: (input) => dispatch(resetAllStrains(input)),
+    toggleFindPerfectStrain: (input) =>
+      dispatch(toggleFindPerfectStrain(input)),
   };
 };
 

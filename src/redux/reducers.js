@@ -18,6 +18,15 @@ const drawerOpen = (state = false, action) => {
   }
 };
 
+const findPerfectStrainModalOpen = (state = false, action) => {
+  switch (action.type) {
+    case "FIND_PERFECT_STRAIN_MODAL_OPEN":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 const allStrains = (state = {}, action) => {
   switch (action.type) {
     case "ALL_STRAINS":
@@ -143,4 +152,5 @@ export default combineReducers({
   speciesPrefs,
   strainDescription,
   drawerOpen,
+  findPerfectStrainModalOpen,
 });

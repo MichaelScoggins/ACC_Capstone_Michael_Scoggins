@@ -16,6 +16,8 @@ import Link from "@material-ui/core/Link";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import FindPerfectStrain from "../containers/FindPerfectStrain";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 function Copyright() {
   return (
@@ -204,6 +206,9 @@ export default function Home(props) {
                       </Button>
                       <Button size="small" color="primary">
                         Record Your Experience
+                      </Button>
+                      <Button>
+                        <FavoriteBorderIcon />
                       </Button>
                     </CardActions>
                   </Card>

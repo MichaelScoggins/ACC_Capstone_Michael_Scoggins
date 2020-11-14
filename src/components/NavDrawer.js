@@ -1,7 +1,10 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 // import clsx from "clsx";
+import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
+import FindPerfectStrain from "../components/FindPerfectStrain";
 // import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
@@ -13,11 +16,13 @@ import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 // import SearchIcon from "@material-ui/icons/Search";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import FolderOpenIcon from "@material-ui/icons/FolderOpen";
+// import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 // import LocationSearchingIcon from "@material-ui/icons/LocationSearching";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import GpsFixedIcon from "@material-ui/icons/GpsFixed";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles({
   list: {
@@ -30,7 +35,13 @@ const useStyles = makeStyles({
 
 export default function NavDrawer(props) {
   const classes = useStyles();
-  // const [state, setState] = React.useState(false);
+  const [state, setState] = React.useState({
+    redirectHome: false,
+    redirectPerfectStrain: false,
+    redirectFavs: false,
+    redirectArchives: false,
+    redirectProfile: false,
+  });
 
   const toggleDrawer = (toggle) => (event) => {
     if (
@@ -43,6 +54,24 @@ export default function NavDrawer(props) {
     props.toggleDrawer(toggle);
   };
 
+  const handleHome = () => {
+    setState({ redirectHome: true });
+  };
+
+  // const handlePerfectStrain = () => {
+  //   props.toggleFindPerfectStrain(true);
+  // };
+
+  const handleFavs = () => {};
+
+  const handleArchives = () => {};
+
+  const handleAccount = () => {};
+
+  if (state["redirectHome"]) {
+    return <Redirect to="/" />;
+  }
+
   const list = () => (
     <div
       className={classes.list}
@@ -51,25 +80,29 @@ export default function NavDrawer(props) {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <ListItem button key="home">
+        <ListItem onClick={handleHome} button key="home">
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
-        <ListItem button key="perfectStrain">
+        <ListItem
+          onClick={() => props.toggleFindPerfectStrain(true)}
+          button
+          key="perfectStrain"
+        >
           <ListItemIcon>
             <GpsFixedIcon />
           </ListItemIcon>
           <ListItemText primary="Find Perfect Strain" />
         </ListItem>
-        <ListItem button key="favorites">
+        <ListItem onClick={handleFavs} button key="favorites">
           <ListItemIcon>
-            <FavoriteBorderIcon />
+            <FavoriteIcon />
           </ListItemIcon>
           <ListItemText primary="Favorites" />
         </ListItem>
-        <ListItem button key="archives">
+        <ListItem onClick={handleArchives} button key="archives">
           <ListItemIcon>
             <LocalLibraryIcon />
           </ListItemIcon>
@@ -77,9 +110,9 @@ export default function NavDrawer(props) {
         </ListItem>
         <Divider />
         <List>
-          <ListItem button key="account">
+          <ListItem onClick={handleAccount} button key="account">
             <ListItemIcon>
-              <LockOpenIcon />
+              <AccountCircleIcon />
             </ListItemIcon>
             <ListItemText primary="Account" />
           </ListItem>

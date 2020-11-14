@@ -33,7 +33,7 @@ import Loading from "../containers/Loading";
 
 export default function FindPerfectStrain(props) {
   // const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   // const [redirect, setRedirect] = React.useState(false);
 
@@ -44,11 +44,11 @@ export default function FindPerfectStrain(props) {
   // };
 
   const handleClickOpen = () => {
-    setOpen(true);
+    props.toggleFindPerfectStrain(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    props.toggleFindPerfectStrain(false);
   };
 
   const handleSubmit = () => {
@@ -78,14 +78,18 @@ export default function FindPerfectStrain(props) {
 
   return (
     <div>
-      <Button onClick={handleClickOpen} variant="contained" color="primary">
+      <Button
+        onClick={() => handleClickOpen()}
+        variant="contained"
+        color="primary"
+      >
         Find The Perfect Strain
       </Button>
       {loading && <Loading setLoading={setLoading} />}
       <Dialog
         disableBackdropClick
         disableEscapeKeyDown
-        open={open}
+        open={props.findPerfectStrainModalOpen}
         onClose={handleClose}
       >
         <DialogTitle>Select Your Preferences</DialogTitle>
