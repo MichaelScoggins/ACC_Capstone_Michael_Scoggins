@@ -79,7 +79,7 @@ export default function NegEffectsChips(props) {
           )}
           MenuProps={MenuProps}
         >
-          {negEffects.map((effect) => (
+          {negEffects.sort().map((effect) => (
             <MenuItem
               key={effect}
               value={effect}

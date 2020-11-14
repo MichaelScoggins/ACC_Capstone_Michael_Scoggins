@@ -68,7 +68,25 @@ export default function SearchResultsDetails(props) {
       <div style={modalStyle} className={classes.paper}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <h1 style={{ color: "green" }}>{strain[0]}</h1>
+            <h1 style={{ color: "green", textAlign: "center" }}>
+              {strain[0]}{" "}
+              {strain[1].race === "sativa" ? (
+                <p style={{ color: "orange" }}>
+                  {strain[1].race.charAt(0).toUpperCase() +
+                    strain[1].race.slice(1)}
+                </p>
+              ) : strain[1].race === "indica" ? (
+                <p style={{ color: "purple" }}>
+                  {strain[1].race.charAt(0).toUpperCase() +
+                    strain[1].race.slice(1)}
+                </p>
+              ) : (
+                <p style={{ color: "brown" }}>
+                  {strain[1].race.charAt(0).toUpperCase() +
+                    strain[1].race.slice(1)}
+                </p>
+              )}
+            </h1>
             <hr />
           </Grid>
           <Grid item xs={12}>

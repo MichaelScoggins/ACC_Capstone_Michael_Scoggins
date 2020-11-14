@@ -1,5 +1,5 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
+// import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 // import CameraIcon from "@material-ui/icons/PhotoCamera";
 import Card from "@material-ui/core/Card";
@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
-import PerfectStrainDetails from "../containers/PerfectStrainDetails";
+// import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import SearchResultsDetails from "../containers/SearchResultsDetails";
 
 import FindPerfectStrain from "../containers/FindPerfectStrain";
@@ -61,6 +61,19 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  info: {
+    backgroundImage:
+      "url(./../indica-vs-sativa-understanding-the-difference.png)",
+    backgroundRepeat: "no-repeat",
+    backgroundColor:
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "500px",
+    padding: theme.spacing(8, 0, 6),
+  },
 }));
 
 export default function Home(props) {
@@ -69,7 +82,7 @@ export default function Home(props) {
 
   const handleModal = (e) => {
     setID(e.target.id);
-    setModal(!showModal);
+    setModal(true);
   };
   // React.useEffect(() => {
   //   props.fetchAllStrains();
@@ -117,6 +130,9 @@ export default function Home(props) {
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
+          {Object.keys(props.allStrains).length === 0 && (
+            <div className={classes.info}></div>
+          )}
           {/* End hero unit */}
           <Grid container spacing={4}>
             {Object.entries(props.allStrains)
@@ -164,17 +180,31 @@ export default function Home(props) {
                       </Typography>
                       <Typography>
                         {card[1].race === "sativa" ? (
-                          <p style={{ color: "orange" }}>{card[1].race}</p>
+                          <p style={{ color: "orange" }}>
+                            {card[1].race.charAt(0).toUpperCase() +
+                              card[1].race.slice(1)}
+                          </p>
                         ) : card[1].race === "indica" ? (
-                          <p style={{ color: "purple" }}>{card[1].race}</p>
+                          <p style={{ color: "purple" }}>
+                            {card[1].race.charAt(0).toUpperCase() +
+                              card[1].race.slice(1)}
+                          </p>
                         ) : (
-                          <p style={{ color: "brown" }}>{card[1].race}</p>
+                          <p style={{ color: "brown" }}>
+                            {card[1].race.charAt(0).toUpperCase() +
+                              card[1].race.slice(1)}
+                          </p>
                         )}
                       </Typography>
                     </CardContent>
                     <CardActions>
                       <Button size="small" color="primary">
-                        View
+                        <Typography
+                          id={card[1].id}
+                          onClick={(e) => handleModal(e)}
+                        >
+                          View
+                        </Typography>
                       </Button>
                       <Button size="small" color="primary">
                         Record Your Experience
@@ -189,7 +219,7 @@ export default function Home(props) {
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-          HI
+          HIGHER INTENTIONS
         </Typography>
         <Typography
           variant="subtitle1"
@@ -204,65 +234,4 @@ export default function Home(props) {
       {/* End footer */}
     </React.Fragment>
   );
-}
-
-{
-  /* <Grid container spacing={4}>
-{Object.entries(props.allStrains)
-  .filter(
-    (strain) =>
-      props.posPrefs.every((effect) =>
-        strain[1].effects.positive.includes(effect)
-      ) &&
-      props.medPrefs.every((effect) =>
-        strain[1].effects.medical.includes(effect)
-      ) &&
-      props.flavPrefs.every((effect) =>
-        strain[1].flavors.includes(effect)
-      ) &&
-      props.avoidPrefs.every(
-        (effect) => !strain[1].effects.negative.includes(effect)
-      ) &&
-      (props.speciesPrefs.length === 0 ||
-        props.speciesPrefs.includes(strain[1].race))
-  )
-  .map((card) => (
-    <Grid item key={card[1].id} xs={12} sm={6} md={4}>
-      <Card className={classes.card}>
-        <CardMedia
-          className={classes.cardMedia}
-          image="https://source.unsplash.com/random"
-          title="Image title"
-        />
-        <CardContent className={classes.cardContent}>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="h2"
-            style={{ cursor: "pointer", color: "green" }}
-          >
-            {card[0]}
-          </Typography>
-          <Typography>
-            {card[1].race === "sativa" ? (
-              <p style={{ color: "orange" }}>{card[1].race}</p>
-            ) : card[1].race === "indica" ? (
-              <p style={{ color: "purple" }}>{card[1].race}</p>
-            ) : (
-              <p style={{ color: "brown" }}>{card[1].race}</p>
-            )}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small" color="primary">
-            View
-          </Button>
-          <Button size="small" color="primary">
-            Record Your Experience
-          </Button>
-        </CardActions>
-      </Card>
-    </Grid>
-  ))}
-</Grid> */
 }

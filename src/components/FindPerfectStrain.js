@@ -2,7 +2,8 @@ import React from "react";
 // import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import { Link } from "@material-ui/core";
+// import { Link } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -16,7 +17,8 @@ import NegEffectsChips from "../containers/NegEffectsChips";
 import MedicinalChips from "../containers/MedicinalChips";
 import FlavorChips from "../containers/FlavorChips";
 import SpeciesPrefsChips from "../containers/SpeciesPrefsChips";
-import { Redirect } from "react-router-dom";
+import Loading from "../containers/Loading";
+// import { Redirect } from "react-router-dom";
 
 // const useStyles = makeStyles((theme) => ({
 //   container: {
@@ -32,7 +34,9 @@ import { Redirect } from "react-router-dom";
 export default function FindPerfectStrain(props) {
   // const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [redirect, setRedirect] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  // const [redirect, setRedirect] = React.useState(false);
+
   // const [age, setAge] = React.useState("");
 
   // const handleChange = (event) => {
@@ -48,8 +52,19 @@ export default function FindPerfectStrain(props) {
   };
 
   const handleSubmit = () => {
+    setLoading(true);
     props.fetchAllStrains();
     handleClose();
+    // setRedirect(true);
+  };
+
+  const handleReset = () => {
+    props.resetAllStrains({});
+    props.setPosPrefs([]);
+    props.setAvoidPrefs([]);
+    props.setMedPrefs([]);
+    props.setFlavPrefs([]);
+    props.setSpeciesPrefs([]);
     // setRedirect(true);
   };
 
@@ -58,6 +73,7 @@ export default function FindPerfectStrain(props) {
       <Button onClick={handleClickOpen} variant="contained" color="primary">
         Find The Perfect Strain
       </Button>
+      {loading && <Loading setLoading={setLoading} />}
       <Dialog
         disableBackdropClick
         disableEscapeKeyDown
@@ -66,21 +82,31 @@ export default function FindPerfectStrain(props) {
       >
         <DialogTitle>Select Your Preferences</DialogTitle>
         <DialogContent>
-          <PosEffectsChips />
-          <NegEffectsChips />
-          <MedicinalChips />
-          <FlavorChips />
-          <SpeciesPrefsChips />
+          <Grid container spacing={1}>
+            <Grid item xs={6}>
+              <SpeciesPrefsChips />
+              <PosEffectsChips />
+              <NegEffectsChips />
+            </Grid>
+            <Grid item xs={6}>
+              <MedicinalChips />
+              <FlavorChips />
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleReset} color="secondary" variant="contained">
+            Reset
+          </Button>
+          <Button onClick={handleClose} color="primary" variant="contained">
             Cancel
           </Button>
-          <Button onClick={handleSubmit} color="primary">
+          <Button onClick={handleSubmit} color="primary" variant="contained">
             Ok
           </Button>
         </DialogActions>
       </Dialog>
+
       {/* {redirect && <Redirect to="/perfectstrain" />} */}
     </div>
   );

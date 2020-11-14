@@ -9,6 +9,11 @@ import {
   fetchEffects,
   fetchFlavors,
   setUserSearchInput,
+  setAvoidPrefs,
+  setMedPrefs,
+  setFlavPrefs,
+  setPosPrefs,
+  resetAllStrains,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -32,11 +37,16 @@ const mapDispatchToProps = (dispatch) => {
     setUser: (username) => dispatch(setUser(username)),
     fetchAllStrains: () => dispatch(fetchAllStrains()),
     fetchUserSearchResults: (input) => dispatch(fetchUserSearchResults(input)),
-    setUserSearchInput: (input) => dispatch(setUserSearchInput(input)),
+    setAvoidPrefs: (input) => dispatch(setAvoidPrefs(input)),
+    setPosPrefs: (input) => dispatch(setPosPrefs(input)),
+    setMedPrefs: (input) => dispatch(setMedPrefs(input)),
+    setFlavPrefs: (input) => dispatch(setFlavPrefs(input)),
     setSpeciesPrefs: (input) => dispatch(setSpeciesPrefs(input)),
+    setUserSearchInput: (input) => dispatch(setUserSearchInput(input)),
     fetchDescription: (input) => dispatch(fetchDescription(input)),
     fetchEffects: (input) => dispatch(fetchEffects(input)),
     fetchFlavors: (input) => dispatch(fetchFlavors(input)),
+    resetAllStrains: (input) => dispatch(resetAllStrains(input)),
   };
 };
 

@@ -22,6 +22,8 @@ const allStrains = (state = {}, action) => {
   switch (action.type) {
     case "ALL_STRAINS":
       return action.value;
+    case "RESET_RESULTS":
+      return {};
     default:
       return state;
   }

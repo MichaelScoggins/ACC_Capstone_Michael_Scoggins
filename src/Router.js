@@ -4,7 +4,7 @@ import cookie from "cookie";
 import LogIn from "./containers/LogIn";
 import RecordPreLog from "./containers/RecordPreLog";
 import DisplayUserSearchResults from "./containers/DisplayUserSearchResults";
-import DisplayPerfectStrainResults from "./containers/DisplayPerfectStrainResults";
+// import DisplayPerfectStrainResults from "./containers/DisplayPerfectStrainResults";
 import Home from "./containers/Home";
 import FormTemplate from "./components/FormTemplate";
 import DisplayAlbum from "./containers/DisplayAlbum";

@@ -108,6 +108,11 @@ export default function FlavorChips(props) {
     props.setFlavPrefs(event.target.value);
   };
 
+  // const handleDelete = (value) => {
+  //   console.log("delete");
+  //   props.setFlavPrefs(props.flavPrefs.filter((x) => x !== value));
+  // };
+
   return (
     <div>
       <FormControl className={classes.formControl}>
@@ -128,7 +133,7 @@ export default function FlavorChips(props) {
           )}
           MenuProps={MenuProps}
         >
-          {flavors.map((flavor) => (
+          {flavors.sort().map((flavor) => (
             <MenuItem
               key={flavor}
               value={flavor}

@@ -152,3 +152,10 @@ export const setSpeciesPrefs = (input) => {
     value: input,
   };
 };
+
+export const resetAllStrains = (input) => {
+  return {
+    type: "RESET_RESULTS",
+    value: input,
+  };
+};

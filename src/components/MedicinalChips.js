@@ -95,7 +95,7 @@ export default function MedicinalChips(props) {
           )}
           MenuProps={MenuProps}
         >
-          {medicinal.map((effect) => (
+          {medicinal.sort().map((effect) => (
             <MenuItem
               key={effect}
               value={effect}

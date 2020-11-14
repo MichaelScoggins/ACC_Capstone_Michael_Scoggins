@@ -92,7 +92,7 @@ export default function PosEffectsChips(props) {
           )}
           MenuProps={MenuProps}
         >
-          {posEffects.map((effect) => (
+          {posEffects.sort().map((effect) => (
             <MenuItem
               key={effect}
               value={effect}
