@@ -100,7 +100,7 @@ export default function SearchBar(props) {
       </div>
       <form onSubmit={(e) => handleSubmit(e)}>
         <InputBase
-          placeholder="Search…"
+          placeholder="Search All Strains…"
           classes={{
             root: classes.inputRoot,
             input: classes.inputInput,

@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 // import DeleteIcon from "@material-ui/icons/Delete";
-import SearchResultsDetails from "../containers/SearchResultsDetails";
+import SearchResultsDetails from "../containers/PerfectStrainDetailsHome";
 // import SearchBar from "../containers/SearchBar";
 
 export default function DisplayUserSearchResults(props) {
@@ -29,7 +29,7 @@ export default function DisplayUserSearchResults(props) {
 
   const handleModal = (e) => {
     setID(e.target.id);
-    setModal(!showModal);
+    setModal(true);
   };
 
   return (
@@ -70,7 +70,6 @@ export default function DisplayUserSearchResults(props) {
           </TableBody>
         </Table>
       </Container>
-      );
     </div>
   );
 }

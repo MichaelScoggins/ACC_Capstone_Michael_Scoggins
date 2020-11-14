@@ -1,7 +1,8 @@
 import React from "react";
-import { Container, Box, Typography } from "@material-ui/core";
+// import { Container, Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
+import Grid from "@material-ui/core/Grid";
 
 function getModalStyle() {
   const top = 50;
@@ -34,10 +35,10 @@ export default function SearchResultsDetails(props) {
     props.fetchDescription(props.sID);
   }, []);
 
-  // const strain = props.userSearchResults.find((s) => s.id == props.sID);
-  const strain = Object.entries(props.allStrains).find(
-    (s) => s[1].id == props.sID
-  );
+  const strain = props.userSearchResults.find((s) => s.id == props.sID);
+  // const strain = Object.entries(props.allStrains).find(
+  //   (s) => s[1].id == props.sID
+  // );
   const positiveEffects = props.effects.positive;
   const negativeEffects = props.effects.negative;
   const medicalEffects = props.effects.medical;
@@ -47,9 +48,9 @@ export default function SearchResultsDetails(props) {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(true);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  // const handleOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -64,36 +65,52 @@ export default function SearchResultsDetails(props) {
       aria-describedby="simple-modal-description"
     >
       <div style={modalStyle} className={classes.paper}>
-        <Container maxWidth="md">
-          <Box>
-            <Typography>
-              <h1 style={{ color: "green" }}>{strain[0]}</h1>
-              <hr />
-              <h2>
-                Positive Effects: {""}
-                <span style={{ color: "green" }}>
-                  {positiveEffects.join(", ")}
-                </span>
-              </h2>
-              <h2>
-                Negative Effects:{" "}
-                <span style={{ color: "red" }}>
-                  {negativeEffects.join(", ")}
-                </span>
-              </h2>
-              <h2 style={{ color: "" }}>
-                Helps to treat: {""}
-                <span style={{ color: "orange" }}>
-                  {medicalEffects.join(", ")}
-                </span>
-              </h2>
-              <h2 style={{ color: "" }}>
-                Flavors: {""}
-                <span style={{ color: "yellow" }}>{flavors.join(", ")}</span>
-              </h2>
-            </Typography>
-          </Box>
-        </Container>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <h1 style={{ color: "green", textAlign: "center" }}>
+              {strain.name}{" "}
+              {strain.race === "sativa" ? (
+                <p style={{ color: "orange" }}>
+                  {strain.race.charAt(0).toUpperCase() + strain.race.slice(1)}
+                </p>
+              ) : strain.race === "indica" ? (
+                <p style={{ color: "purple" }}>
+                  {strain.race.charAt(0).toUpperCase() + strain.race.slice(1)}
+                </p>
+              ) : (
+                <p style={{ color: "brown" }}>
+                  {strain.race.charAt(0).toUpperCase() + strain.race.slice(1)}
+                </p>
+              )}
+            </h1>
+            <hr />
+          </Grid>
+          <Grid item xs={12}>
+            <h2>
+              Positive Effects: {""}
+              <span style={{ color: "green" }}>
+                {positiveEffects.join(", ")}
+              </span>
+            </h2>
+            <h2>
+              Negative Effects:{" "}
+              <span style={{ color: "red" }}>{negativeEffects.join(", ")}</span>
+            </h2>
+            <h2 style={{ color: "" }}>
+              Helps to treat: {""}
+              <span style={{ color: "cornflowerblue" }}>
+                {medicalEffects.join(", ")}
+              </span>
+            </h2>
+            <h2 style={{ color: "" }}>
+              Flavors: {""}
+              <span style={{ color: "orange" }}>{flavors.join(", ")}</span>
+            </h2>
+          </Grid>
+          <Grid item xs={12}>
+            <h3>{props.strainDescription}</h3>
+          </Grid>
+        </Grid>
       </div>
     </Modal>
   );
