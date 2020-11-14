@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import SpeciesPrefsChips from "../components/SpeciesPrefsChips";
-import { setSpeciesPrefs } from "../redux/actions";
+import SpeciesPrefsChips from "../../components/chips/SpeciesPrefsChips";
+import { setSpeciesPrefs } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

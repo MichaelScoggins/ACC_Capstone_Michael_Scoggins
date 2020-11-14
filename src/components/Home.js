@@ -14,8 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
-import SearchResultsDetails from "../containers/SearchResultsDetails";
-
+import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import FindPerfectStrain from "../containers/FindPerfectStrain";
 
 function Copyright() {
@@ -77,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Home(props) {
+  const classes = useStyles();
   const [showModal, setModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
 
@@ -84,15 +84,11 @@ export default function Home(props) {
     setID(e.target.id);
     setModal(true);
   };
-  // React.useEffect(() => {
-  //   props.fetchAllStrains();
-  // }, []);
-  const classes = useStyles();
 
   return (
     <React.Fragment>
       <CssBaseline />
-      {showModal && <SearchResultsDetails setModal={setModal} sID={strainID} />}
+      {showModal && <PerfectStrainDetails setModal={setModal} sID={strainID} />}
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>

@@ -1,21 +1,21 @@
 import React from "react";
-import clsx from "clsx";
+// import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+// import InboxIcon from "@material-ui/icons/MoveToInbox";
+// import MailIcon from "@material-ui/icons/Mail";
 import HomeIcon from "@material-ui/icons/Home";
-import SearchIcon from "@material-ui/icons/Search";
+// import SearchIcon from "@material-ui/icons/Search";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
-import LocationSearchingIcon from "@material-ui/icons/LocationSearching";
+// import LocationSearchingIcon from "@material-ui/icons/LocationSearching";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import GpsFixedIcon from "@material-ui/icons/GpsFixed";
 
@@ -71,7 +71,7 @@ export default function NavDrawer(props) {
         </ListItem>
         <ListItem button key="archives">
           <ListItemIcon>
-            <FolderOpenIcon />
+            <LocalLibraryIcon />
           </ListItemIcon>
           <ListItemText primary="Archives" />
         </ListItem>

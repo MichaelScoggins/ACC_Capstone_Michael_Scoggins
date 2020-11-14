@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import NegEffectsChips from "../components/NegEffectsChips";
-import { setAvoidPrefs } from "../redux/actions";
+import NegEffectsChips from "../../components/chips/NegEffectsChips";
+import { setAvoidPrefs } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

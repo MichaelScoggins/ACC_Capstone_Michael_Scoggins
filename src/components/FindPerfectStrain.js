@@ -12,11 +12,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 // import MenuItem from "@material-ui/core/MenuItem";
 // import FormControl from "@material-ui/core/FormControl";
 // import Select from "@material-ui/core/Select";
-import PosEffectsChips from "../containers/PosEffectsChips";
-import NegEffectsChips from "../containers/NegEffectsChips";
-import MedicinalChips from "../containers/MedicinalChips";
-import FlavorChips from "../containers/FlavorChips";
-import SpeciesPrefsChips from "../containers/SpeciesPrefsChips";
+import PosEffectsChips from "../containers/chips/PosEffectsChips";
+import NegEffectsChips from "../containers/chips/NegEffectsChips";
+import MedicinalChips from "../containers/chips/MedicinalChips";
+import FlavorChips from "../containers/chips/FlavorChips";
+import SpeciesPrefsChips from "../containers/chips/SpeciesPrefsChips";
 import Loading from "../containers/Loading";
 // import { Redirect } from "react-router-dom";
 

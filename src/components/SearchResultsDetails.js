@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Box, Typography } from "@material-ui/core";
+// import { Container, Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Grid from "@material-ui/core/Grid";
@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    flexGrow: 1,
   },
 }));
 
@@ -36,10 +35,10 @@ export default function SearchResultsDetails(props) {
     props.fetchDescription(props.sID);
   }, []);
 
-  // const strain = props.userSearchResults.find((s) => s.id == props.sID);
-  const strain = Object.entries(props.allStrains).find(
-    (s) => s[1].id == props.sID
-  );
+  const strain = props.userSearchResults.find((s) => s.id == props.sID);
+  // const strain = Object.entries(props.allStrains).find(
+  //   (s) => s[1].id == props.sID
+  // );
   const positiveEffects = props.effects.positive;
   const negativeEffects = props.effects.negative;
   const medicalEffects = props.effects.medical;
@@ -49,9 +48,9 @@ export default function SearchResultsDetails(props) {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(true);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  // const handleOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -69,21 +68,18 @@ export default function SearchResultsDetails(props) {
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <h1 style={{ color: "green", textAlign: "center" }}>
-              {strain[0]}{" "}
-              {strain[1].race === "sativa" ? (
+              {strain.name}{" "}
+              {strain.race === "sativa" ? (
                 <p style={{ color: "orange" }}>
-                  {strain[1].race.charAt(0).toUpperCase() +
-                    strain[1].race.slice(1)}
+                  {strain.race.charAt(0).toUpperCase() + strain.race.slice(1)}
                 </p>
-              ) : strain[1].race === "indica" ? (
+              ) : strain.race === "indica" ? (
                 <p style={{ color: "purple" }}>
-                  {strain[1].race.charAt(0).toUpperCase() +
-                    strain[1].race.slice(1)}
+                  {strain.race.charAt(0).toUpperCase() + strain.race.slice(1)}
                 </p>
               ) : (
                 <p style={{ color: "brown" }}>
-                  {strain[1].race.charAt(0).toUpperCase() +
-                    strain[1].race.slice(1)}
+                  {strain.race.charAt(0).toUpperCase() + strain.race.slice(1)}
                 </p>
               )}
             </h1>

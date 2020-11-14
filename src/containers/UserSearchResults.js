@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import DisplayPerfectStrainResults from "../components/DisplayPerfectStrainResults";
+import DisplayUserSearchResults from "../components/UserSearchResults";
 import {
   setUser,
   fetchAllStrains,
@@ -43,4 +43,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DisplayPerfectStrainResults);
+)(DisplayUserSearchResults);

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import PosEffectsChips from "../components/PosEffectsChips";
-import { setPosPrefs } from "../redux/actions";
+import PosEffectsChips from "../../components/chips/PosEffectsChips";
+import { setPosPrefs } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

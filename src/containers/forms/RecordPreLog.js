@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import RecordPreLog from "../components/RecordPreLog";
-import { addListing } from "../redux/actions";
+import RecordPreLog from "../../components/forms/RecordPreLog";
+import { addListing } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
