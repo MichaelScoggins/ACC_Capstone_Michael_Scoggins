@@ -95,11 +95,11 @@ export default function DisplayPerfectStrains(props) {
     <Container className={classes.cardGrid} maxWidth="md">
       <FavAddedSnackbar sID={strainID} />
       {showModal && <PerfectStrainDetails setModal={setModal} sID={strainID} />}
-      {props.perfectStrainResults.length == 0 && (
+      {props.perfectStrainResults.length === 0 && (
         <div className={classes.info}></div>
       )}
 
-      {props.perfectStrainResults[1].id == 9999 ? (
+      {props.perfectStrainResults[0][1]["race"] === "no results" ? (
         <Card className={classes.card}>
           <CardMedia
             className={classes.cardMedia}

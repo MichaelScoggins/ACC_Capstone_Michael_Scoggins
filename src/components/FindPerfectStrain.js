@@ -74,11 +74,9 @@ export default function FindPerfectStrain(props) {
         (props.speciesPrefs.length === 0 ||
           props.speciesPrefs.includes(strain[1].race))
     );
-    if (perfectStrains.length == 0 || perfectStrains.length == 9999) {
+    if (perfectStrains.length === 0) {
       return props.setPerfectStrainResults([
-        "sorry! you'll have to be a little less picky than that! hint: only pick 2 or 3 flavors at most",
-
-        { "id": 9999, "race": "" },
+        ["no results", { "id": 9999, race: "no results" }],
       ]);
     }
     // console.log("state", props.perfectStrainResults);
@@ -105,6 +103,7 @@ export default function FindPerfectStrain(props) {
     props.setMedPrefs([]);
     props.setFlavPrefs([]);
     props.setSpeciesPrefs([]);
+    props.fetchAllStrains();
     // setRedirect(true);
   };
 
