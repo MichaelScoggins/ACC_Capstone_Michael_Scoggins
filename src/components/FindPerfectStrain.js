@@ -139,7 +139,11 @@ export default function FindPerfectStrain(props) {
             <Button onClick={handleClose} color="primary" variant="contained">
               <Typography> Cancel</Typography>
             </Button>
-            <Button onClick={handleSubmit} color="primary" variant="contained">
+            <Button
+              onClick={() => handleSubmit()}
+              color="primary"
+              variant="contained"
+            >
               <Typography> Ok</Typography>
             </Button>
           </DialogActions>

@@ -6,6 +6,10 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavAddedSnackbar from "../containers/FavAddedSnackbar";
+
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 // import Toolbar from "@material-ui/core/Toolbar";
@@ -16,9 +20,7 @@ import Link from "@material-ui/core/Link";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import FindPerfectStrain from "../containers/FindPerfectStrain";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavAddedSnackbar from "../containers/FavAddedSnackbar";
+import DisplayPerfectStrains from "../containers/DisplayPerfectStrains";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
 
@@ -143,92 +145,8 @@ export default function Home(props) {
             </div>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {Object.keys(props.allStrains).length === 0 && (
-            <div className={classes.info}></div>
-          )}
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {props.perfectStrainResults.map((card) => (
-              <>
-                <FavAddedSnackbar title={card[0]} />
-                <Grid item key={card[1].id} xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image={
-                        card[1].race === "sativa"
-                          ? "./../smoking_the_butterflies.jpg"
-                          : card[1].race === "indica"
-                          ? "./../spaceman.jpg"
-                          : "./../hybrid_zebra.jpg"
-                      }
-                      title="Image title"
-                    />
-                    <CardContent className={classes.cardContent}>
-                      <Typography
-                        gutterBottom
-                        variant="h5"
-                        component="h2"
-                        style={{ cursor: "pointer", color: "green" }}
-                        id={card[1].id}
-                        onClick={(e) => handleModal(e)}
-                      >
-                        <h2>{card[0]}</h2>
-                      </Typography>
-                      <Typography>
-                        {card[1].race === "sativa" ? (
-                          <h3 style={{ color: "orange" }}>
-                            {card[1].race.charAt(0).toUpperCase() +
-                              card[1].race.slice(1)}
-                          </h3>
-                        ) : card[1].race === "indica" ? (
-                          <h3 style={{ color: "purple" }}>
-                            {card[1].race.charAt(0).toUpperCase() +
-                              card[1].race.slice(1)}
-                          </h3>
-                        ) : (
-                          <h3 style={{ color: "brown" }}>
-                            {card[1].race.charAt(0).toUpperCase() +
-                              card[1].race.slice(1)}
-                          </h3>
-                        )}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button
-                        size="small"
-                        color="primary"
-                        variant="contained"
-                        onClick={(e) => handleModal(e)}
-                        id={card[1].id}
-                      >
-                        <Typography>View</Typography>
-                      </Button>
-                      <Button
-                        size="small"
-                        color="secondary"
-                        variant="contained"
-                        className="heartIcon"
-                        id={card[1].id}
-                        onClick={(e) => handleAddFav(e)}
-                      >
-                        <FavoriteIcon />
-                      </Button>
-                      <Button
-                        size="small"
-                        style={{ color: "green" }}
-                        variant="contained"
-                      >
-                        <Typography>Record Experience</Typography>
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              </>
-            ))}
-          </Grid>
-        </Container>
+        {/*              this is where <DisplayPerfectStrains /> goes               */}
+        <DisplayPerfectStrains />
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
