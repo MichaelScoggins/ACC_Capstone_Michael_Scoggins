@@ -83,44 +83,21 @@ export default function Home(props) {
   const classes = useStyles();
   const [showModal, setModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
-  const [strainID1, setID1] = React.useState(null);
 
   const handleModal = (e) => {
     setID(e.currentTarget.id);
     setModal(true);
   };
 
-  const dupChecker = (id) => {
-    let dup = false;
-    let arr = props.favorites;
-    let len = arr.length;
-    for (let i = 0; i < len; i++) {
-      if (id == arr[i].id) {
-        dup = true;
-      }
-      console.log({ dup });
-    }
-    return dup;
-  };
-
   const handleAddFav = (e) => {
-    console.log("ob entries", Object.values(props.allStrains));
-    let strain;
-    setID1(e.currentTarget.id);
-    strain = Object.values(props.allStrains).find(
-      (s) => s.id == e.currentTarget.id
+    let id = e.currentTarget.id;
+    let strainEntry = Object.entries(props.allStrains).find(
+      (s) => s[1].id == id
     );
-    console.log({ strain });
-    console.log({ strainID1 });
-    if (dupChecker(strainID1) == false) {
-      props.addFavorite(strain);
-    }
-    // dupChecker(strainID1);
-    // if (dup == false) {
-    //   props.addFavorite(strain);
-    // }
-    // let dup = props.allStrains.filter((object) => object.id != strain[1].id);
-    console.log("favs", props.favorites);
+    let existingFav = props.favorites.find((x) => x.id == id);
+    let strain = Object.values(props.allStrains).find((s) => s.id == id);
+    strain.name = strainEntry[0];
+    !existingFav && props.addFavorite(strain);
   };
 
   return (
