@@ -149,102 +149,84 @@ export default function Home(props) {
           )}
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {Object.entries(props.allStrains)
-              .filter(
-                (strain) =>
-                  props.posPrefs.every((effect) =>
-                    strain[1].effects.positive.includes(effect)
-                  ) &&
-                  props.medPrefs.every((effect) =>
-                    strain[1].effects.medical.includes(effect)
-                  ) &&
-                  props.flavPrefs.every((effect) =>
-                    strain[1].flavors.includes(effect)
-                  ) &&
-                  props.avoidPrefs.every(
-                    (effect) => !strain[1].effects.negative.includes(effect)
-                  ) &&
-                  (props.speciesPrefs.length === 0 ||
-                    props.speciesPrefs.includes(strain[1].race))
-              )
-              .map((card) => (
-                <>
-                  <FavAddedSnackbar title={card[0]} />
-                  <Grid item key={card[1].id} xs={12} sm={6} md={4}>
-                    <Card className={classes.card}>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image={
-                          card[1].race === "sativa"
-                            ? "./../smoking_the_butterflies.jpg"
-                            : card[1].race === "indica"
-                            ? "./../spaceman.jpg"
-                            : "./../hybrid_zebra.jpg"
-                        }
-                        title="Image title"
-                      />
-                      <CardContent className={classes.cardContent}>
-                        <Typography
-                          gutterBottom
-                          variant="h5"
-                          component="h2"
-                          style={{ cursor: "pointer", color: "green" }}
-                          id={card[1].id}
-                          onClick={(e) => handleModal(e)}
-                        >
-                          <h2>{card[0]}</h2>
-                        </Typography>
-                        <Typography>
-                          {card[1].race === "sativa" ? (
-                            <h3 style={{ color: "orange" }}>
-                              {card[1].race.charAt(0).toUpperCase() +
-                                card[1].race.slice(1)}
-                            </h3>
-                          ) : card[1].race === "indica" ? (
-                            <h3 style={{ color: "purple" }}>
-                              {card[1].race.charAt(0).toUpperCase() +
-                                card[1].race.slice(1)}
-                            </h3>
-                          ) : (
-                            <h3 style={{ color: "brown" }}>
-                              {card[1].race.charAt(0).toUpperCase() +
-                                card[1].race.slice(1)}
-                            </h3>
-                          )}
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button
-                          size="small"
-                          color="primary"
-                          variant="contained"
-                          onClick={(e) => handleModal(e)}
-                          id={card[1].id}
-                        >
-                          <Typography>View</Typography>
-                        </Button>
-                        <Button
-                          size="small"
-                          color="secondary"
-                          variant="contained"
-                          className="heartIcon"
-                          id={card[1].id}
-                          onClick={(e) => handleAddFav(e)}
-                        >
-                          <FavoriteIcon />
-                        </Button>
-                        <Button
-                          size="small"
-                          style={{ color: "green" }}
-                          variant="contained"
-                        >
-                          <Typography>Record Experience</Typography>
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                </>
-              ))}
+            {props.perfectStrainResults.map((card) => (
+              <>
+                <FavAddedSnackbar title={card[0]} />
+                <Grid item key={card[1].id} xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={
+                        card[1].race === "sativa"
+                          ? "./../smoking_the_butterflies.jpg"
+                          : card[1].race === "indica"
+                          ? "./../spaceman.jpg"
+                          : "./../hybrid_zebra.jpg"
+                      }
+                      title="Image title"
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="h2"
+                        style={{ cursor: "pointer", color: "green" }}
+                        id={card[1].id}
+                        onClick={(e) => handleModal(e)}
+                      >
+                        <h2>{card[0]}</h2>
+                      </Typography>
+                      <Typography>
+                        {card[1].race === "sativa" ? (
+                          <h3 style={{ color: "orange" }}>
+                            {card[1].race.charAt(0).toUpperCase() +
+                              card[1].race.slice(1)}
+                          </h3>
+                        ) : card[1].race === "indica" ? (
+                          <h3 style={{ color: "purple" }}>
+                            {card[1].race.charAt(0).toUpperCase() +
+                              card[1].race.slice(1)}
+                          </h3>
+                        ) : (
+                          <h3 style={{ color: "brown" }}>
+                            {card[1].race.charAt(0).toUpperCase() +
+                              card[1].race.slice(1)}
+                          </h3>
+                        )}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        size="small"
+                        color="primary"
+                        variant="contained"
+                        onClick={(e) => handleModal(e)}
+                        id={card[1].id}
+                      >
+                        <Typography>View</Typography>
+                      </Button>
+                      <Button
+                        size="small"
+                        color="secondary"
+                        variant="contained"
+                        className="heartIcon"
+                        id={card[1].id}
+                        onClick={(e) => handleAddFav(e)}
+                      >
+                        <FavoriteIcon />
+                      </Button>
+                      <Button
+                        size="small"
+                        style={{ color: "green" }}
+                        variant="contained"
+                      >
+                        <Typography>Record Experience</Typography>
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              </>
+            ))}
           </Grid>
         </Container>
       </main>

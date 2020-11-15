@@ -56,7 +56,7 @@ export default function FindPerfectStrain(props) {
 
   const getPerfectStrains = async () => {
     await props.fetchAllStrains();
-    const newArray = Object.entries(props.allStrains).filter(
+    const perfectStrains = Object.entries(props.allStrains).filter(
       (strain) =>
         props.posPrefs.every((effect) =>
           strain[1].effects.positive.includes(effect)
@@ -71,8 +71,7 @@ export default function FindPerfectStrain(props) {
         (props.speciesPrefs.length === 0 ||
           props.speciesPrefs.includes(strain[1].race))
     );
-
-    props.setPerfectStrainResults(newArray);
+    props.setPerfectStrainResults(perfectStrains);
   };
 
   const handleSubmit = () => {
@@ -87,7 +86,6 @@ export default function FindPerfectStrain(props) {
       getPerfectStrains();
     }
     handleClose();
-    console.log("jk", props.perfectStrainResults);
     // setRedirect(true);
   };
 
