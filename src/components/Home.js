@@ -16,9 +16,9 @@ import Link from "@material-ui/core/Link";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import FindPerfectStrain from "../containers/FindPerfectStrain";
-// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import { ArrowBack } from "@material-ui/icons";
+// import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
 
 function Copyright() {
@@ -98,6 +98,45 @@ export default function Home(props) {
     let strain = Object.values(props.allStrains).find((s) => s.id == id);
     strain.name = strainEntry[0];
     !existingFav && props.addFavorite(strain);
+  };
+
+  const asv = Object.values(props.allStrains);
+
+  const favIds = () => {
+    let newArr = [];
+    for (const property of props.favorites) {
+      newArr.push(property.id);
+    }
+    return newArr;
+  };
+
+  const allIds = () => {
+    let newArr = [];
+    for (const property of asv) {
+      newArr.push(property.id);
+    }
+    return newArr;
+  };
+
+  // favIds().some(x => allIds().includes(x)) &&
+
+  const HeartIcon = (id) => {
+    if (favIds().some((x) => allIds().includes(x))) {
+      return <FavoriteBorderIcon />;
+    } else {
+      return (
+        <Button
+          size="small"
+          color="secondary"
+          variant="contained"
+          className="heartIcon"
+          id={id}
+          onClick={(e) => handleAddFav(e)}
+        >
+          <FavoriteIcon />
+        </Button>
+      );
+    }
   };
 
   return (
@@ -218,16 +257,7 @@ export default function Home(props) {
                       >
                         <Typography>View</Typography>
                       </Button>
-                      <Button
-                        size="small"
-                        color="secondary"
-                        variant="contained"
-                        className="heartIcon"
-                        id={card[1].id}
-                        onClick={(e) => handleAddFav(e)}
-                      >
-                        <FavoriteIcon />
-                      </Button>
+                      {HeartIcon(card[1].id)}
                       <Button
                         size="small"
                         style={{ color: "green" }}
