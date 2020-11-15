@@ -27,6 +27,15 @@ const drawerOpen = (state = false, action) => {
   }
 };
 
+const snackbarOpen = (state = false, action) => {
+  switch (action.type) {
+    case "SNACKBAR_OPEN":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 const findPerfectStrainModalOpen = (state = false, action) => {
   switch (action.type) {
     case "FIND_PERFECT_STRAIN_MODAL_OPEN":
@@ -42,6 +51,15 @@ const allStrains = (state = {}, action) => {
       return action.value;
     case "RESET_RESULTS":
       return {};
+    default:
+      return state;
+  }
+};
+
+const perfectStrainResults = (state = [], action) => {
+  switch (action.type) {
+    case "SET_PERFECT_STRAIN_RESULTS":
+      return action.value;
     default:
       return state;
   }
@@ -163,4 +181,6 @@ export default combineReducers({
   drawerOpen,
   findPerfectStrainModalOpen,
   favorites,
+  snackbarOpen,
+  perfectStrainResults,
 });

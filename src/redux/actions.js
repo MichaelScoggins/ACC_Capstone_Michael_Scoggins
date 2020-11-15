@@ -12,6 +12,13 @@ export const toggleDrawer = (input) => {
   };
 };
 
+export const toggleSnackbar = (input) => {
+  return {
+    type: "SNACKBAR_OPEN",
+    value: input,
+  };
+};
+
 export const toggleFindPerfectStrain = (input) => {
   return {
     type: "FIND_PERFECT_STRAIN_MODAL_OPEN",
@@ -37,6 +44,13 @@ export const fetchAllStrains = () => {
         };
         dispatch(action);
       });
+  };
+};
+
+export const setPerfectStrainResults = (results) => {
+  return {
+    type: "SET_PERFECT_STRAIN_RESULTS",
+    value: results,
   };
 };
 

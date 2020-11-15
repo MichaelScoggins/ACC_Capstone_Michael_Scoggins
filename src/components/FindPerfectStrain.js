@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 // import { Link } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -37,7 +38,9 @@ export default function FindPerfectStrain(props) {
   const [loading, setLoading] = React.useState(false);
   // const [redirect, setRedirect] = React.useState(false);
 
-  // const [age, setAge] = React.useState("");
+  // React.useEffect(() => {
+  //   props.fetchAllStrains();
+  // }, []);
 
   // const handleChange = (event) => {
   //   setAge(Number(event.target.value) || "");
@@ -51,6 +54,27 @@ export default function FindPerfectStrain(props) {
     props.toggleFindPerfectStrain(false);
   };
 
+  const getPerfectStrains = async () => {
+    await props.fetchAllStrains();
+    const newArray = Object.entries(props.allStrains).filter(
+      (strain) =>
+        props.posPrefs.every((effect) =>
+          strain[1].effects.positive.includes(effect)
+        ) &&
+        props.medPrefs.every((effect) =>
+          strain[1].effects.medical.includes(effect)
+        ) &&
+        props.flavPrefs.every((effect) => strain[1].flavors.includes(effect)) &&
+        props.avoidPrefs.every(
+          (effect) => !strain[1].effects.negative.includes(effect)
+        ) &&
+        (props.speciesPrefs.length === 0 ||
+          props.speciesPrefs.includes(strain[1].race))
+    );
+
+    props.setPerfectStrainResults(newArray);
+  };
+
   const handleSubmit = () => {
     if (
       props.posPrefs.length > 0 ||
@@ -60,9 +84,10 @@ export default function FindPerfectStrain(props) {
       props.speciesPrefs.length > 0
     ) {
       setLoading(true);
-      props.fetchAllStrains();
+      getPerfectStrains();
     }
     handleClose();
+    console.log("jk", props.perfectStrainResults);
     // setRedirect(true);
   };
 
@@ -78,46 +103,50 @@ export default function FindPerfectStrain(props) {
 
   return (
     <div>
-      <Button
-        onClick={() => handleClickOpen()}
-        variant="contained"
-        color="primary"
-      >
-        Find The Perfect Strain
-      </Button>
-      {loading && <Loading setLoading={setLoading} />}
-      <Dialog
-        disableBackdropClick
-        disableEscapeKeyDown
-        open={props.findPerfectStrainModalOpen}
-        onClose={handleClose}
-      >
-        <DialogTitle>Select Your Preferences</DialogTitle>
-        <DialogContent>
-          <Grid container spacing={1}>
-            <Grid item xs={6}>
-              <SpeciesPrefsChips />
-              <PosEffectsChips />
-              <NegEffectsChips />
+      <Typography>
+        <Button
+          onClick={() => handleClickOpen()}
+          variant="contained"
+          color="primary"
+        >
+          <Typography>Find The Perfect Strain</Typography>
+        </Button>
+        {loading && <Loading setLoading={setLoading} />}
+        <Dialog
+          disableBackdropClick
+          disableEscapeKeyDown
+          open={props.findPerfectStrainModalOpen}
+          onClose={handleClose}
+        >
+          <DialogTitle>
+            <Typography>Select Your Preferences</Typography>
+          </DialogTitle>
+          <DialogContent>
+            <Grid container spacing={0}>
+              <Grid item xs={6}>
+                <SpeciesPrefsChips />
+                <PosEffectsChips />
+                <NegEffectsChips />
+              </Grid>
+              <Grid item xs={6}>
+                <MedicinalChips />
+                <FlavorChips />
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <MedicinalChips />
-              <FlavorChips />
-            </Grid>
-          </Grid>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleReset} color="secondary" variant="contained">
-            Reset
-          </Button>
-          <Button onClick={handleClose} color="primary" variant="contained">
-            Cancel
-          </Button>
-          <Button onClick={handleSubmit} color="primary" variant="contained">
-            Ok
-          </Button>
-        </DialogActions>
-      </Dialog>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleReset} color="secondary" variant="contained">
+              <Typography> Reset</Typography>
+            </Button>
+            <Button onClick={handleClose} color="primary" variant="contained">
+              <Typography> Cancel</Typography>
+            </Button>
+            <Button onClick={handleSubmit} color="primary" variant="contained">
+              <Typography> Ok</Typography>
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Typography>
 
       {/* {redirect && <Redirect to="/perfectstrain" />} */}
     </div>

@@ -95,7 +95,7 @@ const Navigation = (props) => {
               window.location.replace("/login");
             }}
           >
-            Log Out
+            <Typography>Log Out</Typography>
           </Button>
         </>
       );

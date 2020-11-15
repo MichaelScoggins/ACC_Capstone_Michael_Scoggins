@@ -10,6 +10,8 @@ import {
   fetchFlavors,
   setUserSearchInput,
   addFavorite,
+  toggleSnackbar,
+  setPerfectStrainResults,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -26,6 +28,8 @@ const mapStateToProps = (state) => {
     flavPrefs: state.flavPrefs,
     speciesPrefs: state.speciesPrefs,
     favorites: state.favorites,
+    toggleSnackbar: state.toggleSnackbar,
+    perfectStrainResults: state.perfectStrainResults,
   };
 };
 
@@ -40,6 +44,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchEffects: (input) => dispatch(fetchEffects(input)),
     fetchFlavors: (input) => dispatch(fetchFlavors(input)),
     addFavorite: (input) => dispatch(addFavorite(input)),
+    toggleSnackbar: (input) => dispatch(toggleSnackbar(input)),
+    setPerfectStrainResults: (results) =>
+      dispatch(setPerfectStrainResults(results)),
   };
 };
 

@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchResultsDetails(props) {
+export default function PerfectStrainDetails(props) {
   const classes = useStyles();
 
   React.useEffect(() => {

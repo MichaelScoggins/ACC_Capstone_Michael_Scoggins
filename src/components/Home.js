@@ -18,6 +18,7 @@ import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import FindPerfectStrain from "../containers/FindPerfectStrain";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavAddedSnackbar from "../containers/FavAddedSnackbar";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
 
@@ -90,6 +91,7 @@ export default function Home(props) {
   };
 
   const handleAddFav = (e) => {
+    setID(e.currentTarget.id);
     let id = e.currentTarget.id;
     let strainEntry = Object.entries(props.allStrains).find(
       (s) => s[1].id == id
@@ -98,45 +100,7 @@ export default function Home(props) {
     let strain = Object.values(props.allStrains).find((s) => s.id == id);
     strain.name = strainEntry[0];
     !existingFav && props.addFavorite(strain);
-  };
-
-  const asv = Object.values(props.allStrains);
-
-  const favIds = () => {
-    let newArr = [];
-    for (const property of props.favorites) {
-      newArr.push(property.id);
-    }
-    return newArr;
-  };
-
-  const allIds = () => {
-    let newArr = [];
-    for (const property of asv) {
-      newArr.push(property.id);
-    }
-    return newArr;
-  };
-
-  // favIds().some(x => allIds().includes(x)) &&
-
-  const HeartIcon = (id) => {
-    if (favIds().some((x) => allIds().includes(x))) {
-      return <FavoriteBorderIcon />;
-    } else {
-      return (
-        <Button
-          size="small"
-          color="secondary"
-          variant="contained"
-          className="heartIcon"
-          id={id}
-          onClick={(e) => handleAddFav(e)}
-        >
-          <FavoriteIcon />
-        </Button>
-      );
-    }
+    props.toggleSnackbar(true);
   };
 
   return (
@@ -172,7 +136,7 @@ export default function Home(props) {
                 </Grid>
                 <Grid item>
                   <Button variant="contained" color="primary">
-                    Sign Up to Post Experience
+                    <Typography>Sign Up to Post Experience</Typography>
                   </Button>
                 </Grid>
               </Grid>
@@ -204,70 +168,82 @@ export default function Home(props) {
                     props.speciesPrefs.includes(strain[1].race))
               )
               .map((card) => (
-                <Grid item key={card[1].id} xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image={
-                        card[1].race === "sativa"
-                          ? "./../smoking_the_butterflies.jpg"
-                          : card[1].race === "indica"
-                          ? "./../spaceman.jpg"
-                          : "./../hybrid_zebra.jpg"
-                      }
-                      title="Image title"
-                    />
-                    <CardContent className={classes.cardContent}>
-                      <Typography
-                        gutterBottom
-                        variant="h5"
-                        component="h2"
-                        style={{ cursor: "pointer", color: "green" }}
-                        id={card[1].id}
-                        onClick={(e) => handleModal(e)}
-                      >
-                        <h2>{card[0]}</h2>
-                      </Typography>
-                      <Typography>
-                        {card[1].race === "sativa" ? (
-                          <h3 style={{ color: "orange" }}>
-                            {card[1].race.charAt(0).toUpperCase() +
-                              card[1].race.slice(1)}
-                          </h3>
-                        ) : card[1].race === "indica" ? (
-                          <h3 style={{ color: "purple" }}>
-                            {card[1].race.charAt(0).toUpperCase() +
-                              card[1].race.slice(1)}
-                          </h3>
-                        ) : (
-                          <h3 style={{ color: "brown" }}>
-                            {card[1].race.charAt(0).toUpperCase() +
-                              card[1].race.slice(1)}
-                          </h3>
-                        )}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button
-                        size="small"
-                        color="primary"
-                        variant="contained"
-                        onClick={(e) => handleModal(e)}
-                        id={card[1].id}
-                      >
-                        <Typography>View</Typography>
-                      </Button>
-                      {HeartIcon(card[1].id)}
-                      <Button
-                        size="small"
-                        style={{ color: "green" }}
-                        variant="contained"
-                      >
-                        <Typography>Record Experience</Typography>
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
+                <>
+                  <FavAddedSnackbar title={card[0]} />
+                  <Grid item key={card[1].id} xs={12} sm={6} md={4}>
+                    <Card className={classes.card}>
+                      <CardMedia
+                        className={classes.cardMedia}
+                        image={
+                          card[1].race === "sativa"
+                            ? "./../smoking_the_butterflies.jpg"
+                            : card[1].race === "indica"
+                            ? "./../spaceman.jpg"
+                            : "./../hybrid_zebra.jpg"
+                        }
+                        title="Image title"
+                      />
+                      <CardContent className={classes.cardContent}>
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          component="h2"
+                          style={{ cursor: "pointer", color: "green" }}
+                          id={card[1].id}
+                          onClick={(e) => handleModal(e)}
+                        >
+                          <h2>{card[0]}</h2>
+                        </Typography>
+                        <Typography>
+                          {card[1].race === "sativa" ? (
+                            <h3 style={{ color: "orange" }}>
+                              {card[1].race.charAt(0).toUpperCase() +
+                                card[1].race.slice(1)}
+                            </h3>
+                          ) : card[1].race === "indica" ? (
+                            <h3 style={{ color: "purple" }}>
+                              {card[1].race.charAt(0).toUpperCase() +
+                                card[1].race.slice(1)}
+                            </h3>
+                          ) : (
+                            <h3 style={{ color: "brown" }}>
+                              {card[1].race.charAt(0).toUpperCase() +
+                                card[1].race.slice(1)}
+                            </h3>
+                          )}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          size="small"
+                          color="primary"
+                          variant="contained"
+                          onClick={(e) => handleModal(e)}
+                          id={card[1].id}
+                        >
+                          <Typography>View</Typography>
+                        </Button>
+                        <Button
+                          size="small"
+                          color="secondary"
+                          variant="contained"
+                          className="heartIcon"
+                          id={card[1].id}
+                          onClick={(e) => handleAddFav(e)}
+                        >
+                          <FavoriteIcon />
+                        </Button>
+                        <Button
+                          size="small"
+                          style={{ color: "green" }}
+                          variant="contained"
+                        >
+                          <Typography>Record Experience</Typography>
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                </>
               ))}
           </Grid>
         </Container>
