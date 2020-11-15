@@ -84,26 +84,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home(props) {
   const classes = useStyles();
-  const [showModal, setModal] = React.useState(false);
-  const [strainID, setID] = React.useState(null);
-
-  const handleModal = (e) => {
-    setID(e.currentTarget.id);
-    setModal(true);
-  };
-
-  const handleAddFav = (e) => {
-    setID(e.currentTarget.id);
-    let id = e.currentTarget.id;
-    let strainEntry = Object.entries(props.allStrains).find(
-      (s) => s[1].id == id
-    );
-    let existingFav = props.favorites.find((x) => x.id == id);
-    let strain = Object.values(props.allStrains).find((s) => s.id == id);
-    strain.name = strainEntry[0];
-    !existingFav && props.addFavorite(strain);
-    props.toggleSnackbar(true);
-  };
 
   return (
     <React.Fragment>
@@ -144,8 +124,11 @@ export default function Home(props) {
             </div>
           </Container>
         </div>
-        {/*              this is where <DisplayPerfectStrains /> goes               */}
-        {props.perfectStrainResults.length > 0 && <DisplayPerfectStrains />}
+        {props.perfectStrainResults.length > 0 ? (
+          <DisplayPerfectStrains />
+        ) : (
+          <div className={classes.info}></div>
+        )}
       </main>
       {/* Footer */}
       <footer className={classes.footer}>

@@ -95,7 +95,7 @@ export default function DisplayPerfectStrains(props) {
     <Container className={classes.cardGrid} maxWidth="md">
       <FavAddedSnackbar sID={strainID} />
       {showModal && <PerfectStrainDetails setModal={setModal} sID={strainID} />}
-      {props.perfectStrainResults.length === 0 && (
+      {props.perfectStrainResults.length == 0 && (
         <div className={classes.info}></div>
       )}
 
@@ -103,25 +103,18 @@ export default function DisplayPerfectStrains(props) {
         <Card className={classes.card}>
           <CardMedia
             className={classes.cardMedia}
-            image={
-              props.perfectStrainResults[1].race === "sativa"
-                ? "./../smoking_the_butterflies.jpg"
-                : props.perfectStrainResults[1].race === "indica"
-                ? "./../spaceman.jpg"
-                : "./../hybrid_zebra.jpg"
-            }
-            title="Image title"
+            image="./../picky.jpg"
+            title="picky"
           />
           <CardContent className={classes.cardContent}>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="h2"
-              style={{ cursor: "pointer", color: "green" }}
-              id={props.perfectStrainResults[1].id}
-              onClick={(e) => handleModal(e)}
-            >
-              <h2>{props.perfectStrainResults[0]}</h2>
+            <Typography gutterBottom variant="h5" component="h2">
+              <h2>
+                Sorry! You'll have to be a little less picky than that! <br />{" "}
+                <span style={{ color: "red" }}>Hint:</span>{" "}
+                <span style={{ color: "cornflowerblue" }}>
+                  Pick at most 2 flavors.
+                </span>
+              </h2>
             </Typography>
           </CardContent>
         </Card>

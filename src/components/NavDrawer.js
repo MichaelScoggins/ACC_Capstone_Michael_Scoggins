@@ -69,6 +69,7 @@ export default function NavDrawer(props) {
   const handleAccount = () => {};
 
   if (state["redirectHome"]) {
+    setState({ redirectHome: false });
     return <Redirect to="/" />;
   }
 
