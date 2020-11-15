@@ -1,5 +1,6 @@
 export default {
   user: "user",
+  title: "",
   favorites: [],
   drawerOpen: false,
   snackbarOpen: false,

@@ -9,6 +9,15 @@ const user = (state = "", action) => {
   }
 };
 
+const title = (state = "", action) => {
+  switch (action.type) {
+    case "SET_TITLE":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 const favorites = (state = [], action) => {
   switch (action.type) {
     case "ADD_FAVORITE":
@@ -183,4 +192,5 @@ export default combineReducers({
   favorites,
   snackbarOpen,
   perfectStrainResults,
+  title,
 });

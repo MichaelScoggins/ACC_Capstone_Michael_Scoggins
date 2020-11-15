@@ -80,14 +80,15 @@ export default function DisplayPerfectStrains(props) {
   const handleAddFav = (e) => {
     setID(e.currentTarget.id);
     let id = e.currentTarget.id;
-    let strainEntry = Object.entries(props.allStrains).find(
-      (s) => s[1].id == id
-    );
-    let existingFav = props.favorites.find((x) => x.id == id);
-    let strain = Object.values(props.allStrains).find((s) => s.id == id);
-    strain.name = strainEntry[0];
-    !existingFav && props.addFavorite(strain);
-    props.toggleSnackbar(true);
+    // let strainEntry = props.perfectStrainResults.find(
+    //   (s) => s[1].id == id
+    // );
+    let existingFav = props.favorites.find((x) => x[1].id == id);
+    let strain = props.perfectStrainResults.find((s) => s[1].id == id);
+    strain.name = strain[0];
+    props.setTitle(strain[0]);
+    !existingFav && props.addFavorite(strain) && props.toggleSnackbar(true);
+    console.log("favs", props.favorites);
   };
 
   return (

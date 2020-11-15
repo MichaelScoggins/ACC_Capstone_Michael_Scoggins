@@ -5,6 +5,13 @@ export const setUser = (username) => {
   };
 };
 
+export const setTitle = (input) => {
+  return {
+    type: "SET_TITLE",
+    value: input,
+  };
+};
+
 export const toggleDrawer = (input) => {
   return {
     type: "DRAWER_OPEN",

@@ -12,6 +12,7 @@ import {
   addFavorite,
   toggleSnackbar,
   setPerfectStrainResults,
+  setTitle,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -30,6 +31,7 @@ const mapStateToProps = (state) => {
     favorites: state.favorites,
     toggleSnackbar: state.toggleSnackbar,
     perfectStrainResults: state.perfectStrainResults,
+    title: state.title,
   };
 };
 
@@ -47,6 +49,7 @@ const mapDispatchToProps = (dispatch) => {
     toggleSnackbar: (input) => dispatch(toggleSnackbar(input)),
     setPerfectStrainResults: (results) =>
       dispatch(setPerfectStrainResults(results)),
+    setTitle: (input) => dispatch(setTitle(input)),
   };
 };
 
