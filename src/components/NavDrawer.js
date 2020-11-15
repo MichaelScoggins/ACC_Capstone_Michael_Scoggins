@@ -35,13 +35,7 @@ const useStyles = makeStyles({
 
 export default function NavDrawer(props) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    redirectHome: false,
-    redirectPerfectStrain: false,
-    redirectFavs: false,
-    redirectArchives: false,
-    redirectProfile: false,
-  });
+  const [redirect, setRedirect] = React.useState(null);
 
   const toggleDrawer = (toggle) => (event) => {
     if (
@@ -50,38 +44,30 @@ export default function NavDrawer(props) {
     ) {
       return;
     }
-
     props.toggleDrawer(toggle);
   };
 
   const handleHome = () => {
-    setState({ redirectHome: true });
+    setRedirect("/");
   };
 
-  // const handlePerfectStrain = () => {
-  //   props.toggleFindPerfectStrain(true);
-  // };
-
-  const handleFavs = () => {};
+  const handleFavs = () => {
+    setRedirect("/favorites");
+  };
 
   const handleArchives = () => {};
 
   const handleAccount = () => {};
 
-  if (state["redirectHome"]) {
-    setState({ redirectHome: false });
-    return <Redirect to="/" />;
-  }
-
   const list = () => (
     <div
       className={classes.list}
       role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      onClick={toggleDrawer(!props.drawerOpen)}
+      onKeyDown={toggleDrawer(!props.drawerOpen)}
     >
       <List>
-        <ListItem onClick={handleHome} button key="home">
+        <ListItem onClick={() => handleHome()} button key="home">
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>
@@ -97,7 +83,7 @@ export default function NavDrawer(props) {
           </ListItemIcon>
           <ListItemText primary="Find Perfect Strain" />
         </ListItem>
-        <ListItem onClick={handleFavs} button key="favorites">
+        <ListItem onClick={() => handleFavs()} button key="favorites">
           <ListItemIcon>
             <FavoriteIcon />
           </ListItemIcon>
@@ -124,11 +110,12 @@ export default function NavDrawer(props) {
 
   return (
     <div>
+      {redirect && <Redirect to={redirect} />}
       <React.Fragment key="left">
         <Drawer
           anchor="left"
           open={props.drawerOpen}
-          onClose={toggleDrawer(false)}
+          onClose={toggleDrawer(!props.drawerOpen)}
         >
           {list("left")}
         </Drawer>

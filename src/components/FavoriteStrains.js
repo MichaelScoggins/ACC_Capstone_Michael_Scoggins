@@ -53,8 +53,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(6),
   },
   info: {
-    backgroundImage:
-      "url(./../indica-vs-sativa-understanding-the-difference.png)",
+    backgroundImage: "url(./../favs.jpg)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -77,131 +76,78 @@ export default function FavoriteStrains(props) {
     setModal(true);
   };
 
-  const handleAddFav = (e) => {
-    setID(e.currentTarget.id);
-    let id = e.currentTarget.id;
-    // let strainEntry = props.perfectStrainResults.find(
-    //   (s) => s[1].id == id
-    // );
-    let existingFav = props.favorites.find((x) => x[1].id == id);
-    let strain = props.perfectStrainResults.find((s) => s[1].id == id);
-    strain.name = strain[0];
-    props.setTitle(strain[0]);
-    !existingFav && props.addFavorite(strain) && props.toggleSnackbar(true);
-    console.log("favs", props.favorites);
-  };
-
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       {showModal && <PerfectStrainDetails setModal={setModal} sID={strainID} />}
-      {props.favorites.length === 0 && <div className={classes.info}></div>}
+      {props.favorites.length === 0 && <div className={classes.info} />}
+      <Grid container spacing={4}>
+        {props.favorites.map((card) => (
+          <Grid item key={card[1].id} xs={12} sm={6} md={4}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.cardMedia}
+                image={
+                  card[1].race === "sativa"
+                    ? "./../smoking_the_butterflies.jpg"
+                    : card[1].race === "indica"
+                    ? "./../spaceman.jpg"
+                    : "./../hybrid_zebra.jpg"
+                }
+                title="Image title"
+              />
+              <CardContent className={classes.cardContent}>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="h2"
+                  style={{ cursor: "pointer", color: "green" }}
+                  id={card[1].id}
+                  onClick={(e) => handleModal(e)}
+                >
+                  <h2>{card[0]}</h2>
+                </Typography>
+                <Typography>
+                  {card[1].race == "sativa" ? (
+                    <h3 style={{ color: "orange" }}>
+                      {card[1].race.charAt(0).toUpperCase() +
+                        card[1].race.slice(1)}
+                    </h3>
+                  ) : card[1].race == "indica" ? (
+                    <h3 style={{ color: "purple" }}>
+                      {card[1].race.charAt(0).toUpperCase() +
+                        card[1].race.slice(1)}
+                    </h3>
+                  ) : (
+                    <h3 style={{ color: "brown" }}>
+                      {card[1].race.charAt(0).toUpperCase() +
+                        card[1].race.slice(1)}
+                    </h3>
+                  )}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  variant="contained"
+                  onClick={(e) => handleModal(e)}
+                  id={card[1].id}
+                >
+                  <Typography>View</Typography>
+                </Button>
 
-      {props.perfectStrainResults[1].id == 9999 ? (
-        <Card className={classes.card}>
-          <CardMedia
-            className={classes.cardMedia}
-            image={
-              props.perfectStrainResults[1].race === "sativa"
-                ? "./../smoking_the_butterflies.jpg"
-                : props.perfectStrainResults[1].race === "indica"
-                ? "./../spaceman.jpg"
-                : "./../hybrid_zebra.jpg"
-            }
-            title="Image title"
-          />
-          <CardContent className={classes.cardContent}>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="h2"
-              style={{ cursor: "pointer", color: "green" }}
-              id={props.perfectStrainResults[1].id}
-              onClick={(e) => handleModal(e)}
-            >
-              <h2>{props.perfectStrainResults[0]}</h2>
-            </Typography>
-          </CardContent>
-        </Card>
-      ) : (
-        <Grid container spacing={4}>
-          {props.perfectStrainResults.map((card) => (
-            <Grid item key={card[1].id} xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={
-                    card[1].race === "sativa"
-                      ? "./../smoking_the_butterflies.jpg"
-                      : card[1].race === "indica"
-                      ? "./../spaceman.jpg"
-                      : "./../hybrid_zebra.jpg"
-                  }
-                  title="Image title"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                    style={{ cursor: "pointer", color: "green" }}
-                    id={card[1].id}
-                    onClick={(e) => handleModal(e)}
-                  >
-                    <h2>{card[0]}</h2>
-                  </Typography>
-                  <Typography>
-                    {card[1].race == "sativa" ? (
-                      <h3 style={{ color: "orange" }}>
-                        {card[1].race.charAt(0).toUpperCase() +
-                          card[1].race.slice(1)}
-                      </h3>
-                    ) : card[1].race == "indica" ? (
-                      <h3 style={{ color: "purple" }}>
-                        {card[1].race.charAt(0).toUpperCase() +
-                          card[1].race.slice(1)}
-                      </h3>
-                    ) : (
-                      <h3 style={{ color: "brown" }}>
-                        {card[1].race.charAt(0).toUpperCase() +
-                          card[1].race.slice(1)}
-                      </h3>
-                    )}
-                  </Typography>
-                </CardContent>
-
-                <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    variant="contained"
-                    onClick={(e) => handleModal(e)}
-                    id={card[1].id}
-                  >
-                    <Typography>View</Typography>
-                  </Button>
-                  <Button
-                    size="small"
-                    color="secondary"
-                    variant="contained"
-                    className="heartIcon"
-                    id={card[1].id}
-                    onClick={(e) => handleAddFav(e)}
-                  >
-                    <FavoriteIcon />
-                  </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "green" }}
-                    variant="contained"
-                  >
-                    <Typography>Record Experience</Typography>
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      )}
+                <Button
+                  size="small"
+                  style={{ color: "green" }}
+                  variant="contained"
+                >
+                  <Typography>Record Experience</Typography>
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 }

@@ -5,13 +5,14 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import Navigation from "./containers/Navigation";
 // import PrimarySearchAppBar from "./components/PrimarySearchAppBar";
-// import Drawer from "./containers/Drawer";
+import NavDrawer from "./containers/NavDrawer";
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Navigation />
+        <NavDrawer />
         <Router />
       </BrowserRouter>
     </Provider>

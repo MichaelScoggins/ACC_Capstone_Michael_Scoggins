@@ -87,15 +87,13 @@ export default function FindPerfectStrain(props) {
   };
 
   const handleSubmit = () => {
-    if (
-      props.posPrefs.length > 0 ||
+    (props.posPrefs.length > 0 ||
       props.avoidPrefs.length > 0 ||
       props.medPrefs.length > 0 ||
       props.flavPrefs.length > 0 ||
-      props.speciesPrefs.length > 0
-    ) {
+      props.speciesPrefs.length > 0) &&
       getPerfectStrains();
-    }
+
     handleClose();
     // setRedirect(true);
   };
