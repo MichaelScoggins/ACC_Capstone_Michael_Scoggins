@@ -16,9 +16,10 @@ import Link from "@material-ui/core/Link";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import FindPerfectStrain from "../containers/FindPerfectStrain";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import IconButton from "@material-ui/core/IconButton";
+import { ArrowBack } from "@material-ui/icons";
+// import IconButton from "@material-ui/core/IconButton";
 
 function Copyright() {
   return (
@@ -85,12 +86,41 @@ export default function Home(props) {
   const [strainID1, setID1] = React.useState(null);
 
   const handleModal = (e) => {
-    setID(e.target.id);
+    setID(e.currentTarget.id);
     setModal(true);
   };
 
+  const dupChecker = (id) => {
+    let dup = false;
+    let arr = props.favorites;
+    let len = arr.length;
+    for (let i = 0; i < len; i++) {
+      if (id == arr[i].id) {
+        dup = true;
+      }
+      console.log({ dup });
+    }
+    return dup;
+  };
+
   const handleAddFav = (e) => {
-    setID1(e.target.id);
+    console.log("ob entries", Object.values(props.allStrains));
+    let strain;
+    setID1(e.currentTarget.id);
+    strain = Object.values(props.allStrains).find(
+      (s) => s.id == e.currentTarget.id
+    );
+    console.log({ strain });
+    console.log({ strainID1 });
+    if (dupChecker(strainID1) == false) {
+      props.addFavorite(strain);
+    }
+    // dupChecker(strainID1);
+    // if (dup == false) {
+    //   props.addFavorite(strain);
+    // }
+    // let dup = props.allStrains.filter((object) => object.id != strain[1].id);
+    console.log("favs", props.favorites);
   };
 
   return (
@@ -202,13 +232,14 @@ export default function Home(props) {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small" color="primary" variant="contained">
-                        <Typography
-                          id={card[1].id}
-                          onClick={(e) => handleModal(e)}
-                        >
-                          View
-                        </Typography>
+                      <Button
+                        size="small"
+                        color="primary"
+                        variant="contained"
+                        onClick={(e) => handleModal(e)}
+                        id={card[1].id}
+                      >
+                        <Typography>View</Typography>
                       </Button>
                       <Button
                         size="small"
