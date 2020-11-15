@@ -13,6 +13,8 @@ export default function FavAddedSnackbar(props) {
     props.toggleSnackbar(false);
   };
 
+  let strain = props.perfectStrainResults.find((s) => s[1].id == props.sID);
+
   return (
     <div>
       <Snackbar
@@ -23,7 +25,7 @@ export default function FavAddedSnackbar(props) {
         open={props.snackbarOpen}
         autoHideDuration={6000}
         onClose={handleClose}
-        message={`${props.title} Added to Favorites`}
+        message={`${strain} Added to Favorites`}
         action={
           <React.Fragment>
             <Button color="secondary" size="small" onClick={handleClose}>

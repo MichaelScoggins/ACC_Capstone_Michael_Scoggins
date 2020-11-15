@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     allStrains: state.allStrains,
+    perfectStrainResults: state.perfectStrainResults,
   };
 };
 

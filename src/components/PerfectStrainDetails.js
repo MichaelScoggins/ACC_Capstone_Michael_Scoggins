@@ -37,9 +37,15 @@ export default function PerfectStrainDetails(props) {
   }, []);
 
   // const strain = props.userSearchResults.find((s) => s.id == props.sID);
-  const strain = Object.entries(props.allStrains).find(
+  const strain = props.perfectStrainResults.find(
     (s) => s[1].id == props.sID
-  );
+  ) || [
+    [
+      "sorry! you'll have to be a little less picky than that!",
+
+      { "id": "9999", "race": "sativa" },
+    ],
+  ];
   const positiveEffects = props.effects.positive;
   const negativeEffects = props.effects.negative;
   const medicalEffects = props.effects.medical;

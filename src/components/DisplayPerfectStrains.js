@@ -92,14 +92,41 @@ export default function DisplayPerfectStrains(props) {
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
-      {Object.keys(props.allStrains).length === 0 && (
+      <FavAddedSnackbar sID={strainID} />
+      {showModal && <PerfectStrainDetails setModal={setModal} sID={strainID} />}
+      {props.perfectStrainResults.length === 0 && (
         <div className={classes.info}></div>
       )}
-      {/* End hero unit */}
-      <Grid container spacing={4}>
-        {props.perfectStrainResults.map((card) => (
-          <>
-            <FavAddedSnackbar title={card[0]} />
+
+      {props.perfectStrainResults[1].id == 9999 ? (
+        <Card className={classes.card}>
+          <CardMedia
+            className={classes.cardMedia}
+            image={
+              props.perfectStrainResults[1].race === "sativa"
+                ? "./../smoking_the_butterflies.jpg"
+                : props.perfectStrainResults[1].race === "indica"
+                ? "./../spaceman.jpg"
+                : "./../hybrid_zebra.jpg"
+            }
+            title="Image title"
+          />
+          <CardContent className={classes.cardContent}>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h2"
+              style={{ cursor: "pointer", color: "green" }}
+              id={props.perfectStrainResults[1].id}
+              onClick={(e) => handleModal(e)}
+            >
+              <h2>{props.perfectStrainResults[0]}</h2>
+            </Typography>
+          </CardContent>
+        </Card>
+      ) : (
+        <Grid container spacing={4}>
+          {props.perfectStrainResults.map((card) => (
             <Grid item key={card[1].id} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardMedia
@@ -125,12 +152,12 @@ export default function DisplayPerfectStrains(props) {
                     <h2>{card[0]}</h2>
                   </Typography>
                   <Typography>
-                    {card[1].race === "sativa" ? (
+                    {card[1].race == "sativa" ? (
                       <h3 style={{ color: "orange" }}>
                         {card[1].race.charAt(0).toUpperCase() +
                           card[1].race.slice(1)}
                       </h3>
-                    ) : card[1].race === "indica" ? (
+                    ) : card[1].race == "indica" ? (
                       <h3 style={{ color: "purple" }}>
                         {card[1].race.charAt(0).toUpperCase() +
                           card[1].race.slice(1)}
@@ -143,6 +170,7 @@ export default function DisplayPerfectStrains(props) {
                     )}
                   </Typography>
                 </CardContent>
+
                 <CardActions>
                   <Button
                     size="small"
@@ -173,9 +201,9 @@ export default function DisplayPerfectStrains(props) {
                 </CardActions>
               </Card>
             </Grid>
-          </>
-        ))}
-      </Grid>
+          ))}
+        </Grid>
+      )}
     </Container>
   );
 }

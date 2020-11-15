@@ -108,7 +108,6 @@ export default function Home(props) {
   return (
     <React.Fragment>
       <CssBaseline />
-      {showModal && <PerfectStrainDetails setModal={setModal} sID={strainID} />}
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -146,7 +145,7 @@ export default function Home(props) {
           </Container>
         </div>
         {/*              this is where <DisplayPerfectStrains /> goes               */}
-        <DisplayPerfectStrains />
+        {props.perfectStrainResults.length > 0 && <DisplayPerfectStrains />}
       </main>
       {/* Footer */}
       <footer className={classes.footer}>

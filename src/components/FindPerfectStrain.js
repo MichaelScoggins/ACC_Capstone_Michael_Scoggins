@@ -48,6 +48,7 @@ export default function FindPerfectStrain(props) {
 
   const handleClickOpen = () => {
     props.toggleFindPerfectStrain(true);
+    props.fetchAllStrains();
   };
 
   const handleClose = () => {
@@ -55,6 +56,7 @@ export default function FindPerfectStrain(props) {
   };
 
   const getPerfectStrains = async () => {
+    setLoading(true);
     await props.fetchAllStrains();
     const perfectStrains = Object.entries(props.allStrains).filter(
       (strain) =>
@@ -71,6 +73,15 @@ export default function FindPerfectStrain(props) {
         (props.speciesPrefs.length === 0 ||
           props.speciesPrefs.includes(strain[1].race))
     );
+    if (perfectStrains.length === 0) {
+      return props.setPerfectStrainResults([
+        "sorry! you'll have to be a little less picky than that! hint: only pick 2 or 3 flavors at most",
+
+        { "id": 9999, "race": "" },
+      ]);
+    }
+    console.log("state", props.perfectStrainResults);
+
     props.setPerfectStrainResults(perfectStrains);
   };
 
@@ -82,7 +93,6 @@ export default function FindPerfectStrain(props) {
       props.flavPrefs.length > 0 ||
       props.speciesPrefs.length > 0
     ) {
-      setLoading(true);
       getPerfectStrains();
     }
     handleClose();

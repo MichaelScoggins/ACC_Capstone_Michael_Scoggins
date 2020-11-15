@@ -17,7 +17,7 @@ export default function Loading(props) {
 
   return (
     <div>
-      {Object.keys(props.allStrains).length > 0 && props.setLoading(false)}
+      {props.perfectStrainResults.length > 0 && props.setLoading(false)}
       <Backdrop className={classes.backdrop} open={open}>
         <CircularProgress color="inherit" />
       </Backdrop>

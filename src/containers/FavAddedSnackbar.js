@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   return {
     allStrains: state.allStrains,
     snackbarOpen: state.snackbarOpen,
+    perfectStrainResults: state.perfectStrainResults,
   };
 };
 

@@ -23,6 +23,7 @@ const mapStateToProps = (state) => {
     flavPrefs: state.flavPrefs,
     speciesPrefs: state.speciesPrefs,
     strainDescription: state.strainDescription,
+    perfectStrainResults: state.perfectStrainResults,
   };
 };
 
