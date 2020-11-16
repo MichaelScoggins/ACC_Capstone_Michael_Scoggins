@@ -1,6 +1,14 @@
 export default {
   user: "user",
   title: "",
+  preToke: {
+    mood: "",
+    worries: "",
+    goals: "",
+    alreadyAccomplished: "",
+    planToAccomplish: "",
+    describeAppearance: "",
+  },
   favorites: [],
   drawerOpen: false,
   snackbarOpen: false,

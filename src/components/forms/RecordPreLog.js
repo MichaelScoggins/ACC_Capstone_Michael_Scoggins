@@ -69,83 +69,97 @@ class RecordPreLog extends Component {
           </Button>
         </div>
         <div>
-          <Dialog open={this.state.open} onClose={this.toggleDialog}>
-            <DialogTitle>Before You Toke</DialogTitle>
-            <DialogContent>
-              <form
-                onSubmit={this.handleSubmit}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "350px",
-                }}
-              >
-                <FormControl>
-                  <InputLabel id="demo-simple-select-helper-label">
-                    Mood
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-helper-label"
-                    id="demo-simple-select-helper"
-                    value={this.state.mood}
-                    onChange={this.handleTextChange}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={"positive"}>Positive</MenuItem>
-                    <MenuItem value={"neutral"}>Neutral</MenuItem>
-                    <MenuItem value={"anxious"}>Anxious</MenuItem>
-                  </Select>
-                  <FormHelperText>Select Mood</FormHelperText>
-                </FormControl>
-                <TextField
-                  id="worries"
-                  placeholder="worries? lingering emotions?"
-                  value={this.state.name}
-                  onChange={this.handleTextChange}
-                  required
-                />
-                <TextField
-                  id="goals"
-                  placeholder="todos? short-term goals?"
-                  value={this.state.description}
-                  onChange={this.handleTextChange}
-                  required
-                />
-                <TextField
-                  id="alreadyAccomplished"
-                  placeholder="what have you accomplished today?"
-                  value={this.state.address}
-                  onChange={this.handleTextChange}
-                  required
-                />
-                <TextField
-                  id="planToAccomplish"
-                  placeholder="what do you still need to accomplish today?"
-                  value={this.state.operatingHours}
-                  onChange={this.handleTextChange}
-                  required
-                />
-                <TextField
-                  id="describeAppearance"
-                  placeholder="describe the general quality of the bud"
-                  value={this.state.operatingHours}
-                  onChange={this.handleTextChange}
-                  required
-                />
-                <br />
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  style={{ marginTop: "10px" }}
+          <Typography>
+            <Dialog open={this.state.open} onClose={this.toggleDialog}>
+              <DialogTitle>Before You Toke</DialogTitle>
+              <DialogContent>
+                <form
+                  onSubmit={this.handleSubmit}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "350px",
+                  }}
                 >
-                  Let's toke up
-                </Button>
-              </form>
-            </DialogContent>
-          </Dialog>
+                  <FormControl>
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Mood
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-helper-label"
+                      id="demo-simple-select-helper"
+                      value={this.state.mood}
+                      onChange={this.handleTextChange}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={"positive"}>Positive</MenuItem>
+                      <MenuItem value={"neutral"}>Neutral</MenuItem>
+                      <MenuItem value={"anxious"}>Anxious</MenuItem>
+                    </Select>
+                    <FormHelperText>
+                      <Typography>Select Mood</Typography>
+                    </FormHelperText>
+                  </FormControl>
+                  <TextField
+                    id="worries"
+                    label="Briefly Describe Your Horizon"
+                    placeholder="Worries? Lingering emotions?"
+                    multiline
+                    value={this.state.name}
+                    onChange={this.handleTextChange}
+                    required
+                  />
+                  <TextField
+                    id="goals"
+                    label="Short/Long-Term Goals"
+                    placeholder="How Will This Session Get You There?"
+                    multiline
+                    value={this.state.description}
+                    onChange={this.handleTextChange}
+                    required
+                  />
+                  <TextField
+                    id="alreadyAccomplished"
+                    label="To-Do(ne)"
+                    placeholder="What have you already accomplished today?"
+                    multiline
+                    value={this.state.address}
+                    onChange={this.handleTextChange}
+                    required
+                  />
+                  <TextField
+                    id="planToAccomplish"
+                    label="Todos (before you forget!)"
+                    placeholder="What do you still need to accomplish today?"
+                    multiline
+                    value={this.state.operatingHours}
+                    onChange={this.handleTextChange}
+                    required
+                  />
+                  <TextField
+                    id="describeAppearance"
+                    label="Appearance/Texture/Aroma/Density"
+                    placeholder="Briefly describe the quality of the bud"
+                    multiline
+                    value={this.state.operatingHours}
+                    onChange={this.handleTextChange}
+                    required
+                  />
+                  <br />
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    style={{ marginTop: "10px" }}
+                  >
+                    Let's toke up
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </Typography>
         </div>
       </Fragment>
     );
