@@ -92,6 +92,43 @@ export default function DisplayPerfectStrains(props) {
     console.log("favs", props.favorites);
   };
 
+  const asv = Object.values(props.allStrains);
+
+  const favIds = () => {
+    let newArr = [];
+    for (const property of props.favorites) {
+      newArr.push(property.id);
+    }
+    return newArr;
+  };
+
+  const allIds = () => {
+    let newArr = [];
+    for (const property of asv) {
+      newArr.push(property.id);
+    }
+    return newArr;
+  };
+
+  const HeartIcon = (id) => {
+    if (favIds().some((x) => allIds().includes(x))) {
+      return <FavoriteBorderIcon />;
+    } else {
+      return (
+        <Button
+          size="small"
+          color="secondary"
+          variant="contained"
+          className="heartIcon"
+          id={id}
+          onClick={(e) => handleAddFav(e)}
+        >
+          <FavoriteIcon />
+        </Button>
+      );
+    }
+  };
+
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       <FavAddedSnackbar sID={strainID} />
@@ -177,16 +214,7 @@ export default function DisplayPerfectStrains(props) {
                   >
                     <Typography>View</Typography>
                   </Button>
-                  <Button
-                    size="small"
-                    color="secondary"
-                    variant="contained"
-                    className="heartIcon"
-                    id={card[1].id}
-                    onClick={(e) => handleAddFav(e)}
-                  >
-                    <FavoriteIcon />
-                  </Button>
+                  {HeartIcon(card[1].id)}
                   <RecordPreLog />
                 </CardActions>
               </Card>
