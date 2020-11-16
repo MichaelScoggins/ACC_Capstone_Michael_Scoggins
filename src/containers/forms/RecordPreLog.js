@@ -1,17 +1,31 @@
 import { connect } from "react-redux";
 import RecordPreLog from "../../components/forms/RecordPreLog";
-import { setPreTokeForm } from "../../redux/actions";
+import {
+  addPreExp,
+  setMood,
+  setWorries,
+  setGoals,
+  setAlreadyAccomplished,
+  setPlanToAccomplish,
+  setDescribeAppearance,
+} from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
     preTokeForm: state.preTokeForm,
+    experiences: state.experiences,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // addPreExp: (strain) => dispatch(addPreExp(strain)),
-    setPreTokeForm: (input) => dispatch(setPreTokeForm(input)),
+    addPreExp: (exp) => dispatch(addPreExp(exp)),
+    setMood: (input) => dispatch(setMood(input)),
+    setWorries: (input) => dispatch(setWorries(input)),
+    setGoals: (input) => dispatch(setGoals(input)),
+    setAlreadyAccomplished: (input) => dispatch(setAlreadyAccomplished(input)),
+    setPlanToAccomplish: (input) => dispatch(setPlanToAccomplish(input)),
+    setDescribeAppearance: (input) => dispatch(setDescribeAppearance(input)),
   };
 };
 

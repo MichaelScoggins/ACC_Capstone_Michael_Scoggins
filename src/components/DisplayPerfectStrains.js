@@ -184,7 +184,7 @@ export default function DisplayPerfectStrains(props) {
                   >
                     <FavoriteIcon />
                   </Button>
-                  <RecordPreLog />
+                  <RecordPreLog id={card[1].id} />
                 </CardActions>
               </Card>
             </Grid>

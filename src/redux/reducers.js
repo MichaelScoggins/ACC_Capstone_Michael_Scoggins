@@ -40,6 +40,15 @@ const preTokeForm = (state = {}, action) => {
   }
 };
 
+const experiences = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_PRE_EXP":
+      return [...state, action.value];
+    default:
+      return state;
+  }
+};
+
 const title = (state = "", action) => {
   switch (action.type) {
     case "SET_TITLE":
@@ -225,4 +234,5 @@ export default combineReducers({
   perfectStrainResults,
   title,
   preTokeForm,
+  experiences,
 });

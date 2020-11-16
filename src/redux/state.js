@@ -1,5 +1,7 @@
 export default {
   user: "user",
+  favorites: [],
+  experiences: [],
   title: "",
   preTokeForm: {
     mood: "",
@@ -9,7 +11,6 @@ export default {
     planToAccomplish: "",
     describeAppearance: "",
   },
-  favorites: [],
   drawerOpen: false,
   snackbarOpen: false,
   findPerfectStrainModalOpen: false,
