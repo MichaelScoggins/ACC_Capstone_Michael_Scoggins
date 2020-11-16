@@ -6,19 +6,19 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import CssBaseline from "@material-ui/core/CssBaseline";
+// import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 // import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
-// import PerfectStrainDetailsCards from "../containers/PerfectStrainDetailsCards";
-import PerfectStrainDetailsCards from "../containers/PerfectStrainDetailsCards";
-import FindPerfectStrain from "../containers/FindPerfectStrain";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavAddedSnackbar from "../containers/FavAddedSnackbar";
+// import Link from "@material-ui/core/Link";
+// import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
+import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
+// import FindPerfectStrain from "../containers/FindPerfectStrain";
+// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
+// import FavAddedSnackbar from "../containers/FavAddedSnackbar";
 import RecordPreLog from "../containers/forms/RecordPreLog";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
@@ -80,7 +80,7 @@ export default function FavoriteStrains(props) {
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       {showModal && (
-        <PerfectStrainDetailsCards setModal={setModal} sID={strainID} />
+        <PerfectStrainDetailsCard setModal={setModal} sID={strainID} />
       )}
       {props.favorites.length === 0 && <div className={classes.info} />}
       <Grid container spacing={4}>
@@ -96,7 +96,7 @@ export default function FavoriteStrains(props) {
                     ? "./../spaceman.jpg"
                     : "./../hybrid_zebra.jpg"
                 }
-                title="Image title"
+                title="species"
               />
               <CardContent className={classes.cardContent}>
                 <Typography

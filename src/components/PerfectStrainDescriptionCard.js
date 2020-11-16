@@ -28,12 +28,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PerfectStrainDetailsCards(props) {
+export default function PerfectStrainDescriptionCard(props) {
   const classes = useStyles();
 
   React.useEffect(() => {
-    props.fetchEffects(props.sID);
-    props.fetchFlavors(props.sID);
     props.fetchDescription(props.sID);
   }, []);
 
@@ -47,10 +45,6 @@ export default function PerfectStrainDetailsCards(props) {
       { "id": "9999", "race": "sativa" },
     ],
   ];
-  const positiveEffects = props.effects.positive;
-  const negativeEffects = props.effects.negative;
-  const medicalEffects = props.effects.medical;
-  const flavors = props.flavors;
 
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -74,56 +68,7 @@ export default function PerfectStrainDetailsCards(props) {
     >
       <div style={modalStyle} className={classes.paper}>
         <Grid container spacing={1}>
-          <Grid item xs={12}>
-            <Typography>
-              <h1 style={{ textAlign: "center" }}>
-                {strain[0]}{" "}
-                {strain[1].race === "sativa" ? (
-                  <p style={{ color: "orange" }}>
-                    {strain[1].race.charAt(0).toUpperCase() +
-                      strain[1].race.slice(1)}
-                  </p>
-                ) : strain[1].race === "indica" ? (
-                  <p style={{ color: "purple" }}>
-                    {strain[1].race.charAt(0).toUpperCase() +
-                      strain[1].race.slice(1)}
-                  </p>
-                ) : (
-                  <p style={{ color: "brown" }}>
-                    {strain[1].race.charAt(0).toUpperCase() +
-                      strain[1].race.slice(1)}
-                  </p>
-                )}
-              </h1>
-            </Typography>
-            <hr />
-          </Grid>
-          <Grid item xs={12}>
-            <Typography>
-              <h2>
-                Positive Effects: {""}
-                <span style={{ color: "green" }}>
-                  {positiveEffects.join(", ")}
-                </span>
-              </h2>
-              <h2>
-                Negative Effects:{" "}
-                <span style={{ color: "red" }}>
-                  {negativeEffects.join(", ")}
-                </span>
-              </h2>
-              <h2 style={{ color: "" }}>
-                Helps to treat: {""}
-                <span style={{ color: "cornflowerblue" }}>
-                  {medicalEffects.join(", ")}
-                </span>
-              </h2>
-              <h2 style={{ color: "" }}>
-                Flavors: {""}
-                <span style={{ color: "orange" }}>{flavors.join(", ")}</span>
-              </h2>
-            </Typography>
-          </Grid>
+          id>
           <Grid item xs={12}>
             <Typography>
               {" "}

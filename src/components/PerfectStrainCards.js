@@ -13,13 +13,14 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 // import Link from "@material-ui/core/Link";
-// import PerfectStrainDetailsCards from "../containers/PerfectStrainDetailsCards";
-import PerfectStrainDetailsCards from "../containers/PerfectStrainDetailsCards";
+// import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
+import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
 // import FindPerfectStrain from "../containers/FindPerfectStrain";
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavAddedSnackbar from "../containers/FavAddedSnackbar";
 import RecordPreLog from "../containers/forms/RecordPreLog";
+import PerfectStrainDescriptionCard from "./PerfectStrainDescriptionCard";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
 
@@ -93,8 +94,10 @@ export default function PerfectStrainCards(props) {
     <Container className={classes.cardGrid} maxWidth="md">
       <FavAddedSnackbar sID={strainID} />
       {showModal && (
-        <PerfectStrainDetailsCards setModal={setModal} sID={strainID} />
-      )}
+          <PerfectStrainDetailsCard setModal={setModal} sID={strainID} />
+        ) && (
+          <PerfectStrainDescriptionCard setModal={setModal} sID={strainID} />
+        )}
       {props.perfectStrainResults.length === 0 && (
         <div className={classes.info}></div>
       )}
