@@ -5,6 +5,55 @@ export const setUser = (username) => {
   };
 };
 
+export const setPreTokeForm = (input) => {
+  return {
+    type: "SET_PRE_TOKE",
+    value: input,
+  };
+};
+
+// export const setMood = (input) => {
+//   return {
+//     type: "SET_MOOD",
+//     value: input,
+//   };
+// };
+
+// export const setWorries = (input) => {
+//   return {
+//     type: "SET_WORRIES",
+//     value: input,
+//   };
+// };
+
+// export const setGoals = (input) => {
+//   return {
+//     type: "SET_GOALS",
+//     value: input,
+//   };
+// };
+
+// export const setAlreadyAccomplished = (input) => {
+//   return {
+//     type: "SET_ALREADY_ACCOMPLISHED",
+//     value: input,
+//   };
+// };
+
+// export const setPlanToAccomplish = (input) => {
+//   return {
+//     type: "SET_PLAN_TO_ACCOMPLISH",
+//     value: input,
+//   };
+// };
+
+// export const setDescribeAppearance = (input) => {
+//   return {
+//     type: "SET_DESCRIBE_APPEARANCE",
+//     value: input,
+//   };
+// };
+
 export const setTitle = (input) => {
   return {
     type: "SET_TITLE",
@@ -33,12 +82,12 @@ export const toggleFindPerfectStrain = (input) => {
   };
 };
 
-export const addListing = (strain) => {
-  return {
-    type: "ADD_EXP",
-    value: strain,
-  };
-};
+// export const addPreExp = (exp) => {
+//   return {
+//     type: "ADD_EXP",
+//     value: exp,
+//   };
+// };
 
 export const fetchAllStrains = () => {
   return async (dispatch) => {

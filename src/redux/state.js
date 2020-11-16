@@ -1,7 +1,7 @@
 export default {
   user: "user",
   title: "",
-  preToke: {
+  preTokeForm: {
     mood: "",
     worries: "",
     goals: "",

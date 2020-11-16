@@ -6,20 +6,20 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import CssBaseline from "@material-ui/core/CssBaseline";
+// import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 // import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
+// import Link from "@material-ui/core/Link";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import PerfectStrainDetails from "../containers/PerfectStrainDetails";
-import FindPerfectStrain from "../containers/FindPerfectStrain";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+// import FindPerfectStrain from "../containers/FindPerfectStrain";
+// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavAddedSnackbar from "../containers/FavAddedSnackbar";
-import RecordPreLog from "./forms/RecordPreLog";
+import RecordPreLog from "../containers/forms/RecordPreLog";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
 
@@ -81,52 +81,12 @@ export default function DisplayPerfectStrains(props) {
   const handleAddFav = (e) => {
     setID(e.currentTarget.id);
     let id = e.currentTarget.id;
-    // let strainEntry = props.perfectStrainResults.find(
-    //   (s) => s[1].id == id
-    // );
     let existingFav = props.favorites.find((x) => x[1].id == id);
     let strain = props.perfectStrainResults.find((s) => s[1].id == id);
     strain.name = strain[0];
     props.setTitle(strain[0]);
     !existingFav && props.addFavorite(strain) && props.toggleSnackbar(true);
     console.log("favs", props.favorites);
-  };
-
-  const asv = Object.values(props.allStrains);
-
-  const favIds = () => {
-    let newArr = [];
-    for (const property of props.favorites) {
-      newArr.push(property.id);
-    }
-    return newArr;
-  };
-
-  const allIds = () => {
-    let newArr = [];
-    for (const property of asv) {
-      newArr.push(property.id);
-    }
-    return newArr;
-  };
-
-  const HeartIcon = (id) => {
-    if (favIds().some((x) => allIds().includes(x))) {
-      return <FavoriteBorderIcon />;
-    } else {
-      return (
-        <Button
-          size="small"
-          color="secondary"
-          variant="contained"
-          className="heartIcon"
-          id={id}
-          onClick={(e) => handleAddFav(e)}
-        >
-          <FavoriteIcon />
-        </Button>
-      );
-    }
   };
 
   return (
@@ -214,7 +174,16 @@ export default function DisplayPerfectStrains(props) {
                   >
                     <Typography>View</Typography>
                   </Button>
-                  {HeartIcon(card[1].id)}
+                  <Button
+                    size="small"
+                    color="secondary"
+                    variant="contained"
+                    className="heartIcon"
+                    id={card[1].id}
+                    onClick={(e) => handleAddFav(e)}
+                  >
+                    <FavoriteIcon />
+                  </Button>
                   <RecordPreLog />
                 </CardActions>
               </Card>

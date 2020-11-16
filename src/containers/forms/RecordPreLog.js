@@ -1,16 +1,17 @@
 import { connect } from "react-redux";
 import RecordPreLog from "../../components/forms/RecordPreLog";
-import { addListing } from "../../redux/actions";
+import { setPreTokeForm } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
-    businesses: state.businesses,
+    preTokeForm: state.preTokeForm,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addListing: (business) => dispatch(addListing(business)),
+    // addPreExp: (strain) => dispatch(addPreExp(strain)),
+    setPreTokeForm: (input) => dispatch(setPreTokeForm(input)),
   };
 };
 
