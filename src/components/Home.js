@@ -20,7 +20,8 @@ import Link from "@material-ui/core/Link";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import FindPerfectStrain from "../containers/FindPerfectStrain";
-import DisplayPerfectStrains from "../containers/DisplayPerfectStrains";
+// import DisplayPerfectStrains from "../containers/DisplayPerfectStrains";
+import PerfectStrainCards from "../containers/PerfectStrainCards";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
 
@@ -125,7 +126,7 @@ export default function Home(props) {
           </Container>
         </div>
         {props.perfectStrainResults.length > 0 ? (
-          <DisplayPerfectStrains />
+          <PerfectStrainCards />
         ) : (
           <div className={classes.info}></div>
         )}

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import DisplayPerfectStrains from "../components/DisplayPerfectStrains";
+import PerfectStrainCards from "../components/PerfectStrainCards";
 import {
   setUser,
   fetchAllStrains,
@@ -53,7 +53,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DisplayPerfectStrains);
+export default connect(mapStateToProps, mapDispatchToProps)(PerfectStrainCards);

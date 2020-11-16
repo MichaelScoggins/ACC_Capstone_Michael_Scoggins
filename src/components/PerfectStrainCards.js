@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DisplayPerfectStrains(props) {
+export default function PerfectStrainCards(props) {
   const classes = useStyles();
   const [showModal, setModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
@@ -131,7 +131,7 @@ export default function DisplayPerfectStrains(props) {
                       ? "./../spaceman.jpg"
                       : "./../hybrid_zebra.jpg"
                   }
-                  title="Image title"
+                  title="species"
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography
