@@ -18,7 +18,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
-import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import FindPerfectStrain from "../containers/FindPerfectStrain";
 // import DisplayPerfectStrains from "../containers/DisplayPerfectStrains";
 import PerfectStrainCards from "../containers/PerfectStrainCards";

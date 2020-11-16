@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PerfectStrainDetails(props) {
+export default function PerfectStrainDetailsCards(props) {
   const classes = useStyles();
 
   React.useEffect(() => {
