@@ -19,6 +19,7 @@ import FindPerfectStrain from "../containers/FindPerfectStrain";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavAddedSnackbar from "../containers/FavAddedSnackbar";
+import RecordPreLog from "../containers/forms/RecordPreLog";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
 
@@ -136,13 +137,7 @@ export default function FavoriteStrains(props) {
                   <Typography>View</Typography>
                 </Button>
 
-                <Button
-                  size="small"
-                  style={{ color: "green" }}
-                  variant="contained"
-                >
-                  <Typography>Record Experience</Typography>
-                </Button>
+                <RecordPreLog />
               </CardActions>
             </Card>
           </Grid>

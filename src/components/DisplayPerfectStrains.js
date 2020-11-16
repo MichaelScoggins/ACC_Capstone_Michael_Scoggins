@@ -19,6 +19,7 @@ import FindPerfectStrain from "../containers/FindPerfectStrain";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavAddedSnackbar from "../containers/FavAddedSnackbar";
+import RecordPreLog from "./forms/RecordPreLog";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
 
@@ -109,9 +110,10 @@ export default function DisplayPerfectStrains(props) {
           <CardContent className={classes.cardContent}>
             <Typography gutterBottom variant="h5" component="h2">
               <h2>
-                Sorry! You'll have to be a little less picky than that! <br />{" "}
+                <span style={{ color: "orange" }}>Sorry!</span> You'll have to
+                be a little less picky than that! <br />{" "}
                 <span style={{ color: "red" }}>Hint:</span>{" "}
-                <span style={{ color: "cornflowerblue" }}>
+                <span style={{ color: "springgreen" }}>
                   Pick at most 2 flavors.
                 </span>
               </h2>
@@ -139,7 +141,7 @@ export default function DisplayPerfectStrains(props) {
                     gutterBottom
                     variant="h5"
                     component="h2"
-                    style={{ cursor: "pointer", color: "green" }}
+                    style={{ cursor: "pointer", color: "" }}
                     id={card[1].id}
                     onClick={(e) => handleModal(e)}
                   >
@@ -185,13 +187,7 @@ export default function DisplayPerfectStrains(props) {
                   >
                     <FavoriteIcon />
                   </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "green" }}
-                    variant="contained"
-                  >
-                    <Typography>Record Experience</Typography>
-                  </Button>
+                  <RecordPreLog />
                 </CardActions>
               </Card>
             </Grid>

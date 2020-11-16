@@ -3,6 +3,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
+import Typography from "@material-ui/core/Typography";
 import Select from "@material-ui/core/Select";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -59,11 +60,12 @@ class RecordPreLog extends Component {
       <Fragment>
         <div style={{ textAlign: "center" }}>
           <Button
+            color="primary"
             variant="contained"
             className="add-listing"
             onClick={this.toggleDialog}
           >
-            Record Your Experience
+            <Typography>Record Experience</Typography>
           </Button>
         </div>
         <div>
