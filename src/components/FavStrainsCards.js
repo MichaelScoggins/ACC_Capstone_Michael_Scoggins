@@ -18,7 +18,7 @@ import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
 // import FindPerfectStrain from "../containers/FindPerfectStrain";
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
-// import FavAddedSnackbar from "../containers/FavAddedSnackbar";
+// import SnackbarAddFav from "../containers/SnackbarAddFav";
 import RecordPreLog from "../containers/forms/RecordPreLog";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FavoriteStrains(props) {
+export default function FavStrainsCards(props) {
   const classes = useStyles();
   const [showModal, setModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);

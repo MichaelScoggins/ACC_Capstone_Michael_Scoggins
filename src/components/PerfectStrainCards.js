@@ -18,11 +18,13 @@ import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
 // import FindPerfectStrain from "../containers/FindPerfectStrain";
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavAddedSnackbar from "../containers/FavAddedSnackbar";
+import SnackbarAddFav from "../containers/SnackbarAddFav";
 import RecordPreLog from "../containers/forms/RecordPreLog";
-import PerfectStrainDescriptionCard from "./PerfectStrainDescriptionCard";
+import PerfectStrainDescriptionCard from "../containers/PerfectStrainDescriptionCard";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -71,12 +73,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PerfectStrainCards(props) {
   const classes = useStyles();
-  const [showModal, setModal] = React.useState(false);
+  const [showDetailsModal, setDetailsModal] = React.useState(false);
+  const [showDescriptionModal, setDescriptionModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
 
-  const handleModal = (e) => {
+  const handleDetailsModal = (e) => {
     setID(e.currentTarget.id);
-    setModal(true);
+    setDetailsModal(true);
+  };
+
+  const handleDescriptionModal = (e) => {
+    setID(e.currentTarget.id);
+    setDescriptionModal(true);
   };
 
   const handleAddFav = (e) => {
@@ -92,12 +100,19 @@ export default function PerfectStrainCards(props) {
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
-      <FavAddedSnackbar sID={strainID} />
-      {showModal && (
-          <PerfectStrainDetailsCard setModal={setModal} sID={strainID} />
-        ) && (
-          <PerfectStrainDescriptionCard setModal={setModal} sID={strainID} />
-        )}
+      <SnackbarAddFav sID={strainID} />
+      {(showDetailsModal && (
+        <PerfectStrainDetailsCard
+          setDetailsModal={setDetailsModal}
+          sID={strainID}
+        />
+      )) ||
+        (showDescriptionModal && (
+          <PerfectStrainDescriptionCard
+            setDescriptionModal={setDescriptionModal}
+            sID={strainID}
+          />
+        ))}
       {props.perfectStrainResults.length === 0 && (
         <div className={classes.info}></div>
       )}
@@ -139,16 +154,34 @@ export default function PerfectStrainCards(props) {
                   title="species"
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                    style={{ cursor: "pointer", color: "" }}
-                    id={card[1].id}
-                    onClick={(e) => handleModal(e)}
-                  >
-                    <h2>{card[0]}</h2>
-                  </Typography>
+                  <Grid container>
+                    <Grid item xs={10}>
+                      <Typography
+                        variant="h5"
+                        component="h2"
+                        style={{ cursor: "pointer", color: "" }}
+                        id={card[1].id}
+                        onClick={(e) => handleDetailsModal(e)}
+                      >
+                        <h2>{card[0]}</h2>
+                      </Typography>
+                    </Grid>
+
+                    <Typography
+                      variant="h5"
+                      component="h2"
+                      id={card[1].id}
+                      onClick={(e) => handleDescriptionModal(e)}
+                    >
+                      <FontAwesomeIcon
+                        className="info-icon"
+                        icon={faInfoCircle}
+                        style={{ cursor: "pointer", color: "orange" }}
+                        size="2x"
+                      />
+                    </Typography>
+                    <Grid item xs={2}></Grid>
+                  </Grid>
                   <Typography>
                     {card[1].race == "sativa" ? (
                       <h3 style={{ color: "orange" }}>
@@ -174,7 +207,7 @@ export default function PerfectStrainCards(props) {
                     size="small"
                     color="primary"
                     variant="contained"
-                    onClick={(e) => handleModal(e)}
+                    onClick={(e) => handleDetailsModal(e)}
                     id={card[1].id}
                   >
                     <Typography>View</Typography>

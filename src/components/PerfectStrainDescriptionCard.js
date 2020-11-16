@@ -36,15 +36,15 @@ export default function PerfectStrainDescriptionCard(props) {
   }, []);
 
   // const strain = props.userSearchResults.find((s) => s.id == props.sID);
-  const strain = props.perfectStrainResults.find(
-    (s) => s[1].id == props.sID
-  ) || [
-    [
-      "sorry! you'll have to be a little less picky than that!",
+  // const strain = props.perfectStrainResults.find(
+  //   (s) => s[1].id == props.sID
+  // ) || [
+  //   [
+  //     "sorry! you'll have to be a little less picky than that!",
 
-      { "id": "9999", "race": "sativa" },
-    ],
-  ];
+  //     { "id": "9999", "race": "sativa" },
+  //   ],
+  // ];
 
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -56,7 +56,7 @@ export default function PerfectStrainDescriptionCard(props) {
 
   const handleClose = () => {
     setOpen(false);
-    props.setModal(false);
+    props.setDescriptionModal(false);
   };
 
   return (
@@ -68,7 +68,6 @@ export default function PerfectStrainDescriptionCard(props) {
     >
       <div style={modalStyle} className={classes.paper}>
         <Grid container spacing={1}>
-          id>
           <Grid item xs={12}>
             <Typography>
               {" "}

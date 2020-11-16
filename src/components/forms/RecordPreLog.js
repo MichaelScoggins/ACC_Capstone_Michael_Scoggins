@@ -4,8 +4,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 import Select from "@material-ui/core/Select";
 import { v4 as uuidv4 } from "uuid";
+import { faBong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Button,
   TextField,
@@ -61,14 +64,16 @@ export default function RecordPreLog(props) {
   return (
     <Fragment>
       <div style={{ textAlign: "center" }}>
-        <Button
-          color="primary"
-          variant="contained"
-          className="add-listing"
-          onClick={toggleDialog}
-        >
-          <Typography>Record Experience</Typography>
-        </Button>
+        <Typography>
+          <IconButton
+            color="primary"
+            variant="contained"
+            className="add-listing"
+            onClick={toggleDialog}
+          >
+            <FontAwesomeIcon icon={faBong} size="3x" className="bong-icon" />
+          </IconButton>
+        </Typography>
       </div>
       <div>
         <Typography>
@@ -99,13 +104,13 @@ export default function RecordPreLog(props) {
                     <MenuItem value={"anxious"}>Anxious</MenuItem>
                   </Select>
                   <FormHelperText>
-                    <Typography>Select Mood</Typography>
+                    <Typography></Typography>
                   </FormHelperText>
                 </FormControl>
                 <TextField
                   id="worries"
-                  label="Briefly Describe Your Horizon"
-                  placeholder="Worries? Lingering emotions?"
+                  label="Worries? Lingering emotions?"
+                  placeholder="Briefly Describe Your Horizon"
                   multiline
                   value={props.preTokeForm.worries}
                   onChange={handleWorriesTextChange}

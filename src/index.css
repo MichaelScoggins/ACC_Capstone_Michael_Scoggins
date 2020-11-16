@@ -75,3 +75,11 @@ li {
 .heartIcon:hover {
   color: red;
 }
+
+.info-icon:hover {
+  color: green;
+}
+
+.bong-icon:hover {
+  color: green;
+}

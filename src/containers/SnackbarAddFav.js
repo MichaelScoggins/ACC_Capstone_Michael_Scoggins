@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import FavAddedSnackbar from "../components/FavAddedSnackbar";
+import SnackbarAddFav from "../components/SnackbarAddFav";
 import { toggleSnackbar } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -17,4 +17,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavAddedSnackbar);
+export default connect(mapStateToProps, mapDispatchToProps)(SnackbarAddFav);

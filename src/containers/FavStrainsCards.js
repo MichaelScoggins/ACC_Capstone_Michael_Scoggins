@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import FavoriteStrains from "../components/FavoriteStrains";
+import FavStrainsCards from "../components/FavStrainsCards";
 import {
   setUser,
   fetchAllStrains,
@@ -50,4 +50,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavoriteStrains);
+export default connect(mapStateToProps, mapDispatchToProps)(FavStrainsCards);

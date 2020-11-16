@@ -34,7 +34,6 @@ export default function PerfectStrainDetailsCard(props) {
   React.useEffect(() => {
     props.fetchEffects(props.sID);
     props.fetchFlavors(props.sID);
-    props.fetchDescription(props.sID);
   }, []);
 
   // const strain = props.userSearchResults.find((s) => s.id == props.sID);
@@ -62,7 +61,7 @@ export default function PerfectStrainDetailsCard(props) {
 
   const handleClose = () => {
     setOpen(false);
-    props.setModal(false);
+    props.setDetailsModal(false);
   };
 
   return (
@@ -122,12 +121,6 @@ export default function PerfectStrainDetailsCard(props) {
                 Flavors: {""}
                 <span style={{ color: "orange" }}>{flavors.join(", ")}</span>
               </h2>
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography>
-              {" "}
-              <h3>{props.strainDescription}</h3>
             </Typography>
           </Grid>
         </Grid>
