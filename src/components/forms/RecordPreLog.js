@@ -22,30 +22,15 @@ export default function RecordPreLog(props) {
 
   const toggleDialog = () => toggleOpen(!open);
 
-  const handleMoodTextChange = (e) => {
-    props.setMood(e.target.value);
-  };
-  const handleWorriesTextChange = (e) => {
-    props.setWorries(e.target.value);
-  };
-  const handleGoalsTextChange = (e) => {
-    props.setGoals(e.target.value);
-  };
-  const handleAlreadyAccopmlishedTextChange = (e) => {
-    props.setAlreadyAccomplished(e.target.value);
-  };
-  const handlePlanToAccomplishTextChange = (e) => {
-    props.setPlanToAccomplish(e.target.value);
-  };
-  const handleDescribeAppearanceTextChange = (e) => {
-    props.setDescribeAppearance(e.target.value);
-  };
+  let strain = props.perfectStrainResults.find((s) => s[1].id == props.id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const exp = props.preTokeForm;
     console.log({ exp });
     exp.id = uuidv4();
+    exp.strain = strain[0];
+    props.preTokeForm.sessionNum = props.preTokeForm.sessionNum + 1;
     props.addPreExp(exp);
     toggleOpen(false);
     console.log(props.experiences);
@@ -53,12 +38,20 @@ export default function RecordPreLog(props) {
   };
 
   const clearAll = () => {
-    props.setMood("");
-    props.setWorries("");
-    props.setGoals("");
-    props.setAlreadyAccomplished("");
-    props.setPlanToAccomplish("");
-    props.setDescribeAppearance("");
+    props.setPreTokeForm({
+      mood: "",
+      worries: "",
+      goals: "",
+      alreadyAccomplished: "",
+      planToAccomplish: "",
+      describeAppearance: "",
+    });
+  };
+
+  const handleTextChange = (e) => {
+    const newState = props.preTokeForm;
+    newState[e.target.id] = e.target.value;
+    props.setPreTokeForm(newState);
   };
 
   return (
@@ -78,7 +71,12 @@ export default function RecordPreLog(props) {
       <div>
         <Typography>
           <Dialog open={open} onClose={toggleDialog}>
-            <DialogTitle>Before You Toke</DialogTitle>
+            <DialogTitle>
+              <Typography variant="h5">
+                Before You Toke{" "}
+                {<span style={{ color: "green" }}>{strain[0]}</span>}
+              </Typography>
+            </DialogTitle>
             <DialogContent>
               <form
                 onSubmit={handleSubmit}
@@ -94,7 +92,7 @@ export default function RecordPreLog(props) {
                     labelId="moodSelect"
                     id="mood"
                     value={props.preTokeForm.mood}
-                    onChange={handleMoodTextChange}
+                    onChange={handleTextChange}
                   >
                     <MenuItem value="">
                       <em>None</em>
@@ -113,7 +111,7 @@ export default function RecordPreLog(props) {
                   placeholder="Briefly Describe Your Horizon"
                   multiline
                   value={props.preTokeForm.worries}
-                  onChange={handleWorriesTextChange}
+                  onChange={handleTextChange}
                   required
                 />
                 <TextField
@@ -122,7 +120,7 @@ export default function RecordPreLog(props) {
                   placeholder="How Will This Session Get You There?"
                   multiline
                   value={props.preTokeForm.goals}
-                  onChange={handleGoalsTextChange}
+                  onChange={handleTextChange}
                   required
                 />
                 <TextField
@@ -131,7 +129,7 @@ export default function RecordPreLog(props) {
                   placeholder="What have you already accomplished today?"
                   multiline
                   value={props.preTokeForm.alreadyAccomplished}
-                  onChange={handleAlreadyAccopmlishedTextChange}
+                  onChange={handleTextChange}
                   required
                 />
                 <TextField
@@ -140,7 +138,7 @@ export default function RecordPreLog(props) {
                   placeholder="What do you still need to accomplish today?"
                   multiline
                   value={props.preTokeForm.planToAccomplish}
-                  onChange={handlePlanToAccomplishTextChange}
+                  onChange={handleTextChange}
                   required
                 />
                 <TextField
@@ -149,7 +147,7 @@ export default function RecordPreLog(props) {
                   placeholder="Briefly describe the quality of the bud"
                   multiline
                   value={props.preTokeForm.describeAppearance}
-                  onChange={handleDescribeAppearanceTextChange}
+                  onChange={handleTextChange}
                   required
                 />
                 <br />

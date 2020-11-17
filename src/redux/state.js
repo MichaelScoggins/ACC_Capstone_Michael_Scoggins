@@ -4,6 +4,8 @@ export default {
   experiences: [],
   title: "",
   preTokeForm: {
+    strain: "",
+    sessionNum: 0,
     mood: "",
     worries: "",
     goals: "",

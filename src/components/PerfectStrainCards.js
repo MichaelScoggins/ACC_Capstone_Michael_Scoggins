@@ -161,7 +161,7 @@ export default function PerfectStrainCards(props) {
                         component="h2"
                         style={{ cursor: "pointer", color: "" }}
                         id={card[1].id}
-                        onClick={(e) => handleDetailsModal(e)}
+                        onClick={(e) => handleDescriptionModal(e)}
                       >
                         <h2>{card[0]}</h2>
                       </Typography>
@@ -208,7 +208,7 @@ export default function PerfectStrainCards(props) {
                     onClick={(e) => handleDetailsModal(e)}
                     id={card[1].id}
                   >
-                    <Typography>View</Typography>
+                    <Typography>Details</Typography>
                   </Button>
                   <Button
                     size="small"

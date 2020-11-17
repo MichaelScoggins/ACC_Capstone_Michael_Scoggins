@@ -11,30 +11,8 @@ const user = (state = "", action) => {
 
 const preTokeForm = (state = {}, action) => {
   switch (action.type) {
-    case "SET_MOOD":
-      return Object.assign({}, state, {
-        mood: action.value,
-      });
-    case "SET_WORRIES":
-      return Object.assign({}, state, {
-        worries: action.value,
-      });
-    case "SET_GOALS":
-      return Object.assign({}, state, {
-        goals: action.value,
-      });
-    case "SET_ALREADY_ACCOMPLISHED":
-      return Object.assign({}, state, {
-        alreadyAccomplished: action.value,
-      });
-    case "SET_PLAN_TO_ACCOMPLISH":
-      return Object.assign({}, state, {
-        planToAccomplish: action.value,
-      });
-    case "SET_DESCRIBE_APPEARANCE":
-      return Object.assign({}, state, {
-        describeAppearance: action.value,
-      });
+    case "SET_PRE_TOKE":
+      return Object.assign({}, state, action.value);
     default:
       return state;
   }

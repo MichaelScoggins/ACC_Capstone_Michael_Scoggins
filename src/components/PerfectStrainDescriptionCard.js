@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
 function getModalStyle() {
   const top = 50;
@@ -35,16 +36,7 @@ export default function PerfectStrainDescriptionCard(props) {
     props.fetchDescription(props.sID);
   }, []);
 
-  // const strain = props.userSearchResults.find((s) => s.id == props.sID);
-  // const strain = props.perfectStrainResults.find(
-  //   (s) => s[1].id == props.sID
-  // ) || [
-  //   [
-  //     "sorry! you'll have to be a little less picky than that!",
-
-  //     { "id": "9999", "race": "sativa" },
-  //   ],
-  // ];
+  const strain = props.perfectStrainResults.find((s) => s[1].id == props.sID);
 
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -60,25 +52,51 @@ export default function PerfectStrainDescriptionCard(props) {
   };
 
   return (
-    <Modal
-      open={open}
-      onClose={() => handleClose()}
-      aria-labelledby="strain"
-      aria-describedby="strain-description"
-    >
-      <div style={modalStyle} className={classes.paper}>
-        <Grid container spacing={1}>
-          <Grid item xs={12}>
-            <Typography>
-              <h3>
-                {props.strainDescription
-                  ? props.strainDescription
-                  : "No Bio Available"}
-              </h3>
-            </Typography>
+    <Container>
+      <Modal
+        open={open}
+        onClose={() => handleClose()}
+        aria-labelledby="strain"
+        aria-describedby="strain-description"
+      >
+        <div style={modalStyle} className={classes.paper}>
+          <Grid container spacing={1}>
+            <Grid item xs={12}>
+              <Typography>
+                <h1 style={{ textAlign: "center" }}>
+                  {strain[0]}{" "}
+                  {strain[1].race === "sativa" ? (
+                    <p style={{ color: "orange" }}>
+                      {strain[1].race.charAt(0).toUpperCase() +
+                        strain[1].race.slice(1)}
+                    </p>
+                  ) : strain[1].race === "indica" ? (
+                    <p style={{ color: "purple" }}>
+                      {strain[1].race.charAt(0).toUpperCase() +
+                        strain[1].race.slice(1)}
+                    </p>
+                  ) : (
+                    <p style={{ color: "brown" }}>
+                      {strain[1].race.charAt(0).toUpperCase() +
+                        strain[1].race.slice(1)}
+                    </p>
+                  )}
+                </h1>
+                <hr />
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>
+                <h3>
+                  {props.strainDescription
+                    ? props.strainDescription
+                    : "No Bio Available"}
+                </h3>
+              </Typography>
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
-    </Modal>
+        </div>
+      </Modal>
+    </Container>
   );
 }
