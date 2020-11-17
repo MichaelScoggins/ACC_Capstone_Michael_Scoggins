@@ -63,15 +63,18 @@ export default function PerfectStrainDescriptionCard(props) {
     <Modal
       open={open}
       onClose={() => handleClose()}
-      aria-labelledby="simple-modal-title"
-      aria-describedby="simple-modal-description"
+      aria-labelledby="strain"
+      aria-describedby="strain-description"
     >
       <div style={modalStyle} className={classes.paper}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <Typography>
-              {" "}
-              <h3>{props.strainDescription}</h3>
+              <h3>
+                {props.strainDescription
+                  ? props.strainDescription
+                  : "No Bio Available"}
+              </h3>
             </Typography>
           </Grid>
         </Grid>

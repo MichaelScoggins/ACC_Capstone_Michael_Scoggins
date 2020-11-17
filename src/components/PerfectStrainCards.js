@@ -169,39 +169,37 @@ export default function PerfectStrainCards(props) {
 
                     <Typography
                       variant="h5"
-                      component="h2"
                       id={card[1].id}
                       onClick={(e) => handleDescriptionModal(e)}
                     >
                       <FontAwesomeIcon
                         className="info-icon"
                         icon={faInfoCircle}
-                        style={{ cursor: "pointer", color: "orange" }}
+                        style={{ cursor: "pointer" }}
                         size="2x"
                       />
                     </Typography>
                     <Grid item xs={2}></Grid>
                   </Grid>
-                  <Typography>
+                  <Typography variant="h4" component="h4">
                     {card[1].race == "sativa" ? (
-                      <h3 style={{ color: "orange" }}>
+                      <div style={{ color: "orange" }}>
                         {card[1].race.charAt(0).toUpperCase() +
                           card[1].race.slice(1)}
-                      </h3>
+                      </div>
                     ) : card[1].race == "indica" ? (
-                      <h3 style={{ color: "purple" }}>
+                      <div style={{ color: "purple" }}>
                         {card[1].race.charAt(0).toUpperCase() +
                           card[1].race.slice(1)}
-                      </h3>
+                      </div>
                     ) : (
-                      <h3 style={{ color: "brown" }}>
+                      <div style={{ color: "brown" }}>
                         {card[1].race.charAt(0).toUpperCase() +
                           card[1].race.slice(1)}
-                      </h3>
+                      </div>
                     )}
                   </Typography>
                 </CardContent>
-
                 <CardActions>
                   <Button
                     size="small"

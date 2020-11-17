@@ -80,6 +80,10 @@ li {
   color: green;
 }
 
+.info-icon {
+  color: crimson;
+}
+
 .bong-icon:hover {
   color: green;
 }
