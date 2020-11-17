@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 import AddListing from "../containers/forms/RecordPreLog";
 import { useLocation } from "react-router-dom";
 import LocalFloristIcon from "@material-ui/icons/LocalFlorist";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 import { makeStyles } from "@material-ui/core/styles";
 // import Badge from "@material-ui/core/Badge";
 // import MenuItem from "@material-ui/core/MenuItem";
@@ -122,7 +124,12 @@ const Navigation = (props) => {
           </IconButton>
           <Typography variant="h6" style={{ color: "white" }}>
             <Link id="navHeader" to="/">
-              <LocalFloristIcon style={{ fontSize: "30px" }} />
+              <FontAwesomeIcon
+                className="home-icon"
+                icon={faCannabis}
+                style={{ cursor: "pointer" }}
+                size="2x"
+              />
             </Link>
           </Typography>
           <SearchBar />
