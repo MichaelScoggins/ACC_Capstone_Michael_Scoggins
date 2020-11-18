@@ -77,7 +77,7 @@ li {
 }
 
 .info-icon:hover {
-  color: green;
+  color: springgreen;
 }
 
 .info-icon {
@@ -85,9 +85,13 @@ li {
 }
 
 .bong-icon:hover {
-  color: green;
+  color: springgreen;
 }
 
 .home-icon:hover {
-  color: green;
+  color: springgreen;
+}
+
+.card-title:hover {
+  color: springgreen
 }

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    '&:hover': {color: 'green'
+    '&:hover': {color: 'springgreen'
     },
     marginRight: theme.spacing(2),
   },
@@ -141,7 +141,7 @@ const Navigation = (props) => {
       <Typography color="text-primary">
         {cookies.loggedIn && (
           <span>
-            Welcome <span style={{ color: "green" }}>{props.user}</span>!
+            Welcome <span style={{ color: "springgreen" }}>{props.user}</span>!
           </span>
         )}
       </Typography>

@@ -50,7 +50,7 @@ export default function DisplayUserSearchResults(props) {
             {props.userSearchResults.map((strain) => (
               <TableRow key={strain.id}>
                 <TableCell
-                  style={{ cursor: "pointer", color: "green" }}
+                  style={{ cursor: "pointer", color: "springgreen" }}
                   id={strain.id}
                   onClick={(e) => handleModal(e)}
                 >

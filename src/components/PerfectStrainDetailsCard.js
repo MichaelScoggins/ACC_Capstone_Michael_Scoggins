@@ -101,7 +101,7 @@ export default function PerfectStrainDetailsCard(props) {
             <Typography>
               <h2>
                 Positive Effects: {""}
-                <span style={{ color: "green" }}>
+                <span style={{ color: "springgreen" }}>
                   {positiveEffects.join(", ")}
                 </span>
               </h2>

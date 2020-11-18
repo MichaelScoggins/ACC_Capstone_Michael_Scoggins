@@ -59,9 +59,8 @@ export default function RecordPreLog(props) {
       <div style={{ textAlign: "center" }}>
         <Typography>
           <IconButton
-            color="primary"
             variant="contained"
-            className="add-listing"
+            className="add-exp"
             onClick={toggleDialog}
           >
             <FontAwesomeIcon icon={faBong} size="3x" className="bong-icon" />
@@ -74,7 +73,7 @@ export default function RecordPreLog(props) {
             <DialogTitle>
               <Typography variant="h5">
                 Before You Try{" "}
-                {<span style={{ color: "green" }}>{strain[0]}</span>}
+                {<span style={{ color: "springgreen" }}>{strain[0]}</span>}
               </Typography>
             </DialogTitle>
             <DialogContent>

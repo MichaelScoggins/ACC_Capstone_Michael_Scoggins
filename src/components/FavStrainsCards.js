@@ -103,7 +103,7 @@ export default function FavStrainsCards(props) {
                   gutterBottom
                   variant="h5"
                   component="h2"
-                  style={{ cursor: "pointer", color: "green" }}
+                  style={{ cursor: "pointer", color: "springgreen" }}
                   id={card[1].id}
                   onClick={(e) => handleModal(e)}
                 >

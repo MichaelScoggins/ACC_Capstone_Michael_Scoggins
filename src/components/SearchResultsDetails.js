@@ -67,7 +67,7 @@ export default function SearchResultsDetails(props) {
       <div style={modalStyle} className={classes.paper}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <h1 style={{ color: "green", textAlign: "center" }}>
+            <h1 style={{ color: "springgreen", textAlign: "center" }}>
               {strain.name}{" "}
               {strain.race === "sativa" ? (
                 <p style={{ color: "orange" }}>
@@ -88,7 +88,7 @@ export default function SearchResultsDetails(props) {
           <Grid item xs={12}>
             <h2>
               Positive Effects: {""}
-              <span style={{ color: "green" }}>
+              <span style={{ color: "springgreen" }}>
                 {positiveEffects.join(", ")}
               </span>
             </h2>

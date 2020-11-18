@@ -130,7 +130,7 @@ export default function PerfectStrainCards(props) {
                 <span style={{ color: "orange" }}>Sorry!</span> You'll have to
                 be a little less picky than that! <br />{" "}
                 <span style={{ color: "red" }}>Hint:</span>{" "}
-                <span style={{ color: "springgreen" }}>
+                <span style={{ color: "springspringgreen" }}>
                   Pick at most 2 flavors.
                 </span>
               </h2>
@@ -163,7 +163,7 @@ export default function PerfectStrainCards(props) {
                         id={card[1].id}
                         onClick={(e) => handleDescriptionModal(e)}
                       >
-                        <h2>{card[0]}</h2>
+                        <h2 className="card-title">{card[0]}</h2>
                       </Typography>
                     </Grid>
 
