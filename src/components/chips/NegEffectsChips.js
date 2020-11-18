@@ -69,7 +69,7 @@ export default function NegEffectsChips(props) {
           multiple
           value={props.avoidPrefs}
           onChange={handleChange}
-          input={<Input id="select-multiple-chip" />}
+          input={<Input id="select-negEffects-chip" />}
           renderValue={(selected) => (
             <div className={classes.chips}>
               {selected.map((value) => (

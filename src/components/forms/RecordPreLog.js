@@ -73,7 +73,7 @@ export default function RecordPreLog(props) {
           <Dialog open={open} onClose={toggleDialog}>
             <DialogTitle>
               <Typography variant="h5">
-                Before You Toke{" "}
+                Before You Try{" "}
                 {<span style={{ color: "green" }}>{strain[0]}</span>}
               </Typography>
             </DialogTitle>
@@ -101,14 +101,33 @@ export default function RecordPreLog(props) {
                     <MenuItem value={"neutral"}>Neutral</MenuItem>
                     <MenuItem value={"anxious"}>Anxious</MenuItem>
                   </Select>
+                  <Select
+                    labelId="reasonSelect"
+                    id="reason"
+                    value={props.preTokeForm.mood}
+                    onChange={handleTextChange}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={"pain"}>pain</MenuItem>
+                    <MenuItem value={"stress"}>stress</MenuItem>
+                    <MenuItem value={"creativity"}>creativity</MenuItem>
+                    <MenuItem value={"focus"}>creativity</MenuItem>
+                    <MenuItem value={"recreation"}>recreation</MenuItem>
+                    <MenuItem value={"hobby"}>other</MenuItem>
+                    <MenuItem value={""}>other</MenuItem>
+                    <MenuItem value={"hobby"}>other</MenuItem>
+                    <MenuItem value={"hobby"}>other</MenuItem>
+                  </Select>
                   <FormHelperText>
                     <Typography></Typography>
                   </FormHelperText>
                 </FormControl>
                 <TextField
                   id="worries"
-                  label="Worries? Lingering emotions?"
-                  placeholder="Briefly Describe Your Horizon"
+                  label="Worries? Lingering thoughts? "
+                  placeholder=""
                   multiline
                   value={props.preTokeForm.worries}
                   onChange={handleTextChange}
