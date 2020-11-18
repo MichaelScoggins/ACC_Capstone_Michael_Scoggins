@@ -4,19 +4,19 @@ import cookie from "cookie";
 import {
   AppBar,
   Toolbar,
-  IconButton,
+  // IconButton,
   Typography,
   Button,
   // InputBase,
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import AddListing from "../containers/forms/RecordPreLog";
+import SearchBar from "../containers/SearchBar";
 import { useLocation } from "react-router-dom";
-import LocalFloristIcon from "@material-ui/icons/LocalFlorist";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 import { makeStyles } from "@material-ui/core/styles";
+// import MenuIcon from "@material-ui/icons/Menu";
 // import Badge from "@material-ui/core/Badge";
 // import MenuItem from "@material-ui/core/MenuItem";
 // import Menu from "@material-ui/core/Menu";
@@ -25,7 +25,6 @@ import { makeStyles } from "@material-ui/core/styles";
 // import MailIcon from "@material-ui/icons/Mail";
 // import NotificationsIcon from "@material-ui/icons/Notifications";
 // import MoreIcon from "@material-ui/icons/MoreVert";
-import SearchBar from "../containers/SearchBar";
 // import SearchBy from "../containers/SearchBy";
 // import PosEffectsChips from "../containers/PosEffectsChips";
 // import NegEffectsChips from "../containers/NegEffectsChips";
@@ -39,9 +38,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
+    color: 'lightgray',
     '&:hover': {color: 'springgreen'
     },
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(0),
   },
   title: {
     display: "none",
@@ -118,7 +118,7 @@ const Navigation = (props) => {
           <Typography variant="h6" style={{ color: "white" }}>
               <FontAwesomeIcon
             edge="start"
-                className="home-icon"
+                className={classes.menuButton}
                 icon={faCannabis}
                 aria-label="open drawer"
                 style={{ cursor: "pointer" }}

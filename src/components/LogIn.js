@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Questionnaire from '../components/forms/Questionnaire'
 
 function Copyright() {
   return (
@@ -140,6 +141,7 @@ const LogIn = (props) => {
             >
               Sign In
             </Button>
+            <Questionnaire />
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

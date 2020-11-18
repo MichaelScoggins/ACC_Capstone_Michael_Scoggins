@@ -1,5 +1,16 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
+import Grid from '@material-ui/core/Grid'
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import Select from "@material-ui/core/Select";
 import { v4 as uuidv4 } from "uuid";
+import { faBong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Button,
   TextField,
@@ -7,114 +18,100 @@ import {
   DialogContent,
   DialogTitle,
 } from "@material-ui/core";
+import PosEffectsChips from '../../containers/chips/PosEffectsChips'
+import NegEffectsChips from '../../containers/chips/NegEffectsChips'
+import FlavorChips from '../../containers/chips/FlavorChips'
+import SpeciesPrefsChips from '../../containers/chips/SpeciesPrefsChips'
+import MedicinalChips from '../../containers/chips/MedicinalChips'
 
-class Questionnaire extends Component {
-  state = {
-    open: false,
-    name: "",
-    description: "",
-    address: "",
-    operatingHours: "",
-    lat: 0,
-    lng: 0,
-  };
+export default function Questionnaire(props) {
+  const [open, toggleOpen] = React.useState(false);
 
-  toggleDialog = () => this.setState({ open: !this.state.open });
+  const toggleDialog = () => toggleOpen(!open);
 
-  handleTextChange = (e) => {
-    const newState = { ...this.state };
-    newState[e.target.id] = e.target.value;
-    this.setState(newState);
-  };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const business = { ...this.state };
-    business.id = uuidv4();
-    delete business.open;
-    this.props.addListing(business);
-    this.setState({ open: false });
+    // const exp = props.preTokeForm;
+    // console.log({ exp });
+    // exp.id = uuidv4();
+    // exp.strain = strain[0];
+    // props.preTokeForm.sessionNum = props.preTokeForm.sessionNum + 1;
+    // props.addPreExp(exp);
+    toggleOpen(false);
+    // console.log(props.experiences);
+    // clearAll();
   };
 
-  componentDidUpdate = (prevProps, prevState) => {
-    if (prevState.open !== this.state.open) {
-      this.setState({
-        name: "",
-        description: "",
-        address: "",
-        operatingHours: "",
-      });
-    }
+  // const clearAll = () => {
+  //   props.setPreTokeForm({
+  //     mood: "",
+  //     worries: "",
+  //     goals: "",
+  //     alreadyAccomplished: "",
+  //     planToAccomplish: "",
+  //     describeAppearance: "",
+  //   });
+  // };
+
+  const handleTextChange = (e) => {
+    // const newState = props.preTokeForm;
+    // newState[e.target.id] = e.target.value;
+    // props.setPreTokeForm(newState);
   };
 
-  render() {
-    return (
-      <Fragment>
-        <div style={{ textAlign: "center" }}>
-          <Button
+  return (
+    <Container style={{width: 350}}>
+      <div style={{ textAlign: "center" }}>
+        <Typography>
+          <IconButton
             variant="contained"
-            className="add-listing"
-            onClick={this.toggleDialog}
+            className="add-exp"
+            onClick={toggleDialog}
           >
-            Add Listing
-          </Button>
-        </div>
-        <div>
-          <Dialog open={this.state.open} onClose={this.toggleDialog}>
-            <DialogTitle>Add New Listing</DialogTitle>
+            <FontAwesomeIcon icon={faBong} size="3x" className="bong-icon" />
+          </IconButton>
+        </Typography>
+      </div>
+          <Dialog open={open} onClose={toggleDialog}>
+            <DialogTitle>
+              <Typography variant="h5">
+                What Are You Looking For?
+              </Typography>
+            <hr/>
+            </DialogTitle>
             <DialogContent>
               <form
-                onSubmit={this.handleSubmit}
+                onSubmit={handleSubmit}
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  width: "350px",
+                  width: "420px",
                 }}
               >
-                <TextField
-                  id="name"
-                  placeholder="Name"
-                  value={this.state.name}
-                  onChange={this.handleTextChange}
-                  required
-                />
-                <TextField
-                  id="description"
-                  placeholder="Description"
-                  value={this.state.description}
-                  onChange={this.handleTextChange}
-                  required
-                />
-                <TextField
-                  id="address"
-                  placeholder="Address"
-                  value={this.state.address}
-                  onChange={this.handleTextChange}
-                  required
-                />
-                <TextField
-                  id="operatingHours"
-                  placeholder="Hours of Operation"
-                  value={this.state.operatingHours}
-                  onChange={this.handleTextChange}
-                  required
-                />
-                <br />
+                <FormControl>  
+                      <PosEffectsChips />  
+
+                    <MedicinalChips /> 
+
+                    <NegEffectsChips /> 
+
+                    <SpeciesPrefsChips />    
+
+                    <FlavorChips />          
+                </FormControl>
+                
                 <Button
                   variant="contained"
                   color="primary"
                   type="submit"
                   style={{ marginTop: "10px" }}
                 >
-                  Submit
+                  Find The Perfect Strain
                 </Button>
               </form>
             </DialogContent>
           </Dialog>
-        </div>
-      </Fragment>
-    );
-  }
+    </Container>
+  );
 }
-
-export default Questionnaire;

@@ -1,20 +1,22 @@
 import React from "react";
-import clsx from "clsx";
+// import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import ListItemText from "@material-ui/core/ListItemText";
+// import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
-import Checkbox from "@material-ui/core/Checkbox";
+// import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    maxWidth: 300,
+    // maxWidth: 300,
+    display: 'flex',
+    wrap: 'nowrap',
   },
   chips: {
     display: "flex",
@@ -23,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
   chip: {
     margin: 2,
   },
-  noLabel: {
-    marginTop: theme.spacing(3),
-  },
+  // noLabel: {
+  //   marginTop: theme.spacing(3),
+  // },
 }));
 
 const ITEM_HEIGHT = 48;
@@ -75,11 +77,12 @@ export default function PosEffectsChips(props) {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="posEffects-chips-label">Preferred Effects</InputLabel>
+        <InputLabel id="posEffects-chips-label">Which Of The Following Sound Beneficial (Select Up To Five):</InputLabel>
         <Select
           labelId="posEffects-chips-label"
           id="posEffects-chips"
           multiple
+          fullWidth
           value={props.posPrefs}
           onChange={handleChange}
           input={<Input id="select-multiple-chip" />}

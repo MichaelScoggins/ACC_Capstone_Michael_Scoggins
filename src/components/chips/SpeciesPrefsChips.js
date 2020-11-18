@@ -14,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    maxWidth: 300,
+    // maxWidth: 300,
+    display: 'flex',
+    wrap: 'nowrap',
   },
   chips: {
     display: "flex",
@@ -23,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
   chip: {
     margin: 2,
   },
-  noLabel: {
-    marginTop: theme.spacing(3),
-  },
+  // noLabel: {
+  //   marginTop: theme.spacing(3),
+  // },
 }));
 
 const ITEM_HEIGHT = 48;
@@ -62,11 +64,12 @@ export default function SpeciesPrefsChips(props) {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="posEffects-chips-label">Indica/Sativa</InputLabel>
+        <InputLabel id="posEffects-chips-label">Do You Strongly Prefer Either Mental Effects Or Body Effects?</InputLabel>
         <Select
           labelId="posEffects-chips-label"
           id="posEffects-chips"
           multiple
+          fullWidth
           value={props.speciesPrefs}
           onChange={handleChange}
           input={<Input id="select-multiple-chip" />}

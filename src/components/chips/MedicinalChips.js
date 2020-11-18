@@ -14,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    maxWidth: 300,
+    // maxWidth: 300,
+    display: 'flex',
+    wrap: 'nowrap',
   },
   chips: {
     display: "flex",
@@ -23,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
   chip: {
     margin: 2,
   },
-  noLabel: {
-    marginTop: theme.spacing(3),
-  },
+  // noLabel: {
+  //   marginTop: theme.spacing(3),
+  // },
 }));
 
 const ITEM_HEIGHT = 48;
