@@ -181,7 +181,7 @@ export default function PerfectStrainCards(props) {
                     </Typography>
                     <Grid item xs={2}></Grid>
                   </Grid>
-                  <Typography variant="h4" component="h4">
+                  <Typography variant="h5" component="h5">
                     {card[1].race == "sativa" ? (
                       <div style={{ color: "orange" }}>
                         {card[1].race.charAt(0).toUpperCase() +

@@ -39,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
+    '&:hover': {color: 'green'
+    },
     marginRight: theme.spacing(2),
   },
   title: {
@@ -111,26 +113,18 @@ const Navigation = (props) => {
 
   return (
     <div>
-      <AppBar position="relative">
+      <AppBar title="Higher Intentions" position="fixed" color="primary">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-            onClick={() => props.toggleDrawer(!props.drawerOpen)}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" style={{ color: "white" }}>
-            <Link id="navHeader" to="/">
               <FontAwesomeIcon
+            edge="start"
                 className="home-icon"
                 icon={faCannabis}
+                aria-label="open drawer"
                 style={{ cursor: "pointer" }}
                 size="2x"
+                onClick={() => props.toggleDrawer(!props.drawerOpen)}
               />
-            </Link>
           </Typography>
           <SearchBar />
           <div className={classes.grow} />

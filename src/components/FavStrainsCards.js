@@ -69,18 +69,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FavStrainsCards(props) {
   const classes = useStyles();
-  const [showModal, setModal] = React.useState(false);
+  const [showDetailsModal, setDetailsModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
 
   const handleModal = (e) => {
     setID(e.currentTarget.id);
-    setModal(true);
+    setDetailsModal(true);
   };
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
-      {showModal && (
-        <PerfectStrainDetailsCard setModal={setModal} sID={strainID} />
+      {showDetailsModal && (
+        <PerfectStrainDetailsCard setDetailsModal={setDetailsModal} sID={strainID} />
       )}
       {props.favorites.length === 0 && <div className={classes.info} />}
       <Grid container spacing={4}>
