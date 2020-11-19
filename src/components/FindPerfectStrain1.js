@@ -123,13 +123,19 @@ export default function FindPerfectStrain(props) {
           <IconButton
             variant="contained"
             className="add-exp"
-            onClick={toggleDialog}
+            onClick={() => handleClickOpen()}
           >
             <FontAwesomeIcon icon={faBong} size="3x" className="bong-icon" />
           </IconButton>
         </Typography>
       </div>
-          <Dialog open={open} onClose={toggleDialog}>
+        {loading && <Loading setLoading={setLoading} />}
+        <Dialog
+          disableBackdropClick
+          disableEscapeKeyDown
+          open={props.findPerfectStrainModalOpen}
+          onClose={handleClose}
+        >
             <DialogTitle>
               <Typography variant="h5">
                 What Are You Looking For?
@@ -138,7 +144,6 @@ export default function FindPerfectStrain(props) {
             </DialogTitle>
             <DialogContent>
               <form
-                onSubmit={handleSubmit}
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -157,14 +162,6 @@ export default function FindPerfectStrain(props) {
                     <FlavorChips />          
                 </FormControl>
                 
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  style={{ marginTop: "10px" }}
-                >
-                  Find The Perfect Strain
-                </Button>
               </form>
             </DialogContent>
 

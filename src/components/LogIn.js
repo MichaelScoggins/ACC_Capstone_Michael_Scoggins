@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Questionnaire from '../components/forms/Questionnaire'
+import Questionnaire from '../containers/forms/Questionnaire'
 import { faBong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

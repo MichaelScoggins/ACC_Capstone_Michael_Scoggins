@@ -73,7 +73,7 @@ export default function RecordPreLog(props) {
             <DialogTitle>
               <Typography variant="h5">
                 Before You Try{" "}
-                {<span style={{ color: "springgreen" }}>{strain[0]}</span>}
+                {/* {<span style={{ color: "springgreen" }}>{strain[0]}</span>} */}
               </Typography>
             </DialogTitle>
             <DialogContent>
