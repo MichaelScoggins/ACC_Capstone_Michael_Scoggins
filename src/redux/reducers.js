@@ -18,6 +18,15 @@ const preTokeForm = (state = {}, action) => {
   }
 };
 
+const profile = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_PROFILE":
+      return Object.assign({}, state, action.value);
+    default:
+      return state;
+  }
+};
+
 const experiences = (state = [], action) => {
   switch (action.type) {
     case "ADD_PRE_EXP":
@@ -213,4 +222,5 @@ export default combineReducers({
   title,
   preTokeForm,
   experiences,
+  profile
 });

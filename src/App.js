@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import {ThemeProvider, createMuiTheme} from '@material-ui/core'
 import Navigation from "./containers/Navigation";
-import { green } from '@material-ui/core/colors';
+import { orange } from '@material-ui/core/colors';
 // import PrimarySearchAppBar from "./components/PrimarySearchAppBar";
 import NavDrawer from "./containers/NavDrawer";
 
@@ -15,8 +15,7 @@ const theme = createMuiTheme({
     //   main: '#aa647b',
     // },
     // secondary: {
-    //   // This is green.A700 as hex.
-    //   main: '#00ff7f',
+      // main: orange[200],
     // },
   
     type: "dark"

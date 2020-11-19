@@ -1,5 +1,13 @@
 export default {
   user: "user",
+  profile: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    city: "",
+    state: ""
+  },
   favorites: [],
   experiences: [],
   title: "",

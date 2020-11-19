@@ -12,6 +12,13 @@ export const setPreTokeForm = (input) => {
   };
 };
 
+export const setProfile = (input) => {
+  return {
+    type: "SET_PROFILE",
+    value: input,
+  };
+};
+
 export const addPreExp = (exp) => {
   return {
     type: "ADD_PRE_EXP",

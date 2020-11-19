@@ -106,7 +106,7 @@ export default function FlavorChips(props) {
   const classes = useStyles();
   const theme = useTheme();
   // const [flavPrefs, setFlavorPref] = React.useState([]);
-
+  // const error = [].filter((v) => v).length !== 2;
   const handleChange = (event) => {
     props.setFlavPrefs(event.target.value);
   };
@@ -119,7 +119,7 @@ export default function FlavorChips(props) {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="flavors-chips-label">Flavors</InputLabel>
+        <InputLabel id="flavors-chips-label">Select One Or Two Enticing Aromas: </InputLabel>
         <Select
           labelId="flavors-chips-label"
           id="flavors-chips"
@@ -140,6 +140,7 @@ export default function FlavorChips(props) {
             <MenuItem
               key={flavor}
               value={flavor}
+              selected={flavor}
               style={getStyles(flavor, props.flavPrefs, theme)}
             >
               {flavor}

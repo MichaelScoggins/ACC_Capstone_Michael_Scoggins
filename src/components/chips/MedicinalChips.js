@@ -80,7 +80,7 @@ export default function MedicinalChips(props) {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="medicinal-chips-label">Treats: </InputLabel>
+        <InputLabel id="medicinal-chips-label">Do You Wish To Treat Any Of The Following:</InputLabel>
         <Select
           labelId="medicinal-chips-label"
           id="medicinal-chips"

@@ -64,7 +64,7 @@ export default function SpeciesPrefsChips(props) {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="posEffects-chips-label">Do You Strongly Prefer Either Mental Effects Or Body Effects?</InputLabel>
+        <InputLabel id="posEffects-chips-label">Do You Strongly Prefer Either Mental (sativa) Or Body (indica) Effects:</InputLabel>
         <Select
           labelId="posEffects-chips-label"
           id="posEffects-chips"

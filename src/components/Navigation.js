@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  signUp: {
+    backgroundColor: theme.palette.info.main
+  }
 }));
 
 const Navigation = (props) => {
@@ -78,12 +81,22 @@ const Navigation = (props) => {
           color="secondary"
         >
           <Typography>
-            <Link to="/login">Log In</Link>
+            <Link to="/login">Sign In</Link>
           </Typography>
         </Button>
       );
     }
   };
+
+  const SignUp = () => {
+    if (!cookies.loggedIn) {
+      return (        
+        <Button variant="contained" color="secondary">
+          Sign Up
+          </Button>
+      )
+    }
+  }
 
   const ifLoggedIn = () => {
     if (cookies.loggedIn) {
@@ -98,7 +111,7 @@ const Navigation = (props) => {
               window.location.replace("/login");
             }}
           >
-            <Typography>Log Out</Typography>
+            <Typography>Sign Out</Typography>
           </Button>
         </>
       );
@@ -135,6 +148,7 @@ const Navigation = (props) => {
           <ul className="nav-list">
             {ifLoggedIn()}
             {ifNotLoggedIn()}
+            <SignUp />
           </ul>
         </Toolbar>
       </AppBar>

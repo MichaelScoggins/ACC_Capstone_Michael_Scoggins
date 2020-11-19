@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Questionnaire from '../components/forms/Questionnaire'
+import Questionnaire from '../../containers/forms/Questionnaire'
 
 function Copyright() {
   return (
@@ -63,31 +63,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LogIn = (props) => {
+const SignUp = (props) => {
   const classes = useStyles();
-  const [username, setUsername] = React.useState("");
-  const [password, setpassword] = React.useState("");
   const [redirectHome, setRedirectHome] = React.useState(false);
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+  const handleTextChange = (e) => {
+    const newState = props.profile;
+    newState[e.target.id] = e.target.value;
+    props.setProfile(newState);
   };
 
-  const handlePasswordChange = (e) => {
-    setpassword(e.target.value);
-  };
-
-  const login = (e) => {
+  const setProfile = (e) => {
     e.preventDefault();
-    document.cookie = "loggedIn=true;max-age=60*1000";
-    document.cookie = `user=${username};max-age=60*1000`;
-    props.setUser(username);
-    setRedirectHome(true);
+    const profile = props.profile;
+    console.log({ profile });
+    // profile.id = uuidv4();
+    props.setProfile(profile);
+    console.log(props.profile);    
+    // clearAll();
   };
 
   if (redirectHome) {
     return <Redirect to="/" />;
   }
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -98,19 +97,19 @@ const LogIn = (props) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
-          <form className={classes.form} onSubmit={login}>
+          <form className={classes.form} onSubmit={setProfile}>
             <TextField
               variant="outlined"
               margin="normal"
               required
-              onChange={handleUsernameChange}
-              value={username}
+              onChange={handleTextChange}
+              value={props.firstName}
               fullWidth
-              id="username"
-              name="username"
-              label="Username"
+              id="firstName"
+              name="firstName"
+              label="First Name"
               type="text"
               autoComplete="email"
               autoFocus
@@ -119,13 +118,65 @@ const LogIn = (props) => {
               variant="outlined"
               margin="normal"
               required
-              onChange={handlePasswordChange}
-              value={password}
+              onChange={handleTextChange}
+              value={props.lastName}
+              fullWidth
+              name="lastName"
+              label="Last Name"
+              type="text"
+              id="lastName"
+              autoComplete="current-password"
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              onChange={handleTextChange}
+              value={props.email}
+              fullWidth
+              name="email"
+              label="Email"
+              type="email"
+              id="email"
+              autoComplete="current-password"
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              onChange={handleTextChange}
+              value={props.password}
               fullWidth
               name="password"
               label="Password"
-              type="password"
+              type="text"
               id="password"
+              autoComplete="current-password"
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              onChange={handleTextChange}
+              value={props.city}
+              fullWidth
+              name="city"
+              label="City"
+              type="text"
+              id="city"
+              autoComplete="current-password"
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              onChange={handleTextChange}
+              value={props.state}
+              fullWidth
+              name="state"
+              label="State"
+              type="text"
+              id="state"
               autoComplete="current-password"
             />
             <FormControlLabel
@@ -164,4 +215,4 @@ const LogIn = (props) => {
   );
 };
 
-export default LogIn;
+export default SignUp;

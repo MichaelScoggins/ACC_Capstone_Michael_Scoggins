@@ -16,6 +16,8 @@ import {
 import { makeStyles } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Questionnaire from '../components/forms/Questionnaire'
+import { faBong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Copyright() {
   return (
@@ -51,8 +53,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   avatar: {
+    color: 'white',
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.info.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -61,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  options: {
+    color: 'azure',
+    backgroundColor: theme.palette.info.main,
+  }
 }));
 
 const LogIn = (props) => {
@@ -95,7 +102,8 @@ const LogIn = (props) => {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            
+          <FontAwesomeIcon icon={faBong} size="3x" className="bong-icon" />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -132,28 +140,28 @@ const LogIn = (props) => {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
-            <Questionnaire />
+            
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign In
+              </Button>
+              
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
+                <Questionnaire />
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="#" variant="body2" style={{color: 'white'}}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
+            
             <Box mt={5}>
               <Copyright />
             </Box>

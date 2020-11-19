@@ -18,7 +18,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
-import FindPerfectStrain from "../containers/FindPerfectStrain";
+import FindPerfectStrain1 from "../containers/FindPerfectStrain1";
 // import DisplayPerfectStrains from "../containers/DisplayPerfectStrains";
 import PerfectStrainCards from "../containers/PerfectStrainCards";
 // import { ArrowBack } from "@material-ui/icons";
@@ -113,7 +113,7 @@ export default function Home(props) {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <FindPerfectStrain />
+                  <FindPerfectStrain1 />
                 </Grid>
                 <Grid item>
                   <Button variant="contained" color="primary">
