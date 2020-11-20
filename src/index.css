@@ -81,7 +81,11 @@ li {
 }
 
 .info-icon {
-  color: #2196F3;
+  color: #2196f3;
+}
+
+.bong-icon {
+  color: #2196f3;
 }
 
 .bong-icon:hover {
@@ -93,5 +97,5 @@ li {
 }
 
 .card-title:hover {
-  color: springgreen
+  color: springgreen;
 }

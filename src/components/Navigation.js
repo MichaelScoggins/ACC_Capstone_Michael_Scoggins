@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 // import axios from "axios";
 import cookie from "cookie";
 import {
@@ -85,7 +85,9 @@ const Navigation = (props) => {
           color="secondary"
         >
           <Typography>
-            <Link to="/login">Sign In</Link>
+            <Link style={{ color: "#345600", fontWeight: 600 }} to="/login">
+              Sign In
+            </Link>
           </Typography>
         </Button>
       );
@@ -96,7 +98,14 @@ const Navigation = (props) => {
     if (!cookies.loggedIn && location.pathname === "/login") {
       return (
         <Button variant="contained" color="secondary">
-          <Link style={{ textDecoration: "none", color: "white" }} to="/signup">
+          <Link
+            style={{
+              textDecoration: "none",
+              fontWeight: "600",
+              color: "black",
+            }}
+            to="/signup"
+          >
             Sign Up
           </Link>
         </Button>

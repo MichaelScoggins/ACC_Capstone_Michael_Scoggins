@@ -21,6 +21,7 @@ import Link from "@material-ui/core/Link";
 import FindPerfectStrain1 from "../containers/FindPerfectStrain1";
 // import DisplayPerfectStrains from "../containers/DisplayPerfectStrains";
 import PerfectStrainCards from "../containers/PerfectStrainCards";
+import SimpleSelect from "./SimpleSelect";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
 
@@ -89,6 +90,7 @@ export default function Home(props) {
     <React.Fragment>
       <CssBaseline />
       <main>
+        <SimpleSelect />
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
@@ -117,7 +119,9 @@ export default function Home(props) {
                 </Grid>
                 <Grid item>
                   <Button variant="contained" color="secondary">
-                    <Typography>Sign Up to Post Experience</Typography>
+                    <Typography style={{ fontWeight: "600", color: "#345600" }}>
+                      Sign Up to Post Experience
+                    </Typography>
                   </Button>
                 </Grid>
               </Grid>

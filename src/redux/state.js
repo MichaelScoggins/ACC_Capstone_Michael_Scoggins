@@ -6,7 +6,7 @@ export default {
     email: "",
     password: "",
     city: "",
-    state: ""
+    state: "",
   },
   favorites: [],
   experiences: [],

@@ -19,6 +19,11 @@ import {
 
 export default function RecordPreLog(props) {
   const [open, toggleOpen] = React.useState(false);
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
 
   const toggleDialog = () => toggleOpen(!open);
 
@@ -54,6 +59,10 @@ export default function RecordPreLog(props) {
     props.setPreTokeForm(newState);
   };
 
+  const handleSelectChange = (e) => {
+    props.preTokeForm["mood"] = e.target.value;
+  };
+
   return (
     <Fragment>
       <div style={{ textAlign: "center" }}>
@@ -86,9 +95,9 @@ export default function RecordPreLog(props) {
                 }}
               >
                 <FormControl>
-                  <InputLabel id="moodInput">Mood</InputLabel>
+                  <InputLabel id="moodInput">Current Mood</InputLabel>
                   <Select
-                    labelId="moodSelect"
+                    labelId="moodInput"
                     id="mood"
                     value={props.preTokeForm.mood}
                     onChange={handleTextChange}
@@ -100,29 +109,29 @@ export default function RecordPreLog(props) {
                     <MenuItem value={"neutral"}>Neutral</MenuItem>
                     <MenuItem value={"anxious"}>Anxious</MenuItem>
                   </Select>
-                  <InputLabel id="moodInput">Which Effects Were The Strongest</InputLabel>
+                </FormControl>
+                <FormControl>
+                  <InputLabel id="reasonInput">
+                    What Do You Hope To Achieve With This Strain?
+                  </InputLabel>
                   <Select
                     labelId="reasonSelect"
                     id="reason"
-                    value={props.preTokeForm.mood}
+                    value={""}
                     onChange={handleTextChange}
                   >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={"pain"}>pain</MenuItem>
-                    <MenuItem value={"stress"}>stress</MenuItem>
-                    <MenuItem value={"creativity"}>creativity</MenuItem>
-                    <MenuItem value={"focus"}>creativity</MenuItem>
-                    <MenuItem value={"recreation"}>recreation</MenuItem>
-                    <MenuItem value={"hobby"}>other</MenuItem>
-                    <MenuItem value={""}>other</MenuItem>
-                    <MenuItem value={"hobby"}>other</MenuItem>
-                    <MenuItem value={"hobby"}>other</MenuItem>
+                    <MenuItem value={"pain"}>Pain Relief</MenuItem>
+                    <MenuItem value={"stress"}>Stress Relief</MenuItem>
+                    <MenuItem value={"creativity"}>Creativity</MenuItem>
+                    <MenuItem value={"focus"}>Focus</MenuItem>
+                    <MenuItem value={"recreation"}>Recreation</MenuItem>
+                    <MenuItem value={"hobby"}>Hobby</MenuItem>
+                    <MenuItem value={"modularity"}>Mental Modularity</MenuItem>
+                    <MenuItem value={"other"}>other</MenuItem>
                   </Select>
-                  <FormHelperText>
-                    <Typography></Typography>
-                  </FormHelperText>
+                  {/* <FormHelperText>
+                    <Typography>whats this</Typography>
+                  </FormHelperText> */}
                 </FormControl>
                 <TextField
                   id="worries"
