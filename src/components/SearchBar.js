@@ -74,10 +74,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SearchBar(props) {
-  const [redirect, setRedirect] = React.useState(false);
+  const [redirect, setRedirect] = React.useState(null);
 
   React.useEffect(() => {
-    setRedirect(false);
+    setRedirect(null);
   });
 
   const classes = useStyles();

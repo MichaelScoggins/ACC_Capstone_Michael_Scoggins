@@ -37,6 +37,10 @@ export default function NavDrawer(props) {
   const classes = useStyles();
   const [redirect, setRedirect] = React.useState(null);
 
+  React.useEffect(() => {
+    setRedirect(null);
+  });
+
   const toggleDrawer = (toggle) => (event) => {
     if (
       event.type === "keydown" &&
@@ -109,17 +113,15 @@ export default function NavDrawer(props) {
   );
 
   return (
-    <div>
+    <React.Fragment key="left">
       {redirect && <Redirect to={redirect} />}
-      <React.Fragment key="left">
-        <Drawer
-          anchor="left"
-          open={props.drawerOpen}
-          onClose={toggleDrawer(!props.drawerOpen)}
-        >
-          {list("left")}
-        </Drawer>
-      </React.Fragment>
-    </div>
+      <Drawer
+        anchor="left"
+        open={props.drawerOpen}
+        onClose={toggleDrawer(!props.drawerOpen)}
+      >
+        {list("left")}
+      </Drawer>
+    </React.Fragment>
   );
 }
