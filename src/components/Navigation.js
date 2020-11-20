@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 // import axios from "axios";
 import cookie from "cookie";
 import {
@@ -38,9 +39,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    color: 'lightgray',
-    '&:hover': {color: 'springgreen'
-    },
+    color: "lightgray",
+    "&:hover": { color: "springgreen" },
     marginRight: theme.spacing(0),
   },
   title: {
@@ -62,8 +62,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   signUp: {
-    backgroundColor: theme.palette.info.main
-  }
+    backgroundColor: theme.palette.info.main,
+  },
 }));
 
 const Navigation = (props) => {
@@ -72,7 +72,11 @@ const Navigation = (props) => {
   const location = useLocation();
 
   const ifNotLoggedIn = () => {
-    if (!cookies.loggedIn && location.pathname !== "/login") {
+    if (
+      !cookies.loggedIn &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/signup"
+    ) {
       return (
         <Button
           id="loginButton"
@@ -89,14 +93,16 @@ const Navigation = (props) => {
   };
 
   const SignUp = () => {
-    if (!cookies.loggedIn) {
-      return (        
+    if (!cookies.loggedIn && location.pathname === "/login") {
+      return (
         <Button variant="contained" color="secondary">
-          Sign Up
-          </Button>
-      )
+          <Link style={{ textDecoration: "none", color: "white" }} to="/signup">
+            Sign Up
+          </Link>
+        </Button>
+      );
     }
-  }
+  };
 
   const ifLoggedIn = () => {
     if (cookies.loggedIn) {
@@ -129,15 +135,15 @@ const Navigation = (props) => {
       <AppBar title="Higher Intentions" position="fixed" color="primary">
         <Toolbar>
           <Typography variant="h6" style={{ color: "white" }}>
-              <FontAwesomeIcon
-            edge="start"
-                className={classes.menuButton}
-                icon={faCannabis}
-                aria-label="open drawer"
-                style={{ cursor: "pointer" }}
-                size="2x"
-                onClick={() => props.toggleDrawer(!props.drawerOpen)}
-              />
+            <FontAwesomeIcon
+              edge="start"
+              className={classes.menuButton}
+              icon={faCannabis}
+              aria-label="open drawer"
+              style={{ cursor: "pointer" }}
+              size="2x"
+              onClick={() => props.toggleDrawer(!props.drawerOpen)}
+            />
           </Typography>
           <SearchBar />
           <div className={classes.grow} />
@@ -148,7 +154,7 @@ const Navigation = (props) => {
           <ul className="nav-list">
             {ifLoggedIn()}
             {ifNotLoggedIn()}
-            <SignUp />
+            {SignUp()}
           </ul>
         </Toolbar>
       </AppBar>

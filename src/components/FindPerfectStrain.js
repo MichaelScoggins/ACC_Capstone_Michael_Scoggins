@@ -152,7 +152,7 @@ export default function FindPerfectStrain(props) {
               color="primary"
               variant="contained"
             >
-              <Typography> Ok</Typography>
+              <Typography>Ok</Typography>
             </Button>
           </DialogActions>
         </Dialog>

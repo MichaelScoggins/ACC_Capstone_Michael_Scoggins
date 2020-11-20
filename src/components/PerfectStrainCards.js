@@ -183,17 +183,17 @@ export default function PerfectStrainCards(props) {
                   </Grid>
                   <Typography variant="h5" component="h5">
                     {card[1].race == "sativa" ? (
-                      <div style={{ color: "orange" }}>
+                      <div style={{ color: "gold" }}>
                         {card[1].race.charAt(0).toUpperCase() +
                           card[1].race.slice(1)}
                       </div>
                     ) : card[1].race == "indica" ? (
-                      <div style={{ color: "purple" }}>
+                      <div style={{ color: "orchid" }}>
                         {card[1].race.charAt(0).toUpperCase() +
                           card[1].race.slice(1)}
                       </div>
                     ) : (
-                      <div style={{ color: "brown" }}>
+                      <div style={{ color: "indianred" }}>
                         {card[1].race.charAt(0).toUpperCase() +
                           card[1].race.slice(1)}
                       </div>
@@ -212,6 +212,7 @@ export default function PerfectStrainCards(props) {
                   </Button>
                   <Button
                     size="small"
+                    disableRipple
                     color="secondary"
                     variant="contained"
                     className="heartIcon"

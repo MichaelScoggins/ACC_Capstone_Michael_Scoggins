@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(6),
   },
   info: {
-    backgroundImage: "url(./../favs.jpg)",
+    backgroundImage: "url(./../memorexijuana.jpg)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -80,9 +80,16 @@ export default function FavStrainsCards(props) {
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       {showDetailsModal && (
-        <PerfectStrainDetailsCard setDetailsModal={setDetailsModal} sID={strainID} />
+        <PerfectStrainDetailsCard
+          setDetailsModal={setDetailsModal}
+          sID={strainID}
+        />
       )}
-      {props.favorites.length === 0 && <div className={classes.info} />}
+      {props.favorites.length === 0 && (
+        <div className={classes.info}>
+          <h1>Use Our Perfect Strain Finder To Add Some Favorites!</h1>
+        </div>
+      )}
       <Grid container spacing={4}>
         {props.favorites.map((card) => (
           <Grid item key={card[1].id} xs={12} sm={6} md={4}>
@@ -138,7 +145,7 @@ export default function FavStrainsCards(props) {
                 >
                   <Typography>View</Typography>
                 </Button>
-                <RecordPreLog id={card[1].id}/>
+                <RecordPreLog id={card[1].id} />
               </CardActions>
             </Card>
           </Grid>

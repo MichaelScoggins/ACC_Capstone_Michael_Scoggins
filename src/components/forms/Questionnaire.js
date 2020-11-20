@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 // import Grid from '@material-ui/core/Grid'
 // import InputLabel from "@material-ui/core/InputLabel";
@@ -16,18 +16,17 @@ import Link from "@material-ui/core/Link";
 // import { v4 as uuidv4 } from "uuid";
 import {
   Button,
-  TextField,
+  // TextField,
   Dialog,
   DialogContent,
   DialogTitle,
 } from "@material-ui/core";
 import Loading from "../../containers/Loading";
-import PosEffectsChips from '../../containers/chips/PosEffectsChips'
-import NegEffectsChips from '../../containers/chips/NegEffectsChips'
-import FlavorChips from '../../containers/chips/FlavorChips'
-import SpeciesPrefsChips from '../../containers/chips/SpeciesPrefsChips'
-import MedicinalChips from '../../containers/chips/MedicinalChips'
-
+import PosEffectsChips from "../../containers/chips/PosEffectsChips";
+import NegEffectsChips from "../../containers/chips/NegEffectsChips";
+import FlavorChips from "../../containers/chips/FlavorChips";
+import SpeciesPrefsChips from "../../containers/chips/SpeciesPrefsChips";
+import MedicinalChips from "../../containers/chips/MedicinalChips";
 
 export default function Questionnaire(props) {
   // const classes = useStyles();
@@ -92,11 +91,11 @@ export default function Questionnaire(props) {
       props.flavPrefs.length > 0 ||
       props.speciesPrefs.length > 0) &&
       getPerfectStrains();
-      
+
     handleClose();
     // setRedirect('/');
-    setRedirect(true)
-    // return <Redirect to='/' />
+    setRedirect(true);
+    // return <Redirect to="/" />;
   };
 
   const handleReset = () => {
@@ -110,59 +109,55 @@ export default function Questionnaire(props) {
     // setRedirect(true);
   };
 
-
-  if (loading) return <Loading setLoading={setLoading} />
+  if (loading) return <Loading setLoading={setLoading} />;
 
   if (redirect) {
-    return <Redirect to='/' />
-  } 
+    return <Redirect to="/" />;
+  }
 
   return (
-    <>  
-    
+    <>
       <div>
         <Link
           disabled
-          style={{cursor: 'pointer', color: 'springgreen'}}
+          style={{ cursor: "pointer", color: "springgreen" }}
           variant="body2"
-          onClick={() => handleClickOpen()}>
-            {'Continue As Guest'}
+          onClick={() => handleClickOpen()}
+        >
+          {"Continue As Guest"}
         </Link>
       </div>
-      
-    <Container>
-    <Dialog
+
+      <Container>
+        <Dialog
           disableBackdropClick
           disableEscapeKeyDown
           open={props.findPerfectStrainModalOpen}
           onClose={handleClose}
         >
-            <DialogTitle>
-              <Typography variant="h5">
-                What Are You Looking For?
-              </Typography>
-            <hr/>
-            </DialogTitle>
-            <DialogContent>
-              <form
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "420px",
-                }}
-              >
-                <FormControl>  
-                    <PosEffectsChips />  
-                    <MedicinalChips /> 
-                    <NegEffectsChips /> 
-                    <SpeciesPrefsChips />   
-                    <FlavorChips />          
-                </FormControl>
+          <DialogTitle>
+            <Typography variant="h5">What Are You Looking For?</Typography>
+            <hr />
+          </DialogTitle>
+          <DialogContent>
+            <form
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "420px",
+              }}
+            >
+              <FormControl>
+                <PosEffectsChips />
+                <MedicinalChips />
+                <NegEffectsChips />
+                <SpeciesPrefsChips />
+                <FlavorChips />
+              </FormControl>
+            </form>
+          </DialogContent>
 
-              </form>
-            </DialogContent>
-
-            <DialogActions>
+          <DialogActions>
             <Button onClick={handleReset} color="secondary" variant="contained">
               <Typography> Reset</Typography>
             </Button>
@@ -177,9 +172,8 @@ export default function Questionnaire(props) {
               <Typography> Ok</Typography>
             </Button>
           </DialogActions>
-
-          </Dialog>
-    </Container>
+        </Dialog>
+      </Container>
     </>
   );
 }

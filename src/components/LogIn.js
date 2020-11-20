@@ -14,8 +14,8 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Questionnaire from '../containers/forms/Questionnaire'
+// import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Questionnaire from "../containers/forms/Questionnaire";
 import { faBong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   avatar: {
-    color: 'white',
+    color: "white",
     margin: theme.spacing(1),
     backgroundColor: theme.palette.info.main,
   },
@@ -65,9 +65,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   options: {
-    color: 'azure',
+    color: "azure",
     backgroundColor: theme.palette.info.main,
-  }
+  },
 }));
 
 const LogIn = (props) => {
@@ -102,8 +102,7 @@ const LogIn = (props) => {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            
-          <FontAwesomeIcon icon={faBong} size="3x" className="bong-icon" />
+            <FontAwesomeIcon icon={faBong} size="3x" className="bong-icon" />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -140,28 +139,28 @@ const LogIn = (props) => {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Sign In
-              </Button>
-              
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+
             <Grid container>
               <Grid item xs>
                 <Questionnaire />
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" style={{color: 'white'}}>
+                <Link href="#" variant="body2" style={{ color: "white" }}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
-            
+
             <Box mt={5}>
               <Copyright />
             </Box>

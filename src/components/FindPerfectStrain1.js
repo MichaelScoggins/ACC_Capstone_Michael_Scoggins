@@ -116,77 +116,64 @@ export default function FindPerfectStrain(props) {
   };
 
   return (
-    <div>
-      <Container style={{width: 350}}>
-      <div style={{ textAlign: "center" }}>
-        <Typography>
-          <IconButton
-            variant="contained"
-            className="add-exp"
-            onClick={() => handleClickOpen()}
+    <>
+      <Button
+        onClick={() => handleClickOpen()}
+        variant="contained"
+        color="primary"
+      >
+        <Typography>Find The Perfect Strain</Typography>
+      </Button>
+      {loading && <Loading setLoading={setLoading} />}
+      <Dialog
+        disableEscapeKeyDown
+        open={props.findPerfectStrainModalOpen}
+        onClose={handleClose}
+      >
+        <DialogTitle>
+          <Typography variant="h5">What Are You Looking For?</Typography>
+          <hr />
+        </DialogTitle>
+        <DialogContent>
+          <form
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: "420px",
+            }}
           >
-            <FontAwesomeIcon icon={faBong} size="3x" className="bong-icon" />
-          </IconButton>
-        </Typography>
-      </div>
-        {loading && <Loading setLoading={setLoading} />}
-        <Dialog
-          disableBackdropClick
-          disableEscapeKeyDown
-          open={props.findPerfectStrainModalOpen}
-          onClose={handleClose}
-        >
-            <DialogTitle>
-              <Typography variant="h5">
-                What Are You Looking For?
-              </Typography>
-            <hr/>
-            </DialogTitle>
-            <DialogContent>
-              <form
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "420px",
-                }}
-              >
-                <FormControl>  
-                    <PosEffectsChips />  
+            <FormControl>
+              <PosEffectsChips />
 
-                    <MedicinalChips /> 
+              <MedicinalChips />
 
-                    <NegEffectsChips /> 
+              <NegEffectsChips />
 
-                    <SpeciesPrefsChips />    
+              <SpeciesPrefsChips />
 
-                    <FlavorChips />          
-                </FormControl>
-                
-              </form>
-            </DialogContent>
+              <FlavorChips />
+            </FormControl>
+          </form>
+        </DialogContent>
 
-            
-          <DialogActions>
-            <Button onClick={handleReset} color="secondary" variant="contained">
-              <Typography> Reset</Typography>
-            </Button>
-            <Button onClick={handleClose} color="primary" variant="contained">
-              <Typography> Cancel</Typography>
-            </Button>
-            <Button
-              onClick={() => handleSubmit()}
-              color="primary"
-              variant="contained"
-            >
-              <Typography> Ok</Typography>
-            </Button>
-          </DialogActions>
-
-
-          </Dialog>
-    </Container>
+        <DialogActions>
+          <Button onClick={handleReset} color="secondary" variant="contained">
+            <Typography> Reset</Typography>
+          </Button>
+          <Button onClick={handleClose} color="primary" variant="contained">
+            <Typography> Cancel</Typography>
+          </Button>
+          <Button
+            onClick={() => handleSubmit()}
+            color="primary"
+            variant="contained"
+          >
+            <Typography> Ok</Typography>
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       {/* {redirect && <Redirect to="/perfectstrain" />} */}
-    </div>
+    </>
   );
 }

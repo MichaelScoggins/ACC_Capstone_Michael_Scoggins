@@ -3,8 +3,8 @@ import { Switch, Route, Redirect } from "react-router";
 import cookie from "cookie";
 import LogIn from "./containers/LogIn";
 import RecordPreLog from "./containers/forms/RecordPreLog";
-import DisplayUserSearchResults from "./containers/UserSearchResults";
-// import DisplayPerfectStrainResults from "./containers/DisplayPerfectStrainResults";
+import UserSearchResults from "./containers/UserSearchResults";
+import PerfectStrainCards from "./containers/PerfectStrainCards";
 import Home from "./containers/Home";
 import FavStrainsCards from "./containers/FavStrainsCards";
 import SignUp from "./containers/forms/SignUp";
@@ -29,9 +29,11 @@ const Router = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/search" component={DisplayUserSearchResults} />
       <Route path="/login" component={LogIn} />
       <Route path="/signup" component={SignUp} />
+      <Route path="/search" component={UserSearchResults} />
+      <Route path="/perfectstrain" component={PerfectStrainCards} />
+      <Route path="/favorites" component={FavStrainsCards} />
       <ProtectedRoute path="/add/pre" component={RecordPreLog} />
     </Switch>
   );
