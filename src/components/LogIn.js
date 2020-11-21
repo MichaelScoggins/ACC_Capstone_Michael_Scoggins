@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -7,7 +7,6 @@ import {
   TextField,
   FormControlLabel,
   Checkbox,
-  Link,
   Paper,
   Box,
   Grid,
@@ -23,10 +22,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Higher Intentions
-      </Link>{" "}
-      {new Date().getFullYear()}
+      <Link color="inherit">Higher Intentions</Link> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
@@ -155,7 +151,7 @@ const LogIn = (props) => {
                 <Questionnaire />
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" style={{ color: "white" }}>
+                <Link to="signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

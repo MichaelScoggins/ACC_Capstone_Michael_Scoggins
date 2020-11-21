@@ -87,7 +87,10 @@ export default function FavStrainsCards(props) {
       )}
       {props.favorites.length === 0 && (
         <div className={classes.info}>
-          <h1>Use Our Perfect Strain Finder To Add Some Favorites!</h1>
+          <Typography style={{ color: "white" }} variant="h4">
+            Use Our Perfect Strain Finder To Add <br />
+            Some Favorites!
+          </Typography>
         </div>
       )}
       <Grid container spacing={4}>

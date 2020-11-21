@@ -32,7 +32,9 @@ export default function RecordPreLog(props) {
     const exp = props.preTokeForm;
     console.log({ exp });
     exp.id = uuidv4();
-    exp.strain = strain[0];
+    exp.strain.name = strain[0];
+    exp.strain.race = strain[1].race;
+    exp.strain.id = strain[1].id;
     props.preTokeForm.sessionNum = props.preTokeForm.sessionNum + 1;
     props.addPreExp(exp);
     toggleOpen(false);

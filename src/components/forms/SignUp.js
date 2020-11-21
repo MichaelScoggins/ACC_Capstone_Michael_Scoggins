@@ -1,5 +1,6 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -7,7 +8,6 @@ import {
   TextField,
   FormControlLabel,
   Checkbox,
-  Link,
   Paper,
   Box,
   Grid,
@@ -21,7 +21,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link to="/" color="inherit" style={{ cursor: "pointer" }}>
         Higher Intentions
       </Link>{" "}
       {new Date().getFullYear()}
@@ -65,7 +65,6 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUp = (props) => {
   const classes = useStyles();
-  const [redirectHome, setRedirectHome] = React.useState(false);
 
   const handleTextChange = (e) => {
     const newState = props.profile;
@@ -82,10 +81,6 @@ const SignUp = (props) => {
     console.log(props.profile);
     // clearAll();
   };
-
-  if (redirectHome) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <Grid container component="main" className={classes.root}>

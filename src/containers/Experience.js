@@ -30,6 +30,7 @@ const mapStateToProps = (state) => {
     favorites: state.favorites,
     toggleSnackbar: state.toggleSnackbar,
     perfectStrainResults: state.perfectStrainResults,
+    experiences: state.experiences,
   };
 };
 

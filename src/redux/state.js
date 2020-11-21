@@ -12,7 +12,7 @@ export default {
   experiences: [],
   title: "",
   preTokeForm: {
-    strain: "",
+    strain: {},
     sessionNum: 0,
     mood: "",
     worries: "",

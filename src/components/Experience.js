@@ -17,7 +17,7 @@ import Container from "@material-ui/core/Container";
 import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
 // import FindPerfectStrain from "../containers/FindPerfectStrain";
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
 import SnackbarAddFav from "../containers/SnackbarAddFav";
 import RecordPreLog from "../containers/forms/RecordPreLog";
 import PerfectStrainDescriptionCard from "../containers/PerfectStrainDescriptionCard";
@@ -57,8 +57,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(6),
   },
   info: {
-    backgroundImage:
-      "url(./../indica-vs-sativa-understanding-the-difference.png)",
+    backgroundImage: "url(./../experience.jpg)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -113,121 +112,102 @@ export default function Experience(props) {
             sID={strainID}
           />
         ))}
-      {props.perfectStrainResults.length === 0 && (
-        <div className={classes.info}></div>
+      {props.experiences.length === 0 && (
+        <div className={classes.info}>
+          <Typography style={{ color: "white" }} variant="h4">
+            Click The Bong On A <br /> Strain Card To Log An Experience!
+          </Typography>
+        </div>
       )}
-
-      {props.perfectStrainResults[0][1]["race"] === "no results" ? (
-        <Card className={classes.card}>
-          <CardMedia
-            className={classes.cardMedia}
-            image="./../picky.jpg"
-            title="picky"
-          />
-          <CardContent className={classes.cardContent}>
-            <Typography gutterBottom variant="h5" component="h2">
-              <h2>
-                <span style={{ color: "orange" }}>Sorry!</span> You'll have to
-                be a little less picky than that! <br />{" "}
-                <span style={{ color: "red" }}>Hint:</span>{" "}
-                <span style={{ color: "springgreen" }}>
-                  Pick at most 2 flavors.
-                </span>
-              </h2>
-            </Typography>
-          </CardContent>
-        </Card>
-      ) : (
-        <Grid container spacing={4}>
-          {props.perfectStrainResults.map((card) => (
-            <Grid item key={card[1].id} xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={
-                    card[1].race === "sativa"
-                      ? "./../smoking_the_butterflies.jpg"
-                      : card[1].race === "indica"
-                      ? "./../spaceman.jpg"
-                      : "./../hybrid_zebra.jpg"
-                  }
-                  title="species"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Grid container>
-                    <Grid item xs={10}>
-                      <Typography
-                        variant="h5"
-                        component="h2"
-                        style={{ cursor: "pointer", color: "" }}
-                        id={card[1].id}
-                        onClick={(e) => handleDescriptionModal(e)}
-                      >
-                        <h2 className="card-title">{card[0]}</h2>
-                      </Typography>
-                    </Grid>
-
+      <Grid container spacing={4}>
+        {props.experiences.map((card) => (
+          <Grid item key={card.strain} xs={12} sm={6} md={4}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.cardMedia}
+                image={
+                  card.strain.race === "sativa"
+                    ? "./../smoking_the_butterflies.jpg"
+                    : card.strain.race === "indica"
+                    ? "./../spaceman.jpg"
+                    : "./../hybrid_zebra.jpg"
+                }
+                title="species"
+              />
+              <CardContent className={classes.cardContent}>
+                <Grid container>
+                  <Grid item xs={10}>
                     <Typography
                       variant="h5"
-                      id={card[1].id}
+                      component="h2"
+                      style={{ cursor: "pointer", color: "" }}
+                      id={card.strain.id}
                       onClick={(e) => handleDescriptionModal(e)}
                     >
-                      <FontAwesomeIcon
-                        className="info-icon"
-                        icon={faInfoCircle}
-                        style={{ cursor: "pointer" }}
-                        size="2x"
-                      />
+                      <h2 className="card-title">{card.strain.name}</h2>
                     </Typography>
-                    <Grid item xs={2}></Grid>
                   </Grid>
-                  <Typography variant="h5" component="h5">
-                    {card[1].race == "sativa" ? (
-                      <div style={{ color: "gold" }}>
-                        {card[1].race.charAt(0).toUpperCase() +
-                          card[1].race.slice(1)}
-                      </div>
-                    ) : card[1].race == "indica" ? (
-                      <div style={{ color: "orchid" }}>
-                        {card[1].race.charAt(0).toUpperCase() +
-                          card[1].race.slice(1)}
-                      </div>
-                    ) : (
-                      <div style={{ color: "indianred" }}>
-                        {card[1].race.charAt(0).toUpperCase() +
-                          card[1].race.slice(1)}
-                      </div>
-                    )}
+
+                  <Typography
+                    variant="h5"
+                    id={card.strain.id}
+                    onClick={(e) => handleDescriptionModal(e)}
+                  >
+                    <FontAwesomeIcon
+                      className="info-icon"
+                      icon={faInfoCircle}
+                      style={{ cursor: "pointer" }}
+                      size="2x"
+                    />
                   </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    variant="contained"
-                    onClick={(e) => handleDetailsModal(e)}
-                    id={card[1].id}
-                  >
-                    <Typography>Pre-Toke</Typography>
-                  </Button>
-                  <Button
-                    size="small"
-                    disableRipple
-                    color="secondary"
-                    variant="contained"
-                    className="heartIcon"
-                    id={card[1].id}
-                    onClick={(e) => handleAddFav(e)}
-                  >
-                    Review
-                  </Button>
-                  <RecordPreLog id={card[1].id} />
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      )}
+                  <Grid item xs={2}></Grid>
+                </Grid>
+                <Typography variant="h5" component="h5">
+                  {card.strain.race == "sativa" ? (
+                    <div style={{ color: "gold" }}>
+                      {card.strain.race.charAt(0).toUpperCase() +
+                        card.strain.race.slice(1)}
+                    </div>
+                  ) : card.strain.race == "indica" ? (
+                    <div style={{ color: "orchid" }}>
+                      {card.strain.race.charAt(0).toUpperCase() +
+                        card.strain.race.slice(1)}
+                    </div>
+                  ) : (
+                    <div style={{ color: "indianred" }}>
+                      {card.strain.race.charAt(0).toUpperCase() +
+                        card.strain.race.slice(1)}
+                    </div>
+                  )}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  variant="contained"
+                  onClick={(e) => handleDetailsModal(e)}
+                  id={card.strain.id}
+                >
+                  <Typography>Pre-Toke</Typography>
+                </Button>
+                <Button
+                  size="small"
+                  disableRipple
+                  color="secondary"
+                  variant="contained"
+                  className="heartIcon"
+                  id={card.strain.id}
+                  onClick={(e) => handleAddFav(e)}
+                >
+                  Review
+                </Button>
+                <RecordPreLog id={card.strain.id} />
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 }

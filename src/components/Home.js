@@ -16,7 +16,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
+// import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
 import FindPerfectStrain1 from "../containers/FindPerfectStrain1";
 // import DisplayPerfectStrains from "../containers/DisplayPerfectStrains";
@@ -28,10 +29,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Higher Intentions
-      </Link>{" "}
-      {new Date().getFullYear()}
+      <Link color="inherit">Higher Intentions</Link> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
@@ -117,9 +115,17 @@ export default function Home(props) {
                 </Grid>
                 <Grid item>
                   <Button variant="contained" color="secondary">
-                    <Typography style={{ fontWeight: "600", color: "#345600" }}>
-                      Sign Up to Post Experience
-                    </Typography>
+                    <Link
+                      to="/signup"
+                      style={{
+                        textDecoration: "none",
+                        color: "crimson",
+                      }}
+                    >
+                      <Typography style={{ fontWeight: "600" }}>
+                        Sign Up to Post Experience
+                      </Typography>
+                    </Link>
                   </Button>
                 </Grid>
               </Grid>

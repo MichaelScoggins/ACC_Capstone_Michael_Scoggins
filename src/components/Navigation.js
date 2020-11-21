@@ -71,66 +71,61 @@ const Navigation = (props) => {
   const cookies = cookie.parse(document.cookie);
   const location = useLocation();
 
-  const ifNotLoggedIn = () => {
-    if (
-      !cookies.loggedIn &&
-      location.pathname !== "/login" &&
-      location.pathname !== "/signup"
-    ) {
-      return (
-        <Button
-          id="loginButton"
-          variant="contained"
-          className="nav-list-item"
-          color="secondary"
-        >
-          <Typography>
-            <Link style={{ color: "#345600", fontWeight: 600 }} to="/login">
-              Sign In
-            </Link>
+  const SignIn = () => {
+    return (
+      <Link style={{ textDecoration: "none" }} to="/login">
+        <Button variant="contained" color="secondary">
+          <Typography
+            style={{
+              color: "#345600",
+              fontWeight: 600,
+            }}
+          >
+            Sign In
           </Typography>
         </Button>
-      );
-    }
+      </Link>
+    );
   };
 
   const SignUp = () => {
-    if (!cookies.loggedIn && location.pathname === "/login") {
-      return (
+    return (
+      <Link
+        to="/signup"
+        style={{
+          textDecoration: "none",
+          fontWeight: "600",
+          color: "black",
+        }}
+      >
         <Button variant="contained" color="secondary">
-          <Link
+          <Typography
             style={{
-              textDecoration: "none",
-              fontWeight: "600",
-              color: "black",
+              color: "#345600",
+              fontWeight: 600,
             }}
-            to="/signup"
           >
             Sign Up
-          </Link>
+          </Typography>
         </Button>
-      );
-    }
+      </Link>
+    );
   };
 
-  const ifLoggedIn = () => {
-    if (cookies.loggedIn) {
-      return (
-        <>
-          <Button
-            variant="text"
-            style={{ color: "white" }}
-            className="nav-list-item"
-            onClick={() => {
-              document.cookie = "loggedIn=";
-              window.location.replace("/login");
-            }}
-          >
-            <Typography>Sign Out</Typography>
-          </Button>
-        </>
-      );
-    }
+  const SignOut = () => {
+    return (
+      <Button
+        variant="text"
+        style={{ color: "white" }}
+        className="nav-list-item"
+        onClick={() => {
+          document.cookie = "loggedIn=";
+          window.location.replace("/login");
+        }}
+      >
+        <Typography>Sign Out</Typography>
+      </Button>
+    );
   };
 
   const addListingButton = () => {
@@ -161,9 +156,11 @@ const Navigation = (props) => {
             <div>{addListingButton()}</div>
           </Typography>
           <ul className="nav-list">
-            {ifLoggedIn()}
-            {ifNotLoggedIn()}
-            {SignUp()}
+            {cookies.loggedIn && <SignOut />}
+            {!cookies.loggedIn &&
+              location.pathname !== "/login" &&
+              location.pathname !== "/signup" && <SignIn />}
+            {!cookies.loggedIn && location.pathname === "/login" && <SignUp />}
           </ul>
         </Toolbar>
       </AppBar>
