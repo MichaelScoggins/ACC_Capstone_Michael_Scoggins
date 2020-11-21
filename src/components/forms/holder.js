@@ -17,8 +17,9 @@ import {
   DialogContent,
   DialogTitle,
 } from "@material-ui/core";
+import RecordReview from "../../containers/forms/RecordReview";
 
-export default function RecordReview(props) {
+export default function RecordPreLog(props) {
   const [open, toggleOpen] = React.useState(false);
 
   const toggleDialog = () => toggleOpen(!open);
@@ -78,8 +79,9 @@ export default function RecordReview(props) {
         <Typography>
           <Dialog open={open} onClose={toggleDialog}>
             <DialogTitle>
+              <RecordReview />
               <Typography variant="h5">
-                Review
+                Before You Try{" "}
                 {/* {<span style={{ color: "springgreen" }}>{strain[0]}</span>} */}
               </Typography>
             </DialogTitle>
@@ -93,7 +95,7 @@ export default function RecordReview(props) {
                 }}
               >
                 <FormControl>
-                  <InputLabel id="moodInput">New Mood</InputLabel>
+                  <InputLabel id="moodInput">Current Mood</InputLabel>
                   <Select
                     labelId="moodInput"
                     id="mood"
@@ -112,7 +114,7 @@ export default function RecordReview(props) {
                 </FormControl>
                 <FormControl>
                   <InputLabel id="reasonInput">
-                    Did This Strain Help To Achieve Any Of The Following:
+                    What Do You Hope To Achieve With This Strain?
                   </InputLabel>
                   <Select
                     labelId="reasonSelect"
@@ -134,18 +136,22 @@ export default function RecordReview(props) {
                     <Typography>whats this</Typography>
                   </FormHelperText> */}
                 </FormControl>
+                <br />
+                <Typography variant="body1" style={{ color: "#FFA726" }}>
+                  Track Your Experiences (optional)
+                </Typography>
                 <TextField
-                  id="experience"
-                  label="Experience"
-                  placeholder="What Did You Experience/Feel/Achieve?"
+                  id="expectations"
+                  label="Expectations"
+                  placeholder="What Do You Expect To Experience/Feel/Achieve?"
                   multiline
                   value={props.preTokeForm.worries}
                   onChange={handleTextChange}
                 />
                 <TextField
                   id="worries"
-                  label="Epiphanies? Regrets?"
-                  placeholder="How Did The Experience Transform Your Expectations?"
+                  label="Worries? Lingering thoughts?"
+                  placeholder="Trying To Forget Something?"
                   multiline
                   value={props.preTokeForm.worries}
                   onChange={handleTextChange}
@@ -153,17 +159,26 @@ export default function RecordReview(props) {
                 <TextField
                   id="goals"
                   label="Short/Long-Term Goals"
-                  placeholder="Did The Session Contribute To Your Short/Long-Term Goals? Did It Detract? How?"
+                  placeholder="How Will This Session Get You There?"
                   multiline
                   value={props.preTokeForm.goals}
                   onChange={handleTextChange}
                 />
                 <TextField
-                  id="describeAppearance"
-                  label="Appearance/Texture/Aroma/Density"
-                  placeholder="Briefly Describe The Quality Of The Bud"
+                  id="alreadyAccomplished"
+                  label="To-Do(ne)"
+                  placeholder="What Have You Already Accomplished Today?"
                   multiline
-                  value={props.preTokeForm.describeAppearance}
+                  value={props.preTokeForm.alreadyAccomplished}
+                  onChange={handleTextChange}
+                  required
+                />
+                <TextField
+                  id="planToAccomplish"
+                  label="Todos (before you forget!)"
+                  placeholder="What Do You Still Need To Accomplish Today?"
+                  multiline
+                  value={props.preTokeForm.planToAccomplish}
                   onChange={handleTextChange}
                   required
                 />

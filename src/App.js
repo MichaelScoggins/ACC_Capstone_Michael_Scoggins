@@ -12,7 +12,7 @@ import NavDrawer from "./containers/NavDrawer";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#345600",
+      main: "#408F00",
     },
     secondary: {
       main: orange[400],

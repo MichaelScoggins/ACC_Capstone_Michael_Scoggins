@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     color: "lightgray",
-    "&:hover": { color: "springgreen" },
+    "&:hover": { color: "#FFA726" },
     marginRight: theme.spacing(0),
   },
   title: {

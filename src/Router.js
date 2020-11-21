@@ -8,6 +8,7 @@ import PerfectStrainCards from "./containers/PerfectStrainCards";
 import Home from "./containers/Home";
 import FavStrainsCards from "./containers/FavStrainsCards";
 import SignUp from "./containers/forms/SignUp";
+import Experience from "./containers/Experience";
 
 const checkAuth = () => {
   const cookies = cookie.parse(document.cookie);
@@ -34,6 +35,7 @@ const Router = () => {
       <Route path="/search" component={UserSearchResults} />
       <Route path="/perfectstrain" component={PerfectStrainCards} />
       <Route path="/favorites" component={FavStrainsCards} />
+      <Route path="/experience" component={Experience} />
       <ProtectedRoute path="/add/pre" component={RecordPreLog} />
     </Switch>
   );

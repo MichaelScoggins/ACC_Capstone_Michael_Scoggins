@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Questionnaire from '../../containers/forms/Questionnaire'
+import Questionnaire from "../../containers/forms/Questionnaire";
 
 function Copyright() {
   return (
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
   },
   image: {
-    backgroundImage: "url(./../smoking_the_butterflies.jpg)",
+    backgroundImage: "url(./../spaceman.jpg)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -79,7 +79,7 @@ const SignUp = (props) => {
     console.log({ profile });
     // profile.id = uuidv4();
     props.setProfile(profile);
-    console.log(props.profile);    
+    console.log(props.profile);
     // clearAll();
   };
 

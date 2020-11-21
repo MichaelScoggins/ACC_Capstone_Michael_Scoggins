@@ -88,6 +88,14 @@ li {
   color: #2196f3;
 }
 
+.avatar {
+  color: #eee;
+}
+
+.avatar:hover {
+  color: springgreen;
+}
+
 .bong-icon:hover {
   color: springgreen;
 }

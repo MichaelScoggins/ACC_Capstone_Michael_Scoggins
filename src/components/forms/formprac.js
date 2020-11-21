@@ -20,8 +20,9 @@ import {
 import RecordReview from "../../containers/forms/RecordReview";
 
 export default function RecordPreLog(props) {
+  let preForm;
   const [open, toggleOpen] = React.useState(false);
-  const [currentForm, setCurrentForm] = React.useState(true);
+  const [currentForm, setCurrentForm] = React.useState(preForm);
 
   const toggleDialog = () => toggleOpen(!open);
 
@@ -38,10 +39,7 @@ export default function RecordPreLog(props) {
     toggleOpen(false);
     console.log(props.experiences);
     clearAll();
-  };
-
-  const switchForms = () => {
-    setCurrentForm(!currentForm);
+    setCurrentForm(reviewForm);
   };
 
   const clearAll = () => {
@@ -101,6 +99,7 @@ export default function RecordPreLog(props) {
         <Select
           labelId="reasonSelect"
           id="reason"
+          required
           value={""}
           onChange={handleTextChange}
         >
@@ -293,9 +292,8 @@ export default function RecordPreLog(props) {
                 Before You Try{" "}
                 {/* {<span style={{ color: "springgreen" }}>{strain[0]}</span>} */}
               </Typography>
-              <Button onClick={switchForms}>switch forms</Button>
             </DialogTitle>
-            <DialogContent>{currentForm ? preForm : reviewForm}</DialogContent>
+            <DialogContent>{currentForm}</DialogContent>
           </Dialog>
         </Typography>
       </div>

@@ -93,11 +93,11 @@ export default function NavDrawer(props) {
           </ListItemIcon>
           <ListItemText primary="Favorites" />
         </ListItem>
-        <ListItem onClick={handleArchives} button key="archives">
+        <ListItem onClick={handleArchives} button key="experience">
           <ListItemIcon>
             <LocalLibraryIcon />
           </ListItemIcon>
-          <ListItemText primary="Archives" />
+          <ListItemText primary="Experience" />
         </ListItem>
         <Divider />
         <List>
