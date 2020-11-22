@@ -83,7 +83,7 @@ export default function Experience(props) {
     setDetailsModal(true);
   };
 
-  const handlePreLog = (e) => {
+  const handlePreLogModal = (e) => {
     setPreLogModal(true);
   };
 
@@ -187,23 +187,21 @@ export default function Experience(props) {
                 </Button>
                 <Button
                   size="small"
-                  disableRipple
                   color="secondary"
                   variant="contained"
                   className="heartIcon"
                   id={card.strain.id}
                   onClick={(e) => handleAddFav(e)}
                 >
-                  <Typography style={{ fontWeight: 500 }}>Review</Typography>
+                  <Typography style={{ fontWeight: 500 }}>Add Fav</Typography>
                 </Button>
                 <Button
                   size="small"
-                  disableRipple
                   color="secondary"
                   variant="contained"
                   className="heartIcon"
                   id={card.strain.id}
-                  onClick={(e) => handlePreLog(e)}
+                  onClick={(e) => handlePreLogModal(e)}
                 >
                   <Typography style={{ fontWeight: 500 }}>Review</Typography>
                 </Button>

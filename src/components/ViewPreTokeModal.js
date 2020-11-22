@@ -5,11 +5,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 // import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 import Select from "@material-ui/core/Select";
 import { v4 as uuidv4 } from "uuid";
-import { faBong } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faBong } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Button,
   TextField,
@@ -20,9 +20,9 @@ import {
 import RecordReview from "../containers/forms/RecordReview";
 
 export default function ViewPreTokeModal(props) {
-  const [open, toggleOpen] = React.useState(false);
+  const [open, toggleOpen] = React.useState(true);
 
-  const toggleDialog = () => toggleOpen(!open);
+  // const toggleDialog = () => toggleOpen(!open);
 
   let strain = props.perfectStrainResults.find((s) => s[1].id == props.id);
 
@@ -64,10 +64,15 @@ export default function ViewPreTokeModal(props) {
     props.setPreTokeForm(newState);
   };
 
+  const handleClose = () => {
+    toggleOpen(false);
+    props.setPreLogModal(false);
+  };
+
   return (
     <Fragment>
       <Typography>
-        <Dialog open={open} onClose={toggleDialog}>
+        <Dialog open={open} onClose={handleClose}>
           <DialogTitle>
             <RecordReview />
             <Typography variant="h5">
@@ -132,11 +137,7 @@ export default function ViewPreTokeModal(props) {
                 placeholder="What Did You Experience/Feel/Achieve?"
                 multiline
                 value={props.preTokeForm.worries}
-                onChange={handleTextChange}
                 defaultValue="Hello World"
-                InputProps={{
-                  readOnly: true,
-                }}
               />
               <TextField
                 id="worries"
@@ -144,7 +145,7 @@ export default function ViewPreTokeModal(props) {
                 placeholder="How Did The Experience Transform Your Expectations?"
                 multiline
                 value={props.preTokeForm.worries}
-                onChange={handleTextChange}
+                defaultValue="Hello World"
               />
               <TextField
                 id="goals"
@@ -152,7 +153,7 @@ export default function ViewPreTokeModal(props) {
                 placeholder="Did The Session Contribute To Your Short/Long-Term Goals? Did It Detract? How?"
                 multiline
                 value={props.preTokeForm.goals}
-                onChange={handleTextChange}
+                defaultValue="Hello World"
               />
               <TextField
                 id="describeAppearance"
@@ -160,8 +161,7 @@ export default function ViewPreTokeModal(props) {
                 placeholder="Briefly Describe The Quality Of The Bud"
                 multiline
                 value={props.preTokeForm.describeAppearance}
-                onChange={handleTextChange}
-                required
+                defaultValue="Hello World"
               />
               <br />
               <Button
