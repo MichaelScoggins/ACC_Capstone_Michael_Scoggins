@@ -9,7 +9,10 @@ export default {
     state: "",
   },
   favorites: [],
-  experiences: {},
+  experiences: {
+    preLogs: [],
+    reviews: [],
+  },
   preLogs: [],
   reviews: [],
   title: "",

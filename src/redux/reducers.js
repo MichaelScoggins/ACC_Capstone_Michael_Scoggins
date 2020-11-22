@@ -39,27 +39,13 @@ const profile = (state = {}, action) => {
 const experiences = (state = {}, action) => {
   switch (action.type) {
     case "ADD_PRE_EXP":
-      return Object.assign({}, state, action.value);
+      let newPreExpState = Object.assign({}, state, action.value);
+      newPreExpState.preLogs = [...newPreExpState.preLogs, action.value];
+      return newPreExpState;
     case "ADD_REVIEW":
-      return Object.assign({}, state, action.value);
-    default:
-      return state;
-  }
-};
-
-const preLogs = (state = [], action) => {
-  switch (action.type) {
-    case "ADD_PRE_EXP":
-      return [...state, action.value];
-    default:
-      return state;
-  }
-};
-
-const reviews = (state = [], action) => {
-  switch (action.type) {
-    case "ADD_REVIEW":
-      return [...state, action.value];
+      let newReviewState = Object.assign({}, state, action.value);
+      newReviewState.reviews = [...newReviewState.reviews, action.value];
+      return newReviewState;
     default:
       return state;
   }
@@ -253,6 +239,4 @@ export default combineReducers({
   experiences,
   profile,
   setReviewForm,
-  preLogs,
-  reviews,
 });
