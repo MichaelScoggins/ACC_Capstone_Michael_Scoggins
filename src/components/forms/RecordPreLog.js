@@ -99,7 +99,9 @@ export default function RecordPreLog(props) {
         width: "350px",
       }}
     >
-      {`While I'm ${props.preTokeForm.mood}, I'm hoping to achieve ${props.preTokeForm.reason}, and expecting ${props.preTokeForm.expectations}. I keep thinking that ${props.preTokeForm.worries}, but ${props.preTokeForm.goals}. ${props.preTokeForm.alreadyAccomplished}, and still need to do ${props.preTokeForm.planToAccomplish}.`}
+      <div
+        style={{ paddingBottom: 10 }}
+      >{`While I'm feeling ${props.preTokeForm.mood}, I'm hoping to achieve ${props.preTokeForm.reason}, and expecting ${props.preTokeForm.expectations}. I'm thinking that ${props.preTokeForm.worries}, but ${props.preTokeForm.goals}. I have already ${props.preTokeForm.alreadyAccomplished}, and still need to ${props.preTokeForm.planToAccomplish}.`}</div>
       <FormControl>
         <InputLabel id="moodInput">Current Mood</InputLabel>
         <Select
@@ -116,7 +118,7 @@ export default function RecordPreLog(props) {
           <MenuItem value={"stressed"}>Stressed</MenuItem>
           <MenuItem value={"anxious"}>Anxious</MenuItem>
           <MenuItem value={"depressed"}>Depressed</MenuItem>
-          <MenuItem value={"hurting"}>Physically Hurting</MenuItem>
+          <MenuItem value={"hurting"}>In Pain</MenuItem>
         </Select>
       </FormControl>
       <FormControl>
@@ -291,7 +293,7 @@ export default function RecordPreLog(props) {
         type="submit"
         style={{ marginTop: "10px" }}
       >
-        Let's toke up
+        Leave Review
       </Button>
     </form>
   );
@@ -313,12 +315,10 @@ export default function RecordPreLog(props) {
         <Typography>
           <Dialog open={open} onClose={toggleDialog}>
             <DialogTitle>
-              <RecordReview />
               <Typography variant="h5">
-                Before You Try{" "}
-                {/* {<span style={{ color: "springgreen" }}>{strain[0]}</span>} */}
+                {currentForm ? "Before You Toke " : "After You've Toked "}
+                {<span style={{ color: "springgreen" }}>{strain[0]}</span>}
               </Typography>
-              <Button onClick={switchForms}>switch forms</Button>
             </DialogTitle>
             <DialogContent>{currentForm ? preForm : reviewForm}</DialogContent>
           </Dialog>
