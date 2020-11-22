@@ -84,6 +84,12 @@ export default function RecordPreLog(props) {
     props.setPreTokeForm(newState);
   };
 
+  const handleReasonSelect = (e) => {
+    const newState = props.preTokeForm;
+    newState["reason"] = e.target.value;
+    props.setPreTokeForm(newState);
+  };
+
   const preForm = (
     <form
       onSubmit={handleSubmit}
@@ -102,13 +108,14 @@ export default function RecordPreLog(props) {
           value={props.preTokeForm.mood}
           onChange={handleMoodSelect}
         >
-          <MenuItem value="">
-            <em>None</em>
+          <MenuItem value="normal">
+            <em>normal</em>
           </MenuItem>
-          <MenuItem value={"neutral"}>Neutral</MenuItem>
           <MenuItem value={"positive"}>Positive</MenuItem>
-          <MenuItem value={"negative"}>Negative</MenuItem>
+          <MenuItem value={"stressed"}>Stressed</MenuItem>
           <MenuItem value={"anxious"}>Anxious</MenuItem>
+          <MenuItem value={"depressed"}>Depressed</MenuItem>
+          <MenuItem value={"hurting"}>Physically Hurting</MenuItem>
         </Select>
       </FormControl>
       <FormControl>
@@ -118,38 +125,38 @@ export default function RecordPreLog(props) {
         <Select
           labelId="reasonSelect"
           id="reason"
-          value={""}
-          onChange={handleTextChange}
+          value={props.preTokeForm.reason}
+          onChange={handleReasonSelect}
         >
-          <MenuItem value={"pain"}>Pain Relief</MenuItem>
-          <MenuItem value={"stress"}>Stress Relief</MenuItem>
+          <MenuItem value={"pain relief"}>Pain Relief</MenuItem>
+          <MenuItem value={"stress relief"}>Stress Relief</MenuItem>
           <MenuItem value={"creativity"}>Creativity</MenuItem>
           <MenuItem value={"focus"}>Focus</MenuItem>
           <MenuItem value={"recreation"}>Recreation</MenuItem>
-          <MenuItem value={"hobby"}>Hobby</MenuItem>
-          <MenuItem value={"modularity"}>Mental Modularity</MenuItem>
-          <MenuItem value={"other"}>other</MenuItem>
+          <MenuItem value={"modularity"}>
+            Mental Modularity (pick this if you don't know what you want)
+          </MenuItem>
         </Select>
         {/* <FormHelperText>
         <Typography>whats this</Typography>
       </FormHelperText> */}
       </FormControl>
-      <br />
+      {/* <br />
       <Typography variant="body1" style={{ color: "#FFA726" }}>
         Track Your Experiences (optional)
-      </Typography>
+      </Typography> */}
       <TextField
         id="expectations"
         label="Expectations"
         placeholder="What Do You Expect To Experience/Feel/Achieve?"
         multiline
-        value={props.preTokeForm.worries}
+        value={props.preTokeForm.expectations}
         onChange={handleTextChange}
       />
       <TextField
         id="worries"
         label="Worries? Lingering thoughts?"
-        placeholder="Trying To Forget Something?"
+        placeholder="Trying To Forget Something? Or Dwell On Something?"
         multiline
         value={props.preTokeForm.worries}
         onChange={handleTextChange}

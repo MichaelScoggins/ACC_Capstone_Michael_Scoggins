@@ -74,11 +74,6 @@ export default function FindPerfectStrain(props) {
         (props.speciesPrefs.length === 0 ||
           props.speciesPrefs.includes(strain[1].race))
     );
-    if (perfectStrains.length === 0) {
-      return props.setPerfectStrainResults([
-        ["no results", { "id": 9999, race: "no results" }],
-      ]);
-    }
     // console.log("state", props.perfectStrainResults);
 
     props.setPerfectStrainResults(perfectStrains);

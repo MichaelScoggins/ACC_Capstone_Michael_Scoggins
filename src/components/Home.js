@@ -2,10 +2,10 @@ import React from "react";
 // import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 // import CameraIcon from "@material-ui/icons/PhotoCamera";
-// import Card from "@material-ui/core/Card";
+import Card from "@material-ui/core/Card";
 // import CardActions from "@material-ui/core/CardActions";
-// import CardContent from "@material-ui/core/CardContent";
-// import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 // import SnackbarAddFav from "../containers/SnackbarAddFav";
@@ -131,10 +131,10 @@ export default function Home(props) {
             </div>
           </Container>
         </div>
-        {props.perfectStrainResults.length > 0 ? (
-          <PerfectStrainCards />
-        ) : (
+        {props.perfectStrainResults.length === 0 ? (
           <div className={classes.info}></div>
+        ) : (
+          <PerfectStrainCards />
         )}
       </main>
       {/* Footer */}

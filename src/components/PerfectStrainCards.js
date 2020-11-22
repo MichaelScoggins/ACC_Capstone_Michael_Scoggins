@@ -137,6 +137,22 @@ export default function PerfectStrainCards(props) {
             </Typography>
           </CardContent>
         </Card>
+      ) : props.perfectStrainResults[0][1]["race"] === "too many results" ? (
+        <Card className={classes.card}>
+          <CardMedia
+            className={classes.cardMedia}
+            image="./../picky.jpg"
+            title="picky"
+          />
+          <CardContent className={classes.cardContent}>
+            <Typography gutterBottom variant="h5" component="h2">
+              <h2>
+                <span style={{ color: "orange" }}>Too Many Results!</span>{" "}
+                Please Select Another Preference. Maybe Try Adding a Flavor.
+              </h2>
+            </Typography>
+          </CardContent>
+        </Card>
       ) : (
         <Grid container spacing={4}>
           {props.perfectStrainResults.map((card) => (

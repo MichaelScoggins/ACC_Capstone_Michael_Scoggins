@@ -13,8 +13,6 @@ export default {
     preLogs: [],
     reviews: [],
   },
-  preLogs: [],
-  reviews: [],
   title: "",
   preTokeForm: {
     strain: {
@@ -32,6 +30,7 @@ export default {
     sessionNum: 0,
     reason: "",
     mood: "",
+    expectations: "",
     worries: "",
     goals: "",
     alreadyAccomplished: "",

@@ -86,6 +86,10 @@ export default function FindPerfectStrain(props) {
       return props.setPerfectStrainResults([
         ["no results", { "id": 9999, race: "no results" }],
       ]);
+    } else if (perfectStrains.length > 25) {
+      return props.setPerfectStrainResults([
+        ["too many results", { "id": 10000, race: "too many results" }],
+      ]);
     }
     // console.log("state", props.perfectStrainResults);
 
