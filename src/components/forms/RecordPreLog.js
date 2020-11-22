@@ -25,6 +25,21 @@ export default function RecordPreLog(props) {
 
   const toggleDialog = () => toggleOpen(!open);
 
+  var currentdate = new Date();
+  var datetime =
+    currentdate.getMonth() +
+    1 +
+    "/" +
+    currentdate.getDate() +
+    "/" +
+    currentdate.getFullYear() +
+    " @ " +
+    currentdate.getHours() +
+    ":" +
+    currentdate.getMinutes() +
+    ":" +
+    currentdate.getSeconds();
+
   let strain = props.perfectStrainResults.find((s) => s[1].id == props.id);
 
   const handleSubmit = (e) => {
@@ -32,9 +47,9 @@ export default function RecordPreLog(props) {
     const exp = props.preTokeForm;
     console.log({ exp });
     exp.id = uuidv4();
+    exp.when = datetime;
+    exp.strain = strain[1];
     exp.strain.name = strain[0];
-    exp.strain.race = strain[1].race;
-    exp.strain.id = strain[1].id;
     props.preTokeForm.sessionNum = props.preTokeForm.sessionNum + 1;
     props.addPreExp(exp);
     toggleOpen(false);

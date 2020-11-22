@@ -15,6 +15,7 @@ import Container from "@material-ui/core/Container";
 // import Link from "@material-ui/core/Link";
 // import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
 import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
+import ViewPreTokeModal from "../containers/ViewPreTokeModal";
 // import FindPerfectStrain from "../containers/FindPerfectStrain";
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -74,11 +75,16 @@ export default function Experience(props) {
   const classes = useStyles();
   const [showDetailsModal, setDetailsModal] = React.useState(false);
   const [showDescriptionModal, setDescriptionModal] = React.useState(false);
+  const [showPreLogModal, setPreLogModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
 
   const handleDetailsModal = (e) => {
     setID(e.currentTarget.id);
     setDetailsModal(true);
+  };
+
+  const handlePreLog = (e) => {
+    setPreLogModal(true);
   };
 
   const handleDescriptionModal = (e) => {
@@ -111,6 +117,9 @@ export default function Experience(props) {
             setDescriptionModal={setDescriptionModal}
             sID={strainID}
           />
+        )) ||
+        (showPreLogModal && (
+          <ViewPreTokeModal setPreLogModal={setPreLogModal} sID={strainID} />
         ))}
       {props.experiences.length === 0 && (
         <div className={classes.info}>
@@ -121,7 +130,7 @@ export default function Experience(props) {
       )}
       <Grid container spacing={4}>
         {props.experiences.map((card) => (
-          <Grid item key={card.strain} xs={12} sm={6} md={4}>
+          <Grid item key={card.strain.id} xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <CardMedia
                 className={classes.cardMedia}
@@ -163,22 +172,7 @@ export default function Experience(props) {
                   <Grid item xs={2}></Grid>
                 </Grid>
                 <Typography variant="h5" component="h5">
-                  {card.strain.race == "sativa" ? (
-                    <div style={{ color: "gold" }}>
-                      {card.strain.race.charAt(0).toUpperCase() +
-                        card.strain.race.slice(1)}
-                    </div>
-                  ) : card.strain.race == "indica" ? (
-                    <div style={{ color: "orchid" }}>
-                      {card.strain.race.charAt(0).toUpperCase() +
-                        card.strain.race.slice(1)}
-                    </div>
-                  ) : (
-                    <div style={{ color: "indianred" }}>
-                      {card.strain.race.charAt(0).toUpperCase() +
-                        card.strain.race.slice(1)}
-                    </div>
-                  )}
+                  {card.when}
                 </Typography>
               </CardContent>
               <CardActions>
@@ -189,7 +183,7 @@ export default function Experience(props) {
                   onClick={(e) => handleDetailsModal(e)}
                   id={card.strain.id}
                 >
-                  <Typography>Pre-Toke</Typography>
+                  <Typography style={{ fontWeight: 500 }}>Pre-Toke</Typography>
                 </Button>
                 <Button
                   size="small"
@@ -200,7 +194,18 @@ export default function Experience(props) {
                   id={card.strain.id}
                   onClick={(e) => handleAddFav(e)}
                 >
-                  Review
+                  <Typography style={{ fontWeight: 500 }}>Review</Typography>
+                </Button>
+                <Button
+                  size="small"
+                  disableRipple
+                  color="secondary"
+                  variant="contained"
+                  className="heartIcon"
+                  id={card.strain.id}
+                  onClick={(e) => handlePreLog(e)}
+                >
+                  <Typography style={{ fontWeight: 500 }}>Review</Typography>
                 </Button>
                 <RecordPreLog id={card.strain.id} />
               </CardActions>
