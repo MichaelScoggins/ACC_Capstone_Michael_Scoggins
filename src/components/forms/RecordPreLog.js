@@ -99,6 +99,7 @@ export default function RecordPreLog(props) {
         width: "350px",
       }}
     >
+      {`While I'm ${props.preTokeForm.mood}, I'm hoping to achieve ${props.preTokeForm.reason}, and expecting ${props.preTokeForm.expectations}. I keep thinking that ${props.preTokeForm.worries}, but ${props.preTokeForm.goals}. ${props.preTokeForm.alreadyAccomplished}, and still need to do ${props.preTokeForm.planToAccomplish}.`}
       <FormControl>
         <InputLabel id="moodInput">Current Mood</InputLabel>
         <Select

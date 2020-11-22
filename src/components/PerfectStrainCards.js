@@ -121,7 +121,7 @@ export default function PerfectStrainCards(props) {
         <Card className={classes.card}>
           <CardMedia
             className={classes.cardMedia}
-            image="./../picky.jpg"
+            image="./../whole_world_in_my_hand.png"
             title="picky"
           />
           <CardContent className={classes.cardContent}>
