@@ -84,6 +84,7 @@ export default function Experience(props) {
   };
 
   const handlePreLogModal = (e) => {
+    setID(e.currentTarget.id);
     setPreLogModal(true);
   };
 

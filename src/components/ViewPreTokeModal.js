@@ -24,7 +24,9 @@ export default function ViewPreTokeModal(props) {
 
   // const toggleDialog = () => toggleOpen(!open);
 
-  let preLog = props.experiences.preLogs.find((s) => s[1].id == props.id);
+  const preLog = props.experiences.preLogs.find(
+    (pre) => pre.strain.id == props.sID
+  );
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
