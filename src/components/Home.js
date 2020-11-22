@@ -118,7 +118,7 @@ export default function Home(props) {
                       to="/signup"
                       style={{
                         textDecoration: "none",
-                        color: "crimson",
+                        color: "green",
                       }}
                     >
                       <Typography style={{ fontWeight: "600" }}>

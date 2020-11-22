@@ -69,6 +69,30 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "500px",
     padding: theme.spacing(8, 0, 6),
   },
+  tooManyResults: {
+    backgroundImage: "url(./../picky.jpg)",
+    backgroundRepeat: "no-repeat",
+    backgroundColor:
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "500px",
+    padding: theme.spacing(8, 0, 6),
+  },
+  noResults: {
+    backgroundImage: "url(./../whole_world_in_my_hand.png)",
+    backgroundRepeat: "no-repeat",
+    backgroundColor:
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "500px",
+    padding: theme.spacing(8, 0, 6),
+  },
 }));
 
 export default function PerfectStrainCards(props) {
@@ -118,41 +142,23 @@ export default function PerfectStrainCards(props) {
       )}
 
       {props.perfectStrainResults[0][1]["race"] === "no results" ? (
-        <Card className={classes.card}>
-          <CardMedia
-            className={classes.cardMedia}
-            image="./../whole_world_in_my_hand.png"
-            title="picky"
-          />
-          <CardContent className={classes.cardContent}>
-            <Typography gutterBottom variant="h5" component="h2">
-              <h2>
-                <span style={{ color: "orange" }}>Sorry!</span> You'll have to
-                be a little less picky than that! <br />{" "}
-                <span style={{ color: "red" }}>Hint:</span>{" "}
-                <span style={{ color: "springspringgreen" }}>
-                  Pick at most 2 flavors.
-                </span>
-              </h2>
-            </Typography>
-          </CardContent>
-        </Card>
+        <div className={classes.noResults}>
+          {" "}
+          <h2>
+            <span style={{ color: "darkorange" }}>No Results.</span>
+            <br /> Remove A Preference Or Two <br />{" "}
+            <span style={{ color: "crimson" }}>Hint:</span>{" "}
+            <span style={{ color: "yellow" }}>Pick at most 2 flavors.</span>
+          </h2>
+        </div>
       ) : props.perfectStrainResults[0][1]["race"] === "too many results" ? (
-        <Card className={classes.card}>
-          <CardMedia
-            className={classes.cardMedia}
-            image="./../picky.jpg"
-            title="picky"
-          />
-          <CardContent className={classes.cardContent}>
-            <Typography gutterBottom variant="h5" component="h2">
-              <h2>
-                <span style={{ color: "orange" }}>Too Many Results!</span>{" "}
-                Please Select Another Preference. Maybe Try Adding a Flavor.
-              </h2>
-            </Typography>
-          </CardContent>
-        </Card>
+        <>
+          <h2>
+            <span style={{ color: "orange" }}>Too Many Results!</span> Please
+            Select Another Preference. Maybe Try Adding a Flavor.
+          </h2>
+          <div className={classes.tooManyResults}></div>
+        </>
       ) : (
         <Grid container spacing={4}>
           {props.perfectStrainResults.map((card) => (

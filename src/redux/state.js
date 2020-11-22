@@ -51,6 +51,7 @@ export default {
     },
     when: "",
     sessionNum: 0,
+    reason: "",
     mood: "",
     worries: "",
     goals: "",

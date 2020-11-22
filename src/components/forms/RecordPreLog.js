@@ -18,10 +18,12 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 import RecordReview from "../../containers/forms/RecordReview";
+import SnackbarAddPreLog from "../SnackbarAddPreLog";
 
 export default function RecordPreLog(props) {
   const [open, toggleOpen] = React.useState(false);
   const [currentForm, setCurrentForm] = React.useState(true);
+  const [showSnackbar, toggleSnackbar] = React.useState(false);
 
   const toggleDialog = () => toggleOpen(!open);
 
@@ -55,6 +57,7 @@ export default function RecordPreLog(props) {
     toggleOpen(false);
     console.log(props.experiences.preLogs);
     clearAll();
+    toggleSnackbar(true);
   };
 
   const switchForms = () => {
@@ -63,7 +66,9 @@ export default function RecordPreLog(props) {
 
   const clearAll = () => {
     props.setPreTokeForm({
+      reason: "",
       mood: "",
+      expectations: "",
       worries: "",
       goals: "",
       alreadyAccomplished: "",
@@ -101,7 +106,7 @@ export default function RecordPreLog(props) {
     >
       <div
         style={{ paddingBottom: 10 }}
-      >{`While I'm feeling ${props.preTokeForm.mood}, I'm hoping to achieve ${props.preTokeForm.reason}, and expecting ${props.preTokeForm.expectations}. I'm thinking that ${props.preTokeForm.worries}, but ${props.preTokeForm.goals}. I have already ${props.preTokeForm.alreadyAccomplished}, and still need to ${props.preTokeForm.planToAccomplish}.`}</div>
+      >{`While I'm feeling ${props.preTokeForm.mood}, I'm hoping to achieve ${props.preTokeForm.reason}, and expecting ${props.preTokeForm.expectations}. I'm thinking ${props.preTokeForm.worries}, but ${props.preTokeForm.goals}. I have already ${props.preTokeForm.alreadyAccomplished}, and still need to ${props.preTokeForm.planToAccomplish}.`}</div>
       <FormControl>
         <InputLabel id="moodInput">Current Mood</InputLabel>
         <Select
@@ -112,13 +117,13 @@ export default function RecordPreLog(props) {
           onChange={handleMoodSelect}
         >
           <MenuItem value="normal">
-            <em>normal</em>
+            <em>Normal</em>
           </MenuItem>
           <MenuItem value={"positive"}>Positive</MenuItem>
           <MenuItem value={"stressed"}>Stressed</MenuItem>
           <MenuItem value={"anxious"}>Anxious</MenuItem>
           <MenuItem value={"depressed"}>Depressed</MenuItem>
-          <MenuItem value={"hurting"}>In Pain</MenuItem>
+          <MenuItem value={"pain"}>In Pain</MenuItem>
         </Select>
       </FormControl>
       <FormControl>
@@ -133,12 +138,12 @@ export default function RecordPreLog(props) {
         >
           <MenuItem value={"pain relief"}>Pain Relief</MenuItem>
           <MenuItem value={"stress relief"}>Stress Relief</MenuItem>
-          <MenuItem value={"creativity"}>Creativity</MenuItem>
+          <MenuItem value={"a creativity mindset"}>Creativity</MenuItem>
           <MenuItem value={"focus"}>Focus</MenuItem>
-          <MenuItem value={"recreation"}>Recreation</MenuItem>
-          <MenuItem value={"modularity"}>
-            Mental Modularity (pick this if you don't know what you want)
-          </MenuItem>
+          <MenuItem value={"social awareness"}>Recreation</MenuItem>
+          <MenuItem value={"stillness"}>Meditation</MenuItem>
+          <MenuItem value={"modularity"}>Mental Modularity</MenuItem>
+          <MenuItem value={"something personal"}>Other</MenuItem>
         </Select>
         {/* <FormHelperText>
         <Typography>whats this</Typography>
@@ -300,6 +305,11 @@ export default function RecordPreLog(props) {
 
   return (
     <Fragment>
+      <SnackbarAddPreLog
+        toggleSnackbar={toggleSnackbar}
+        showSnackbar={showSnackbar}
+        strainName={strain[0]}
+      />
       <div style={{ textAlign: "center" }}>
         <Typography>
           <IconButton
