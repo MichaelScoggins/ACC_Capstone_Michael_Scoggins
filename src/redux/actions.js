@@ -26,6 +26,13 @@ export const addPreExp = (exp) => {
   };
 };
 
+export const addReview = (exp) => {
+  return {
+    type: "ADD_REVIEW",
+    value: exp,
+  };
+};
+
 export const setTitle = (input) => {
   return {
     type: "SET_TITLE",

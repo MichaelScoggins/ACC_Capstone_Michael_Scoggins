@@ -121,7 +121,7 @@ export default function Experience(props) {
         (showPreLogModal && (
           <ViewPreTokeModal setPreLogModal={setPreLogModal} sID={strainID} />
         ))}
-      {props.experiences.length === 0 && (
+      {props.experiences.preLogs.length === 0 && (
         <div className={classes.info}>
           <Typography style={{ color: "white" }} variant="h4">
             Click The Bong On A <br /> Strain Card To Log An Experience!
@@ -129,7 +129,7 @@ export default function Experience(props) {
         </div>
       )}
       <Grid container spacing={4}>
-        {props.experiences.map((card) => (
+        {props.experiences.preLogs.map((card) => (
           <Grid item key={card.strain.id} xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <CardMedia

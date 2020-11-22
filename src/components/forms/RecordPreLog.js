@@ -44,16 +44,16 @@ export default function RecordPreLog(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const exp = props.preTokeForm;
-    console.log({ exp });
-    exp.id = uuidv4();
-    exp.when = datetime;
-    exp.strain = strain[1];
-    exp.strain.name = strain[0];
-    props.preTokeForm.sessionNum = props.preTokeForm.sessionNum + 1;
-    props.addPreExp(exp);
+    const preLog = props.preTokeForm;
+    console.log({ preLog });
+    preLog.id = uuidv4();
+    preLog.when = datetime;
+    preLog.strain = strain[1];
+    preLog.strain.name = strain[0];
+    preLog.sessionNum = props.experiences.preLogs.length + 1;
+    props.addPreExp(preLog);
     toggleOpen(false);
-    console.log(props.experiences);
+    console.log(props.experiences.preLogs);
     clearAll();
   };
 

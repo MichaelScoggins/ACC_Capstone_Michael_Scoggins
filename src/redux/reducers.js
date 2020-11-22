@@ -18,6 +18,15 @@ const preTokeForm = (state = {}, action) => {
   }
 };
 
+const setReviewForm = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_REVIEW":
+      return Object.assign({}, state, action.value);
+    default:
+      return state;
+  }
+};
+
 const profile = (state = {}, action) => {
   switch (action.type) {
     case "SET_PROFILE":
@@ -27,9 +36,29 @@ const profile = (state = {}, action) => {
   }
 };
 
-const experiences = (state = [], action) => {
+const experiences = (state = {}, action) => {
   switch (action.type) {
     case "ADD_PRE_EXP":
+      return Object.assign({}, state, action.value);
+    case "ADD_REVIEW":
+      return Object.assign({}, state, action.value);
+    default:
+      return state;
+  }
+};
+
+const preLogs = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_PRE_EXP":
+      return [...state, action.value];
+    default:
+      return state;
+  }
+};
+
+const reviews = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_REVIEW":
       return [...state, action.value];
     default:
       return state;
@@ -222,5 +251,8 @@ export default combineReducers({
   title,
   preTokeForm,
   experiences,
-  profile
+  profile,
+  setReviewForm,
+  preLogs,
+  reviews,
 });

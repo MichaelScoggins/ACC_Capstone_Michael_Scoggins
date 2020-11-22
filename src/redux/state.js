@@ -9,7 +9,9 @@ export default {
     state: "",
   },
   favorites: [],
-  experiences: [],
+  experiences: {},
+  preLogs: [],
+  reviews: [],
   title: "",
   preTokeForm: {
     strain: {
