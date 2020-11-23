@@ -72,7 +72,7 @@ export default function ViewReviewModal(props) {
 
   const handleClose = () => {
     toggleOpen(false);
-    props.setViewPreTokeModal(false);
+    props.setViewReviewModal(false);
   };
 
   return (
@@ -81,7 +81,7 @@ export default function ViewReviewModal(props) {
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>
             <Typography variant="h5">
-              After Trying
+              After Trying{""}
               {
                 <span style={{ color: "springgreen" }}>
                   {review.strain.name}
@@ -90,7 +90,7 @@ export default function ViewReviewModal(props) {
             </Typography>
           </DialogTitle>
           <DialogContent>
-            {`The bud was ${review.describeAppearance}. I started out feeling ${preLog.mood}, and ended up feeling ${review.mood}. I was expecting ${preLog.expectations}; afterwards ${review.expectations}. Overall, I ${review.experience}. I was thinking that ${preLog.worries}, and ${preLog.goals}. After my experience, I was more worried that ${review.worries}, and ${review.goals}. I had already ${preLog.alreadyAccomplished}, and still needed to ${preLog.planToAccomplish}.`}
+            {`The bud was ${review.describeAppearance}. I started out feeling ${preLog.mood}, and ended up feeling ${review.mood}. I was expecting ${preLog.expectations}; afterwards ${review.expectations}. Overall, I ${review.experience}. I was thinking that ${preLog.worries}, and ${preLog.goals}. After my experience, I was more worried that ${review.worries}, and ${review.goals}. I had already ${preLog.alreadyAccomplished}, and still needed to ${preLog.planToAccomplish}. This strain is good for ${review.reason}.`}
           </DialogContent>
         </Dialog>
       </Typography>

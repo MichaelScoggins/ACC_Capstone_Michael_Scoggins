@@ -48,6 +48,8 @@ export default function RecordReview(props) {
     props.setReviewForm({
       reason: "",
       mood: "",
+      expectations: "",
+      experience: "",
       worries: "",
       goals: "",
       describeAppearance: "",
@@ -94,16 +96,17 @@ export default function RecordReview(props) {
               <div
                 style={{ paddingBottom: 10 }}
               >{`The bud was ${props.reviewForm.describeAppearance}. I started out feeling ${preLog.mood}, and ended up feeling ${props.reviewForm.mood}. I was expecting ${preLog.expectations}; afterwards ${props.reviewForm.expectations}. Overall, I ${props.reviewForm.experience}. I was thinking that ${preLog.worries}, and ${preLog.goals}. After my experience, I was more worried that ${props.reviewForm.worries}, and ${props.reviewForm.goals}. I had already ${preLog.alreadyAccomplished}, and still needed to ${preLog.planToAccomplish}.`}</div>
+
+              <TextField
+                id="describeAppearance"
+                label="Appearance/Texture/Aroma/Density"
+                placeholder="Briefly Describe The Quality Of The Bud"
+                multiline
+                value={props.reviewForm.describeAppearance}
+                onChange={handleTextChange}
+                required
+              />
               <FormControl>
-                <TextField
-                  id="describeAppearance"
-                  label="Appearance/Texture/Aroma/Density"
-                  placeholder="Briefly Describe The Quality Of The Bud"
-                  multiline
-                  value={props.reviewForm.describeAppearance}
-                  onChange={handleTextChange}
-                  required
-                />
                 <InputLabel id="moodInput">New Mood</InputLabel>
                 <Select
                   labelId="moodInput"
@@ -127,7 +130,7 @@ export default function RecordReview(props) {
                   Did This Strain Help To Achieve Any Of The Following:
                 </InputLabel>
                 <Select
-                  labelId="reasonSelect"
+                  labelId="reasonInput"
                   id="reason"
                   required
                   value={props.reviewForm.reason}
@@ -151,6 +154,7 @@ export default function RecordReview(props) {
                 label="New Worries"
                 placeholder="Do You Have The Same Worries, New Worries, Or No Worries?"
                 multiline
+                required
                 value={props.reviewForm.worries}
                 onChange={handleTextChange}
               />
@@ -159,6 +163,7 @@ export default function RecordReview(props) {
                 label="Experience"
                 placeholder="What Did You Experience/Feel/Achieve?"
                 multiline
+                required
                 value={props.reviewForm.experience}
                 onChange={handleTextChange}
               />
@@ -175,6 +180,7 @@ export default function RecordReview(props) {
                 label="Short/Long-Term Goals"
                 placeholder="Did The Session Contribute To Your Short/Long-Term Goals? Did It Detract? How?"
                 multiline
+                required
                 value={props.reviewForm.goals}
                 onChange={handleTextChange}
               />

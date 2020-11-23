@@ -20,14 +20,14 @@ import ViewPreTokeModal from "../containers/ViewPreTokeModal";
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import SnackbarAddFav from "../containers/SnackbarAddFav";
-import RecordPreLog from "../containers/forms/RecordPreLog";
+// import RecordPreLog from "../containers/forms/RecordPreLog";
 import PerfectStrainDescriptionCard from "../containers/PerfectStrainDescriptionCard";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import RecordReview from "../containers/forms/RecordReview";
-import ViewReviewModal from "../containers/forms/RecordReview";
+import ViewReviewModal from "../containers/ViewReviewModal";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -114,7 +114,10 @@ export default function Experience(props) {
     let existingReview = props.experiences.reviews.find(
       (review) => review.strain.id == id
     );
+
+    console.log({ existingReview });
     existingReview ? setViewReviewModal(true) : setAddReviewForm(true);
+    console.log({ showViewReviewModal });
     // let review = props.experiences.reviews.find(
     //   (review) => review.strain.id == id
     // );
@@ -123,33 +126,33 @@ export default function Experience(props) {
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       <SnackbarAddFav sID={strainID} />
-      {(showDetailsModal && (
+      {showDetailsModal && (
         <PerfectStrainDetailsCard
           setDetailsModal={setDetailsModal}
           sID={strainID}
         />
-      )) ||
-        (showDescriptionModal && (
-          <PerfectStrainDescriptionCard
-            setDescriptionModal={setDescriptionModal}
-            sID={strainID}
-          />
-        )) ||
-        (showViewPreTokeModal && (
-          <ViewPreTokeModal
-            setViewPreTokeModal={setViewPreTokeModal}
-            sID={strainID}
-          />
-        )) ||
-        (showAddReviewForm && (
-          <RecordReview setAddReviewForm={setAddReviewForm} sID={strainID} />
-        )) ||
-        (showViewReviewModal && (
-          <ViewReviewModal
-            setViewReviewModal={setViewReviewModal}
-            sID={strainID}
-          />
-        ))}
+      )}
+      {showDescriptionModal && (
+        <PerfectStrainDescriptionCard
+          setDescriptionModal={setDescriptionModal}
+          sID={strainID}
+        />
+      )}
+      {showViewPreTokeModal && (
+        <ViewPreTokeModal
+          setViewPreTokeModal={setViewPreTokeModal}
+          sID={strainID}
+        />
+      )}
+      {showAddReviewForm && (
+        <RecordReview setAddReviewForm={setAddReviewForm} sID={strainID} />
+      )}
+      {showViewReviewModal && (
+        <ViewReviewModal
+          setViewReviewModal={setViewReviewModal}
+          sID={strainID}
+        />
+      )}
       {props.experiences.preLogs.length === 0 && (
         <div className={classes.info}>
           <Typography style={{ color: "white" }} variant="h4">

@@ -77,7 +77,7 @@ export default function ViewPreTokeModal(props) {
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>
             <Typography variant="h5">
-              Before You Try{" "}
+              Before You Tried{" "}
               {
                 <span style={{ color: "springgreen" }}>
                   {preLog.strain.name}
