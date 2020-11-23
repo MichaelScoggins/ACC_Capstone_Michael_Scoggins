@@ -17,7 +17,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@material-ui/core";
-import RecordReview from "../../containers/forms/RecordReview";
+// import RecordReview from "../../containers/forms/RecordReview";
 import SnackbarAddPreLog from "../SnackbarAddPreLog";
 
 export default function RecordPreLog(props) {
@@ -135,6 +135,7 @@ export default function RecordPreLog(props) {
           id="reason"
           value={props.preTokeForm.reason}
           onChange={handleReasonSelect}
+          required
         >
           <MenuItem value={"pain relief"}>Pain Relief</MenuItem>
           <MenuItem value={"stress relief"}>Stress Relief</MenuItem>
@@ -160,6 +161,7 @@ export default function RecordPreLog(props) {
         multiline
         value={props.preTokeForm.expectations}
         onChange={handleTextChange}
+        required
       />
       <TextField
         id="worries"
@@ -168,6 +170,7 @@ export default function RecordPreLog(props) {
         multiline
         value={props.preTokeForm.worries}
         onChange={handleTextChange}
+        required
       />
       <TextField
         id="goals"
@@ -176,6 +179,7 @@ export default function RecordPreLog(props) {
         multiline
         value={props.preTokeForm.goals}
         onChange={handleTextChange}
+        required
       />
       <TextField
         id="alreadyAccomplished"

@@ -18,7 +18,7 @@ const preTokeForm = (state = {}, action) => {
   }
 };
 
-const setReviewForm = (state = {}, action) => {
+const reviewForm = (state = {}, action) => {
   switch (action.type) {
     case "SET_REVIEW":
       return Object.assign({}, state, action.value);
@@ -238,5 +238,5 @@ export default combineReducers({
   preTokeForm,
   experiences,
   profile,
-  setReviewForm,
+  reviewForm,
 });

@@ -12,6 +12,13 @@ export const setPreTokeForm = (input) => {
   };
 };
 
+export const setReviewForm = (input) => {
+  return {
+    type: "SET_REVIEW",
+    value: input,
+  };
+};
+
 export const setProfile = (input) => {
   return {
     type: "SET_PROFILE",

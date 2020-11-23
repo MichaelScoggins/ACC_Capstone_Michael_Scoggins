@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Redirect } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -34,14 +35,16 @@ export default function SnackbarAddPreLog(props) {
         }
         action={
           <React.Fragment>
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              onClick={handleClose}
-            >
-              Goto Exp
-            </Button>
+            <Link to="/experience" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                style={{ cursor: "pointer" }}
+              >
+                Goto Exp
+              </Button>
+            </Link>
             <IconButton
               size="small"
               aria-label="close"

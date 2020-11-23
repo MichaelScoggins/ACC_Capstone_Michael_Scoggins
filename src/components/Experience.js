@@ -18,7 +18,7 @@ import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
 import ViewPreTokeModal from "../containers/ViewPreTokeModal";
 // import FindPerfectStrain from "../containers/FindPerfectStrain";
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import SnackbarAddFav from "../containers/SnackbarAddFav";
 import RecordPreLog from "../containers/forms/RecordPreLog";
 import PerfectStrainDescriptionCard from "../containers/PerfectStrainDescriptionCard";
@@ -26,6 +26,8 @@ import PerfectStrainDescriptionCard from "../containers/PerfectStrainDescription
 // import IconButton from "@material-ui/core/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import RecordReview from "../containers/forms/RecordReview";
+import ViewReviewModal from "../containers/forms/RecordReview";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -75,7 +77,9 @@ export default function Experience(props) {
   const classes = useStyles();
   const [showDetailsModal, setDetailsModal] = React.useState(false);
   const [showDescriptionModal, setDescriptionModal] = React.useState(false);
-  const [showPreLogModal, setPreLogModal] = React.useState(false);
+  const [showViewPreTokeModal, setViewPreTokeModal] = React.useState(false);
+  const [showAddReviewForm, setAddReviewForm] = React.useState(false);
+  const [showViewReviewModal, setViewReviewModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
 
   const handleDetailsModal = (e) => {
@@ -85,7 +89,7 @@ export default function Experience(props) {
 
   const handlePreLogModal = (e) => {
     setID(e.currentTarget.id);
-    setPreLogModal(true);
+    setViewPreTokeModal(true);
   };
 
   const handleDescriptionModal = (e) => {
@@ -104,6 +108,18 @@ export default function Experience(props) {
     console.log("favs", props.favorites);
   };
 
+  const handleOpenReview = (e) => {
+    const id = e.currentTarget.id;
+    setID(id);
+    let existingReview = props.experiences.reviews.find(
+      (review) => review.strain.id == id
+    );
+    existingReview ? setViewReviewModal(true) : setAddReviewForm(true);
+    // let review = props.experiences.reviews.find(
+    //   (review) => review.strain.id == id
+    // );
+  };
+
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       <SnackbarAddFav sID={strainID} />
@@ -119,8 +135,20 @@ export default function Experience(props) {
             sID={strainID}
           />
         )) ||
-        (showPreLogModal && (
-          <ViewPreTokeModal setPreLogModal={setPreLogModal} sID={strainID} />
+        (showViewPreTokeModal && (
+          <ViewPreTokeModal
+            setViewPreTokeModal={setViewPreTokeModal}
+            sID={strainID}
+          />
+        )) ||
+        (showAddReviewForm && (
+          <RecordReview setAddReviewForm={setAddReviewForm} sID={strainID} />
+        )) ||
+        (showViewReviewModal && (
+          <ViewReviewModal
+            setViewReviewModal={setViewReviewModal}
+            sID={strainID}
+          />
         ))}
       {props.experiences.preLogs.length === 0 && (
         <div className={classes.info}>
@@ -181,20 +209,21 @@ export default function Experience(props) {
                   size="small"
                   color="primary"
                   variant="contained"
-                  onClick={(e) => handleDetailsModal(e)}
+                  onClick={(e) => handlePreLogModal(e)}
                   id={card.strain.id}
                 >
-                  <Typography style={{ fontWeight: 500 }}>Pre-Toke</Typography>
+                  <Typography style={{ fontWeight: 500 }}>before</Typography>
                 </Button>
                 <Button
                   size="small"
+                  disableRipple
                   color="secondary"
                   variant="contained"
                   className="heartIcon"
                   id={card.strain.id}
                   onClick={(e) => handleAddFav(e)}
                 >
-                  <Typography style={{ fontWeight: 500 }}>Add Fav</Typography>
+                  <FavoriteIcon />
                 </Button>
                 <Button
                   size="small"
@@ -202,11 +231,10 @@ export default function Experience(props) {
                   variant="contained"
                   className="heartIcon"
                   id={card.strain.id}
-                  onClick={(e) => handlePreLogModal(e)}
+                  onClick={(e) => handleOpenReview(e)}
                 >
-                  <Typography style={{ fontWeight: 500 }}>Review</Typography>
+                  <Typography style={{ fontWeight: 500 }}>After</Typography>
                 </Button>
-                <RecordPreLog id={card.strain.id} />
               </CardActions>
             </Card>
           </Grid>

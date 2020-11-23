@@ -1,23 +1,23 @@
 import React, { Fragment } from "react";
 // import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
+// import InputLabel from "@material-ui/core/InputLabel";
+// import MenuItem from "@material-ui/core/MenuItem";
+// import FormHelperText from "@material-ui/core/FormHelperText";
+// import FormControl from "@material-ui/core/FormControl";
 import Typography from "@material-ui/core/Typography";
 // import IconButton from "@material-ui/core/IconButton";
-import Select from "@material-ui/core/Select";
+// import Select from "@material-ui/core/Select";
 // import { v4 as uuidv4 } from "uuid";
 // import { faBong } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Button,
-  TextField,
+  // Button,
+  // TextField,
   Dialog,
   DialogContent,
   DialogTitle,
 } from "@material-ui/core";
-import RecordReview from "../containers/forms/RecordReview";
+// import RecordReview from "../containers/forms/RecordReview";
 
 export default function ViewPreTokeModal(props) {
   const [open, toggleOpen] = React.useState(true);
@@ -68,7 +68,7 @@ export default function ViewPreTokeModal(props) {
 
   const handleClose = () => {
     toggleOpen(false);
-    props.setPreLogModal(false);
+    props.setViewPreTokeModal(false);
   };
 
   return (
@@ -76,10 +76,13 @@ export default function ViewPreTokeModal(props) {
       <Typography>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>
-            <RecordReview />
             <Typography variant="h5">
               Before You Try{" "}
-              {/* {<span style={{ color: "springgreen" }}>{strain[0]}</span>} */}
+              {
+                <span style={{ color: "springgreen" }}>
+                  {preLog.strain.name}
+                </span>
+              }
             </Typography>
           </DialogTitle>
           <DialogContent>
