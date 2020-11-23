@@ -93,9 +93,43 @@ export default function RecordReview(props) {
                 width: "350px",
               }}
             >
-              <div
-                style={{ paddingBottom: 10 }}
-              >{`The bud was ${props.reviewForm.describeAppearance}. I started out feeling ${preLog.mood}, and ended up feeling ${props.reviewForm.mood}. I was expecting ${preLog.expectations}; afterwards ${props.reviewForm.expectations}. Overall, I ${props.reviewForm.experience}. I was thinking that ${preLog.worries}, and ${preLog.goals}. After my experience, I was more worried that ${props.reviewForm.worries}, and ${props.reviewForm.goals}. I had already ${preLog.alreadyAccomplished}, and still needed to ${preLog.planToAccomplish}. This strain is good for ${review.reason}.`}</div>
+              <div style={{ paddingBottom: 10 }}>
+                The bud was{" "}
+                <span style={{ color: "springgreen" }}>
+                  {props.reviewForm.describeAppearance}
+                </span>
+                . This strain is good for{" "}
+                <span style={{ color: "springgreen" }}>
+                  {props.reviewForm.reason}
+                </span>
+                . I started out feeling{" "}
+                <span style={{ color: "orange" }}>{preLog.mood}</span>, and
+                ended up feeling{" "}
+                <span style={{ color: "orange" }}>{props.reviewForm.mood}</span>
+                . I was expecting{" "}
+                <span style={{ color: "orange" }}>{preLog.expectations}; </span>
+                afterwards,{" "}
+                <span style={{ color: "orange" }}>
+                  {props.reviewForm.expectations}
+                </span>
+                . I was thinking about{" "}
+                <span style={{ color: "orange" }}>{preLog.worries}</span>, and
+                believing{" "}
+                <span style={{ color: "orange" }}>{preLog.goals}</span>. I
+                experienced{" "}
+                <span style={{ color: "orange" }}>
+                  {props.reviewForm.experience}
+                </span>{" "}
+                and my worries{" "}
+                <span style={{ color: "orange" }}>
+                  {props.reviewForm.worries}{" "}
+                </span>
+                .{" "}
+                <span style={{ color: "orange" }}>
+                  {props.reviewForm.goals}
+                </span>
+                .
+              </div>
 
               <TextField
                 id="describeAppearance"
@@ -105,60 +139,6 @@ export default function RecordReview(props) {
                 value={props.reviewForm.describeAppearance}
                 onChange={handleTextChange}
                 required
-              />
-              <FormControl>
-                <InputLabel id="moodInput">New Mood</InputLabel>
-                <Select
-                  labelId="moodInput"
-                  id="mood"
-                  required
-                  value={props.reviewForm.mood}
-                  onChange={handleMoodSelect}
-                >
-                  <MenuItem value="normal">
-                    <em>Normal</em>
-                  </MenuItem>
-                  <MenuItem value={"positive"}>Positive</MenuItem>
-                  <MenuItem value={"stressed"}>Stressed</MenuItem>
-                  <MenuItem value={"anxious"}>Anxious</MenuItem>
-                  <MenuItem value={"depressed"}>Depressed</MenuItem>
-                  <MenuItem value={"pain"}>In Pain</MenuItem>
-                </Select>
-              </FormControl>
-              <TextField
-                id="worries"
-                label="New Worries"
-                placeholder="Do You Have The Same Worries, New Worries, Or No Worries?"
-                multiline
-                required
-                value={props.reviewForm.worries}
-                onChange={handleTextChange}
-              />
-              <TextField
-                id="experience"
-                label="Experience"
-                placeholder="What Did You Experience/Feel/Achieve?"
-                multiline
-                required
-                value={props.reviewForm.experience}
-                onChange={handleTextChange}
-              />
-              <TextField
-                id="expectations"
-                label="Epiphanies? Regrets?"
-                placeholder="How Did The Experience Transform Your Expectations?"
-                multiline
-                value={props.reviewForm.expectations}
-                onChange={handleTextChange}
-              />
-              <TextField
-                id="goals"
-                label="Short/Long-Term Goals"
-                placeholder="Did The Session Contribute To Your Short/Long-Term Goals? Did It Detract? How?"
-                multiline
-                required
-                value={props.reviewForm.goals}
-                onChange={handleTextChange}
               />
               <FormControl>
                 <InputLabel id="reasonInput">
@@ -184,6 +164,60 @@ export default function RecordReview(props) {
                     <Typography>whats this</Typography>
                   </FormHelperText> */}
               </FormControl>
+              <FormControl>
+                <InputLabel id="moodInput">New Mood</InputLabel>
+                <Select
+                  labelId="moodInput"
+                  id="mood"
+                  required
+                  value={props.reviewForm.mood}
+                  onChange={handleMoodSelect}
+                >
+                  <MenuItem value="normal">
+                    <em>Normal</em>
+                  </MenuItem>
+                  <MenuItem value={"positive"}>Positive</MenuItem>
+                  <MenuItem value={"stressed"}>Stressed</MenuItem>
+                  <MenuItem value={"anxious"}>Anxious</MenuItem>
+                  <MenuItem value={"depressed"}>Depressed</MenuItem>
+                  <MenuItem value={"pain"}>In Pain</MenuItem>
+                </Select>
+              </FormControl>
+              <TextField
+                id="expectations"
+                label="Epiphanies? Regrets?"
+                placeholder="How Did The Experience Transform Your Expectations?"
+                multiline
+                value={props.reviewForm.expectations}
+                onChange={handleTextChange}
+              />
+              <TextField
+                id="experience"
+                label="Experience"
+                placeholder="What Did You Experience/Feel/Achieve?"
+                multiline
+                required
+                value={props.reviewForm.experience}
+                onChange={handleTextChange}
+              />
+              <TextField
+                id="worries"
+                label="Worries"
+                placeholder="Have Your Worries Transformed? How?"
+                multiline
+                required
+                value={props.reviewForm.worries}
+                onChange={handleTextChange}
+              />
+              <TextField
+                id="goals"
+                label="Short/Long-Term Goals"
+                placeholder="Did The Session Contribute To Your Short/Long-Term Goals? Did It Detract? How?"
+                multiline
+                required
+                value={props.reviewForm.goals}
+                onChange={handleTextChange}
+              />
               <br />
               <Button
                 variant="contained"

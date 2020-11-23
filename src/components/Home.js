@@ -105,7 +105,9 @@ export default function Home(props) {
               paragraph
             >
               Use our expertly crafted algorithm to search thousands of strains
-              and locate the perfect mood
+              and locate the perfect mood. Sign in to keep track of your
+              experience with each strain--posting them for others to reference,
+              or keeping them as a private collection.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
@@ -113,19 +115,24 @@ export default function Home(props) {
                   <FindPerfectStrain1 />
                 </Grid>
                 <Grid item>
-                  <Button variant="contained" color="secondary">
-                    <Link
-                      to="/signup"
-                      style={{
-                        textDecoration: "none",
-                        color: "green",
-                      }}
-                    >
-                      <Typography style={{ fontWeight: "600" }}>
+                  <Link
+                    to="/signup"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                  >
+                    <Button variant="contained" color="secondary">
+                      <Typography
+                        style={{
+                          fontWeight: "600",
+                          color: "green",
+                          textShadow: "1px 1px yellowgreen",
+                        }}
+                      >
                         Sign Up to Post Experience
                       </Typography>
-                    </Link>
-                  </Button>
+                    </Button>
+                  </Link>
                 </Grid>
               </Grid>
             </div>

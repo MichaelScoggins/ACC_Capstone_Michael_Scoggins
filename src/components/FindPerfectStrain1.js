@@ -13,11 +13,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 // import MenuItem from "@material-ui/core/MenuItem";
 // import FormControl from "@material-ui/core/FormControl";
 // import Select from "@material-ui/core/Select";import FormControl from "@material-ui/core/FormControl";
-import Container from "@material-ui/core/Container";
+// import Container from "@material-ui/core/Container";
 import FormControl from "@material-ui/core/FormControl";
-import IconButton from "@material-ui/core/IconButton";
-import { faBong } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import IconButton from "@material-ui/core/IconButton";
+// import { faBong } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PosEffectsChips from "../containers/chips/PosEffectsChips";
 import NegEffectsChips from "../containers/chips/NegEffectsChips";
 import MedicinalChips from "../containers/chips/MedicinalChips";
@@ -126,7 +126,15 @@ export default function FindPerfectStrain(props) {
         variant="contained"
         color="primary"
       >
-        <Typography>Find The Perfect Strain</Typography>
+        <Typography
+          style={{
+            fontWeight: 600,
+            color: "#FFA726",
+            textShadow: "1px 1px #333",
+          }}
+        >
+          Find The Perfect Strain
+        </Typography>
       </Button>
       {loading && <Loading setLoading={setLoading} />}
       <Dialog

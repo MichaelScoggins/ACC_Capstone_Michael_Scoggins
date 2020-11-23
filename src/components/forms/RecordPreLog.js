@@ -104,9 +104,28 @@ export default function RecordPreLog(props) {
         width: "350px",
       }}
     >
-      <div
-        style={{ paddingBottom: 10 }}
-      >{`While I'm feeling ${props.preTokeForm.mood}, I'm hoping to achieve ${props.preTokeForm.reason}, and expecting ${props.preTokeForm.expectations}. I'm thinking ${props.preTokeForm.worries}, but ${props.preTokeForm.goals}. I have already ${props.preTokeForm.alreadyAccomplished}, and still need to ${props.preTokeForm.planToAccomplish}.`}</div>
+      <div style={{ paddingBottom: 10 }}>
+        While I'm feeling{" "}
+        <span style={{ color: "orange" }}>{props.preTokeForm.mood}</span>, I'm
+        hoping to achieve{" "}
+        <span style={{ color: "orange" }}>{props.preTokeForm.reason}</span>, and
+        expecting{" "}
+        <span style={{ color: "orange" }}>
+          {props.preTokeForm.expectations}
+        </span>
+        . I'm thinking about{" "}
+        <span style={{ color: "orange" }}>{props.preTokeForm.worries}</span>,
+        but <span style={{ color: "orange" }}>{props.preTokeForm.goals}</span>.
+        I have already{" "}
+        <span style={{ color: "orange" }}>
+          {props.preTokeForm.alreadyAccomplished}
+        </span>
+        , and still need to{" "}
+        <span style={{ color: "orange" }}>
+          {props.preTokeForm.planToAccomplish}
+        </span>
+        .
+      </div>
       <FormControl>
         <InputLabel id="moodInput">Current Mood</InputLabel>
         <Select

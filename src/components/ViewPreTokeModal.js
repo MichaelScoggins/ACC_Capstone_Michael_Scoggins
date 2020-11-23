@@ -86,7 +86,20 @@ export default function ViewPreTokeModal(props) {
             </Typography>
           </DialogTitle>
           <DialogContent>
-            {`While I'm feeling ${preLog.mood}, I'm hoping to achieve ${preLog.reason}, and expecting ${preLog.expectations}. I'm thinking ${preLog.worries}, but ${preLog.goals}. I have already ${preLog.alreadyAccomplished}, and still need to ${preLog.planToAccomplish}.`}
+            While I'm feeling{" "}
+            <span style={{ color: "orange" }}>{preLog.mood}</span>, I'm hoping
+            to achieve <span style={{ color: "orange" }}>{preLog.reason}</span>,
+            and expecting{" "}
+            <span style={{ color: "orange" }}>{preLog.expectations}</span>. I'm
+            thinking about{" "}
+            <span style={{ color: "orange" }}>{preLog.worries}</span>, but{" "}
+            <span style={{ color: "orange" }}>{preLog.goals}</span>. I have
+            already{" "}
+            <span style={{ color: "orange" }}>
+              {preLog.alreadyAccomplished}
+            </span>
+            , and still need to{" "}
+            <span style={{ color: "orange" }}>{preLog.planToAccomplish}</span>.
           </DialogContent>
         </Dialog>
       </Typography>

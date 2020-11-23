@@ -90,7 +90,26 @@ export default function ViewReviewModal(props) {
             </Typography>
           </DialogTitle>
           <DialogContent>
-            {`The bud was ${review.describeAppearance}. I started out feeling ${preLog.mood}, and ended up feeling ${review.mood}. I was expecting ${preLog.expectations}; afterwards ${review.expectations}. Overall, I ${review.experience}. I was thinking that ${preLog.worries}, and ${preLog.goals}. After my experience, I was more worried that ${review.worries}, and ${review.goals}. I had already ${preLog.alreadyAccomplished}, and still needed to ${preLog.planToAccomplish}. This strain is good for ${review.reason}.`}
+            The bud was{" "}
+            <span style={{ color: "springgreen" }}>
+              {review.describeAppearance}
+            </span>
+            . This strain is good for{" "}
+            <span style={{ color: "springgreen" }}>{review.reason}</span>. I
+            started out feeling{" "}
+            <span style={{ color: "orange" }}>{preLog.mood}</span>, and ended up
+            feeling <span style={{ color: "orange" }}>{review.mood}</span>. I
+            was expecting{" "}
+            <span style={{ color: "orange" }}>{preLog.expectations}; </span>
+            afterwards,{" "}
+            <span style={{ color: "orange" }}>{review.expectations}</span>. I
+            was thinking about{" "}
+            <span style={{ color: "orange" }}>{preLog.worries}</span>, and
+            believing <span style={{ color: "orange" }}>{preLog.goals}</span>. I
+            experienced{" "}
+            <span style={{ color: "orange" }}>{review.experience}</span> and my
+            worries <span style={{ color: "orange" }}>{review.worries}</span>.{" "}
+            <span style={{ color: "orange" }}>{review.goals}</span>.
           </DialogContent>
         </Dialog>
       </Typography>

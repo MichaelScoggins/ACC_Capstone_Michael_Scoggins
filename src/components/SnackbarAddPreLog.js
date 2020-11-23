@@ -29,8 +29,8 @@ export default function SnackbarAddPreLog(props) {
         onClose={handleClose}
         message={
           <Typography>
-            <span style={{ color: "springgreen" }}>{props.strainName}</span>{" "}
-            Added To Experience
+            <span style={{ color: "purple" }}>{props.strainName}</span> Added To
+            Experience
           </Typography>
         }
         action={
@@ -42,7 +42,7 @@ export default function SnackbarAddPreLog(props) {
                 size="small"
                 style={{ cursor: "pointer" }}
               >
-                Goto Exp
+                Go To Exp
               </Button>
             </Link>
             <IconButton

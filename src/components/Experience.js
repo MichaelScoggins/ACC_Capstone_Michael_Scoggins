@@ -215,7 +215,7 @@ export default function Experience(props) {
                   onClick={(e) => handlePreLogModal(e)}
                   id={card.strain.id}
                 >
-                  <Typography style={{ fontWeight: 500 }}>before</Typography>
+                  <Typography style={{ fontWeight: 500 }}>pre-toke</Typography>
                 </Button>
                 <Button
                   size="small"
@@ -232,11 +232,10 @@ export default function Experience(props) {
                   size="small"
                   color="secondary"
                   variant="contained"
-                  className="heartIcon"
                   id={card.strain.id}
                   onClick={(e) => handleOpenReview(e)}
                 >
-                  <Typography style={{ fontWeight: 500 }}>After</Typography>
+                  <Typography style={{ fontWeight: 600 }}>review</Typography>
                 </Button>
               </CardActions>
             </Card>
