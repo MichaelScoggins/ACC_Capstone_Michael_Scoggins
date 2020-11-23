@@ -95,7 +95,7 @@ export default function RecordReview(props) {
             >
               <div
                 style={{ paddingBottom: 10 }}
-              >{`The bud was ${props.reviewForm.describeAppearance}. I started out feeling ${preLog.mood}, and ended up feeling ${props.reviewForm.mood}. I was expecting ${preLog.expectations}; afterwards ${props.reviewForm.expectations}. Overall, I ${props.reviewForm.experience}. I was thinking that ${preLog.worries}, and ${preLog.goals}. After my experience, I was more worried that ${props.reviewForm.worries}, and ${props.reviewForm.goals}. I had already ${preLog.alreadyAccomplished}, and still needed to ${preLog.planToAccomplish}.`}</div>
+              >{`The bud was ${props.reviewForm.describeAppearance}. I started out feeling ${preLog.mood}, and ended up feeling ${props.reviewForm.mood}. I was expecting ${preLog.expectations}; afterwards ${props.reviewForm.expectations}. Overall, I ${props.reviewForm.experience}. I was thinking that ${preLog.worries}, and ${preLog.goals}. After my experience, I was more worried that ${props.reviewForm.worries}, and ${props.reviewForm.goals}. I had already ${preLog.alreadyAccomplished}, and still needed to ${preLog.planToAccomplish}. This strain is good for ${review.reason}.`}</div>
 
               <TextField
                 id="describeAppearance"
@@ -124,30 +124,6 @@ export default function RecordReview(props) {
                   <MenuItem value={"depressed"}>Depressed</MenuItem>
                   <MenuItem value={"pain"}>In Pain</MenuItem>
                 </Select>
-              </FormControl>
-              <FormControl>
-                <InputLabel id="reasonInput">
-                  Did This Strain Help To Achieve Any Of The Following:
-                </InputLabel>
-                <Select
-                  labelId="reasonInput"
-                  id="reason"
-                  required
-                  value={props.reviewForm.reason}
-                  onChange={handleReasonSelect}
-                >
-                  <MenuItem value={"pain relief"}>Pain Relief</MenuItem>
-                  <MenuItem value={"stress relief"}>Stress Relief</MenuItem>
-                  <MenuItem value={"a creativity mindset"}>Creativity</MenuItem>
-                  <MenuItem value={"focus"}>Focus</MenuItem>
-                  <MenuItem value={"social awareness"}>Recreation</MenuItem>
-                  <MenuItem value={"stillness"}>Meditation</MenuItem>
-                  <MenuItem value={"modularity"}>Mental Modularity</MenuItem>
-                  <MenuItem value={"something personal"}>Other</MenuItem>
-                </Select>
-                {/* <FormHelperText>
-                    <Typography>whats this</Typography>
-                  </FormHelperText> */}
               </FormControl>
               <TextField
                 id="worries"
@@ -184,6 +160,30 @@ export default function RecordReview(props) {
                 value={props.reviewForm.goals}
                 onChange={handleTextChange}
               />
+              <FormControl>
+                <InputLabel id="reasonInput">
+                  Did This Strain Help To Achieve Any Of The Following:
+                </InputLabel>
+                <Select
+                  labelId="reasonInput"
+                  id="reason"
+                  required
+                  value={props.reviewForm.reason}
+                  onChange={handleReasonSelect}
+                >
+                  <MenuItem value={"pain relief"}>Pain Relief</MenuItem>
+                  <MenuItem value={"stress relief"}>Stress Relief</MenuItem>
+                  <MenuItem value={"a creativity mindset"}>Creativity</MenuItem>
+                  <MenuItem value={"focus"}>Focus</MenuItem>
+                  <MenuItem value={"social awareness"}>Recreation</MenuItem>
+                  <MenuItem value={"stillness"}>Meditation</MenuItem>
+                  <MenuItem value={"modularity"}>Mental Modularity</MenuItem>
+                  <MenuItem value={"something personal"}>Other</MenuItem>
+                </Select>
+                {/* <FormHelperText>
+                    <Typography>whats this</Typography>
+                  </FormHelperText> */}
+              </FormControl>
               <br />
               <Button
                 variant="contained"

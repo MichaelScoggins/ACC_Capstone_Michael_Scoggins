@@ -81,7 +81,7 @@ export default function ViewReviewModal(props) {
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>
             <Typography variant="h5">
-              After Trying{""}
+              After Trying{" "}
               {
                 <span style={{ color: "springgreen" }}>
                   {review.strain.name}

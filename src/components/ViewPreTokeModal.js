@@ -86,7 +86,7 @@ export default function ViewPreTokeModal(props) {
             </Typography>
           </DialogTitle>
           <DialogContent>
-            {`While I'm feeling ${preLog.mood}, I'm hoping to achieve ${preLog.reason}, and expecting ${preLog.expectations}. I'm thinking that ${preLog.worries}, but ${preLog.goals}. I have already ${preLog.alreadyAccomplished}, and still need to ${preLog.planToAccomplish}.`}
+            {`While I'm feeling ${preLog.mood}, I'm hoping to achieve ${preLog.reason}, and expecting ${preLog.expectations}. I'm thinking ${preLog.worries}, but ${preLog.goals}. I have already ${preLog.alreadyAccomplished}, and still need to ${preLog.planToAccomplish}.`}
           </DialogContent>
         </Dialog>
       </Typography>
