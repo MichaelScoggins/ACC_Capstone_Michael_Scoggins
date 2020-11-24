@@ -16,6 +16,8 @@ import {
 import { makeStyles } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Questionnaire from "../../containers/forms/Questionnaire";
+import { faBong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Copyright() {
   return (
@@ -89,7 +91,11 @@ const SignUp = (props) => {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <FontAwesomeIcon
+              icon={faBong}
+              size="1x"
+              style={{ color: "black" }}
+            />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign Up

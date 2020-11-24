@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 // import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -8,8 +8,10 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Select from "@material-ui/core/Select";
 import { v4 as uuidv4 } from "uuid";
-import { faBong } from "@fortawesome/free-solid-svg-icons";
+import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 import {
   Button,
   TextField,
@@ -22,7 +24,6 @@ import SnackbarAddPreLog from "../SnackbarAddPreLog";
 
 export default function RecordPreLog(props) {
   const [open, toggleOpen] = React.useState(false);
-  const [currentForm, setCurrentForm] = React.useState(true);
   const [showSnackbar, toggleSnackbar] = React.useState(false);
 
   const toggleDialog = () => toggleOpen(!open);
@@ -99,23 +100,31 @@ export default function RecordPreLog(props) {
         strainName={strain[0]}
       />
       <div style={{ textAlign: "center" }}>
-        <Typography>
-          <IconButton
-            variant="contained"
-            style={{ backgroundColor: "transparent" }}
+        <Tooltip
+          TransitionComponent={Zoom}
+          placement="top"
+          title="Add Exp"
+          margin={0}
+        >
+          <Typography
             className="add-exp"
+            style={{ cursor: "pointer" }}
             onClick={toggleDialog}
           >
-            <FontAwesomeIcon icon={faBong} size="3x" className="bong-icon" />
-          </IconButton>
-        </Typography>
+            <FontAwesomeIcon
+              icon={faUserAstronaut}
+              size="5x"
+              className="bong-icon"
+            />
+          </Typography>
+        </Tooltip>
       </div>
       <div>
         <Typography>
           <Dialog open={open} onClose={toggleDialog}>
             <DialogTitle>
               <Typography variant="h5">
-                {currentForm ? "Before You Toke " : "After You've Toked "}
+                Before You Experience{" "}
                 {<span style={{ color: "springgreen" }}>{strain[0]}</span>}
               </Typography>
             </DialogTitle>

@@ -23,8 +23,10 @@ import RecordPreLog from "../containers/forms/RecordPreLog";
 import PerfectStrainDescriptionCard from "../containers/PerfectStrainDescriptionCard";
 // import { ArrowBack } from "@material-ui/icons";
 // import IconButton from "@material-ui/core/IconButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -185,7 +187,13 @@ export default function PerfectStrainCards(props) {
                         id={card[1].id}
                         onClick={(e) => handleDescriptionModal(e)}
                       >
-                        <h2 className="card-title">{card[0]}</h2>
+                        <Tooltip
+                          TransitionComponent={Zoom}
+                          placement="top"
+                          title="Click for Bio"
+                        >
+                          <h2 className="card-title">{card[0]}</h2>
+                        </Tooltip>
                       </Typography>
                     </Grid>
                     <Grid item xs={2}></Grid>

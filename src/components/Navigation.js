@@ -165,11 +165,11 @@ const Navigation = (props) => {
                 </span>
               </Typography>
             )}
-            {cookies.loggedIn && <SignOut />}
-            {!cookies.loggedIn &&
+            {props.user && <SignOut />}
+            {!props.user &&
               location.pathname !== "/login" &&
               location.pathname !== "/signup" && <SignIn />}
-            {!cookies.loggedIn && location.pathname === "/login" && <SignUp />}
+            {!props.user && location.pathname === "/login" && <SignUp />}
           </ul>
         </Toolbar>
       </AppBar>
