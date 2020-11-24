@@ -1,23 +1,22 @@
 import React from "react";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 // import axios from "axios";
 import cookie from "cookie";
 import {
   AppBar,
   Toolbar,
-  // IconButton,
+  IconButton,
   Typography,
   Button,
   // InputBase,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import AddListing from "../containers/forms/RecordPreLog";
 import SearchBar from "../containers/SearchBar";
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 import { makeStyles } from "@material-ui/core/styles";
-// import MenuIcon from "@material-ui/icons/Menu";
+import MenuIcon from "@material-ui/icons/Menu";
 // import Badge from "@material-ui/core/Badge";
 // import MenuItem from "@material-ui/core/MenuItem";
 // import Menu from "@material-ui/core/Menu";
@@ -115,7 +114,8 @@ const Navigation = (props) => {
   const SignOut = () => {
     return (
       <Button
-        variant="text"
+        variant="contained"
+        color="secondary"
         style={{ color: "white" }}
         className="nav-list-item"
         onClick={() => {
@@ -128,34 +128,43 @@ const Navigation = (props) => {
     );
   };
 
-  const addListingButton = () => {
-    if (cookies.loggedIn) {
-      return <AddListing />;
-    }
-  };
-
   return (
     <div>
       <AppBar title="Higher Intentions" position="fixed" color="primary">
         <Toolbar>
-          <Typography variant="h6" style={{ color: "white" }}>
-            <FontAwesomeIcon
-              edge="start"
-              className={classes.menuButton}
-              icon={faCannabis}
-              aria-label="open drawer"
-              style={{ cursor: "pointer" }}
-              size="2x"
-              onClick={() => props.toggleDrawer(!props.drawerOpen)}
-            />
-          </Typography>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="open drawer"
+            onClick={() => props.toggleDrawer(!props.drawerOpen)}
+          >
+            <MenuIcon />
+          </IconButton>
           <SearchBar />
+          <Typography variant="h6" style={{ color: "white" }}>
+            <Link to="/">
+              <FontAwesomeIcon
+                edge="start"
+                className={classes.menuButton}
+                icon={faCannabis}
+                aria-label="open drawer"
+                style={{ cursor: "pointer", marginRight: 1 }}
+                size="2x"
+              />
+            </Link>
+          </Typography>
+          <Typography>Higher Intentions</Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}></div>
-          <Typography>
-            <div>{addListingButton()}</div>
-          </Typography>
           <ul className="nav-list">
+            {props.user && (
+              <Typography color="text-primary">
+                <span>
+                  Welcome <span style={{ color: "orange" }}>{props.user}</span>!
+                </span>
+              </Typography>
+            )}
             {cookies.loggedIn && <SignOut />}
             {!cookies.loggedIn &&
               location.pathname !== "/login" &&
@@ -164,13 +173,6 @@ const Navigation = (props) => {
           </ul>
         </Toolbar>
       </AppBar>
-      <Typography color="text-primary">
-        {cookies.loggedIn && (
-          <span>
-            Welcome <span style={{ color: "springgreen" }}>{props.user}</span>!
-          </span>
-        )}
-      </Typography>
     </div>
   );
 };

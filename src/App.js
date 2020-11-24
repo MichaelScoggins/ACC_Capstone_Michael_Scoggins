@@ -4,9 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core";
-import Navigation from "./containers/Navigation";
 import { orange } from "@material-ui/core/colors";
-// import PrimarySearchAppBar from "./components/PrimarySearchAppBar";
+import Navigation from "./containers/Navigation";
 import NavDrawer from "./containers/NavDrawer";
 
 const theme = createMuiTheme({
@@ -19,6 +18,9 @@ const theme = createMuiTheme({
     },
 
     type: "dark",
+  },
+  typography: {
+    fontFamily: "Acme, sans-serif",
   },
 });
 

@@ -19,7 +19,7 @@ import Container from "@material-ui/core/Container";
 // import Link from "@material-ui/core/Link";
 import { Link } from "react-router-dom";
 // import PerfectStrainDetails from "../containers/PerfectStrainDetails";
-import FindPerfectStrain1 from "../containers/FindPerfectStrain1";
+import FindPerfectStrain from "../containers/FindPerfectStrain";
 // import DisplayPerfectStrains from "../containers/DisplayPerfectStrains";
 import PerfectStrainCards from "../containers/PerfectStrainCards";
 // import { ArrowBack } from "@material-ui/icons";
@@ -85,6 +85,7 @@ export default function Home(props) {
   return (
     <React.Fragment>
       <CssBaseline />
+
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -112,28 +113,30 @@ export default function Home(props) {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <FindPerfectStrain1 />
+                  <FindPerfectStrain />
                 </Grid>
-                <Grid item>
-                  <Link
-                    to="/signup"
-                    style={{
-                      textDecoration: "none",
-                    }}
-                  >
-                    <Button variant="contained" color="secondary">
-                      <Typography
-                        style={{
-                          fontWeight: "600",
-                          color: "green",
-                          textShadow: "1px 1px yellowgreen",
-                        }}
-                      >
-                        Sign Up to Post Experience
-                      </Typography>
-                    </Button>
-                  </Link>
-                </Grid>
+                {!props.user && (
+                  <Grid item>
+                    <Link
+                      to="/signup"
+                      style={{
+                        textDecoration: "none",
+                      }}
+                    >
+                      <Button variant="contained" color="secondary">
+                        <Typography
+                          style={{
+                            fontWeight: "600",
+                            color: "green",
+                            textShadow: "1px 1px yellowgreen",
+                          }}
+                        >
+                          Sign Up to Post Experience
+                        </Typography>
+                      </Button>
+                    </Link>
+                  </Grid>
+                )}
               </Grid>
             </div>
           </Container>

@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import Typography from "@material-ui/core/Typography";
 
 export default function SnackbarAddFav(props) {
   const handleClose = (event, reason) => {
@@ -25,10 +26,19 @@ export default function SnackbarAddFav(props) {
         open={props.snackbarOpen}
         autoHideDuration={6000}
         onClose={handleClose}
-        message={`${props.title} Added to Favorites`}
+        message={
+          <Typography style={{ color: "purple" }}>
+            {props.title} Added to Favorites
+          </Typography>
+        }
         action={
           <React.Fragment>
-            <Button color="secondary" size="small" onClick={handleClose}>
+            <Button
+              variant="contained"
+              color="secondary"
+              size="small"
+              onClick={handleClose}
+            >
               ADD EXP
             </Button>
             <IconButton

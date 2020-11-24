@@ -12,7 +12,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 // import Input from "@material-ui/core/Input";
 // import MenuItem from "@material-ui/core/MenuItem";
 // import FormControl from "@material-ui/core/FormControl";
-// import Select from "@material-ui/core/Select";
+// import Select from "@material-ui/core/Select";import FormControl from "@material-ui/core/FormControl";
+// import Container from "@material-ui/core/Container";
+import FormControl from "@material-ui/core/FormControl";
+// import IconButton from "@material-ui/core/IconButton";
+// import { faBong } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PosEffectsChips from "../containers/chips/PosEffectsChips";
 import NegEffectsChips from "../containers/chips/NegEffectsChips";
 import MedicinalChips from "../containers/chips/MedicinalChips";
@@ -37,6 +42,9 @@ export default function FindPerfectStrain(props) {
   // const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   // const [redirect, setRedirect] = React.useState(false);
+
+  const [open, toggleOpen] = React.useState(false);
+  const toggleDialog = () => toggleOpen(!open);
 
   // React.useEffect(() => {
   //   props.fetchAllStrains();
@@ -74,6 +82,15 @@ export default function FindPerfectStrain(props) {
         (props.speciesPrefs.length === 0 ||
           props.speciesPrefs.includes(strain[1].race))
     );
+    if (perfectStrains.length === 0) {
+      return props.setPerfectStrainResults([
+        ["no results", { "id": 9999, race: "no results" }],
+      ]);
+    } else if (perfectStrains.length > 25) {
+      return props.setPerfectStrainResults([
+        ["too many results", { "id": 10000, race: "too many results" }],
+      ]);
+    }
     // console.log("state", props.perfectStrainResults);
 
     props.setPerfectStrainResults(perfectStrains);
@@ -103,57 +120,72 @@ export default function FindPerfectStrain(props) {
   };
 
   return (
-    <div>
-      <Typography>
-        <Button
-          onClick={() => handleClickOpen()}
-          variant="contained"
-          color="primary"
+    <>
+      <Button
+        onClick={() => handleClickOpen()}
+        variant="contained"
+        color="primary"
+      >
+        <Typography
+          style={{
+            fontWeight: 600,
+            color: "#FFA726",
+            textShadow: "1px 1px #333",
+          }}
         >
-          <Typography>Find The Perfect Strain</Typography>
-        </Button>
-        {loading && <Loading setLoading={setLoading} />}
-        <Dialog
-          disableBackdropClick
-          disableEscapeKeyDown
-          open={props.findPerfectStrainModalOpen}
-          onClose={handleClose}
-        >
-          <DialogTitle>
-            <Typography>Select Your Preferences</Typography>
-          </DialogTitle>
-          <DialogContent>
-            <Grid container spacing={0}>
-              <Grid item xs={6}>
-                <SpeciesPrefsChips />
-                <PosEffectsChips />
-                <NegEffectsChips />
-              </Grid>
-              <Grid item xs={6}>
-                <MedicinalChips />
-                <FlavorChips />
-              </Grid>
-            </Grid>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleReset} color="secondary" variant="contained">
-              <Typography> Reset</Typography>
-            </Button>
-            <Button onClick={handleClose} color="primary" variant="contained">
-              <Typography> Cancel</Typography>
-            </Button>
-            <Button
-              onClick={() => handleSubmit()}
-              color="primary"
-              variant="contained"
-            >
-              <Typography>Ok</Typography>
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </Typography>
+          Find The Perfect Strain
+        </Typography>
+      </Button>
+      {loading && <Loading setLoading={setLoading} />}
+      <Dialog
+        disableEscapeKeyDown
+        open={props.findPerfectStrainModalOpen}
+        onClose={handleClose}
+      >
+        <DialogTitle>
+          <Typography variant="h5">What Are You Looking For?</Typography>
+          <hr />
+        </DialogTitle>
+        <DialogContent>
+          <form
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: "420px",
+            }}
+          >
+            <FormControl>
+              <PosEffectsChips />
+
+              <MedicinalChips />
+
+              <NegEffectsChips />
+
+              <SpeciesPrefsChips />
+
+              <FlavorChips />
+            </FormControl>
+          </form>
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={handleReset} color="secondary" variant="contained">
+            <Typography style={{ fontWeight: 600 }}>Reset</Typography>
+          </Button>
+          <Button onClick={handleClose} color="primary" variant="contained">
+            <Typography> Cancel</Typography>
+          </Button>
+          <Button
+            onClick={() => handleSubmit()}
+            color="primary"
+            variant="contained"
+          >
+            <Typography> Ok</Typography>
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       {/* {redirect && <Redirect to="/perfectstrain" />} */}
-    </div>
+    </>
   );
 }

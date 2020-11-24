@@ -125,18 +125,18 @@ export default function PerfectStrainCards(props) {
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       <SnackbarAddFav sID={strainID} />
-      {(showDetailsModal && (
+      {showDetailsModal && (
         <PerfectStrainDetailsCard
           setDetailsModal={setDetailsModal}
           sID={strainID}
         />
-      )) ||
-        (showDescriptionModal && (
-          <PerfectStrainDescriptionCard
-            setDescriptionModal={setDescriptionModal}
-            sID={strainID}
-          />
-        ))}
+      )}
+      {showDescriptionModal && (
+        <PerfectStrainDescriptionCard
+          setDescriptionModal={setDescriptionModal}
+          sID={strainID}
+        />
+      )}
       {props.perfectStrainResults.length === 0 && (
         <div className={classes.info}></div>
       )}
@@ -188,19 +188,6 @@ export default function PerfectStrainCards(props) {
                         <h2 className="card-title">{card[0]}</h2>
                       </Typography>
                     </Grid>
-
-                    <Typography
-                      variant="h5"
-                      id={card[1].id}
-                      onClick={(e) => handleDescriptionModal(e)}
-                    >
-                      <FontAwesomeIcon
-                        className="info-icon"
-                        icon={faInfoCircle}
-                        style={{ cursor: "pointer" }}
-                        size="2x"
-                      />
-                    </Typography>
                     <Grid item xs={2}></Grid>
                   </Grid>
                   <Typography variant="h5" component="h5">
@@ -232,18 +219,41 @@ export default function PerfectStrainCards(props) {
                   >
                     <Typography>Details</Typography>
                   </Button>
-                  <Button
-                    size="small"
-                    disableRipple
-                    color="secondary"
-                    variant="contained"
-                    className="heartIcon"
-                    id={card[1].id}
-                    onClick={(e) => handleAddFav(e)}
-                  >
-                    <FavoriteIcon />
-                  </Button>
-                  <RecordPreLog id={card[1].id} />
+                  {!props.user && (
+                    <Button
+                      size="small"
+                      variant="contained"
+                      color="secondary"
+                      id={card[1].id}
+                      onClick={(e) => handleDescriptionModal(e)}
+                    >
+                      <Typography
+                        style={{
+                          fontWeight: "600",
+                          color: "green",
+                          textShadow: "1px 1px yellowgreen",
+                        }}
+                      >
+                        Bio
+                      </Typography>
+                    </Button>
+                  )}
+                  {props.user && (
+                    <>
+                      <Button
+                        size="small"
+                        disableRipple
+                        color="secondary"
+                        variant="contained"
+                        className="heartIcon"
+                        id={card[1].id}
+                        onClick={(e) => handleAddFav(e)}
+                      >
+                        <FavoriteIcon />
+                      </Button>
+                      <RecordPreLog id={card[1].id} />
+                    </>
+                  )}
                 </CardActions>
               </Card>
             </Grid>

@@ -1,5 +1,5 @@
 export default {
-  user: "user",
+  user: "",
   profile: {
     firstName: "",
     lastName: "",
@@ -64,6 +64,7 @@ export default {
   findPerfectStrainModalOpen: false,
   allStrains: {},
   perfectStrainResults: [],
+  homePageRecommendedStrain: [],
   searchParams: "",
   userSearchInput: "",
   userSearchResults: [],
