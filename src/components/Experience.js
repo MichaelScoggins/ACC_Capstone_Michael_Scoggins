@@ -236,7 +236,7 @@ export default function Experience(props) {
                       size="2x"
                     />
                   </Typography>
-                  <Grid item xs={2}></Grid>
+                  {/* <Grid item xs={2}></Grid> */}
                 </Grid>
                 <Typography variant="h5" component="h5">
                   {card.when}
