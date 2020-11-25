@@ -5,7 +5,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 // import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
+import { withStyles } from "@material-ui/core/styles";
+// import IconButton from "@material-ui/core/IconButton";
 import Select from "@material-ui/core/Select";
 import { v4 as uuidv4 } from "uuid";
 import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
@@ -92,6 +93,16 @@ export default function RecordPreLog(props) {
     props.setPreTokeForm(newState);
   };
 
+  const AddExpToolTip = withStyles((theme) => ({
+    tooltip: {
+      backgroundColor: "#424242",
+      color: "orange",
+      maxWidth: 220,
+      fontSize: theme.typography.pxToRem(12),
+      border: "1px solid #dadde9",
+    },
+  }))(Tooltip);
+
   return (
     <Fragment>
       <SnackbarAddPreLog
@@ -100,11 +111,21 @@ export default function RecordPreLog(props) {
         strainName={strain[0]}
       />
       <div style={{ textAlign: "center" }}>
-        <Tooltip
+        {/* <Tooltip
           TransitionComponent={Zoom}
           placement="top"
           title="Add Exp"
           margin={0}
+        > */}
+
+        <AddExpToolTip
+          title={
+            <React.Fragment>
+              <Typography>Add Exp</Typography>
+            </React.Fragment>
+          }
+          placement="top"
+          TransitionComponent={Zoom}
         >
           <Typography
             className="add-exp"
@@ -117,7 +138,7 @@ export default function RecordPreLog(props) {
               className="bong-icon"
             />
           </Typography>
-        </Tooltip>
+        </AddExpToolTip>
       </div>
       <div>
         <Typography>

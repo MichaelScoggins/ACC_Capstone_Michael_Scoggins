@@ -27,10 +27,6 @@ export default function RecordReview(props) {
     (prelog) => prelog.strain.id == props.sID
   );
 
-  const review = props.experiences.reviews.find(
-    (review) => review.strain.id == props.sID
-  );
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const review = props.reviewForm;
@@ -77,7 +73,10 @@ export default function RecordReview(props) {
   return (
     <Fragment>
       <Typography>
-        <Dialog open={open} onClose={toggleDialog}>
+        <Dialog
+          open={open}
+          onClose={(toggleDialog, () => props.setAddReviewForm(false))}
+        >
           <DialogTitle>
             <Typography variant="h5">
               Review
@@ -190,6 +189,7 @@ export default function RecordReview(props) {
                 multiline
                 value={props.reviewForm.expectations}
                 onChange={handleTextChange}
+                required
               />
               <TextField
                 id="experience"

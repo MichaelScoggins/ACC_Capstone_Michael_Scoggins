@@ -10,7 +10,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 // import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 // import Link from "@material-ui/core/Link";
 // import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
@@ -96,6 +96,16 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(8, 0, 6),
   },
 }));
+
+const BioToolTip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "#424242",
+    color: "orange",
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: "1px solid #dadde9",
+  },
+}))(Tooltip);
 
 export default function PerfectStrainCards(props) {
   const classes = useStyles();
@@ -187,13 +197,23 @@ export default function PerfectStrainCards(props) {
                         id={card[1].id}
                         onClick={(e) => handleDescriptionModal(e)}
                       >
-                        <Tooltip
+                        {/* <Tooltip
                           TransitionComponent={Zoom}
                           placement="top"
                           title="Click for Bio"
+                        > */}
+                        <BioToolTip
+                          title={
+                            <React.Fragment>
+                              <Typography>Click For Bio</Typography>
+                            </React.Fragment>
+                          }
+                          placement="top"
+                          TransitionComponent={Zoom}
                         >
                           <h2 className="card-title">{card[0]}</h2>
-                        </Tooltip>
+                        </BioToolTip>
+                        {/* </Tooltip> */}
                       </Typography>
                     </Grid>
                     <Grid item xs={2}></Grid>
