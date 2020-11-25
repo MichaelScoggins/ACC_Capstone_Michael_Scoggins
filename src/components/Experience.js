@@ -10,8 +10,10 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 // import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 // import Link from "@material-ui/core/Link";
 // import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
 import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
@@ -72,6 +74,16 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(8, 0, 6),
   },
 }));
+
+const BioToolTip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "#424242",
+    color: "orange",
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: "1px solid #dadde9",
+  },
+}))(Tooltip);
 
 export default function Experience(props) {
   const classes = useStyles();
@@ -178,21 +190,44 @@ export default function Experience(props) {
               <CardContent className={classes.cardContent}>
                 <Grid container>
                   <Grid item xs={10}>
-                    <Typography
-                      variant="h5"
-                      component="h2"
-                      style={{ cursor: "pointer", color: "" }}
-                      id={card.strain.id}
-                      onClick={(e) => handleDescriptionModal(e)}
+                    <BioToolTip
+                      title={
+                        <React.Fragment>
+                          <Typography>Click For Bio</Typography>
+                        </React.Fragment>
+                      }
+                      placement="top"
+                      TransitionComponent={Zoom}
                     >
-                      <h2 className="card-title">{card.strain.name}</h2>
-                    </Typography>
+                      <Typography
+                        variant="h5"
+                        component="h2"
+                        style={{ cursor: "pointer", color: "" }}
+                        id={card.strain.id}
+                        onClick={(e) => handleDescriptionModal(e)}
+                      >
+                        {/* <h2 className="card-title">{card.strain.name}</h2> */}
+
+                        {card.strain.race === "sativa" ? (
+                          <h2 style={{ color: "gold" }}>{card.strain.name}</h2>
+                        ) : card.strain.race === "orchid" ? (
+                          <h2 style={{ color: "purple" }}>
+                            {card.strain.name}
+                          </h2>
+                        ) : (
+                          <h2 style={{ color: "indianred" }}>
+                            {card.strain.name}
+                          </h2>
+                        )}
+                        <hr />
+                      </Typography>
+                    </BioToolTip>
                   </Grid>
 
                   <Typography
                     variant="h5"
                     id={card.strain.id}
-                    onClick={(e) => handleDescriptionModal(e)}
+                    onClick={(e) => handleDetailsModal(e)}
                   >
                     <FontAwesomeIcon
                       className="info-icon"
@@ -219,23 +254,23 @@ export default function Experience(props) {
                 </Button>
                 <Button
                   size="small"
-                  disableRipple
-                  color="secondary"
-                  variant="contained"
-                  className="heartIcon"
-                  id={card.strain.id}
-                  onClick={(e) => handleAddFav(e)}
-                >
-                  <FavoriteIcon />
-                </Button>
-                <Button
-                  size="small"
                   color="secondary"
                   variant="contained"
                   id={card.strain.id}
                   onClick={(e) => handleOpenReview(e)}
                 >
                   <Typography style={{ fontWeight: 600 }}>review</Typography>
+                </Button>
+                <Button
+                  size="small"
+                  disableRipple
+                  style={{ backgroundColor: "purple" }}
+                  variant="contained"
+                  className="heartIcon"
+                  id={card.strain.id}
+                  onClick={(e) => handleAddFav(e)}
+                >
+                  <FavoriteIcon />
                 </Button>
               </CardActions>
             </Card>
