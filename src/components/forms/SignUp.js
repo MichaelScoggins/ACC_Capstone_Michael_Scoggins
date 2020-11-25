@@ -14,8 +14,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Questionnaire from "../../containers/forms/Questionnaire";
+// import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { faBong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -193,11 +192,11 @@ const SignUp = (props) => {
             >
               Sign Up
             </Button>
-            <Questionnaire />
+
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
+                <Link to="/" variant="body2">
+                  {"Continue As Guest"}
                 </Link>
               </Grid>
               <Grid item>
