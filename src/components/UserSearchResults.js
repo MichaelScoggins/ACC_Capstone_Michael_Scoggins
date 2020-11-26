@@ -1,4 +1,5 @@
 import React from "react";
+import Typography from "@material-ui/core/Typography";
 // import cookie from "cookie";
 import {
   Container,
@@ -28,7 +29,7 @@ export default function DisplayUserSearchResults(props) {
   const classes = useStyles();
 
   const handleModal = (e) => {
-    setID(e.target.id);
+    setID(e.currentTarget.id);
     setModal(true);
   };
 
@@ -36,35 +37,47 @@ export default function DisplayUserSearchResults(props) {
     <div>
       {showModal && <SearchResultsDetails setModal={setModal} sID={strainID} />}
       <Container maxWidth="lg">
-        <h2>Strains</h2>
+        <Typography>
+          <h2>Strains</h2>
+        </Typography>
         <div className={classes.root}></div>
         <Table className="listings">
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Description</TableCell>
+              <TableCell style={{ width: 150 }}>
+                <Typography>Name</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography>Description</Typography>
+              </TableCell>
               <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
             {props.userSearchResults.map((strain) => (
               <TableRow key={strain.id}>
-                <TableCell
-                  style={{ cursor: "pointer", color: "springgreen" }}
-                  id={strain.id}
-                  onClick={(e) => handleModal(e)}
-                >
-                  {strain.name}
+                <TableCell>
+                  <Typography
+                    style={{ cursor: "pointer", color: "springgreen" }}
+                    id={strain.id}
+                    onClick={(e) => handleModal(e)}
+                  >
+                    {strain.name}
+                  </Typography>
                   <br />
                   {strain.race === "sativa" ? (
                     <p style={{ color: "orange" }}>{strain.race}</p>
                   ) : strain.race === "indica" ? (
-                    <p style={{ color: "purple" }}>{strain.race}</p>
+                    <p style={{ color: "darkmagenta" }}>{strain.race}</p>
                   ) : (
                     <p style={{ color: "brown" }}>{strain.race}</p>
                   )}
                 </TableCell>
-                <TableCell>{strain.desc}</TableCell>
+                <TableCell>
+                  <Typography variant="body1" style={{ color: "#BDB76B" }}>
+                    {strain.desc}
+                  </Typography>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

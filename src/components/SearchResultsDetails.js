@@ -1,6 +1,7 @@
 import React from "react";
 // import { Container, Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
 import Grid from "@material-ui/core/Grid";
 
@@ -108,7 +109,9 @@ export default function SearchResultsDetails(props) {
             </h2>
           </Grid>
           <Grid item xs={12}>
-            <h3>{props.strainDescription}</h3>
+            <Typography variant="subtitle1" style={{ color: "lightgray" }}>
+              {props.strainDescription}
+            </Typography>
           </Grid>
         </Grid>
       </div>
