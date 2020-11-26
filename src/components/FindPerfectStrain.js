@@ -3,7 +3,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 // import { Link } from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
+// import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -24,7 +24,7 @@ import MedicinalChips from "../containers/chips/MedicinalChips";
 import FlavorChips from "../containers/chips/FlavorChips";
 import SpeciesPrefsChips from "../containers/chips/SpeciesPrefsChips";
 import Loading from "../containers/Loading";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 // const useStyles = makeStyles((theme) => ({
 //   container: {
@@ -43,29 +43,33 @@ export default function FindPerfectStrain(props) {
   const [loading, setLoading] = React.useState(false);
   // const [redirect, setRedirect] = React.useState(false);
 
-  const [open, toggleOpen] = React.useState(false);
-  const toggleDialog = () => toggleOpen(!open);
+  // const [open, toggleOpen] = React.useState(false);
+  // const toggleDialog = () => toggleOpen(!open);
 
-  // React.useEffect(() => {
-  //   props.fetchAllStrains();
-  // }, []);
+  React.useEffect(() => {
+    // setRedirect(false);
+    props.setPerfectStrainResults([]);
+    // props.toggleFindPerfectStrain(false);
+    props.fetchAllStrains();
+  }, []);
 
   // const handleChange = (event) => {
   //   setAge(Number(event.target.value) || "");
   // };
 
-  const handleClickOpen = () => {
-    props.setPerfectStrainResults([]);
-    props.toggleFindPerfectStrain(true);
-    props.fetchAllStrains();
-  };
+  // const handleClickOpen = () => {
+  //   // setRedirect(true);
+  //   props.setPerfectStrainResults([]);
+  //   props.toggleFindPerfectStrain(true);
+  //   props.fetchAllStrains();
+  // };
 
   const handleClose = () => {
     props.toggleFindPerfectStrain(false);
   };
 
   const getPerfectStrains = async () => {
-    setLoading(true);
+    props.toggleLoading(true);
     await props.fetchAllStrains();
     const perfectStrains = Object.entries(props.allStrains).filter(
       (strain) =>
@@ -103,6 +107,7 @@ export default function FindPerfectStrain(props) {
       props.flavPrefs.length > 0 ||
       props.speciesPrefs.length > 0) &&
       getPerfectStrains();
+    props.setPerfectStrainResults([]);
 
     handleClose();
     // setRedirect(true);
@@ -121,22 +126,6 @@ export default function FindPerfectStrain(props) {
 
   return (
     <>
-      <Button
-        onClick={() => handleClickOpen()}
-        variant="contained"
-        color="primary"
-      >
-        <Typography
-          style={{
-            fontWeight: 600,
-            color: "#FFA726",
-            textShadow: "1px 1px #333",
-          }}
-        >
-          Find The Perfect Strain
-        </Typography>
-      </Button>
-      {loading && <Loading setLoading={setLoading} />}
       <Dialog
         disableEscapeKeyDown
         open={props.findPerfectStrainModalOpen}
@@ -185,7 +174,7 @@ export default function FindPerfectStrain(props) {
         </DialogActions>
       </Dialog>
 
-      {/* {redirect && <Redirect to="/perfectstrain" />} */}
+      {/* {redirect && <Redirect to="/" />} */}
     </>
   );
 }

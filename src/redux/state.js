@@ -63,6 +63,7 @@ export default {
   drawerOpen: false,
   snackbarOpen: false,
   findPerfectStrainModalOpen: false,
+  isLoading: false,
   allStrains: {},
   perfectStrainResults: [],
   homePageRecommendedStrain: [],

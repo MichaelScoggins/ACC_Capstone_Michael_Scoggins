@@ -96,6 +96,15 @@ const findPerfectStrainModalOpen = (state = false, action) => {
   }
 };
 
+const isLoading = (state = false, action) => {
+  switch (action.type) {
+    case "IS_LOADING":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 const allStrains = (state = {}, action) => {
   switch (action.type) {
     case "ALL_STRAINS":
@@ -239,4 +248,5 @@ export default combineReducers({
   experiences,
   profile,
   reviewForm,
+  isLoading,
 });

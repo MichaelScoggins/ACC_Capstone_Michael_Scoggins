@@ -1,12 +1,18 @@
 import { connect } from "react-redux";
 import NavDrawer from "../components/NavDrawer";
-import { toggleDrawer, toggleFindPerfectStrain } from "../redux/actions";
+import {
+  toggleDrawer,
+  toggleFindPerfectStrain,
+  toggleLoading,
+  setPerfectStrainResults,
+} from "../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
     user: state.user,
     drawerOpen: state.drawerOpen,
     findPerfectStrainOpen: state.findPerfectStrainOpen,
+    isLoading: state.isLoading,
   };
 };
 
@@ -15,6 +21,9 @@ const mapDispatchToProps = (dispatch) => {
     toggleDrawer: (input) => dispatch(toggleDrawer(input)),
     toggleFindPerfectStrain: (input) =>
       dispatch(toggleFindPerfectStrain(input)),
+    toggleLoading: (input) => dispatch(toggleLoading(input)),
+    setPerfectStrainResults: (results) =>
+      dispatch(setPerfectStrainResults(results)),
   };
 };
 

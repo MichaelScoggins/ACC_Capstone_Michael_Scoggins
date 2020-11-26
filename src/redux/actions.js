@@ -68,6 +68,13 @@ export const toggleFindPerfectStrain = (input) => {
   };
 };
 
+export const toggleLoading = (input) => {
+  return {
+    type: "IS_LOADING",
+    value: input,
+  };
+};
+
 export const fetchAllStrains = () => {
   return async (dispatch) => {
     await fetch(`https://strainapi.evanbusse.com/jXftQqp/strains/search/all`)

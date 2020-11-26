@@ -1,18 +1,20 @@
 import { connect } from "react-redux";
 import Loading from "../components/Loading";
-import { toggleDrawer } from "../redux/actions";
+import { toggleDrawer, toggleLoading } from "../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
     user: state.user,
     allStrains: state.allStrains,
     perfectStrainResults: state.perfectStrainResults,
+    isLoading: state.isLoading,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     toggleDrawer: (input) => dispatch(toggleDrawer(input)),
+    toggleLoading: (input) => dispatch(toggleLoading(input)),
   };
 };
 

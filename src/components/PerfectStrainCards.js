@@ -27,6 +27,7 @@ import PerfectStrainDescriptionCard from "../containers/PerfectStrainDescription
 // import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
+import Loading from "../containers/Loading";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -136,6 +137,7 @@ export default function PerfectStrainCards(props) {
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
+      {/* {props.isLoading && <Loading />} */}
       <SnackbarAddFav sID={strainID} />
       {showDetailsModal && (
         <PerfectStrainDetailsCard
@@ -288,6 +290,7 @@ export default function PerfectStrainCards(props) {
           ))}
         </Grid>
       )}
+      {/* {props.perfectStrainResults.length > 0 && props.toggleLoading(false)} */}
     </Container>
   );
 }

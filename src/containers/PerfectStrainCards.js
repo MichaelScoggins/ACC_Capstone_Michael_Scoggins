@@ -13,6 +13,7 @@ import {
   toggleSnackbar,
   setPerfectStrainResults,
   setTitle,
+  toggleLoading,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -32,6 +33,7 @@ const mapStateToProps = (state) => {
     toggleSnackbar: state.toggleSnackbar,
     perfectStrainResults: state.perfectStrainResults,
     title: state.title,
+    isLoading: state.isLoading,
   };
 };
 
@@ -50,6 +52,7 @@ const mapDispatchToProps = (dispatch) => {
     setPerfectStrainResults: (results) =>
       dispatch(setPerfectStrainResults(results)),
     setTitle: (input) => dispatch(setTitle(input)),
+    toggleLoading: (input) => dispatch(toggleLoading(input)),
   };
 };
 

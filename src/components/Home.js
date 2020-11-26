@@ -116,7 +116,21 @@ export default function Home(props) {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <FindPerfectStrain />
+                  <Button
+                    onClick={() => props.toggleFindPerfectStrain(true)}
+                    variant="contained"
+                    color="primary"
+                  >
+                    <Typography
+                      style={{
+                        fontWeight: 600,
+                        color: "#FFA726",
+                        textShadow: "1px 1px #333",
+                      }}
+                    >
+                      Find The Perfect Strain
+                    </Typography>
+                  </Button>
                 </Grid>
                 {!props.user && (
                   <Grid item>

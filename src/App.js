@@ -8,6 +8,7 @@ import { orange } from "@material-ui/core/colors";
 import Navigation from "./containers/Navigation";
 import NavDrawer from "./containers/NavDrawer";
 import FindPerfectStrain from "./containers/FindPerfectStrain";
+import Loading from "./containers/Loading";
 
 const theme = createMuiTheme({
   palette: {
@@ -33,6 +34,7 @@ function App() {
           <Navigation />
           <NavDrawer />
           <FindPerfectStrain />
+          <Loading />
           <Router />
         </BrowserRouter>
       </ThemeProvider>

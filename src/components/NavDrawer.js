@@ -55,6 +55,12 @@ export default function NavDrawer(props) {
     setRedirect(link);
   };
 
+  const handleFindPerfect = () => {
+    props.setPerfectStrainResults([]);
+    setRedirect("/");
+    props.toggleFindPerfectStrain(true);
+  };
+
   const list = () => (
     <div
       className={classes.list}
@@ -70,7 +76,7 @@ export default function NavDrawer(props) {
           <ListItemText primary="Home" />
         </ListItem>
         <ListItem
-          onClick={() => props.toggleFindPerfectStrain(true)}
+          onClick={() => handleFindPerfect()}
           button
           key="perfectStrain"
         >

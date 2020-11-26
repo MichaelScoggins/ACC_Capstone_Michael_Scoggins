@@ -12,6 +12,7 @@ import {
   addFavorite,
   toggleSnackbar,
   setPerfectStrainResults,
+  toggleFindPerfectStrain,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -47,6 +48,8 @@ const mapDispatchToProps = (dispatch) => {
     toggleSnackbar: (input) => dispatch(toggleSnackbar(input)),
     setPerfectStrainResults: (results) =>
       dispatch(setPerfectStrainResults(results)),
+    toggleFindPerfectStrain: (input) =>
+      dispatch(toggleFindPerfectStrain(input)),
   };
 };
 

@@ -16,6 +16,7 @@ import {
   resetAllStrains,
   toggleFindPerfectStrain,
   setPerfectStrainResults,
+  toggleLoading,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -33,6 +34,7 @@ const mapStateToProps = (state) => {
     speciesPrefs: state.speciesPrefs,
     findPerfectStrainModalOpen: state.findPerfectStrainModalOpen,
     perfectStrainResults: state.perfectStrainResults,
+    isLoading: state.isLoading,
   };
 };
 
@@ -55,6 +57,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(toggleFindPerfectStrain(input)),
     setPerfectStrainResults: (results) =>
       dispatch(setPerfectStrainResults(results)),
+    toggleLoading: (input) => dispatch(toggleLoading(input)),
   };
 };
 
