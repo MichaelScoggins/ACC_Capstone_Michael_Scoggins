@@ -1,6 +1,11 @@
 import { connect } from "react-redux";
 import SignUp from "../../components/forms/SignUp";
-import { addPreExp, setPreTokeForm, setProfile } from "../../redux/actions";
+import {
+  addPreExp,
+  setPreTokeForm,
+  setProfile,
+  setUser,
+} from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -13,7 +18,7 @@ const mapStateToProps = (state) => {
     password: state.profile.password,
     city: state.profile.city,
     state: state.profile.state,
-    profile: state.profile
+    profile: state.profile,
   };
 };
 
@@ -22,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     addPreExp: (exp) => dispatch(addPreExp(exp)),
     setPreTokeForm: (input) => dispatch(setPreTokeForm(input)),
     setProfile: (input) => dispatch(setProfile(input)),
+    setUser: (input) => dispatch(setUser(input)),
   };
 };
 

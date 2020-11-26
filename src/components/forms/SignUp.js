@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+
 import {
   Avatar,
   Button,
@@ -14,7 +14,6 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-// import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { faBong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -66,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUp = (props) => {
   const classes = useStyles();
+  const [redirectHome, setRedirectHome] = React.useState(null);
 
   const handleTextChange = (e) => {
     const newState = props.profile;
@@ -79,9 +79,15 @@ const SignUp = (props) => {
     console.log({ profile });
     // profile.id = uuidv4();
     props.setProfile(profile);
+    props.setUser(props.profile.username);
     console.log(props.profile);
+    setRedirectHome(true);
     // clearAll();
   };
+
+  if (redirectHome) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -111,7 +117,7 @@ const SignUp = (props) => {
               name="firstName"
               label="First Name"
               type="text"
-              autoComplete="email"
+              autoComplete="firstName"
               autoFocus
             />
             <TextField
@@ -125,7 +131,7 @@ const SignUp = (props) => {
               label="Last Name"
               type="text"
               id="lastName"
-              autoComplete="current-password"
+              autoComplete="current-lastName"
             />
             <TextField
               variant="outlined"
@@ -138,7 +144,20 @@ const SignUp = (props) => {
               label="Email"
               type="email"
               id="email"
-              autoComplete="current-password"
+              autoComplete="current-email"
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              onChange={handleTextChange}
+              value={props.username}
+              fullWidth
+              name="username"
+              label="Username"
+              type="username"
+              id="username"
+              autoComplete="current-username"
             />
             <TextField
               variant="outlined"
@@ -192,7 +211,6 @@ const SignUp = (props) => {
             >
               Sign Up
             </Button>
-
             <Grid container>
               <Grid item xs>
                 <Link to="/" variant="body2">
