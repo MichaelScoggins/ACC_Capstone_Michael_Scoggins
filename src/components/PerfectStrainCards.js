@@ -27,7 +27,7 @@ import PerfectStrainDescriptionCard from "../containers/PerfectStrainDescription
 // import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
-import Loading from "../containers/Loading";
+// import Loading from "../containers/Loading";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
