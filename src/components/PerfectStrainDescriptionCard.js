@@ -63,19 +63,20 @@ export default function PerfectStrainDescriptionCard(props) {
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Typography>
-                {strain[1].race === "sativa" ? (
-                  <h1 style={{ color: "gold", textAlign: "center" }}>
-                    {strain[0]}
-                  </h1>
-                ) : strain[1].race === "orchid" ? (
-                  <h1 style={{ color: "purple", textAlign: "center" }}>
-                    {strain[0]}
-                  </h1>
-                ) : (
-                  <h1 style={{ color: "indianred", textAlign: "center" }}>
-                    {strain[0]}
-                  </h1>
-                )}
+                <h1
+                  style={{
+                    color:
+                      strain[1].race === "sativa"
+                        ? "gold"
+                        : strain[1].race === "indica"
+                        ? "orchid"
+                        : "indianred",
+                    textAlign: "center",
+                  }}
+                >
+                  {strain[0]}
+                </h1>
+
                 <hr />
               </Typography>
             </Grid>

@@ -53,7 +53,7 @@ export default function RecordPreLog(props) {
     preLog.id = uuidv4();
     preLog.when = currentdate.toLocaleDateString();
     preLog.strain = strain[1];
-    preLog.strain.name = strain[0];
+    preLog.strain.name = props.strainName;
     preLog.sessionNum = props.experiences.preLogs.length + 1;
     props.addPreExp(preLog);
     toggleOpen(false);
@@ -108,7 +108,7 @@ export default function RecordPreLog(props) {
       <SnackbarAddPreLog
         toggleSnackbar={toggleSnackbar}
         showSnackbar={showSnackbar}
-        strainName={strain[0]}
+        strainName={props.strainName}
       />
       <div style={{ textAlign: "center" }}>
         {/* <Tooltip
@@ -146,7 +146,11 @@ export default function RecordPreLog(props) {
             <DialogTitle>
               <Typography variant="h5">
                 Before You Experience{" "}
-                {<span style={{ color: "springgreen" }}>{strain[0]}</span>}
+                {
+                  <span style={{ color: "springgreen" }}>
+                    {props.strainName}
+                  </span>
+                }
               </Typography>
             </DialogTitle>
             <DialogContent>

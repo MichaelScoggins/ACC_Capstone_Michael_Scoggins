@@ -44,7 +44,7 @@ export default function DisplayUserSearchResults(props) {
         <Table className="listings">
           <TableHead>
             <TableRow>
-              <TableCell style={{ width: 150 }}>
+              <TableCell>
                 <Typography>Name</Typography>
               </TableCell>
               <TableCell>
@@ -58,20 +58,31 @@ export default function DisplayUserSearchResults(props) {
               <TableRow key={strain.id}>
                 <TableCell>
                   <Typography
-                    style={{ cursor: "pointer", color: "springgreen" }}
+                    style={{
+                      whiteSpace: "nowrap",
+                      cursor: "pointer",
+                      color: "springgreen",
+                    }}
                     id={strain.id}
                     onClick={(e) => handleModal(e)}
+                    variant="body1"
                   >
                     {strain.name}
                   </Typography>
                   <br />
-                  {strain.race === "sativa" ? (
-                    <p style={{ color: "orange" }}>{strain.race}</p>
-                  ) : strain.race === "indica" ? (
-                    <p style={{ color: "darkmagenta" }}>{strain.race}</p>
-                  ) : (
-                    <p style={{ color: "brown" }}>{strain.race}</p>
-                  )}
+                  <Typography
+                    variant="subtitle2"
+                    style={{
+                      color:
+                        strain.race === "sativa"
+                          ? "orange"
+                          : strain.race === "indica"
+                          ? "darkmagenta"
+                          : "indianred",
+                    }}
+                  >
+                    {strain.race}
+                  </Typography>
                 </TableCell>
                 <TableCell>
                   <Typography variant="body1" style={{ color: "#BDB76B" }}>

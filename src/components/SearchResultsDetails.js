@@ -37,9 +37,6 @@ export default function SearchResultsDetails(props) {
   }, []);
 
   const strain = props.userSearchResults.find((s) => s.id == props.sID);
-  // const strain = Object.entries(props.allStrains).find(
-  //   (s) => s[1].id == props.sID
-  // );
   const positiveEffects = props.effects.positive;
   const negativeEffects = props.effects.negative;
   const medicalEffects = props.effects.medical;
@@ -58,6 +55,9 @@ export default function SearchResultsDetails(props) {
     props.setModal(false);
   };
 
+  const strainDisplayName =
+    strain.race.charAt(0).toUpperCase() + strain.race.slice(1);
+
   return (
     <Modal
       open={open}
@@ -70,19 +70,20 @@ export default function SearchResultsDetails(props) {
           <Grid item xs={12}>
             <h1 style={{ color: "springgreen", textAlign: "center" }}>
               {strain.name}{" "}
-              {strain.race === "sativa" ? (
-                <p style={{ color: "orange" }}>
-                  {strain.race.charAt(0).toUpperCase() + strain.race.slice(1)}
-                </p>
-              ) : strain.race === "indica" ? (
-                <p style={{ color: "purple" }}>
-                  {strain.race.charAt(0).toUpperCase() + strain.race.slice(1)}
-                </p>
-              ) : (
-                <p style={{ color: "brown" }}>
-                  {strain.race.charAt(0).toUpperCase() + strain.race.slice(1)}
-                </p>
-              )}
+              {
+                <div
+                  style={{
+                    color:
+                      strain.race === "sativa"
+                        ? "orange"
+                        : strain.race === "indica"
+                        ? "orchid"
+                        : "indianred",
+                  }}
+                >
+                  {strainDisplayName}
+                </div>
+              }
             </h1>
             <hr />
           </Grid>
@@ -109,7 +110,7 @@ export default function SearchResultsDetails(props) {
             </h2>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="subtitle1" style={{ color: "lightgray" }}>
+            <Typography variant="body1" style={{ color: "lightgray" }}>
               {props.strainDescription}
             </Typography>
           </Grid>

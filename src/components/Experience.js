@@ -208,17 +208,18 @@ export default function Experience(props) {
                       >
                         {/* <h2 className="card-title">{card.strain.name}</h2> */}
 
-                        {card.strain.race === "sativa" ? (
-                          <h2 style={{ color: "gold" }}>{card.strain.name}</h2>
-                        ) : card.strain.race === "orchid" ? (
-                          <h2 style={{ color: "purple" }}>
-                            {card.strain.name}
-                          </h2>
-                        ) : (
-                          <h2 style={{ color: "indianred" }}>
-                            {card.strain.name}
-                          </h2>
-                        )}
+                        <h2
+                          style={{
+                            color:
+                              card.strain.race === "sativa"
+                                ? "gold"
+                                : card.strain.race === "indica"
+                                ? "orchid"
+                                : "indianred",
+                          }}
+                        >
+                          {card.strain.name}
+                        </h2>
                         <hr />
                       </Typography>
                     </BioToolTip>

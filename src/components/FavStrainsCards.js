@@ -79,6 +79,10 @@ const BioToolTip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
+const showSpeciesName = (x) => {
+  return x.race.charAt(0).toUpperCase() + x.race.slice(1);
+};
+
 export default function FavStrainsCards(props) {
   const classes = useStyles();
   const [showDetailsModal, setDetailsModal] = React.useState(false);
@@ -162,33 +166,34 @@ export default function FavStrainsCards(props) {
                   >
                     {/* <h2 className="card-title">{card.strain.name}</h2> */}
 
-                    {card[1].race === "sativa" ? (
-                      <h2 style={{ color: "gold" }}>{card[0]}</h2>
-                    ) : card[1].race === "orchid" ? (
-                      <h2 style={{ color: "purple" }}>{card[0]}</h2>
-                    ) : (
-                      <h2 style={{ color: "indianred" }}>{card[0]}</h2>
-                    )}
+                    <h2
+                      style={{
+                        color:
+                          card[1].race === "sativa"
+                            ? "gold"
+                            : card[1].race === "indica"
+                            ? "orchid"
+                            : "indianred",
+                      }}
+                    >
+                      {card[0]}
+                    </h2>
                     <hr />
                   </Typography>
                 </BioToolTip>
-                <Typography>
-                  {card[1].race == "sativa" ? (
-                    <h3 style={{ color: "orange" }}>
-                      {card[1].race.charAt(0).toUpperCase() +
-                        card[1].race.slice(1)}
-                    </h3>
-                  ) : card[1].race == "indica" ? (
-                    <h3 style={{ color: "purple" }}>
-                      {card[1].race.charAt(0).toUpperCase() +
-                        card[1].race.slice(1)}
-                    </h3>
-                  ) : (
-                    <h3 style={{ color: "brown" }}>
-                      {card[1].race.charAt(0).toUpperCase() +
-                        card[1].race.slice(1)}
-                    </h3>
-                  )}
+                <Typography variant="h5">
+                  <div
+                    style={{
+                      color:
+                        card[1].race == "sativa"
+                          ? "orange"
+                          : card[1].race == "indica"
+                          ? "purple"
+                          : "indianred",
+                    }}
+                  >
+                    {card[1].race}
+                  </div>
                 </Typography>
               </CardContent>
               <CardActions>
@@ -218,7 +223,7 @@ export default function FavStrainsCards(props) {
                     Bio
                   </Typography>
                 </Button>
-                <RecordPreLog id={card[1].id} />
+                <RecordPreLog id={card[1].id} strainName={String(card[0])} />
               </CardActions>
             </Card>
           </Grid>

@@ -48,7 +48,7 @@ export default function FindPerfectStrain(props) {
 
   React.useEffect(() => {
     // setRedirect(false);
-    props.setPerfectStrainResults([]);
+    // props.setPerfectStrainResults([]);
     // props.toggleFindPerfectStrain(false);
     props.fetchAllStrains();
   }, []);

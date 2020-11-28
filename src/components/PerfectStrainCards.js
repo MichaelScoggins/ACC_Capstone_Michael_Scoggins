@@ -135,6 +135,10 @@ export default function PerfectStrainCards(props) {
     console.log("favs", props.favorites);
   };
 
+  const showSpeciesName = (x) => {
+    return x.race.charAt(0).toUpperCase() + x.race.slice(1);
+  };
+
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       {/* {props.isLoading && <Loading />} */}
@@ -221,22 +225,18 @@ export default function PerfectStrainCards(props) {
                     <Grid item xs={2}></Grid>
                   </Grid>
                   <Typography variant="h5" component="h5">
-                    {card[1].race == "sativa" ? (
-                      <div style={{ color: "gold" }}>
-                        {card[1].race.charAt(0).toUpperCase() +
-                          card[1].race.slice(1)}
-                      </div>
-                    ) : card[1].race == "indica" ? (
-                      <div style={{ color: "orchid" }}>
-                        {card[1].race.charAt(0).toUpperCase() +
-                          card[1].race.slice(1)}
-                      </div>
-                    ) : (
-                      <div style={{ color: "indianred" }}>
-                        {card[1].race.charAt(0).toUpperCase() +
-                          card[1].race.slice(1)}
-                      </div>
-                    )}
+                    <div
+                      style={{
+                        color:
+                          card[1].race == "sativa"
+                            ? "gold"
+                            : card[1].race == "indica"
+                            ? "orchid"
+                            : "indianred",
+                      }}
+                    >
+                      {showSpeciesName(card[1])}
+                    </div>
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -290,7 +290,6 @@ export default function PerfectStrainCards(props) {
           ))}
         </Grid>
       )}
-      {/* {props.perfectStrainResults.length > 0 && props.toggleLoading(false)} */}
     </Container>
   );
 }
