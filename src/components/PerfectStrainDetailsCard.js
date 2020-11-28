@@ -79,14 +79,14 @@ export default function PerfectStrainDetailsCard(props) {
                 <h1
                   style={{
                     color:
-                      strain[1].race === "sativa"
+                      props.strainRace === "sativa"
                         ? "gold"
-                        : strain[1].race === "indica"
+                        : props.strainRace === "indica"
                         ? "orchid"
                         : "indianred",
                   }}
                 >
-                  {strain[0]}
+                  {props.strainName}
                 </h1>
               </div>
             </Typography>

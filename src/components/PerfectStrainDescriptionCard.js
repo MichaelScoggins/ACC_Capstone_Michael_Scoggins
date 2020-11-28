@@ -66,15 +66,15 @@ export default function PerfectStrainDescriptionCard(props) {
                 <h1
                   style={{
                     color:
-                      strain[1].race === "sativa"
+                      props.strainRace === "sativa"
                         ? "gold"
-                        : strain[1].race === "indica"
+                        : props.strainRace === "indica"
                         ? "orchid"
                         : "indianred",
                     textAlign: "center",
                   }}
                 >
-                  {strain[0]}
+                  {props.strainName}
                 </h1>
 
                 <hr />
@@ -82,7 +82,7 @@ export default function PerfectStrainDescriptionCard(props) {
             </Grid>
             <Grid item xs={12}>
               <Typography>
-                <h3>
+                <h3 style={{ color: "lightgray" }}>
                   {props.strainDescription
                     ? props.strainDescription
                     : "No Bio Available"}

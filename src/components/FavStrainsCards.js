@@ -79,23 +79,31 @@ const BioToolTip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const showSpeciesName = (x) => {
-  return x.race.charAt(0).toUpperCase() + x.race.slice(1);
-};
-
 export default function FavStrainsCards(props) {
   const classes = useStyles();
   const [showDetailsModal, setDetailsModal] = React.useState(false);
   const [showDescriptionModal, setDescriptionModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
+  const [strainRace, setStrainRace] = React.useState(null);
+  const [strainName, setStrainName] = React.useState(null);
 
   const handleDetailsModal = (e) => {
     setID(e.currentTarget.id);
+    const strain = props.favorites.find(
+      (fav) => fav[1].id == e.currentTarget.id
+    );
+    setStrainRace(strain[1].race);
+    setStrainName(strain[0]);
     setDetailsModal(true);
   };
 
   const handleDescriptionModal = (e) => {
     setID(e.currentTarget.id);
+    const strain = props.favorites.find(
+      (fav) => fav[1].id == e.currentTarget.id
+    );
+    setStrainRace(strain[1].race);
+    setStrainName(strain[0]);
     setDescriptionModal(true);
   };
 
@@ -105,6 +113,8 @@ export default function FavStrainsCards(props) {
         <PerfectStrainDetailsCard
           setDetailsModal={setDetailsModal}
           sID={strainID}
+          strainRace={strainRace}
+          strainName={strainName}
         />
       )}
       {props.favorites.length === 0 && (
@@ -119,6 +129,8 @@ export default function FavStrainsCards(props) {
         <PerfectStrainDescriptionCard
           setDescriptionModal={setDescriptionModal}
           sID={strainID}
+          strainRace={strainRace}
+          strainName={strainName}
         />
       )}
       <Grid container spacing={4}>
@@ -189,7 +201,7 @@ export default function FavStrainsCards(props) {
                           ? "orange"
                           : card[1].race == "indica"
                           ? "purple"
-                          : "indianred",
+                          : "brown",
                     }}
                   >
                     {card[1].race}
