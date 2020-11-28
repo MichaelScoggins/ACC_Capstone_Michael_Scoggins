@@ -93,9 +93,14 @@ export default function Experience(props) {
   const [showAddReviewForm, setAddReviewForm] = React.useState(false);
   const [showViewReviewModal, setViewReviewModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
+  const [strainName, setStrainName] = React.useState(null);
 
   const handleDetailsModal = (e) => {
     setID(e.currentTarget.id);
+    const exp = props.experiences.preLogs.find(
+      (exp) => exp.strain.id == e.currentTarget.id
+    );
+    setStrainName(exp.strain.name);
     setDetailsModal(true);
   };
 
@@ -106,18 +111,11 @@ export default function Experience(props) {
 
   const handleDescriptionModal = (e) => {
     setID(e.currentTarget.id);
+    const exp = props.experiences.preLogs.find(
+      (exp) => exp.strain.id == e.currentTarget.id
+    );
+    setStrainName(exp.strain.name);
     setDescriptionModal(true);
-  };
-
-  const handleAddFav = (e) => {
-    setID(e.currentTarget.id);
-    let id = e.currentTarget.id;
-    let existingFav = props.favorites.find((x) => x[1].id == id);
-    let strain = props.perfectStrainResults.find((s) => s[1].id == id);
-    strain.name = strain[0];
-    props.setTitle(strain[0]);
-    !existingFav && props.addFavorite(strain) && props.toggleSnackbar(true);
-    console.log("favs", props.favorites);
   };
 
   const handleOpenReview = (e) => {
@@ -142,12 +140,14 @@ export default function Experience(props) {
         <PerfectStrainDetailsCard
           setDetailsModal={setDetailsModal}
           sID={strainID}
+          strainName={strainName}
         />
       )}
       {showDescriptionModal && (
         <PerfectStrainDescriptionCard
           setDescriptionModal={setDescriptionModal}
           sID={strainID}
+          strainName={strainName}
         />
       )}
       {showViewPreTokeModal && (
@@ -261,17 +261,6 @@ export default function Experience(props) {
                   onClick={(e) => handleOpenReview(e)}
                 >
                   <Typography style={{ fontWeight: 600 }}>review</Typography>
-                </Button>
-                <Button
-                  size="small"
-                  disableRipple
-                  style={{ backgroundColor: "purple" }}
-                  variant="contained"
-                  className="heartIcon"
-                  id={card.strain.id}
-                  onClick={(e) => handleAddFav(e)}
-                >
-                  <FavoriteIcon />
                 </Button>
               </CardActions>
             </Card>
