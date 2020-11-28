@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import PerfectStrainCards from "../components/PerfectStrainCards";
+import Experience from "../../components/cards/ExperienceCards";
 import {
   setUser,
   fetchAllStrains,
@@ -13,8 +13,7 @@ import {
   toggleSnackbar,
   setPerfectStrainResults,
   setTitle,
-  toggleLoading,
-} from "../redux/actions";
+} from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -32,8 +31,7 @@ const mapStateToProps = (state) => {
     favorites: state.favorites,
     toggleSnackbar: state.toggleSnackbar,
     perfectStrainResults: state.perfectStrainResults,
-    title: state.title,
-    isLoading: state.isLoading,
+    experiences: state.experiences,
   };
 };
 
@@ -48,12 +46,11 @@ const mapDispatchToProps = (dispatch) => {
     fetchEffects: (input) => dispatch(fetchEffects(input)),
     fetchFlavors: (input) => dispatch(fetchFlavors(input)),
     addFavorite: (input) => dispatch(addFavorite(input)),
+    setTitle: (input) => dispatch(setTitle(input)),
     toggleSnackbar: (input) => dispatch(toggleSnackbar(input)),
     setPerfectStrainResults: (results) =>
       dispatch(setPerfectStrainResults(results)),
-    setTitle: (input) => dispatch(setTitle(input)),
-    toggleLoading: (input) => dispatch(toggleLoading(input)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PerfectStrainCards);
+export default connect(mapStateToProps, mapDispatchToProps)(Experience);

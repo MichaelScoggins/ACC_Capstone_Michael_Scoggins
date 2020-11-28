@@ -1,33 +1,22 @@
 import React from "react";
-// import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-// import CameraIcon from "@material-ui/icons/PhotoCamera";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-// import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
-// import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-// import Link from "@material-ui/core/Link";
-// import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
-import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
-// import FindPerfectStrain from "../containers/FindPerfectStrain";
-// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import SnackbarAddFav from "../containers/SnackbarAddFav";
-import RecordPreLog from "../containers/forms/RecordPreLog";
-import PerfectStrainDescriptionCard from "../containers/PerfectStrainDescriptionCard";
-// import { ArrowBack } from "@material-ui/icons";
-// import IconButton from "@material-ui/core/IconButton";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import Tooltip from "@material-ui/core/Tooltip";
-import Zoom from "@material-ui/core/Zoom";
-// import Loading from "../containers/Loading";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+  Container,
+  Tooltip,
+  Zoom,
+} from "@material-ui/core/";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import PerfectStrainDetailsCard from "../../containers/cards/PerfectStrainDetailsCard";
+import SnackbarAddFav from "../../containers/modals/SnackbarAddFav";
+import RecordPreLog from "../../containers/forms/RecordPreLog";
+import PerfectStrainDescriptionCard from "../../containers/cards/PerfectStrainDescriptionCard";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -126,13 +115,12 @@ export default function PerfectStrainCards(props) {
 
   const handleAddFav = (e) => {
     setID(e.currentTarget.id);
-    let id = e.currentTarget.id;
-    let existingFav = props.favorites.find((x) => x[1].id == id);
+    const id = e.currentTarget.id;
+    const existingFav = props.favorites.find((x) => x[1].id == id);
     let strain = props.perfectStrainResults.find((s) => s[1].id == id);
     strain.name = strain[0];
     props.setTitle(strain[0]);
     !existingFav && props.addFavorite(strain) && props.toggleSnackbar(true);
-    console.log("favs", props.favorites);
   };
 
   const showSpeciesName = (x) => {
@@ -141,7 +129,6 @@ export default function PerfectStrainCards(props) {
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
-      {/* {props.isLoading && <Loading />} */}
       <SnackbarAddFav sID={strainID} />
       {showDetailsModal && (
         <PerfectStrainDetailsCard
@@ -203,11 +190,6 @@ export default function PerfectStrainCards(props) {
                         id={card[1].id}
                         onClick={(e) => handleDescriptionModal(e)}
                       >
-                        {/* <Tooltip
-                          TransitionComponent={Zoom}
-                          placement="top"
-                          title="Click for Bio"
-                        > */}
                         <BioToolTip
                           title={
                             <React.Fragment>
@@ -219,7 +201,6 @@ export default function PerfectStrainCards(props) {
                         >
                           <h2 className="card-title">{card[0]}</h2>
                         </BioToolTip>
-                        {/* </Tooltip> */}
                       </Typography>
                     </Grid>
                     <Grid item xs={2}></Grid>
@@ -281,7 +262,10 @@ export default function PerfectStrainCards(props) {
                       >
                         <FavoriteIcon />
                       </Button>
-                      <RecordPreLog id={card[1].id} />
+                      <RecordPreLog
+                        id={card[1].id}
+                        strainName={String(card[0])}
+                      />
                     </>
                   )}
                 </CardActions>

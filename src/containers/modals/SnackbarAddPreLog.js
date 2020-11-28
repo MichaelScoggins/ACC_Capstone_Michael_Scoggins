@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import SnackbarAddPreLog from "../components/SnackbarAddPreLog";
-import { toggleSnackbar } from "../redux/actions";
+import SnackbarAddPreLog from "../../components/modals/SnackbarAddPreLog";
+import { toggleSnackbar } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

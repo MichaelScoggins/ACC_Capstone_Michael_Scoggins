@@ -1,9 +1,6 @@
 import React from "react";
-// import { Container, Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
+import { Modal, Grid, Typography } from "@material-ui/core";
 
 function getModalStyle() {
   const top = 50;
@@ -36,16 +33,7 @@ export default function PerfectStrainDetailsCard(props) {
     props.fetchFlavors(props.sID);
   }, []);
 
-  // const strain = props.userSearchResults.find((s) => s.id == props.sID);
-  const strain = props.perfectStrainResults.find(
-    (s) => s[1].id == props.sID
-  ) || [
-    [
-      "sorry! you'll have to be a little less picky than that!",
-
-      { "id": "9999", "race": "sativa" },
-    ],
-  ];
+  const strain = props.perfectStrainResults.find((s) => s[1].id == props.sID);
   const positiveEffects = props.effects.positive;
   const negativeEffects = props.effects.negative;
   const medicalEffects = props.effects.medical;
@@ -86,7 +74,9 @@ export default function PerfectStrainDetailsCard(props) {
                         : "indianred",
                   }}
                 >
-                  {props.strainName}
+                  {props.strainName || strain[0]}
+                  <br />
+                  <span style={{ color: "cornflowerblue" }}>Details</span>
                 </h1>
               </div>
             </Typography>

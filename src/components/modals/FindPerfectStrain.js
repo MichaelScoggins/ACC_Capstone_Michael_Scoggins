@@ -1,68 +1,23 @@
 import React from "react";
-// import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-// import { Link } from "@material-ui/core";
-// import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
-// import InputLabel from "@material-ui/core/InputLabel";
-// import Input from "@material-ui/core/Input";
-// import MenuItem from "@material-ui/core/MenuItem";
-// import FormControl from "@material-ui/core/FormControl";
-// import Select from "@material-ui/core/Select";import FormControl from "@material-ui/core/FormControl";
-// import Container from "@material-ui/core/Container";
-import FormControl from "@material-ui/core/FormControl";
-// import IconButton from "@material-ui/core/IconButton";
-// import { faBong } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import PosEffectsChips from "../containers/chips/PosEffectsChips";
-import NegEffectsChips from "../containers/chips/NegEffectsChips";
-import MedicinalChips from "../containers/chips/MedicinalChips";
-import FlavorChips from "../containers/chips/FlavorChips";
-import SpeciesPrefsChips from "../containers/chips/SpeciesPrefsChips";
-import Loading from "../containers/Loading";
-import { Redirect } from "react-router-dom";
-
-// const useStyles = makeStyles((theme) => ({
-//   container: {
-//     display: "flex",
-//     flexWrap: "wrap",
-//   },
-//   formControl: {
-//     margin: theme.spacing(1),
-//     minWidth: 120,
-//   },
-// }));
+import {
+  Button,
+  Dialog,
+  Typography,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControl,
+} from "@material-ui/core";
+import PosEffectsChips from "../../containers/chips/PosEffectsChips";
+import NegEffectsChips from "../../containers/chips/NegEffectsChips";
+import MedicinalChips from "../../containers/chips/MedicinalChips";
+import FlavorChips from "../../containers/chips/FlavorChips";
+import SpeciesPrefsChips from "../../containers/chips/SpeciesPrefsChips";
 
 export default function FindPerfectStrain(props) {
-  // const classes = useStyles();
-  // const [open, setOpen] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
-  // const [redirect, setRedirect] = React.useState(false);
-
-  // const [open, toggleOpen] = React.useState(false);
-  // const toggleDialog = () => toggleOpen(!open);
-
   React.useEffect(() => {
-    // setRedirect(false);
-    // props.setPerfectStrainResults([]);
-    // props.toggleFindPerfectStrain(false);
     props.fetchAllStrains();
   }, []);
-
-  // const handleChange = (event) => {
-  //   setAge(Number(event.target.value) || "");
-  // };
-
-  // const handleClickOpen = () => {
-  //   // setRedirect(true);
-  //   props.setPerfectStrainResults([]);
-  //   props.toggleFindPerfectStrain(true);
-  //   props.fetchAllStrains();
-  // };
 
   const handleClose = () => {
     props.toggleFindPerfectStrain(false);
@@ -95,7 +50,6 @@ export default function FindPerfectStrain(props) {
         ["too many results", { "id": 10000, race: "too many results" }],
       ]);
     }
-    // console.log("state", props.perfectStrainResults);
 
     props.setPerfectStrainResults(perfectStrains);
   };
@@ -110,7 +64,6 @@ export default function FindPerfectStrain(props) {
     props.setPerfectStrainResults([]);
 
     handleClose();
-    // setRedirect(true);
   };
 
   const handleReset = () => {
@@ -121,7 +74,6 @@ export default function FindPerfectStrain(props) {
     props.setFlavPrefs([]);
     props.setSpeciesPrefs([]);
     props.fetchAllStrains();
-    // setRedirect(true);
   };
 
   return (
@@ -145,18 +97,13 @@ export default function FindPerfectStrain(props) {
           >
             <FormControl>
               <PosEffectsChips />
-
               <MedicinalChips />
-
               <NegEffectsChips />
-
               <SpeciesPrefsChips />
-
               <FlavorChips />
             </FormControl>
           </form>
         </DialogContent>
-
         <DialogActions>
           <Button onClick={handleReset} color="secondary" variant="contained">
             <Typography style={{ fontWeight: 600 }}>Reset</Typography>
@@ -169,12 +116,10 @@ export default function FindPerfectStrain(props) {
             color="primary"
             variant="contained"
           >
-            <Typography> Ok</Typography>
+            <Typography>Ok</Typography>
           </Button>
         </DialogActions>
       </Dialog>
-
-      {/* {redirect && <Redirect to="/" />} */}
     </>
   );
 }

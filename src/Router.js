@@ -1,14 +1,14 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 import cookie from "cookie";
-import LogIn from "./containers/LogIn";
+import LogIn from "./containers/forms/LogIn";
 import RecordPreLog from "./containers/forms/RecordPreLog";
 import UserSearchResults from "./containers/UserSearchResults";
-import PerfectStrainCards from "./containers/PerfectStrainCards";
+import PerfectStrainCards from "./containers/cards/PerfectStrainCards";
 import Home from "./containers/Home";
-import FavStrainsCards from "./containers/FavStrainsCards";
+import FavStrainsCards from "./containers/cards/FavStrainsCards";
 import SignUp from "./containers/forms/SignUp";
-import Experience from "./containers/Experience";
+import Experience from "./containers/cards/ExperienceCards";
 
 const checkAuth = () => {
   const cookies = cookie.parse(document.cookie);

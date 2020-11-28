@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
-import NavDrawer from "../components/NavDrawer";
+import NavDrawer from "../../components/navigation/NavDrawer";
 import {
   toggleDrawer,
   toggleFindPerfectStrain,
   toggleLoading,
   setPerfectStrainResults,
-} from "../redux/actions";
+} from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

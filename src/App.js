@@ -5,10 +5,10 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core";
 import { orange } from "@material-ui/core/colors";
-import Navigation from "./containers/Navigation";
-import NavDrawer from "./containers/NavDrawer";
-import FindPerfectStrain from "./containers/FindPerfectStrain";
-import Loading from "./containers/Loading";
+import Navigation from "./containers/navigation/Navigation";
+import NavDrawer from "./containers/navigation/NavDrawer";
+import FindPerfectStrain from "./containers/modals/FindPerfectStrain";
+import Loading from "./containers/modals/Loading";
 
 const theme = createMuiTheme({
   palette: {

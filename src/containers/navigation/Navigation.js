@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import Navigation from "../components/Navigation";
-import { toggleDrawer } from "../redux/actions";
+import Navigation from "../../components/navigation/Navigation";
+import { toggleDrawer } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

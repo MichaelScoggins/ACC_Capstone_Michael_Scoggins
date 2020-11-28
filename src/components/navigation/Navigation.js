@@ -1,37 +1,18 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
-// import axios from "axios";
-import cookie from "cookie";
+import { Link, useLocation } from "react-router-dom";
+// import cookie from "cookie";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 import {
   AppBar,
   Toolbar,
   IconButton,
   Typography,
   Button,
-  // InputBase,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import SearchBar from "../containers/SearchBar";
-import { useLocation } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
-// import Badge from "@material-ui/core/Badge";
-// import MenuItem from "@material-ui/core/MenuItem";
-// import Menu from "@material-ui/core/Menu";
-// import SearchIcon from "@material-ui/icons/Search";
-// import AccountCircle from "@material-ui/icons/AccountCircle";
-// import MailIcon from "@material-ui/icons/Mail";
-// import NotificationsIcon from "@material-ui/icons/Notifications";
-// import MoreIcon from "@material-ui/icons/MoreVert";
-// import SearchBy from "../containers/SearchBy";
-// import PosEffectsChips from "../containers/PosEffectsChips";
-// import NegEffectsChips from "../containers/NegEffectsChips";
-// import FlavorChips from "../containers/FlavorChips";
-// import MedicinalChips from "../containers/MedicinalChips";
-// import SpeciesPrefsChips from "../containers/SpeciesPrefsChips";
-// import FindPerfectStrain from "../containers/FindPerfectStrain";
+import SearchBar from "../../containers/navigation/SearchBar";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -67,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Navigation = (props) => {
   const classes = useStyles();
-  const cookies = cookie.parse(document.cookie);
+  // const cookies = cookie.parse(document.cookie);
   const location = useLocation();
 
   const SignIn = () => {

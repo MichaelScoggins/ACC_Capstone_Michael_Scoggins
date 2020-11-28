@@ -1,27 +1,23 @@
 import React, { Fragment } from "react";
-// import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-// import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
-// import IconButton from "@material-ui/core/IconButton";
-import Select from "@material-ui/core/Select";
-import { v4 as uuidv4 } from "uuid";
-import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Tooltip from "@material-ui/core/Tooltip";
-import Zoom from "@material-ui/core/Zoom";
 import {
   Button,
   TextField,
   Dialog,
   DialogContent,
   DialogTitle,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  Tooltip,
+  Zoom,
+  Typography,
 } from "@material-ui/core";
-// import RecordReview from "../../containers/forms/RecordReview";
-import SnackbarAddPreLog from "../SnackbarAddPreLog";
+import { withStyles } from "@material-ui/core/styles";
+import { v4 as uuidv4 } from "uuid";
+import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SnackbarAddPreLog from "../modals/SnackbarAddPreLog";
 
 export default function RecordPreLog(props) {
   const [open, toggleOpen] = React.useState(false);

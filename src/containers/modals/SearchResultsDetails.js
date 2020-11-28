@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
-import SearchBar from "../components/SearchBar";
+import SearchResultsDetails from "../../components/modals/SearchResultsDetails";
 import {
   setUser,
   fetchAllStrains,
   fetchUserSearchResults,
-  setUserSearchInput,
-} from "../redux/actions";
+  fetchEffects,
+  fetchFlavors,
+  fetchDescription,
+} from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -13,13 +15,14 @@ const mapStateToProps = (state) => {
     userSearchResults: state.userSearchResults,
     allStrains: state.allStrains,
     searchParams: state.searchParams,
-    userSearchInput: state.userSearchInput,
     effects: state.effects,
+    flavors: state.flavors,
     posPrefs: state.posPrefs,
     avoidPrefs: state.avoidPrefs,
     medPrefs: state.medPrefs,
     flavPrefs: state.flavPrefs,
     speciesPrefs: state.speciesPrefs,
+    strainDescription: state.strainDescription,
   };
 };
 
@@ -28,8 +31,13 @@ const mapDispatchToProps = (dispatch) => {
     setUser: (username) => dispatch(setUser(username)),
     fetchAllStrains: () => dispatch(fetchAllStrains()),
     fetchUserSearchResults: (input) => dispatch(fetchUserSearchResults(input)),
-    setUserSearchInput: (input) => dispatch(setUserSearchInput(input)),
+    fetchEffects: (input) => dispatch(fetchEffects(input)),
+    fetchFlavors: (input) => dispatch(fetchFlavors(input)),
+    fetchDescription: (input) => dispatch(fetchDescription(input)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchResultsDetails);

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import FindPerfectStrain from "../components/FindPerfectStrain";
+import FindPerfectStrain from "../../components/modals/FindPerfectStrain";
 import {
   setUser,
   fetchAllStrains,
@@ -17,7 +17,7 @@ import {
   toggleFindPerfectStrain,
   setPerfectStrainResults,
   toggleLoading,
-} from "../redux/actions";
+} from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

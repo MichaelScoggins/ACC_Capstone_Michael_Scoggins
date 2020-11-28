@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
-import ViewReviewModal from "../components/ViewReviewModal";
-import { addPreExp, setPreTokeForm } from "../redux/actions";
+import ViewPreTokeModal from "../../components/modals/ViewPreTokeModal";
+import { addPreExp, setPreTokeForm } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
     preTokeForm: state.preTokeForm,
-    reviewForm: state.reviewForm,
     experiences: state.experiences,
     perfectStrainResults: state.perfectStrainResults,
   };
@@ -18,4 +17,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewReviewModal);
+export default connect(mapStateToProps, mapDispatchToProps)(ViewPreTokeModal);

@@ -1,18 +1,13 @@
 import { connect } from "react-redux";
-import FavStrainsCards from "../components/FavStrainsCards";
+import PerfectStrainDescriptionCard from "../../components/cards/PerfectStrainDescriptionCard";
 import {
   setUser,
   fetchAllStrains,
   fetchUserSearchResults,
-  setSpeciesPrefs,
-  fetchDescription,
   fetchEffects,
   fetchFlavors,
-  setUserSearchInput,
-  addFavorite,
-  toggleSnackbar,
-  setPerfectStrainResults,
-} from "../redux/actions";
+  fetchDescription,
+} from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -20,15 +15,14 @@ const mapStateToProps = (state) => {
     userSearchResults: state.userSearchResults,
     allStrains: state.allStrains,
     searchParams: state.searchParams,
-    userSearchInput: state.userSearchInput,
     effects: state.effects,
+    flavors: state.flavors,
     posPrefs: state.posPrefs,
     avoidPrefs: state.avoidPrefs,
     medPrefs: state.medPrefs,
     flavPrefs: state.flavPrefs,
     speciesPrefs: state.speciesPrefs,
-    favorites: state.favorites,
-    toggleSnackbar: state.toggleSnackbar,
+    strainDescription: state.strainDescription,
     perfectStrainResults: state.perfectStrainResults,
   };
 };
@@ -38,16 +32,13 @@ const mapDispatchToProps = (dispatch) => {
     setUser: (username) => dispatch(setUser(username)),
     fetchAllStrains: () => dispatch(fetchAllStrains()),
     fetchUserSearchResults: (input) => dispatch(fetchUserSearchResults(input)),
-    setUserSearchInput: (input) => dispatch(setUserSearchInput(input)),
-    setSpeciesPrefs: (input) => dispatch(setSpeciesPrefs(input)),
-    fetchDescription: (input) => dispatch(fetchDescription(input)),
     fetchEffects: (input) => dispatch(fetchEffects(input)),
     fetchFlavors: (input) => dispatch(fetchFlavors(input)),
-    addFavorite: (input) => dispatch(addFavorite(input)),
-    toggleSnackbar: (input) => dispatch(toggleSnackbar(input)),
-    setPerfectStrainResults: (results) =>
-      dispatch(setPerfectStrainResults(results)),
+    fetchDescription: (input) => dispatch(fetchDescription(input)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavStrainsCards);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PerfectStrainDescriptionCard);

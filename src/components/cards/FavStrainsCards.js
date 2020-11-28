@@ -1,29 +1,20 @@
 import React from "react";
-// import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-// import CameraIcon from "@material-ui/icons/PhotoCamera";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-// import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
-// import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+  Tooltip,
+  Zoom,
+  Container,
+} from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
-import Zoom from "@material-ui/core/Zoom";
-import Container from "@material-ui/core/Container";
-// import Link from "@material-ui/core/Link";
-import PerfectStrainDetailsCard from "../containers/PerfectStrainDetailsCard";
-import PerfectStrainDescriptionCard from "../containers/PerfectStrainDescriptionCard";
-// import FindPerfectStrain from "../containers/FindPerfectStrain";
-// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
-// import SnackbarAddFav from "../containers/SnackbarAddFav";
-import RecordPreLog from "../containers/forms/RecordPreLog";
-// import { ArrowBack } from "@material-ui/icons";
-// import IconButton from "@material-ui/core/IconButton";
+import PerfectStrainDetailsCard from "../../containers/cards/PerfectStrainDetailsCard";
+import PerfectStrainDescriptionCard from "../../containers/cards/PerfectStrainDescriptionCard";
+import RecordPreLog from "../../containers/forms/RecordPreLog";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -158,17 +149,6 @@ export default function FavStrainsCards(props) {
                   placement="top"
                   TransitionComponent={Zoom}
                 >
-                  {/* <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                    style={{ cursor: "pointer", color: "springgreen" }}
-                    id={card[1].id}
-                    onClick={(e) => handleDetailsModal(e)}
-                  >
-                    <h2>{card[0]}</h2>
-                  </Typography> */}
-
                   <Typography
                     variant="h5"
                     component="h2"
@@ -176,8 +156,6 @@ export default function FavStrainsCards(props) {
                     id={card[1].id}
                     onClick={(e) => handleDescriptionModal(e)}
                   >
-                    {/* <h2 className="card-title">{card.strain.name}</h2> */}
-
                     <h2
                       style={{
                         color:

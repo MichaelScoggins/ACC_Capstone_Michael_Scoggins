@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
+import { Button, Snackbar, IconButton, Typography } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import Typography from "@material-ui/core/Typography";
 
 export default function SnackbarAddFav(props) {
   const handleClose = (event, reason) => {
@@ -14,8 +11,6 @@ export default function SnackbarAddFav(props) {
 
     props.toggleSnackbar(false);
   };
-
-  // let strain = props.perfectStrainResults.find((s) => s[1].id == props.sID);
 
   return (
     <div>

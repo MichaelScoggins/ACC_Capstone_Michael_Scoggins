@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import SnackbarAddFav from "../components/SnackbarAddFav";
-import { toggleSnackbar } from "../redux/actions";
+import SnackbarAddFav from "../../components/modals/SnackbarAddFav";
+import { toggleSnackbar } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

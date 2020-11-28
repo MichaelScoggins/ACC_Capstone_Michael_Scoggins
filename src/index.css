@@ -70,4 +70,7 @@ a:hover {
   text-decoration: underline;
 }
 
+.doodoo:hover {
+  color: springgreen;
+}
 /* 2196f3 */

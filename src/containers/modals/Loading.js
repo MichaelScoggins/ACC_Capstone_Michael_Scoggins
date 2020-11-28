@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import Loading from "../components/Loading";
-import { toggleDrawer, toggleLoading } from "../redux/actions";
+import Loading from "../../components/modals/Loading";
+import { toggleDrawer, toggleLoading } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

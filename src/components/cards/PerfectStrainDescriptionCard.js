@@ -74,7 +74,7 @@ export default function PerfectStrainDescriptionCard(props) {
                     textAlign: "center",
                   }}
                 >
-                  {props.strainName}
+                  {props.strainName || strain[0]}
                 </h1>
 
                 <hr />

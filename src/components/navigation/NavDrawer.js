@@ -1,24 +1,15 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-// import clsx from "clsx";
-// import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-// import FindPerfectStrain from "../components/FindPerfectStrain";
-// import Button from "@material-ui/core/Button";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-// import InboxIcon from "@material-ui/icons/MoveToInbox";
-// import MailIcon from "@material-ui/icons/Mail";
+import {
+  Drawer,
+  List,
+  Divider,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
-// import SearchIcon from "@material-ui/icons/Search";
-// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-// import FolderOpenIcon from "@material-ui/icons/FolderOpen";
-// import LockOpenIcon from "@material-ui/icons/LockOpen";
-// import LocationSearchingIcon from "@material-ui/icons/LocationSearching";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import GpsFixedIcon from "@material-ui/icons/GpsFixed";
 import FavoriteIcon from "@material-ui/icons/Favorite";
