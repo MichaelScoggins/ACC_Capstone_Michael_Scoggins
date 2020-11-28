@@ -73,9 +73,9 @@ export default function DisplayUserSearchResults(props) {
                     style={{
                       color:
                         strain.race === "sativa"
-                          ? "orange"
+                          ? "gold"
                           : strain.race === "indica"
-                          ? "darkmagenta"
+                          ? "orchid"
                           : "indianred",
                     }}
                   >
