@@ -15,6 +15,7 @@ function getModalStyle() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
+    color: "lightgray",
     position: "absolute",
     width: 400,
     backgroundColor: theme.palette.background.paper,
@@ -76,7 +77,7 @@ export default function PerfectStrainDetailsCard(props) {
                 >
                   {props.strainName || strain[0]}
                   <br />
-                  <span style={{ color: "cornflowerblue" }}>Details</span>
+                  <span style={{ color: "lightgray" }}>Details</span>
                 </h1>
               </div>
             </Typography>
