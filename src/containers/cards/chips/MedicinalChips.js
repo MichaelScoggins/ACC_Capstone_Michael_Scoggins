@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import MedicinalChips from "../../components/chips/MedicinalChips";
-import { setMedPrefs } from "../../redux/actions";
+import MedicinalChips from "../../../components/forms/chips/MedicinalChips";
+import { setMedPrefs } from "../../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

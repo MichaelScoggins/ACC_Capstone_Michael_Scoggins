@@ -71,21 +71,10 @@ export default function RecordPreLog(props) {
     });
   };
 
-  const handleTextChange = (e) => {
+  const handleTextChange = (e, x) => {
     const newState = props.preTokeForm;
     newState[e.target.id] = e.target.value;
-    props.setPreTokeForm(newState);
-  };
-
-  const handleMoodSelect = (e) => {
-    const newState = props.preTokeForm;
-    newState["mood"] = e.target.value;
-    props.setPreTokeForm(newState);
-  };
-
-  const handleReasonSelect = (e) => {
-    const newState = props.preTokeForm;
-    newState["reason"] = e.target.value;
+    newState[x] = e.target.value;
     props.setPreTokeForm(newState);
   };
 
@@ -107,13 +96,6 @@ export default function RecordPreLog(props) {
         strainName={strain[0]}
       />
       <div style={{ textAlign: "center" }}>
-        {/* <Tooltip
-          TransitionComponent={Zoom}
-          placement="top"
-          title="Add Exp"
-          margin={0}
-        > */}
-
         <AddExpToolTip
           title={
             <React.Fragment>
@@ -192,7 +174,7 @@ export default function RecordPreLog(props) {
                     id="mood"
                     required
                     value={props.preTokeForm.mood}
-                    onChange={handleMoodSelect}
+                    onChange={(e) => handleTextChange(e, "mood")}
                   >
                     <MenuItem value="normal">
                       <em>Normal</em>
@@ -212,7 +194,7 @@ export default function RecordPreLog(props) {
                     labelId="reasonSelect"
                     id="reason"
                     value={props.preTokeForm.reason}
-                    onChange={handleReasonSelect}
+                    onChange={(e) => handleTextChange(e, "reason")}
                     required
                   >
                     <MenuItem value={"pain relief"}>Pain Relief</MenuItem>
@@ -222,18 +204,14 @@ export default function RecordPreLog(props) {
                     </MenuItem>
                     <MenuItem value={"focus"}>Focus</MenuItem>
                     <MenuItem value={"social awareness"}>Recreation</MenuItem>
+                    <MenuItem value={"an increased appreciation for art"}>
+                      Art Enhancement
+                    </MenuItem>
                     <MenuItem value={"stillness"}>Meditation</MenuItem>
                     <MenuItem value={"modularity"}>Mental Modularity</MenuItem>
                     <MenuItem value={"something personal"}>Other</MenuItem>
                   </Select>
-                  {/* <FormHelperText>
-        <Typography>whats this</Typography>
-      </FormHelperText> */}
                 </FormControl>
-                {/* <br />
-      <Typography variant="body1" style={{ color: "#FFA726" }}>
-        Track Your Experiences (optional)
-      </Typography> */}
                 <TextField
                   id="expectations"
                   label="Expectations"

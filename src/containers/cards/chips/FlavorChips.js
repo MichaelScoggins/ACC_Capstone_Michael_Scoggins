@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import FlavorChips from "../../components/chips/FlavorChips";
-import { setFlavPrefs } from "../../redux/actions";
+import FlavorChips from "../../../components/forms/chips/FlavorChips";
+import { setFlavPrefs } from "../../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {

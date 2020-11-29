@@ -8,11 +8,11 @@ import {
   DialogTitle,
   FormControl,
 } from "@material-ui/core";
-import PosEffectsChips from "../../containers/chips/PosEffectsChips";
-import NegEffectsChips from "../../containers/chips/NegEffectsChips";
-import MedicinalChips from "../../containers/chips/MedicinalChips";
-import FlavorChips from "../../containers/chips/FlavorChips";
-import SpeciesPrefsChips from "../../containers/chips/SpeciesPrefsChips";
+import PosEffectsChips from "../../containers/cards/chips/PosEffectsChips";
+import NegEffectsChips from "../../containers/cards/chips/NegEffectsChips";
+import MedicinalChips from "../../containers/cards/chips/MedicinalChips";
+import FlavorChips from "../../containers/cards/chips/FlavorChips";
+import SpeciesPrefsChips from "../../containers/cards/chips/SpeciesPrefsChips";
 
 export default function FindPerfectStrain(props) {
   React.useEffect(() => {

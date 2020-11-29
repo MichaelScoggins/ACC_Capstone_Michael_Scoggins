@@ -13,9 +13,8 @@ import PerfectStrainCards from "../containers/cards/PerfectStrainCards";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}../
-      <Link color="inherit">High../er Intentions</Link>{" "}
-      {new Date().getFullYear()}
+      {"Copyright © "}
+      <Link color="inherit">Higher Intentions</Link> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
