@@ -205,19 +205,19 @@ export default function PerfectStrainCards(props) {
                     </Grid>
                     <Grid item xs={2}></Grid>
                   </Grid>
-                  <Typography variant="h5" component="h5">
-                    <div
-                      style={{
-                        color:
-                          card[1].race == "sativa"
-                            ? "gold"
-                            : card[1].race == "indica"
-                            ? "orchid"
-                            : "indianred",
-                      }}
-                    >
-                      {showSpeciesName(card[1])}
-                    </div>
+                  <Typography
+                    variant="h5"
+                    component="h5"
+                    style={{
+                      color:
+                        card[1].race == "sativa"
+                          ? "gold"
+                          : card[1].race == "indica"
+                          ? "orchid"
+                          : "indianred",
+                    }}
+                  >
+                    {showSpeciesName(card[1])}
                   </Typography>
                 </CardContent>
                 <CardActions>
