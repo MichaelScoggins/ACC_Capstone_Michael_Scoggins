@@ -20,13 +20,106 @@ const getUserById = (req, res) => {
 };
 
 const createUser = (req, res) => {
-  const { firstName, lastName } = req.body;
-  let sql = "INSERT INTO users (first_name, last_name) VALUES (?, ?)";
-  sql = mysql.format(sql, [firstName, lastName]);
+  const { firstName, lastName, username, email } = req.body;
+  let sql =
+    "INSERT INTO users (firstName, lastName, username, email) VALUES (?, ?, ?, ?)";
+  sql = mysql.format(sql, [firstName, lastName, username, email]);
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
     return res.json({ newId: results.insertId });
+  });
+};
+
+const createUserCredentials = (req, res) => {
+  const { user_id, username, password } = req.body;
+  let sql =
+    "INSERT INTO usersCredentials (user_id, username, password) VALUES (?, ?, ?)";
+  sql = mysql.format(sql, [user_id, username, password]);
+
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err);
+    return res.json({ newId: results.insertId });
+  });
+};
+
+const createUserProfile = (req, res) => {
+  const {
+    user_id,
+    exp,
+    firstExp,
+    freq,
+    activityPrefs,
+    nearbyStrains,
+  } = req.body;
+  let sql =
+    "INSERT INTO usersProfiles (user_id, exp, firstExp, freq, activityPrefs, nearbyStrains) VALUES (?, ?, ?, ?, ?, ?)";
+  sql = mysql.format(sql, [
+    user_id,
+    exp,
+    firstExp,
+    freq,
+    activityPrefs,
+    nearbyStrains,
+  ]);
+
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err);
+    return res.json({ message: `${results.user_id} added` });
+  });
+};
+
+const createUserPrefs = (req, res) => {
+  const {
+    user_id,
+    flavorPrefs,
+    posPrefs,
+    negPrefs,
+    medicalConditions,
+    speciesPref,
+  } = req.body;
+  let sql =
+    "UPDATE usersPrefs SET user_id = ? flavorPrefs = ?, posPrefs = ?, negPrefs = ?, medicalConditions = ?, speciesPref = ?";
+  sql = mysql.format(sql, [
+    user_id,
+    flavorPrefs,
+    posPrefs,
+    negPrefs,
+    medicalConditions,
+    speciesPref,
+    req.params.id,
+  ]);
+
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err);
+    return res.status(204).json();
+  });
+};
+
+const setUserPrefs = (req, res) => {
+  const {
+    user_id,
+    flavorPrefs,
+    posPrefs,
+    negPrefs,
+    medicalConditions,
+    speciesPref,
+  } = req.body;
+  let sql =
+    "UPDATE usersPrefs SET flavorPrefs = ?, posPrefs = ?, negPrefs = ?, medicalConditions = ?, speciesPref = ? WHERE id = ?";
+  sql = mysql.format(sql, [
+    user_id,
+    flavorPrefs,
+    posPrefs,
+    negPrefs,
+    medicalConditions,
+    speciesPref,
+    req.params.id,
+  ]);
+
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err);
+    return res.status(204).json();
   });
 };
 
@@ -57,4 +150,8 @@ module.exports = {
   createUser,
   updateUserById,
   deleteUserByFirstName,
+  createUserProfile,
+  createUserCredentials,
+  createUserPrefs,
+  setUserPrefs,
 };
