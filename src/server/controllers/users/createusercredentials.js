@@ -2,11 +2,11 @@ const mysql = require("mysql");
 const pool = require("../../sql/connection");
 const { handleSQLError } = require("../../sql/error");
 
-const createUser = (req, res) => {
-  const { firstName, lastName, username, email } = req.body;
+const createUserCredentials = (req, res) => {
+  const { user_id, username, password } = req.body;
   let sql =
-    "INSERT INTO users (firstName, lastName, username, email) VALUES (?, ?, ?, ?)";
-  sql = mysql.format(sql, [firstName, lastName, username, email]);
+    "INSERT INTO usersCredentials (user_id, username, password) VALUES (?, ?, ?)";
+  sql = mysql.format(sql, [user_id, username, password]);
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
@@ -15,5 +15,5 @@ const createUser = (req, res) => {
 };
 
 module.exports = {
-  createUser,
+  createUserCredentials,
 };
