@@ -7,7 +7,9 @@ const router = express.Router();
 
 // user preference functions
 router.get("/", getAllUserPrefsController.getAllUserPrefs);
+
 router.post("/", createUserPrefsController.createUserPrefs);
+
 router.put("/:id", setUserPrefsController.setUserPrefs);
 
 module.exports = router;
