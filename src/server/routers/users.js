@@ -8,6 +8,7 @@ router.get("/:id", usersController.getUserById);
 router.post("/", usersController.createUser);
 router.post("/profile", usersController.createUserProfile);
 router.post("/prefs", usersController.createUserPrefs);
+router.put("/prefs/:id", usersController.setUserPrefs);
 router.post("/credentials", usersController.createUserCredentials);
 router.put("/:id", checkJwt, usersController.updateUserById);
 router.delete("/:first_name", checkJwt, usersController.deleteUserByFirstName);

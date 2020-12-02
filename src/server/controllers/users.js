@@ -97,7 +97,6 @@ const createUserPrefs = (req, res) => {
 
 const setUserPrefs = (req, res) => {
   const {
-    user_id,
     flavorPrefs,
     posPrefs,
     negPrefs,
@@ -105,9 +104,8 @@ const setUserPrefs = (req, res) => {
     speciesPref,
   } = req.body;
   let sql =
-    "UPDATE usersPrefs SET flavorPrefs = ?, posPrefs = ?, negPrefs = ?, medicalConditions = ?, speciesPref = ? WHERE id = ?";
+    "UPDATE usersPrefs SET flavorPrefs = ?, posPrefs = ?, negPrefs = ?, medicalConditions = ?, speciesPref = ? WHERE usersPrefs.user_id = ?";
   sql = mysql.format(sql, [
-    user_id,
     flavorPrefs,
     posPrefs,
     negPrefs,
