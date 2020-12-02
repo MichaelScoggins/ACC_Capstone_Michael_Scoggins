@@ -3,7 +3,14 @@ const pool = require("../sql/connection");
 const { handleSQLError } = require("../sql/error");
 
 const getAllUsers = (req, res) => {
-  pool.query("SELECT * FROM users", (err, rows) => {
+  pool.query("SELECT * FROM usersPrefs", (err, rows) => {
+    if (err) return handleSQLError(res, err);
+    return res.json(rows);
+  });
+};
+
+const getAllUserPrefs = (req, res) => {
+  pool.query("SELECT * FROM usersPrefs", (err, rows) => {
     if (err) return handleSQLError(res, err);
     return res.json(rows);
   });
@@ -65,7 +72,7 @@ const createUserProfile = (req, res) => {
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
-    return res.json({ message: `${results.user_id} added` });
+    return res.json({ message: `profile added` });
   });
 };
 
@@ -91,7 +98,7 @@ const createUserPrefs = (req, res) => {
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
-    return res.status(204).json();
+    return res.json({ message: `userPrefs for user #${user_id} created` });
   });
 };
 
@@ -143,6 +150,7 @@ const deleteUserByFirstName = (req, res) => {
 
 module.exports = {
   getAllUsers,
+  getAllUserPrefs,
   getUserById,
   createUser,
   updateUserById,
