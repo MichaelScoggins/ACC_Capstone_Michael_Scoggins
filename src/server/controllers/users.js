@@ -79,7 +79,7 @@ const createUserPrefs = (req, res) => {
     speciesPref,
   } = req.body;
   let sql =
-    "UPDATE usersPrefs SET user_id = ? flavorPrefs = ?, posPrefs = ?, negPrefs = ?, medicalConditions = ?, speciesPref = ?";
+    "INSERT INTO usersPrefs (user_id, flavorPrefs, posPrefs, negPrefs, medicalConditions, speciesPref) VALUES (?, ?, ?, ?, ?, ?)";
   sql = mysql.format(sql, [
     user_id,
     flavorPrefs,
@@ -87,7 +87,6 @@ const createUserPrefs = (req, res) => {
     negPrefs,
     medicalConditions,
     speciesPref,
-    req.params.id,
   ]);
 
   pool.query(sql, (err, results) => {

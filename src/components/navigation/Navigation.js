@@ -57,8 +57,9 @@ const Navigation = (props) => {
         <Button variant="contained" color="secondary">
           <Typography
             style={{
-              color: "#345600",
               fontWeight: 600,
+              color: "green",
+              textShadow: "1px 1px yellowgreen",
             }}
           >
             Sign In
@@ -81,8 +82,9 @@ const Navigation = (props) => {
         <Button variant="contained" color="secondary">
           <Typography
             style={{
-              color: "#345600",
               fontWeight: 600,
+              color: "green",
+              textShadow: "1px 1px yellowgreen",
             }}
           >
             Sign Up
@@ -97,7 +99,11 @@ const Navigation = (props) => {
       <Button
         variant="contained"
         color="secondary"
-        style={{ color: "white" }}
+        style={{
+          fontWeight: 600,
+          color: "green",
+          textShadow: "1px 1px yellowgreen",
+        }}
         className="nav-list-item"
         onClick={() => {
           document.cookie = "loggedIn=";
