@@ -1,9 +1,9 @@
 const mysql = require("mysql");
-const pool = require("../sql/connection");
-const { handleSQLError } = require("../sql/error");
+const pool = require("../../sql/connection");
+const { handleSQLError } = require("../../sql/error");
 
 const getPreLogById = (req, res) => {
-  let sql = "SELECT * FROM users WHERE id = ?";
+  let sql = "SELECT * FROM usersPreLogs WHERE user_id = ?";
   sql = mysql.format(sql, [req.params.id]);
 
   pool.query(sql, (err, rows) => {
