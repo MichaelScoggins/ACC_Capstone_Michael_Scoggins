@@ -1,9 +1,13 @@
 const express = require("express");
-const usersController = require("../controllers/preLogs");
-// const { authenticate } = require("../middleware");
+const createPreLogController = require("../controllers/preLogs/createprelog");
+// const { checkJwt } = require("../middleware");
 const router = express.Router();
 
-router.get("/:id", usersController.getPreLogById);
-router.post("/", usersController.createPreLog);
+// user profile functions
+// router.get("/", getAllProfilesController.getAllProfiles);
+
+// router.get("/:id", getProfilesByIdController.getProfileById);
+
+router.post("/", createPreLogController.createPreLog);
 
 module.exports = router;

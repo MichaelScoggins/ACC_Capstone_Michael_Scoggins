@@ -1,9 +1,13 @@
 const express = require("express");
-const usersController = require("../controllers/reviews");
-const { authenticate } = require("../middleware");
+const createReviewController = require("../controllers/reviews/createreview");
+// const { checkJwt } = require("../middleware");
 const router = express.Router();
 
-router.get("/:id", usersController.getReviewById);
-router.post("/", usersController.createReview);
+// user profile functions
+// router.get("/", getAllProfilesController.getAllProfiles);
+
+// router.get("/:id", getProfilesByIdController.getProfileById);
+
+router.post("/", createReviewController.createReview);
 
 module.exports = router;

@@ -4,8 +4,8 @@ const bodyParser = require("body-parser");
 const usersRouter = require("./server/routers/users");
 const prefsRouter = require("./server/routers/prefs");
 const profileRouter = require("./server/routers/profile");
-// const preLogsRouter = require("./server/routers/preLogs");
-// const reviewsRouter = require("./server/routers/reviews");
+const preLogsRouter = require("./server/routers/preLogs");
+const reviewsRouter = require("./server/routers/reviews");
 const authRouter = require("./server/routers/auth");
 const { logger } = require("./server/middleware");
 
@@ -17,6 +17,8 @@ app.use(logger);
 app.use("/users", usersRouter);
 app.use("/prefs", prefsRouter);
 app.use("/profile", profileRouter);
+app.use("/prelogs", preLogsRouter);
+app.use("/reviews", reviewsRouter);
 app.use("/auth", authRouter);
 
 app.get("/", (req, res) => {

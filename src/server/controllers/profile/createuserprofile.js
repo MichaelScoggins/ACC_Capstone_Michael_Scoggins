@@ -24,7 +24,7 @@ const createUserProfile = (req, res) => {
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
-    return res.json({ message: `profile added` });
+    return res.json({ message: `user ${user_id} profile added` });
   });
 };
 

@@ -3,15 +3,45 @@ const pool = require("../../sql/connection");
 const { handleSQLError } = require("../../sql/error");
 
 const createReview = (req, res) => {
-  // INSERT INTO USERS FIRST AND LAST NAME
-  let sql = "INSERT INTO departments (dept_no, dept_name) VALUES (?, ?);";
-  // WHAT GOES IN THE BRACKETS
-  sql = mysql.format(sql, [req.body.dept_no, req.body.dept_name]);
+  const {
+    user_id,
+    session_id,
+    budDescript,
+    goodFor,
+    transformedMood,
+    transformedExpectations,
+    experience,
+    transformedWorries,
+    transformedGoals,
+    disappointments,
+    wouldChangeNextTime,
+    wouldRecommend,
+  } = req.body;
+  let sql =
+    "INSERT INTO usersExpReviews (user_id, session_id, budDescript, goodFor, transformedMood, transformedExpectations, experience, transformedWorries, transformedGoals, disappointments, wouldChangeNextTime, wouldRecommend) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  sql = mysql.format(sql, [
+    user_id,
+    session_id,
+    budDescript,
+    goodFor,
+    transformedMood,
+    transformedExpectations,
+    experience,
+    transformedWorries,
+    transformedGoals,
+    disappointments,
+    wouldChangeNextTime,
+    wouldRecommend,
+  ]);
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
-    return res.json({ newId: results.insertId });
+    return res.json({
+      message: `user ${user_id} session ${session_id} review added`,
+    });
   });
 };
 
-module.exports = { createReview };
+module.exports = {
+  createReview,
+};
