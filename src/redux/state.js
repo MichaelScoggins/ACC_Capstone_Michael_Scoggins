@@ -5,11 +5,9 @@ export default {
   profile: {
     firstName: "",
     lastName: "",
-    email: "",
     username: "",
     password: "",
-    city: "",
-    state: "",
+    email: "",
   },
   favorites: [],
   experiences: {

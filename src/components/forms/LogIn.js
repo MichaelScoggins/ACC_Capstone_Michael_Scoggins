@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import cookie from "cookie";
 import { Redirect, Link } from "react-router-dom";
 import {
@@ -94,16 +95,16 @@ const LogIn = (props) => {
   const login = async (e) => {
     e.preventDefault();
     setDenyPopup(true);
-    await props.fetchToken(userObject);
+    await axios.post("http://localhost:5500/auth/login", userObject);
     document.cookie = "loggedIn=true;max-age=60*1000";
     document.cookie = `user=${username};max-age=60*1000`;
     document.cookie = `token=${props.bearerToken}`;
-    await props.setUser(username);
+    props.setUser(username);
     loginForReal();
   };
 
   const loginForReal = () => {
-    props.user && setRedirectHome(true);
+    setRedirectHome(true);
   };
 
   if (redirectHome) {

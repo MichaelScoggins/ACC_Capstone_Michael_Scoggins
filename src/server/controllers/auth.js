@@ -11,11 +11,12 @@ const { handleSQLError } = require("../sql/error");
 const saltRounds = 10;
 
 const signup = (req, res) => {
-  const { username, password } = req.body;
-  let sql = "INSERT INTO usersCredentials (username, password) VALUES (?, ?)";
+  const { username, password, email } = req.body;
+  let sql =
+    "INSERT INTO usersCredentials (username, password, email) VALUES (?, ?, ?)";
 
   bcrypt.hash(password, saltRounds, function (err, hash) {
-    sql = mysql.format(sql, [username, hash]);
+    sql = mysql.format(sql, [username, hash, email]);
 
     pool.query(sql, (err, result) => {
       if (err) {
@@ -29,7 +30,7 @@ const signup = (req, res) => {
 };
 
 const login = (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, email } = req.body;
   axios(`https://${process.env.AUTH0_DOMAIN}/oauth/token/`, {
     method: "POST",
     headers: {
@@ -73,6 +74,7 @@ const login = (req, res) => {
       res.json({
         msg: "Login successful",
         username,
+        email,
         token,
       });
     });

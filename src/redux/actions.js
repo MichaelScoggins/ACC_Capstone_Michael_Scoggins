@@ -145,7 +145,7 @@ export const addUser = (input) => {
       .then((response) => {
         const action = {
           type: "AUTH_LOGIN",
-          value: response.token,
+          value: response,
         };
         dispatch(action);
       });
@@ -169,9 +169,9 @@ export const fetchEffects = (input) => {
   };
 };
 
-// export const fetchToken = (input) => {
+// export const storePreLogs = (input) => {
 //   return async (dispatch) => {
-//     await fetch("http://localhost:5500/auth/login", {
+//     await fetch("http://localhost:5500/prelogs", {
 //       method: "POST",
 //       body: JSON.stringify(input),
 //       headers: {
@@ -181,8 +181,8 @@ export const fetchEffects = (input) => {
 //       .then((res) => res.json())
 //       .then((response) => {
 //         const action = {
-//           type: "BEARER_TOKEN",
-//           value: JSON.stringify(response),
+//           type: "CREATE_PRELOG",
+//           value: response,
 //         };
 //         dispatch(action);
 //       });

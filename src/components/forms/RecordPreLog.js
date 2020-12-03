@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import axios from "axios";
 import {
   Button,
   TextField,
@@ -51,7 +52,9 @@ export default function RecordPreLog(props) {
     preLog.strain = strain[1];
     preLog.strain.name = strain[0];
     preLog.sessionNum = props.experiences.preLogs.length + 1;
+    preLog.user_id = 1;
     props.addPreExp(preLog);
+    axios.post("http://localhost:5500/prelogs", { preLog });
     toggleOpen(false);
     console.log(props.experiences.preLogs);
     clearAll();

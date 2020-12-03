@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Redirect, Link } from "react-router-dom";
 
 import {
@@ -76,17 +77,22 @@ const SignUp = (props) => {
   const userObject = {
     username: props.profile.username,
     password: props.profile.password,
+    email: props.profile.email,
   };
 
   const setProfile = async (e) => {
     e.preventDefault();
     await props.addUser(userObject);
-    await props.fetchToken(userObject);
+    // await axios.post("http://localhost:5500/auth/login", { userObject });
+    axios.post("http://localhost:5500/users", { userObject });
+    props.fetchToken(userObject);
     console.log("JWT", props.checkUser, props.bearerToken);
     const profile = props.profile;
     console.log({ profile });
     // profile.id = uuidv4();
+    profile.user_id = 1;
     props.setProfile(profile);
+    axios.post("http://localhost:5500/profile", { profile });
     props.setUser(props.profile.username);
     console.log(props.profile);
     setRedirectHome(true);
@@ -146,19 +152,6 @@ const SignUp = (props) => {
               margin="normal"
               required
               onChange={handleTextChange}
-              value={props.email}
-              fullWidth
-              name="email"
-              label="Email"
-              type="email"
-              id="email"
-              autoComplete="current-email"
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              onChange={handleTextChange}
               value={props.username}
               fullWidth
               name="username"
@@ -185,26 +178,13 @@ const SignUp = (props) => {
               margin="normal"
               required
               onChange={handleTextChange}
-              value={props.city}
+              value={props.email}
               fullWidth
-              name="city"
-              label="City"
-              type="text"
-              id="city"
-              autoComplete="current-password"
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              onChange={handleTextChange}
-              value={props.state}
-              fullWidth
-              name="state"
-              label="State"
-              type="text"
-              id="state"
-              autoComplete="current-password"
+              name="email"
+              label="Email"
+              type="email"
+              id="email"
+              autoComplete="current-email"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
