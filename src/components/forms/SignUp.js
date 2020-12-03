@@ -74,29 +74,31 @@ const SignUp = (props) => {
     props.setProfile(newState);
   };
 
-  const userObject = {
+  const userCredsObject = {
     username: props.profile.username,
     password: props.profile.password,
     email: props.profile.email,
   };
 
+  const userObject = {
+    firstName: props.profile.firstName,
+    lastName: props.profile.lastName,
+    username: props.profile.username,
+  };
+
   const setProfile = async (e) => {
     e.preventDefault();
-    await props.addUser(userObject);
-    // await axios.post("http://localhost:5500/auth/login", { userObject });
-    axios.post("http://localhost:5500/users", { userObject });
-    props.fetchToken(userObject);
-    console.log("JWT", props.checkUser, props.bearerToken);
+    await axios.post("http://localhost:5500/auth/signup", userCredsObject);
+    await axios.post("http://localhost:5500/users", userObject);
     const profile = props.profile;
-    console.log({ profile });
-    // profile.id = uuidv4();
-    profile.user_id = 1;
+    // this is for the possible later addition of more profile info
+    // await axios.post("http://localhost:5500/profile", profile);
     props.setProfile(profile);
-    axios.post("http://localhost:5500/profile", { profile });
+    console.log("JWT", props.checkUser, props.bearerToken);
+    console.log({ profile });
     props.setUser(props.profile.username);
     console.log(props.profile);
     setRedirectHome(true);
-    // clearAll();
   };
 
   if (redirectHome) {

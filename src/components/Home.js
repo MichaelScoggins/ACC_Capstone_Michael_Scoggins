@@ -69,7 +69,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Home(props) {
-  console.log("home", props.checkUser, props.bearerToken);
   const classes = useStyles();
   return (
     <React.Fragment>
