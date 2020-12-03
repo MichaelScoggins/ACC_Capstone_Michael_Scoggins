@@ -51,7 +51,7 @@ export default function RecordPreLog(props) {
     preLog.strainId = strain[1].id;
     preLog.strainName = strain[0];
     preLog.strainSpecies = strain[1].race;
-    preLog.when = currentdate.toLocaleDateString();
+    preLog.preWhen = currentdate.toLocaleDateString();
     preLog.username = props.user;
     props.addPreExp(preLog);
     axios.post("http://localhost:5500/prelogs", preLog);
@@ -63,14 +63,13 @@ export default function RecordPreLog(props) {
 
   const clearAll = () => {
     props.setPreTokeForm({
-      reason: "",
-      mood: "",
-      expectations: "",
-      worries: "",
-      goals: "",
-      alreadyAccomplished: "",
-      planToAccomplish: "",
-      describeAppearance: "",
+      sessionPurpose: "",
+      preMood: "",
+      expectToAchieve: "",
+      lingeringWorries: "",
+      goal: "",
+      alreadyDone: "",
+      todo: "",
     });
   };
 
@@ -142,42 +141,42 @@ export default function RecordPreLog(props) {
                 <div style={{ paddingBottom: 10 }}>
                   While I'm feeling{" "}
                   <span style={{ color: "orange" }}>
-                    {props.preTokeForm.mood}
+                    {props.preTokeForm.preMood}
                   </span>
                   , I'm hoping to achieve{" "}
                   <span style={{ color: "orange" }}>
-                    {props.preTokeForm.reason}
+                    {props.preTokeForm.sessionPurpose}
                   </span>
                   , and expecting{" "}
                   <span style={{ color: "orange" }}>
-                    {props.preTokeForm.expectations}
+                    {props.preTokeForm.expectToAchieve}
                   </span>
                   . I'm thinking about{" "}
                   <span style={{ color: "orange" }}>
-                    {props.preTokeForm.worries}
+                    {props.preTokeForm.lingeringWorries}
                   </span>
                   , but{" "}
                   <span style={{ color: "orange" }}>
-                    {props.preTokeForm.goals}
+                    {props.preTokeForm.goal}
                   </span>
                   . I have already{" "}
                   <span style={{ color: "orange" }}>
-                    {props.preTokeForm.alreadyAccomplished}
+                    {props.preTokeForm.alreadyDone}
                   </span>
                   , and still need to{" "}
                   <span style={{ color: "orange" }}>
-                    {props.preTokeForm.planToAccomplish}
+                    {props.preTokeForm.todo}
                   </span>
                   .
                 </div>
                 <FormControl>
-                  <InputLabel id="moodInput">Current Mood</InputLabel>
+                  <InputLabel id="preMoodInput">Current Mood</InputLabel>
                   <Select
-                    labelId="moodInput"
-                    id="mood"
+                    labelId="preMoodInput"
+                    id="preMood"
                     required
-                    value={props.preTokeForm.mood}
-                    onChange={(e) => handleTextChange(e, "mood")}
+                    value={props.preTokeForm.preMood}
+                    onChange={(e) => handleTextChange(e, "preMood")}
                   >
                     <MenuItem value="normal">
                       <em>Normal</em>
@@ -190,14 +189,14 @@ export default function RecordPreLog(props) {
                   </Select>
                 </FormControl>
                 <FormControl>
-                  <InputLabel id="reasonInput">
+                  <InputLabel id="sessionPurposeInput">
                     What Do You Hope To Achieve With This Strain?
                   </InputLabel>
                   <Select
-                    labelId="reasonSelect"
-                    id="reason"
-                    value={props.preTokeForm.reason}
-                    onChange={(e) => handleTextChange(e, "reason")}
+                    labelId="sessionPurposeSelect"
+                    id="sessionPurpose"
+                    value={props.preTokeForm.sessionPurpose}
+                    onChange={(e) => handleTextChange(e, "sessionPurpose")}
                     required
                   >
                     <MenuItem value={"pain relief"}>Pain Relief</MenuItem>
@@ -216,47 +215,47 @@ export default function RecordPreLog(props) {
                   </Select>
                 </FormControl>
                 <TextField
-                  id="expectations"
+                  id="expectToAchieve"
                   label="Expectations"
                   placeholder="What Do You Expect To Experience/Feel/Achieve?"
                   multiline
-                  value={props.preTokeForm.expectations}
+                  value={props.preTokeForm.expectToAchieve}
                   onChange={handleTextChange}
                   required
                 />
                 <TextField
-                  id="worries"
+                  id="lingeringWorries"
                   label="Worries? Lingering thoughts?"
                   placeholder="Trying To Forget Something? Or Dwell On Something?"
                   multiline
-                  value={props.preTokeForm.worries}
+                  value={props.preTokeForm.lingeringWorries}
                   onChange={handleTextChange}
                   required
                 />
                 <TextField
-                  id="goals"
+                  id="goal"
                   label="Short/Long-Term Goals"
                   placeholder="How Will This Session Get You There?"
                   multiline
-                  value={props.preTokeForm.goals}
+                  value={props.preTokeForm.goal}
                   onChange={handleTextChange}
                   required
                 />
                 <TextField
-                  id="alreadyAccomplished"
+                  id="alreadyDone"
                   label="To-Do(ne)"
                   placeholder="What Have You Already Accomplished Today?"
                   multiline
-                  value={props.preTokeForm.alreadyAccomplished}
+                  value={props.preTokeForm.alreadyDone}
                   onChange={handleTextChange}
                   required
                 />
                 <TextField
-                  id="planToAccomplish"
+                  id="todo"
                   label="Todos (before you forget!)"
                   placeholder="What Do You Still Need To Accomplish Today?"
                   multiline
-                  value={props.preTokeForm.planToAccomplish}
+                  value={props.preTokeForm.todo}
                   onChange={handleTextChange}
                   required
                 />
