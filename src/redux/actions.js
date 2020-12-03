@@ -125,7 +125,7 @@ export const fetchToken = (input) => {
       .then((response) => {
         const action = {
           type: "BEARER_TOKEN",
-          value: response.token,
+          value: JSON.stringify(response),
         };
         dispatch(action);
       });
@@ -148,7 +148,7 @@ export const addUser = (input) => {
       .then((response) => {
         const action = {
           type: "AUTH_LOGIN",
-          value: response.json(),
+          value: JSON.stringify(response),
         };
         dispatch(action);
       });

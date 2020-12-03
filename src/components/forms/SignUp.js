@@ -78,10 +78,10 @@ const SignUp = (props) => {
     password: props.profile.password,
   };
 
-  const setProfile = (e) => {
+  const setProfile = async (e) => {
     e.preventDefault();
-    props.addUser(userObject);
-    props.fetchToken(userObject);
+    await props.addUser(userObject);
+    await props.fetchToken(userObject);
     console.log("JWT", props.checkUser, props.bearerToken);
     const profile = props.profile;
     console.log({ profile });
