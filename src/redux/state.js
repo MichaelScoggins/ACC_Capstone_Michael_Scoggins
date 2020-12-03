@@ -1,5 +1,7 @@
 export default {
   user: "",
+  checkUser: "",
+  bearerToken: "",
   profile: {
     firstName: "",
     lastName: "",
@@ -66,7 +68,6 @@ export default {
   isLoading: false,
   allStrains: {},
   perfectStrainResults: [],
-  homePageRecommendedStrain: [],
   searchParams: "",
   userSearchInput: "",
   userSearchResults: [],

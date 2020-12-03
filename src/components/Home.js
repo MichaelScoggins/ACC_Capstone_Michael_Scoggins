@@ -14,7 +14,10 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit">Higher Intentions</Link> {new Date().getFullYear()}
+      <Link to="/" color="inherit">
+        Higher Intentions
+      </Link>{" "}
+      {new Date().getFullYear()}
       {"."}
     </Typography>
   );

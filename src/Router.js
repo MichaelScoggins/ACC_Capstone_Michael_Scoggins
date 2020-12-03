@@ -10,9 +10,10 @@ import FavStrainsCards from "./containers/cards/FavStrainsCards";
 import SignUp from "./containers/forms/SignUp";
 import Experience from "./containers/cards/ExperienceCards";
 
-const checkAuth = () => {
+const checkAuth = (props) => {
   const cookies = cookie.parse(document.cookie);
   return cookies["loggedIn"] ? true : false;
+  // return cookies["token"] === props.token ? true : false;
 };
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {

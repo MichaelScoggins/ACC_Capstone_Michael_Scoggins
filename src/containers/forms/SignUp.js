@@ -5,6 +5,8 @@ import {
   setPreTokeForm,
   setProfile,
   setUser,
+  addUser,
+  fetchToken,
 } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -19,6 +21,8 @@ const mapStateToProps = (state) => {
     city: state.profile.city,
     state: state.profile.state,
     profile: state.profile,
+    checkUser: state.checkUser,
+    bearerToken: state.bearerToken,
   };
 };
 
@@ -27,7 +31,9 @@ const mapDispatchToProps = (dispatch) => {
     addPreExp: (exp) => dispatch(addPreExp(exp)),
     setPreTokeForm: (input) => dispatch(setPreTokeForm(input)),
     setProfile: (input) => dispatch(setProfile(input)),
+    addUser: (input) => dispatch(addUser(input)),
     setUser: (input) => dispatch(setUser(input)),
+    fetchToken: (input) => dispatch(fetchToken(input)),
   };
 };
 

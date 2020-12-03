@@ -9,6 +9,24 @@ const user = (state = "", action) => {
   }
 };
 
+const bearerToken = (state = "", action) => {
+  switch (action.type) {
+    case "BEARER_TOKEN":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
+const checkUser = (state = "", action) => {
+  switch (action.type) {
+    case "AUTH_LOGIN":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 const preTokeForm = (state = {}, action) => {
   switch (action.type) {
     case "SET_PRE_TOKE":
@@ -249,4 +267,6 @@ export default combineReducers({
   profile,
   reviewForm,
   isLoading,
+  bearerToken,
+  checkUser,
 });

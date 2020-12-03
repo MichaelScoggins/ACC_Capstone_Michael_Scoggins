@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const usersRouter = require("./server/routers/users");
 const prefsRouter = require("./server/routers/prefs");
@@ -11,7 +12,7 @@ const { logger } = require("./server/middleware");
 
 const app = express();
 const port = process.env.PORT || 4001;
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(logger);
 app.use("/users", usersRouter);

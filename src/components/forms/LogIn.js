@@ -79,10 +79,18 @@ const LogIn = (props) => {
     setpassword(e.target.value);
   };
 
-  const login = (e) => {
+  const userObject = {
+    username: username,
+    password: password,
+  };
+
+  const login = async (e) => {
     e.preventDefault();
+    await props.fetchToken(userObject);
     document.cookie = "loggedIn=true;max-age=60*1000";
     document.cookie = `user=${username};max-age=60*1000`;
+    document.cookie = `token=${props.bearerToken}`;
+    console.log("bearer token", props.bearerToken);
     props.setUser(username);
     setRedirectHome(true);
   };

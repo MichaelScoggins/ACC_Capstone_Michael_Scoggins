@@ -73,8 +73,16 @@ const SignUp = (props) => {
     props.setProfile(newState);
   };
 
+  const userObject = {
+    username: props.profile.username,
+    password: props.profile.password,
+  };
+
   const setProfile = (e) => {
     e.preventDefault();
+    props.addUser(userObject);
+    props.fetchToken(userObject);
+    console.log("JWT", props.checkUser, props.bearerToken);
     const profile = props.profile;
     console.log({ profile });
     // profile.id = uuidv4();

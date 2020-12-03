@@ -107,6 +107,7 @@ const Navigation = (props) => {
         className="nav-list-item"
         onClick={() => {
           document.cookie = "loggedIn=";
+          document.cookie = "token=";
           window.location.replace("/login");
         }}
       >
@@ -146,7 +147,7 @@ const Navigation = (props) => {
           <div className={classes.sectionDesktop}></div>
           <ul className="nav-list">
             {props.user && (
-              <Typography color="text-primary">
+              <Typography>
                 <span>
                   Welcome <span style={{ color: "orange" }}>{props.user}</span>!
                 </span>
