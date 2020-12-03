@@ -31,6 +31,7 @@ const mapStateToProps = (state) => {
     favorites: state.favorites,
     toggleSnackbar: state.toggleSnackbar,
     perfectStrainResults: state.perfectStrainResults,
+    bearerToken: state.bearerToken,
   };
 };
 

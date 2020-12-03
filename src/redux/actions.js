@@ -125,7 +125,7 @@ export const fetchToken = (input) => {
       .then((response) => {
         const action = {
           type: "BEARER_TOKEN",
-          value: JSON.stringify(response),
+          value: response.token,
         };
         dispatch(action);
       });
@@ -136,19 +136,16 @@ export const addUser = (input) => {
   return async (dispatch) => {
     await fetch("http://localhost:5500/auth/signup", {
       method: "POST",
-      mode: "cors",
-      credentials: "same-origin",
       body: JSON.stringify(input),
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
     })
       .then((res) => res.json())
       .then((response) => {
         const action = {
           type: "AUTH_LOGIN",
-          value: JSON.stringify(response),
+          value: response.token,
         };
         dispatch(action);
       });
@@ -162,6 +159,7 @@ export const fetchEffects = (input) => {
     )
       .then((res) => res.json())
       .then((response) => {
+        console.log("res", response);
         const action = {
           type: "EFFECTS",
           value: response,
@@ -170,6 +168,26 @@ export const fetchEffects = (input) => {
       });
   };
 };
+
+// export const fetchToken = (input) => {
+//   return async (dispatch) => {
+//     await fetch("http://localhost:5500/auth/login", {
+//       method: "POST",
+//       body: JSON.stringify(input),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     })
+//       .then((res) => res.json())
+//       .then((response) => {
+//         const action = {
+//           type: "BEARER_TOKEN",
+//           value: JSON.stringify(response),
+//         };
+//         dispatch(action);
+//       });
+//   };
+// };
 
 export const fetchFlavors = (input) => {
   return async (dispatch) => {

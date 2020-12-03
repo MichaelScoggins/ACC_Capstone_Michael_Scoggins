@@ -1,4 +1,5 @@
 import React from "react";
+import cookie from "cookie";
 import { Redirect, Link } from "react-router-dom";
 import {
   Avatar,
@@ -14,14 +15,17 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 // import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import { faBong } from "@fortawesome/free-solid-svg-icons";
+import { faBong, faBan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit">Higher Intentions</Link> {new Date().getFullYear()}
+      <Link to="/" color="inherit">
+        Higher Intentions
+      </Link>{" "}
+      {new Date().getFullYear()}
       {"."}
     </Typography>
   );
@@ -66,10 +70,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LogIn = (props) => {
+  const cookies = cookie.parse(document.cookie);
+  cookie.token = "";
   const classes = useStyles();
   const [username, setUsername] = React.useState("");
   const [password, setpassword] = React.useState("");
   const [redirectHome, setRedirectHome] = React.useState(false);
+  const [showDenyPopup, setDenyPopup] = React.useState(false);
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -86,13 +93,17 @@ const LogIn = (props) => {
 
   const login = async (e) => {
     e.preventDefault();
+    setDenyPopup(true);
     await props.fetchToken(userObject);
     document.cookie = "loggedIn=true;max-age=60*1000";
     document.cookie = `user=${username};max-age=60*1000`;
     document.cookie = `token=${props.bearerToken}`;
-    console.log("bearer token", props.bearerToken);
-    props.setUser(username);
-    setRedirectHome(true);
+    await props.setUser(username);
+    loginForReal();
+  };
+
+  const loginForReal = () => {
+    props.user && setRedirectHome(true);
   };
 
   if (redirectHome) {
@@ -104,12 +115,27 @@ const LogIn = (props) => {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <FontAwesomeIcon icon={faBong} size="3x" className="avatar" />
-          </Avatar>
+          {showDenyPopup ? (
+            <Avatar className={classes.avatar}>
+              <FontAwesomeIcon
+                icon={faBan}
+                size="3x"
+                className="avatar"
+                style={{ color: "red" }}
+              />
+            </Avatar>
+          ) : (
+            <Avatar className={classes.avatar}>
+              <FontAwesomeIcon icon={faBong} size="3x" className="avatar" />
+            </Avatar>
+          )}
+
           <Typography component="h1" variant="h5">
             Sign In
           </Typography>
+          {showDenyPopup && (
+            <p style={{ color: "orange" }}>User and/or Password incorrect.</p>
+          )}
           <form className={classes.form} onSubmit={login}>
             <TextField
               variant="outlined"
