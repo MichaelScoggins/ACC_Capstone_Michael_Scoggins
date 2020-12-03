@@ -15,12 +15,13 @@ import {
   CssBaseline,
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import PerfectStrainDetailsCard from "../../containers/cards/PerfectStrainDetailsCard";
+// import PerfectStrainDetailsCard from "../../containers/cards/PerfectStrainDetailsCard";
 import ViewPreTokeModal from "../../containers/modals/ViewPreTokeModal";
 import SnackbarAddFav from "../../containers/modals/SnackbarAddFav";
-import PerfectStrainDescriptionCard from "../../containers/cards/PerfectStrainDescriptionCard";
+// import PerfectStrainDescriptionCard from "../../containers/cards/PerfectStrainDescriptionCard";
 import RecordReview from "../../containers/forms/RecordReview";
 import ViewReviewModal from "../../containers/modals/ViewReviewModal";
+import ExpDetailsModal from "../../containers/modals/ExpDetailsModal";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -84,19 +85,26 @@ const BioToolTip = withStyles((theme) => ({
 export default function Experience(props) {
   const classes = useStyles();
   const [showDetailsModal, setDetailsModal] = React.useState(false);
-  const [showDescriptionModal, setDescriptionModal] = React.useState(false);
   const [showViewPreTokeModal, setViewPreTokeModal] = React.useState(false);
   const [showAddReviewForm, setAddReviewForm] = React.useState(false);
   const [showViewReviewModal, setViewReviewModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
   const [strainName, setStrainName] = React.useState(null);
 
+  React.useEffect(() => {
+    props.fetchAllStrains();
+  }, []);
+
   const handleDetailsModal = (e) => {
     setID(e.currentTarget.id);
-    const exp = props.experiences.preLogs.find(
-      (exp) => exp.strain.id == e.currentTarget.id
+    const strain = Object.entries(props.allStrains).find(
+      (strain) => strain[1].id == e.currentTarget.id
     );
-    setStrainName(exp.strain.name);
+
+    // const strain = props.experiences.preLogs.find(
+    //   (exp) => exp.strainId == e.currentTarget.id
+    // );
+    setStrainName(strain[0]);
     setDetailsModal(true);
   };
 
@@ -105,20 +113,20 @@ export default function Experience(props) {
     setViewPreTokeModal(true);
   };
 
-  const handleDescriptionModal = (e) => {
-    setID(e.currentTarget.id);
-    const exp = props.experiences.preLogs.find(
-      (exp) => exp.strain.id == e.currentTarget.id
-    );
-    setStrainName(exp.strain.name);
-    setDescriptionModal(true);
-  };
+  // const handleDescriptionModal = (e) => {
+  //   setID(e.currentTarget.id);
+  //   const strain = Object.entries(props.allStrains).find(
+  //     (strain) => strain[1].id == e.currentTarget.id
+  //   );
+  //   setStrainName(strain[0]);
+  //   setDetailsModal(true);
+  // };
 
   const handleOpenReview = (e) => {
     const id = e.currentTarget.id;
     setID(id);
     let existingReview = props.experiences.reviews.find(
-      (review) => review.strain.id == id
+      (review) => review.strainId == id
     );
     existingReview ? setViewReviewModal(true) : setAddReviewForm(true);
   };
@@ -129,17 +137,11 @@ export default function Experience(props) {
       <Container className={classes.cardGrid} maxWidth="md" m={5}>
         <SnackbarAddFav sID={strainID} />
         {showDetailsModal && (
-          <PerfectStrainDetailsCard
+          <ExpDetailsModal
             setDetailsModal={setDetailsModal}
             sID={strainID}
             strainName={strainName}
-          />
-        )}
-        {showDescriptionModal && (
-          <PerfectStrainDescriptionCard
-            setDescriptionModal={setDescriptionModal}
-            sID={strainID}
-            strainName={strainName}
+            setModal={setDetailsModal}
           />
         )}
         {showViewPreTokeModal && (
@@ -166,14 +168,14 @@ export default function Experience(props) {
         )}
         <Grid container spacing={4}>
           {props.experiences.preLogs.map((card) => (
-            <Grid item key={card.strain.id} xs={12} sm={6} md={4}>
+            <Grid item key={card.strainId} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
                   image={
-                    card.strain.race === "sativa"
+                    card.strainSpecies === "sativa"
                       ? "./../smoking_the_butterflies.jpg"
-                      : card.strain.race === "indica"
+                      : card.strainSpecies === "indica"
                       ? "./../spaceman.jpg"
                       : "./../hybrid_zebra.jpg"
                   }
@@ -182,40 +184,27 @@ export default function Experience(props) {
                 <CardContent className={classes.cardContent}>
                   <Grid container>
                     <Grid item xs={10}>
-                      <BioToolTip
-                        title={
-                          <React.Fragment>
-                            <Typography>Click For Bio</Typography>
-                          </React.Fragment>
-                        }
-                        placement="top"
-                        TransitionComponent={Zoom}
+                      <Typography
+                        className="doodoo"
+                        variant="h4"
+                        id={card.strainId}
+                        style={{
+                          color:
+                            card.strainSpecies === "sativa"
+                              ? "gold"
+                              : card.strainSpecies === "indica"
+                              ? "orchid"
+                              : "indianred",
+                          "&:hover": { color: "springgreen" },
+                        }}
                       >
-                        <Typography
-                          className="doodoo"
-                          variant="h4"
-                          id={card.strain.id}
-                          onClick={(e) => handleDescriptionModal(e)}
-                          style={{
-                            color:
-                              card.strain.race === "sativa"
-                                ? "gold"
-                                : card.strain.race === "indica"
-                                ? "orchid"
-                                : "indianred",
-                            cursor: "pointer",
-                            "&:hover": { color: "springgreen" },
-                          }}
-                        >
-                          {card.strain.name}
-                          <hr />
-                        </Typography>
-                      </BioToolTip>
+                        {card.strainName}
+                        <hr />
+                      </Typography>
                     </Grid>
-
                     <Typography
                       variant="h5"
-                      id={card.strain.id}
+                      id={card.strainId}
                       onClick={(e) => handleDetailsModal(e)}
                     >
                       <FontAwesomeIcon
@@ -236,7 +225,7 @@ export default function Experience(props) {
                     color="primary"
                     variant="contained"
                     onClick={(e) => handlePreLogModal(e)}
-                    id={card.strain.id}
+                    id={card.strainId}
                   >
                     <Typography style={{ fontWeight: 500 }}>
                       pre-toke
@@ -246,7 +235,7 @@ export default function Experience(props) {
                     size="small"
                     color="secondary"
                     variant="contained"
-                    id={card.strain.id}
+                    id={card.strainId}
                     onClick={(e) => handleOpenReview(e)}
                   >
                     <Typography style={{ fontWeight: 600 }}>review</Typography>

@@ -4,7 +4,7 @@ const { handleSQLError } = require("../../sql/error");
 
 const createPreLog = (req, res) => {
   const {
-    user_id,
+    username,
     preMood,
     sessionPurpose,
     expectToAchieve,
@@ -14,9 +14,9 @@ const createPreLog = (req, res) => {
     todo,
   } = req.body;
   let sql =
-    "INSERT INTO usersPreLogs (user_id,preMood,sessionPurpose,expectToAchieve,lingeringWorries,goal,alreadyDone,todo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO usersPreLogs (username,preMood,sessionPurpose,expectToAchieve,lingeringWorries,goal,alreadyDone,todo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
   sql = mysql.format(sql, [
-    user_id,
+    username,
     preMood,
     sessionPurpose,
     expectToAchieve,
@@ -29,7 +29,7 @@ const createPreLog = (req, res) => {
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
     return res.json({
-      message: `user ${user_id} session ${results.insertId} prelog added`,
+      message: `user ${username} session ${results.insertId} prelog added`,
     });
   });
 };

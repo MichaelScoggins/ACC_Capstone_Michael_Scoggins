@@ -16,19 +16,10 @@ export default {
   },
   title: "",
   preTokeForm: {
-    strain: {
-      name: "",
-      id: "",
-      race: "",
-      flavors: [],
-      effects: {
-        positive: [],
-        negative: [],
-        medical: [],
-      },
-    },
+    strainId: "",
+    strainName: "",
+    strainSpecies: "",
     when: "",
-    sessionNum: 0,
     reason: "",
     mood: "",
     expectations: "",
@@ -39,17 +30,9 @@ export default {
     describeAppearance: "",
   },
   reviewForm: {
-    strain: {
-      name: "",
-      id: "",
-      race: "",
-      flavors: [],
-      effects: {
-        positive: [],
-        negative: [],
-        medical: [],
-      },
-    },
+    strainId: "",
+    strainName: "",
+    strainSpecies: "",
     when: "",
     sessionNum: 0,
     reason: "",

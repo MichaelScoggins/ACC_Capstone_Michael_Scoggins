@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchResultsDetails(props) {
+export default function ExpDetailsModal(props) {
   const classes = useStyles();
 
   React.useEffect(() => {
@@ -36,8 +36,9 @@ export default function SearchResultsDetails(props) {
     props.fetchDescription(props.sID);
   }, []);
 
-  const strain = props.userSearchResults.find((s) => s.id == props.sID);
-  // const secondStrain = Object.entries(props.allStrains).find(s => s[1].id == props.id)
+  const strain = Object.entries(props.allStrains).find(
+    (s) => s[1].id == props.sID
+  );
   const positiveEffects = props.effects.positive;
   const negativeEffects = props.effects.negative;
   const medicalEffects = props.effects.medical;
@@ -57,7 +58,7 @@ export default function SearchResultsDetails(props) {
   };
 
   const strainDisplayName =
-    strain.race.charAt(0).toUpperCase() + strain.race.slice(1);
+    strain[1].race.charAt(0).toUpperCase() + strain[1].race.slice(1);
 
   return (
     <Modal
@@ -70,14 +71,14 @@ export default function SearchResultsDetails(props) {
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <h1 style={{ color: "springgreen", textAlign: "center" }}>
-              {strain.name}{" "}
+              {strain[1].name}{" "}
               {
                 <div
                   style={{
                     color:
-                      strain.race === "sativa"
+                      strain[1].race === "sativa"
                         ? "orange"
-                        : strain.race === "indica"
+                        : strain[1].race === "indica"
                         ? "orchid"
                         : "indianred",
                   }}

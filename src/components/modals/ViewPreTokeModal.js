@@ -1,16 +1,12 @@
 import React, { Fragment } from "react";
 import Typography from "@material-ui/core/Typography";
-// import IconButton from "@material-ui/core/IconButton";
-// import { faBong } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dialog, DialogContent, DialogTitle } from "@material-ui/core";
-// import RecordReview from "../containers/forms/RecordReview";
 
 export default function ViewPreTokeModal(props) {
   const [open, toggleOpen] = React.useState(true);
 
   const preLog = props.experiences.preLogs.find(
-    (pre) => pre.strain.id == props.sID
+    (pre) => pre.strainId == props.sID
   );
 
   const handleClose = () => {
@@ -27,7 +23,7 @@ export default function ViewPreTokeModal(props) {
               Before You Tried{" "}
               {
                 <span style={{ color: "springgreen" }}>
-                  {preLog.strain.name}
+                  {preLog.strainName}
                 </span>
               }
             </Typography>
