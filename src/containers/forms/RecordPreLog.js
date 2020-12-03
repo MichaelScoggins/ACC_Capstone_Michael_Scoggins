@@ -4,6 +4,7 @@ import { addPreExp, setPreTokeForm } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
+    user: state.user,
     preTokeForm: state.preTokeForm,
     experiences: state.experiences,
     perfectStrainResults: state.perfectStrainResults,

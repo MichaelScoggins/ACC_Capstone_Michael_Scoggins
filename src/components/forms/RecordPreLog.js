@@ -41,7 +41,7 @@ export default function RecordPreLog(props) {
     ":" +
     currentdate.getSeconds();
 
-  let strain = props.perfectStrainResults.find((s) => s[1].id == props.id);
+  const strain = props.perfectStrainResults.find((s) => s[1].id == props.id);
 
   const handleSubmit = (e) => {
     e.preventDefault();

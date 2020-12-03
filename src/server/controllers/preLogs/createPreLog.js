@@ -5,6 +5,10 @@ const { handleSQLError } = require("../../sql/error");
 const createPreLog = (req, res) => {
   const {
     username,
+    strainId,
+    strainName,
+    strainSpecies,
+    preWhen,
     preMood,
     sessionPurpose,
     expectToAchieve,
@@ -14,9 +18,13 @@ const createPreLog = (req, res) => {
     todo,
   } = req.body;
   let sql =
-    "INSERT INTO usersPreLogs (username,preMood,sessionPurpose,expectToAchieve,lingeringWorries,goal,alreadyDone,todo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO usersPreLogs (username,strainId,strainName,strainSpecies,preWhen,preMood,sessionPurpose,expectToAchieve,lingeringWorries,goal,alreadyDone,todo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   sql = mysql.format(sql, [
     username,
+    strainId,
+    strainName,
+    strainSpecies,
+    preWhen,
     preMood,
     sessionPurpose,
     expectToAchieve,

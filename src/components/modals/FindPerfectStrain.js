@@ -61,7 +61,6 @@ export default function FindPerfectStrain(props) {
       props.flavPrefs.length > 0 ||
       props.speciesPrefs.length > 0) &&
       getPerfectStrains();
-    props.setPerfectStrainResults([]);
 
     handleClose();
   };
