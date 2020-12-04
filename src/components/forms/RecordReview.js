@@ -21,15 +21,6 @@ export default function RecordReview(props) {
 
   const preLog = props.preLogs.find((prelog) => prelog.strainId == props.sID);
 
-  // const getPreLogId = async () => {
-  //   return await axios
-  //     .get(`http://localhost:5500/prelogs/${props.user}`)
-  //     .then((response) => {
-  //       console.log(response.data.find((x) => x.strainId == props.sID).id);
-  //       return response.data.find((x) => x.strainId == props.sID).id;
-  //     });
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const review = props.reviewForm;

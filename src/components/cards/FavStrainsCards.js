@@ -78,25 +78,39 @@ export default function FavStrainsCards(props) {
   const [strainRace, setStrainRace] = React.useState(null);
   const [strainName, setStrainName] = React.useState(null);
 
+  React.useEffect(() => {
+    props.fetchAllStrains();
+  }, []);
+
   const handleDetailsModal = (e) => {
     setID(e.currentTarget.id);
-    const strain = props.favorites.find(
-      (fav) => fav[1].id == e.currentTarget.id
+    const strain = Object.entries(props.allStrains).find(
+      (strain) => strain[1].id == e.currentTarget.id
     );
-    setStrainRace(strain[1].race);
     setStrainName(strain[0]);
+    setStrainRace(strain[1].id);
     setDetailsModal(true);
   };
 
-  const handleDescriptionModal = (e) => {
-    setID(e.currentTarget.id);
-    const strain = props.favorites.find(
-      (fav) => fav[1].id == e.currentTarget.id
-    );
-    setStrainRace(strain[1].race);
-    setStrainName(strain[0]);
-    setDescriptionModal(true);
-  };
+  // const handleDetailsModal = (e) => {
+  //   setID(e.currentTarget.id);
+  //   const strain = props.favorites.find(
+  //     (fav) => fav[1].id == e.currentTarget.id
+  //   );
+  //   setStrainRace(strain[1].race);
+  //   setStrainName(strain[0]);
+  //   setDetailsModal(true);
+  // };
+
+  // const handleDescriptionModal = (e) => {
+  //   setID(e.currentTarget.id);
+  //   const strain = props.favorites.find(
+  //     (fav) => fav[1].id == e.currentTarget.id
+  //   );
+  //   setStrainRace(strain[1].race);
+  //   setStrainName(strain[0]);
+  //   setDescriptionModal(true);
+  // };
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
@@ -126,14 +140,14 @@ export default function FavStrainsCards(props) {
       )}
       <Grid container spacing={4}>
         {props.favorites.map((card) => (
-          <Grid item key={card[1].id} xs={12} sm={6} md={4}>
+          <Grid item key={card.strainId} xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <CardMedia
                 className={classes.cardMedia}
                 image={
-                  card[1].race === "sativa"
+                  card.strainSpecies === "sativa"
                     ? "./../smoking_the_butterflies.jpg"
-                    : card[1].race === "indica"
+                    : card.strainSpecies === "indica"
                     ? "./../spaceman.jpg"
                     : "./../hybrid_zebra.jpg"
                 }
@@ -153,20 +167,19 @@ export default function FavStrainsCards(props) {
                     variant="h5"
                     component="h2"
                     style={{ cursor: "pointer", color: "" }}
-                    id={card[1].id}
-                    onClick={(e) => handleDescriptionModal(e)}
+                    id={card.strainId}
                   >
                     <h2
                       style={{
                         color:
-                          card[1].race === "sativa"
+                          card.strainSpecies === "sativa"
                             ? "gold"
-                            : card[1].race === "indica"
+                            : card.strainSpecies === "indica"
                             ? "orchid"
                             : "indianred",
                       }}
                     >
-                      {card[0]}
+                      {card.strainName}
                     </h2>
                     <hr />
                   </Typography>
@@ -175,14 +188,14 @@ export default function FavStrainsCards(props) {
                   <div
                     style={{
                       color:
-                        card[1].race == "sativa"
+                        card.strainSpecies == "sativa"
                           ? "orange"
-                          : card[1].race == "indica"
+                          : card.strainSpecies == "indica"
                           ? "purple"
                           : "brown",
                     }}
                   >
-                    {card[1].race}
+                    {card.strainSpecies}
                   </div>
                 </Typography>
               </CardContent>
@@ -192,7 +205,7 @@ export default function FavStrainsCards(props) {
                   color="primary"
                   variant="contained"
                   onClick={(e) => handleDetailsModal(e)}
-                  id={card[1].id}
+                  id={card.strainId}
                 >
                   <Typography>View</Typography>
                 </Button>
@@ -200,8 +213,8 @@ export default function FavStrainsCards(props) {
                   size="small"
                   variant="contained"
                   color="secondary"
-                  id={card[1].id}
-                  onClick={(e) => handleDescriptionModal(e)}
+                  id={card.strainId}
+                  onClick={(e) => handleDetailsModal(e)}
                 >
                   <Typography
                     style={{
@@ -213,7 +226,7 @@ export default function FavStrainsCards(props) {
                     Bio
                   </Typography>
                 </Button>
-                <RecordPreLog id={card[1].id} strainName={String(card[0])} />
+                <RecordPreLog id={card.strainId} strainName={card.strainName} />
               </CardActions>
             </Card>
           </Grid>

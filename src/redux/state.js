@@ -9,7 +9,12 @@ export default {
     password: "",
     email: "",
   },
-  favoriteStrainObjectTemplate: {},
+  favStrainObj: {
+    username: "",
+    strainId: "",
+    strainName: "",
+    strainSpecies: "",
+  },
   favorites: [],
   preLogs: [],
   reviews: [],

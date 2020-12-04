@@ -34,6 +34,7 @@ const mapStateToProps = (state) => {
     experiences: state.experiences,
     preLogs: state.preLogs,
     reviews: state.reviews,
+    favStrainObj: state.favStrainObj,
   };
 };
 

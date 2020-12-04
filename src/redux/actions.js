@@ -33,6 +33,13 @@ export const addPreExp = (exp) => {
   };
 };
 
+export const setFavStrainObj = (fav) => {
+  return {
+    type: "SET_FAV",
+    value: fav,
+  };
+};
+
 export const addPreExps = (exps) => {
   return {
     type: "ADD_PRE_EXPS",
@@ -183,26 +190,6 @@ export const fetchEffects = (input) => {
   };
 };
 
-// export const storePreLogs = (input) => {
-//   return async (dispatch) => {
-//     await fetch("http://localhost:5500/prelogs", {
-//       method: "POST",
-//       body: JSON.stringify(input),
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     })
-//       .then((res) => res.json())
-//       .then((response) => {
-//         const action = {
-//           type: "CREATE_PRELOG",
-//           value: response,
-//         };
-//         dispatch(action);
-//       });
-//   };
-// };
-
 export const fetchFlavors = (input) => {
   return async (dispatch) => {
     await fetch(
@@ -239,6 +226,13 @@ export const addFavorite = (id) => {
   return {
     type: "ADD_FAVORITE",
     value: id,
+  };
+};
+
+export const addFavorites = (arr) => {
+  return {
+    type: "ADD_FAVORITES",
+    value: arr,
   };
 };
 

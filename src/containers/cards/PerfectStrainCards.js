@@ -14,6 +14,7 @@ import {
   setPerfectStrainResults,
   setTitle,
   toggleLoading,
+  setFavStrainObj,
 } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -34,6 +35,7 @@ const mapStateToProps = (state) => {
     perfectStrainResults: state.perfectStrainResults,
     title: state.title,
     isLoading: state.isLoading,
+    favStrainObj: state.favStrainObj,
   };
 };
 
@@ -53,6 +55,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setPerfectStrainResults(results)),
     setTitle: (input) => dispatch(setTitle(input)),
     toggleLoading: (input) => dispatch(toggleLoading(input)),
+    setFavStrainObj: (fav) => dispatch(setFavStrainObj(fav)),
   };
 };
 

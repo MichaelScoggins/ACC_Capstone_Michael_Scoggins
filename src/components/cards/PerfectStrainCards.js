@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import {
   Button,
@@ -113,23 +114,19 @@ export default function PerfectStrainCards(props) {
     setDescriptionModal(true);
   };
 
-  const strainObject = {
-    username: "",
-    strainId: 0,
-    strainName: "",
-    strainSpecies: ""
-  }
   const handleAddFav = (e) => {
     setID(e.currentTarget.id);
+    let fav = props.favStrainObj;
     const id = e.currentTarget.id;
     const existingFav = props.favorites.find((x) => x.strainId == id);
-    let strain = props.perfectStrainResults.find((s) => s[1].id == id);    
-    strainObject.username = props.user
-    strainObject.strainName = strain[0]
-    strainObject.strainSpecies = strain[1].race
-    // strain.name = strain[0];
-    // props.setTitle(strain[0]);
-    !existingFav && props.addFavorite(strainObject) && props.toggleSnackbar(true);
+    let strain = props.perfectStrainResults.find((s) => s[1].id == id);
+    fav.username = props.user;
+    fav.strainId = strain[1].id;
+    fav.strainName = strain[0];
+    fav.strainSpecies = strain[1].race;
+    props.setTitle(fav.strainName);
+    axios.post("http://localhost:5500/favorites", fav);
+    !existingFav && props.addFavorite(fav) && props.toggleSnackbar(true);
   };
 
   const showSpeciesName = (x) => {
