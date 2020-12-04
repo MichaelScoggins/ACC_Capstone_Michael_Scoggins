@@ -32,6 +32,7 @@ const mapStateToProps = (state) => {
     toggleSnackbar: state.toggleSnackbar,
     perfectStrainResults: state.perfectStrainResults,
     experiences: state.experiences,
+    preLogs: state.preLogs,
   };
 };
 

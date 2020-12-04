@@ -69,6 +69,27 @@ const experiences = (state = {}, action) => {
   }
 };
 
+const preLogs = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_PRE_EXP":
+      return [...state, action.value];
+    case "ADD_PRE_EXPS":
+      let newState = [...state, action.value];
+      return newState.flat();
+    default:
+      return state;
+  }
+};
+
+const reviews = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_REVIEW":
+      return [...state, action.value];
+    default:
+      return state;
+  }
+};
+
 const title = (state = "", action) => {
   switch (action.type) {
     case "SET_TITLE":
@@ -269,4 +290,6 @@ export default combineReducers({
   isLoading,
   bearerToken,
   checkUser,
+  preLogs,
+  reviews,
 });

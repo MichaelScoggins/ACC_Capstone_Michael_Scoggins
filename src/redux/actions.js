@@ -33,6 +33,13 @@ export const addPreExp = (exp) => {
   };
 };
 
+export const addPreExps = (exps) => {
+  return {
+    type: "ADD_PRE_EXPS",
+    value: exps,
+  };
+};
+
 export const addReview = (exp) => {
   return {
     type: "ADD_REVIEW",

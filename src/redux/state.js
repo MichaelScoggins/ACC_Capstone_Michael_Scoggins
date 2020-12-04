@@ -10,6 +10,8 @@ export default {
     email: "",
   },
   favorites: [],
+  preLogs: [],
+  reviews: [],
   experiences: {
     preLogs: [],
     reviews: [],

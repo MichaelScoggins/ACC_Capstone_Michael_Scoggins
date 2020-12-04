@@ -10,11 +10,12 @@ import {
   Grid,
   Typography,
   Container,
-  Tooltip,
-  Zoom,
+  // Tooltip,
+  // Zoom,
   CssBaseline,
 } from "@material-ui/core";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
+// import { withStyles } from "@material-ui/core/styles";
 // import PerfectStrainDetailsCard from "../../containers/cards/PerfectStrainDetailsCard";
 import ViewPreTokeModal from "../../containers/modals/ViewPreTokeModal";
 import SnackbarAddFav from "../../containers/modals/SnackbarAddFav";
@@ -72,15 +73,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BioToolTip = withStyles((theme) => ({
-  tooltip: {
-    backgroundColor: "#424242",
-    color: "orange",
-    maxWidth: 220,
-    fontSize: theme.typography.pxToRem(12),
-    border: "1px solid #dadde9",
-  },
-}))(Tooltip);
+// const BioToolTip = withStyles((theme) => ({
+//   tooltip: {
+//     backgroundColor: "#424242",
+//     color: "orange",
+//     maxWidth: 220,
+//     fontSize: theme.typography.pxToRem(12),
+//     border: "1px solid #dadde9",
+//   },
+// }))(Tooltip);
 
 export default function Experience(props) {
   const classes = useStyles();
@@ -90,6 +91,7 @@ export default function Experience(props) {
   const [showViewReviewModal, setViewReviewModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
   const [strainName, setStrainName] = React.useState(null);
+  console.log("exp cards", props.preLogs);
 
   React.useEffect(() => {
     props.fetchAllStrains();
@@ -159,7 +161,7 @@ export default function Experience(props) {
             sID={strainID}
           />
         )}
-        {props.experiences.preLogs.length === 0 && (
+        {props.preLogs.length === 0 && (
           <div className={classes.info}>
             <Typography style={{ color: "white" }} variant="h4">
               Click The Bong On A <br /> Strain Card To Log An Experience!
@@ -167,7 +169,7 @@ export default function Experience(props) {
           </div>
         )}
         <Grid container spacing={4}>
-          {props.experiences.preLogs.map((card) => (
+          {props.preLogs.map((card) => (
             <Grid item key={card.strainId} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardMedia
@@ -216,7 +218,7 @@ export default function Experience(props) {
                     </Typography>
                   </Grid>
                   <Typography variant="h5" component="h5">
-                    {card.when}
+                    {card.preWhen}
                   </Typography>
                 </CardContent>
                 <CardActions>
