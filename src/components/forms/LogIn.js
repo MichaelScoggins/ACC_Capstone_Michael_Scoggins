@@ -109,6 +109,15 @@ const LogIn = (props) => {
       });
   };
 
+  const populateFavorites = async () => {
+    return await axios
+      .get(`http://localhost:5500/favorites/${username}`)
+      .then((response) => {
+        console.log("res data", response.data);
+        props.addFavorites(response.data);
+      });
+  };
+
   const login = async (e) => {
     e.preventDefault();
     setDenyPopup(true);
@@ -119,10 +128,11 @@ const LogIn = (props) => {
     props.setUser(username);
     populatePreLogs();
     populateReviews();
-    loginForReal();
+    populateFavorites();
+    goHome();
   };
 
-  const loginForReal = () => {
+  const goHome = () => {
     setRedirectHome(true);
   };
 

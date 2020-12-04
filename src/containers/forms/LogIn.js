@@ -8,6 +8,7 @@ import {
   addPreExps,
   addReview,
   addReviews,
+  addFavorites,
 } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -26,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     addPreExps: (exps) => dispatch(addPreExps(exps)),
     addReview: (exp) => dispatch(addReview(exp)),
     addReviews: (exps) => dispatch(addReviews(exps)),
+    addFavorites: (favs) => dispatch(addFavorites(favs)),
   };
 };
 
