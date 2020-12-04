@@ -9,6 +9,7 @@ import {
 
 const mapStateToProps = (state) => {
   return {
+    user: state.user,
     preTokeForm: state.preTokeForm,
     experiences: state.experiences,
     perfectStrainResults: state.perfectStrainResults,

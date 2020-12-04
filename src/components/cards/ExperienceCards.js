@@ -127,9 +127,7 @@ export default function Experience(props) {
   const handleOpenReview = (e) => {
     const id = e.currentTarget.id;
     setID(id);
-    let existingReview = props.experiences.reviews.find(
-      (review) => review.strainId == id
-    );
+    let existingReview = props.reviews.find((review) => review.strainId == id);
     existingReview ? setViewReviewModal(true) : setAddReviewForm(true);
   };
 

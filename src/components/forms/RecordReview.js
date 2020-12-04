@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import axios from "axios";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -20,15 +21,27 @@ export default function RecordReview(props) {
 
   const preLog = props.preLogs.find((prelog) => prelog.strainId == props.sID);
 
+  const getPreLogId = async () => {
+    return await axios
+      .get(`http://localhost:5500/prelogs/${props.user}`)
+      .then((response) => {
+        return response.data.find((x) => x.strainId == props.sID).id;
+      });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const review = props.reviewForm;
     console.log({ review });
-    review.id = uuidv4();
+    // review.id = uuidv4();
+    review.username = props.user;
+    review.session_id = 2;
     review.strainId = preLog.strainId;
     review.strainName = preLog.strainName;
+    review.strainSpecies = preLog.strainSpecies;
     // props.reviewForm.sessionNum = props.reviewForm.sessionNum + 1;
     props.addReview(review);
+    axios.post("http://localhost:5500/reviews", review);
     toggleOpen(false);
     console.log("reviews", props.reviews);
     clearAll();
@@ -94,7 +107,7 @@ export default function RecordReview(props) {
                 </span>
                 . I was expecting{" "}
                 <span style={{ color: "orange" }}>
-                  {preLog.transformedExpectations};{" "}
+                  {preLog.transformedExpectations}{" "}
                 </span>
                 afterwards,{" "}
                 <span style={{ color: "orange" }}>

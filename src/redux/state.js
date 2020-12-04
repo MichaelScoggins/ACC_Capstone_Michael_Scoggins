@@ -18,6 +18,7 @@ export default {
   },
   title: "",
   preTokeForm: {
+    username: "",
     strainId: "",
     strainName: "",
     strainSpecies: "",
@@ -31,6 +32,8 @@ export default {
     todo: "",
   },
   reviewForm: {
+    username: "",
+    session_id: 0,
     strainId: "",
     strainName: "",
     strainSpecies: "",

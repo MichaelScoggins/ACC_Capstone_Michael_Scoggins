@@ -7,13 +7,13 @@ import {
   addPreExp,
   addPreExps,
   addReview,
+  addReviews,
 } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
     user: state.user,
     bearerToken: state.bearerToken,
-    experiences: state.experiences,
   };
 };
 
@@ -23,8 +23,9 @@ const mapDispatchToProps = (dispatch) => {
     setUser: (username) => dispatch(setUser(username)),
     fetchToken: (input) => dispatch(fetchToken(input)),
     addPreExp: (exp) => dispatch(addPreExp(exp)),
-    addPreExps: (exp) => dispatch(addPreExps(exp)),
+    addPreExps: (exps) => dispatch(addPreExps(exps)),
     addReview: (exp) => dispatch(addReview(exp)),
+    addReviews: (exps) => dispatch(addReviews(exps)),
   };
 };
 

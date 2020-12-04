@@ -6,6 +6,9 @@ const createReview = (req, res) => {
   const {
     username,
     session_id,
+    strainId,
+    strainName,
+    strainSpecies,
     budDescript,
     goodFor,
     transformedMood,
@@ -18,10 +21,13 @@ const createReview = (req, res) => {
     wouldRecommend,
   } = req.body;
   let sql =
-    "INSERT INTO usersExpReviews (username, session_id, budDescript, goodFor, transformedMood, transformedExpectations, experience, transformedWorries, transformedGoals, disappointments, wouldChangeNextTime, wouldRecommend) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO usersExpReviews (username, session_id, strainId, strainName, strainSpecies, budDescript, goodFor, transformedMood, transformedExpectations, experience, transformedWorries, transformedGoals, disappointments, wouldChangeNextTime, wouldRecommend) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   sql = mysql.format(sql, [
     username,
     session_id,
+    strainId,
+    strainName,
+    strainSpecies,
     budDescript,
     goodFor,
     transformedMood,

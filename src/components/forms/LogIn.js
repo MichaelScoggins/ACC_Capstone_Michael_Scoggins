@@ -91,12 +91,21 @@ const LogIn = (props) => {
     password: password,
   };
 
-  const fetchPreLogs = async () => {
+  const populatePreLogs = async () => {
     return await axios
       .get(`http://localhost:5500/prelogs/${username}`)
       .then((response) => {
         console.log("res data", response.data);
-        props.addPreExps(response.data.flat());
+        props.addPreExps(response.data);
+      });
+  };
+
+  const populateReviews = async () => {
+    return await axios
+      .get(`http://localhost:5500/reviews/${username}`)
+      .then((response) => {
+        console.log("res data", response.data);
+        props.addReviews(response.data);
       });
   };
 
@@ -108,8 +117,8 @@ const LogIn = (props) => {
     document.cookie = `user=${username};max-age=60*1000`;
     document.cookie = `token=${props.bearerToken}`;
     props.setUser(username);
-    fetchPreLogs();
-    console.log("exps", props.experiences);
+    populatePreLogs();
+    populateReviews();
     loginForReal();
   };
 
