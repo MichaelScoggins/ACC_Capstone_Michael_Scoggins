@@ -5,7 +5,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Typography from "@material-ui/core/Typography";
 import Select from "@material-ui/core/Select";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import {
   Button,
   TextField,
@@ -25,6 +25,7 @@ export default function RecordReview(props) {
     return await axios
       .get(`http://localhost:5500/prelogs/${props.user}`)
       .then((response) => {
+        console.log(response.data.find((x) => x.strainId == props.sID).id);
         return response.data.find((x) => x.strainId == props.sID).id;
       });
   };
@@ -35,7 +36,7 @@ export default function RecordReview(props) {
     console.log({ review });
     // review.id = uuidv4();
     review.username = props.user;
-    review.session_id = 2;
+    review.session_id = getPreLogId();
     review.strainId = preLog.strainId;
     review.strainName = preLog.strainName;
     review.strainSpecies = preLog.strainSpecies;
@@ -75,8 +76,12 @@ export default function RecordReview(props) {
         >
           <DialogTitle>
             <Typography variant="h5">
-              Review
-              {/* {<span style={{ color: "springgreen" }}>{strain[0]}</span>} */}
+              Review{" "}
+              {
+                <span style={{ color: "springgreen" }}>
+                  {preLog.strainName}
+                </span>
+              }
             </Typography>
           </DialogTitle>
           <DialogContent>
