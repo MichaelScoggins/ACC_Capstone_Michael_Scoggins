@@ -2,8 +2,8 @@ const mysql = require("mysql");
 const pool = require("../../sql/connection");
 const { handleSQLError } = require("../../sql/error");
 
-const getProfileById = (req, res) => {
-  let sql = "SELECT * FROM usersProfiles WHERE user_id = ?";
+const getPreLogsByUsername = (req, res) => {
+  let sql = "SELECT * FROM usersPreLogs WHERE username = ?";
   sql = mysql.format(sql, [req.params.id]);
 
   pool.query(sql, (err, rows) => {
@@ -13,5 +13,5 @@ const getProfileById = (req, res) => {
 };
 
 module.exports = {
-  getProfileById,
+  getPreLogsByUsername,
 };

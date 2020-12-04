@@ -1,6 +1,6 @@
 const express = require("express");
 const createPreLogController = require("../controllers/preLogs/createprelog");
-const getPreLogByIdController = require("../controllers/preLogs/getprelogbyid");
+const getPreLogByUsernameController = require("../controllers/preLogs/getprelogsbyusername");
 // const { checkJwt } = require("../middleware");
 const router = express.Router();
 
@@ -10,6 +10,6 @@ const router = express.Router();
 // router.get("/:id", getProfilesByIdController.getProfileById);
 
 router.post("/", createPreLogController.createPreLog);
-router.get("/:id", getPreLogByIdController.getPreLogById);
+router.get("/:id", getPreLogByUsernameController.getPreLogsByUsername);
 
 module.exports = router;

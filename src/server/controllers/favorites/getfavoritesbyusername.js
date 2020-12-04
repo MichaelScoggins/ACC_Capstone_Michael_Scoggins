@@ -2,8 +2,8 @@ const mysql = require("mysql");
 const pool = require("../../sql/connection");
 const { handleSQLError } = require("../../sql/error");
 
-const getPreLogById = (req, res) => {
-  let sql = "SELECT * FROM usersPreLogs WHERE username = ?";
+const getFavoritesByUsername = (req, res) => {
+  let sql = "SELECT * FROM usersFavorites WHERE username = ?";
   sql = mysql.format(sql, [req.params.id]);
 
   pool.query(sql, (err, rows) => {
@@ -13,5 +13,5 @@ const getPreLogById = (req, res) => {
 };
 
 module.exports = {
-  getPreLogById,
+  getFavoritesByUsername,
 };

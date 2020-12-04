@@ -1,7 +1,7 @@
 const express = require("express");
 const createUserProfileController = require("../controllers/profile/createuserprofile");
 const getAllProfilesController = require("../controllers/profile/getallprofiles");
-const getProfilesByIdController = require("../controllers/profile/getprofilebyid");
+const getProfilesByUsernameController = require("../controllers/profile/getprofilebyusername");
 const setUserProfile = require("../controllers/profile/setuserprofile");
 // const { checkJwt } = require("../middleware");
 const router = express.Router();
@@ -9,7 +9,7 @@ const router = express.Router();
 // user profile functions
 router.get("/", getAllProfilesController.getAllProfiles);
 
-router.get("/:id", getProfilesByIdController.getProfileById);
+router.get("/:id", getProfilesByUsernameController.getProfileByUsername);
 
 router.post("/", createUserProfileController.createUserProfile);
 
