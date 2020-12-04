@@ -15,7 +15,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SnackbarAddPreLog from "../modals/SnackbarAddPreLog";
@@ -24,7 +24,13 @@ export default function RecordPreLog(props) {
   const [open, toggleOpen] = React.useState(false);
   const [showSnackbar, toggleSnackbar] = React.useState(false);
 
-  const toggleDialog = () => toggleOpen(!open);
+  React.useEffect(() => {
+    props.fetchAllStrains();
+  }, []);
+
+  const toggleDialog = () => {
+    toggleOpen(!open);
+  };
 
   var currentdate = new Date();
   var datetime =
@@ -41,15 +47,18 @@ export default function RecordPreLog(props) {
     ":" +
     currentdate.getSeconds();
 
-  const strain = props.perfectStrainResults.find((s) => s[1].id == props.id);
+  const strain = Object.entries(props.allStrains).find(
+    (s) => s[1].id == props.id
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const preLog = props.preTokeForm;
     console.log({ preLog });
     // preLog.id = uuidv4();
-    preLog.strainId = strain[1].id;
-    preLog.strainName = props.strainNamestrainSpecies = strain[1].race;
+    preLog.strainId = props.strainName || strain[1].id;
+    preLog.strainName = props.strainName;
+    preLog.strainSpecies = props.strainSpecies || strain[1].race;
     preLog.preWhen = currentdate.toLocaleDateString();
     preLog.username = props.user;
     props.addPreExp(preLog);
@@ -94,7 +103,7 @@ export default function RecordPreLog(props) {
       <SnackbarAddPreLog
         toggleSnackbar={toggleSnackbar}
         showSnackbar={showSnackbar}
-        strainName={props.strainNamestrainName}
+        strainName={props.strainName}
       />
       <div style={{ textAlign: "center" }}>
         <AddExpToolTip

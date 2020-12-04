@@ -4,7 +4,7 @@ const { handleSQLError } = require("../../sql/error");
 
 const createUserPrefs = (req, res) => {
   const {
-    user_id,
+    username,
     flavorPrefs,
     posPrefs,
     negPrefs,
@@ -12,9 +12,9 @@ const createUserPrefs = (req, res) => {
     speciesPref,
   } = req.body;
   let sql =
-    "INSERT INTO usersPrefs (user_id, flavorPrefs, posPrefs, negPrefs, medicalConditions, speciesPref) VALUES (?, ?, ?, ?, ?, ?)";
+    "INSERT INTO usersPrefs (username, flavorPrefs, posPrefs, negPrefs, medicalConditions, speciesPref) VALUES (?, ?, ?, ?, ?, ?)";
   sql = mysql.format(sql, [
-    user_id,
+    username,
     flavorPrefs,
     posPrefs,
     negPrefs,
@@ -24,7 +24,7 @@ const createUserPrefs = (req, res) => {
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
-    return res.json({ message: `userPrefs for user #${user_id} created` });
+    return res.json({ message: `userPrefs for user #${username} created` });
   });
 };
 

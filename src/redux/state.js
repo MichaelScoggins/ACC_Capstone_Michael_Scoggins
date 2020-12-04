@@ -70,6 +70,13 @@ export default {
   },
   flavors: [],
   strainDescription: "",
+  userPrefsObj: {
+    speciesPrefs: [],
+    posPrefs: [],
+    avoidPrefs: [],
+    medPrefs: [],
+    flavPrefs: [],
+  },
   speciesPrefs: [],
   posPrefs: [],
   avoidPrefs: [],

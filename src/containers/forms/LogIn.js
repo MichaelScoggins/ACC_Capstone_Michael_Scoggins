@@ -9,6 +9,12 @@ import {
   addReview,
   addReviews,
   addFavorites,
+  populatePrefs,
+  setAvoidPrefs,
+  setMedPrefs,
+  setFlavPrefs,
+  setPosPrefs,
+  setSpeciesPrefs,
 } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -28,6 +34,12 @@ const mapDispatchToProps = (dispatch) => {
     addReview: (exp) => dispatch(addReview(exp)),
     addReviews: (exps) => dispatch(addReviews(exps)),
     addFavorites: (favs) => dispatch(addFavorites(favs)),
+    populatePrefs: (prefsObj) => dispatch(populatePrefs(prefsObj)),
+    setAvoidPrefs: (input) => dispatch(setAvoidPrefs(input)),
+    setPosPrefs: (input) => dispatch(setPosPrefs(input)),
+    setMedPrefs: (input) => dispatch(setMedPrefs(input)),
+    setFlavPrefs: (input) => dispatch(setFlavPrefs(input)),
+    setSpeciesPrefs: (input) => dispatch(setSpeciesPrefs(input)),
   };
 };
 

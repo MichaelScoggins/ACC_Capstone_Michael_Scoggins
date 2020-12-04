@@ -118,6 +118,28 @@ const LogIn = (props) => {
       });
   };
 
+  // too messy for now. will probably just remove these routes altogether in the future
+  // const populatePrefs = async () => {
+  //   return await axios
+  //     .get(`http://localhost:5500/prefs/${username}`)
+  //     .then((response) => {
+  //       console.log("prefs data", response.data);
+  //       const {
+  //         flavorPrefs,
+  //         posPrefs,
+  //         negPrefs,
+  //         medicalConditions,
+  //         speciesPref,
+  //       } = response.data[0];
+  //       props.setAvoidPrefs(negPrefs.split(","));
+  //       props.setPosPrefs(posPrefs.split(","));
+  //       props.setMedPrefs(medicalConditions.split(","));
+  //       props.setFlavPrefs(flavorPrefs.split(","));
+  //       props.setSpeciesPrefs(speciesPref.split(","));
+  //       // props.populatePrefs(response.data);
+  //     });
+  // };
+
   const login = async (e) => {
     e.preventDefault();
     setDenyPopup(true);
@@ -129,6 +151,7 @@ const LogIn = (props) => {
     populatePreLogs();
     populateReviews();
     populateFavorites();
+    // populatePrefs();
     goHome();
   };
 

@@ -220,7 +220,11 @@ export default function FavStrainsCards(props) {
                     Bio
                   </Typography>
                 </Button> */}
-                <RecordPreLog id={card.strainId} strainName={card.strainName} />
+                <RecordPreLog
+                  id={card.strainId}
+                  strainName={card.strainName}
+                  strainSpecies={card.strainSpecies}
+                />
               </CardActions>
             </Card>
           </Grid>

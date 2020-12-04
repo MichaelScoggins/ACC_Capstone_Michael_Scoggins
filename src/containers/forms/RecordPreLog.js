@@ -1,6 +1,10 @@
 import { connect } from "react-redux";
 import RecordPreLog from "../../components/forms/RecordPreLog";
-import { addPreExp, setPreTokeForm } from "../../redux/actions";
+import {
+  addPreExp,
+  setPreTokeForm,
+  fetchAllStrains,
+} from "../../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -8,6 +12,7 @@ const mapStateToProps = (state) => {
     preTokeForm: state.preTokeForm,
     experiences: state.experiences,
     perfectStrainResults: state.perfectStrainResults,
+    allStrains: state.allStrains,
   };
 };
 
@@ -15,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addPreExp: (exp) => dispatch(addPreExp(exp)),
     setPreTokeForm: (input) => dispatch(setPreTokeForm(input)),
+    fetchAllStrains: (input) => dispatch(fetchAllStrains(input)),
   };
 };
 

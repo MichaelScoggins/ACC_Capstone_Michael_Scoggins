@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   Button,
   Dialog,
@@ -50,7 +51,15 @@ export default function FindPerfectStrain(props) {
         ["too many results", { "id": 10000, race: "too many results" }],
       ]);
     }
-
+    props.setFavStrainObj({
+      username: props.user,
+      flavorPrefs: props.flavPrefs,
+      posPrefs: props.posPrefs,
+      negPrefs: props.avoidPrefs,
+      medicalConditions: props.medPrefs,
+      speciesPref: props.speciesPrefs,
+    });
+    axios.post("http://localhost:5500/prefs", props.userPrefsObj);
     props.setPerfectStrainResults(perfectStrains);
   };
 

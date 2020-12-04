@@ -114,6 +114,17 @@ const favorites = (state = [], action) => {
   }
 };
 
+const userPrefsObj = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_USER_PREFS":
+      return Object.assign({}, state, action.value);
+    case "POPULATE_USER_PREFS":
+      return Object.assign({}, state, action.value);
+    default:
+      return state;
+  }
+};
+
 const favStrainObj = (state = {}, action) => {
   switch (action.type) {
     case "SET_FAV":
@@ -308,4 +319,5 @@ export default combineReducers({
   preLogs,
   reviews,
   favStrainObj,
+  userPrefsObj,
 });

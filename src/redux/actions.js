@@ -215,6 +215,20 @@ export const fetchDescription = (input) => {
   };
 };
 
+export const setUserPrefsObj = (prefsObj) => {
+  return {
+    type: "SET_USER_PREFS",
+    value: prefsObj,
+  };
+};
+
+export const populatePrefs = (prefsObj) => {
+  return {
+    type: "POPULATE_USER_PREFS",
+    value: prefsObj,
+  };
+};
+
 export const setFavStrainObj = (fav) => {
   return {
     type: "SET_FAV",
