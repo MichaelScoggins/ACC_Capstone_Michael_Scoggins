@@ -21,27 +21,35 @@ export default function RecordReview(props) {
 
   const preLog = props.preLogs.find((prelog) => prelog.strainId == props.sID);
 
-  const getPreLogId = async () => {
-    return await axios
-      .get(`http://localhost:5500/prelogs/${props.user}`)
-      .then((response) => {
-        console.log(response.data.find((x) => x.strainId == props.sID).id);
-        return response.data.find((x) => x.strainId == props.sID).id;
-      });
-  };
+  // const getPreLogId = async () => {
+  //   return await axios
+  //     .get(`http://localhost:5500/prelogs/${props.user}`)
+  //     .then((response) => {
+  //       console.log(response.data.find((x) => x.strainId == props.sID).id);
+  //       return response.data.find((x) => x.strainId == props.sID).id;
+  //     });
+  // };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const review = props.reviewForm;
     console.log({ review });
     // review.id = uuidv4();
     review.username = props.user;
-    review.session_id = getPreLogId();
+    await axios
+      .get(`http://localhost:5500/prelogs/${props.user}`)
+      .then((response) => {
+        review.session_id = response.data.find(
+          (x) => x.strainId == props.sID
+        ).id;
+        return;
+      });
+    // await review.session_id = getPreLogId();
     review.strainId = preLog.strainId;
     review.strainName = preLog.strainName;
     review.strainSpecies = preLog.strainSpecies;
     // props.reviewForm.sessionNum = props.reviewForm.sessionNum + 1;
-    props.addReview(review);
+    await props.addReview(review);
     axios.post("http://localhost:5500/reviews", review);
     toggleOpen(false);
     console.log("reviews", props.reviews);

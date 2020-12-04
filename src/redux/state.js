@@ -9,6 +9,7 @@ export default {
     password: "",
     email: "",
   },
+  favoriteStrainObjectTemplate: {},
   favorites: [],
   preLogs: [],
   reviews: [],

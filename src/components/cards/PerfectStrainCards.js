@@ -113,14 +113,23 @@ export default function PerfectStrainCards(props) {
     setDescriptionModal(true);
   };
 
+  const strainObject = {
+    username: "",
+    strainId: 0,
+    strainName: "",
+    strainSpecies: ""
+  }
   const handleAddFav = (e) => {
     setID(e.currentTarget.id);
     const id = e.currentTarget.id;
-    const existingFav = props.favorites.find((x) => x[1].id == id);
-    let strain = props.perfectStrainResults.find((s) => s[1].id == id);
-    strain.name = strain[0];
-    props.setTitle(strain[0]);
-    !existingFav && props.addFavorite(strain) && props.toggleSnackbar(true);
+    const existingFav = props.favorites.find((x) => x.strainId == id);
+    let strain = props.perfectStrainResults.find((s) => s[1].id == id);    
+    strainObject.username = props.user
+    strainObject.strainName = strain[0]
+    strainObject.strainSpecies = strain[1].race
+    // strain.name = strain[0];
+    // props.setTitle(strain[0]);
+    !existingFav && props.addFavorite(strainObject) && props.toggleSnackbar(true);
   };
 
   const showSpeciesName = (x) => {
