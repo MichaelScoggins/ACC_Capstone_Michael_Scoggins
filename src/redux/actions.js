@@ -33,13 +33,6 @@ export const addPreExp = (exp) => {
   };
 };
 
-export const setFavStrainObj = (fav) => {
-  return {
-    type: "SET_FAV",
-    value: fav,
-  };
-};
-
 export const addPreExps = (exps) => {
   return {
     type: "ADD_PRE_EXPS",
@@ -222,10 +215,17 @@ export const fetchDescription = (input) => {
   };
 };
 
-export const addFavorite = (id) => {
+export const setFavStrainObj = (fav) => {
+  return {
+    type: "SET_FAV",
+    value: fav,
+  };
+};
+
+export const addFavorite = (fav) => {
   return {
     type: "ADD_FAVORITE",
-    value: id,
+    value: fav,
   };
 };
 

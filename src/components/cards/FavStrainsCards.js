@@ -8,13 +8,14 @@ import {
   Grid,
   Typography,
   Tooltip,
-  Zoom,
+  // Zoom,
   Container,
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import PerfectStrainDetailsCard from "../../containers/cards/PerfectStrainDetailsCard";
-import PerfectStrainDescriptionCard from "../../containers/cards/PerfectStrainDescriptionCard";
+// import PerfectStrainDetailsCard from "../../containers/cards/PerfectStrainDetailsCard";
+// import PerfectStrainDescriptionCard from "../../containers/cards/PerfectStrainDescriptionCard";
 import RecordPreLog from "../../containers/forms/RecordPreLog";
+import FavsDetailsModal from "../../containers/modals/FavsDetailsModal";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -115,11 +116,12 @@ export default function FavStrainsCards(props) {
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       {showDetailsModal && (
-        <PerfectStrainDetailsCard
+        <FavsDetailsModal
           setDetailsModal={setDetailsModal}
           sID={strainID}
           strainRace={strainRace}
           strainName={strainName}
+          setModal={setDetailsModal}
         />
       )}
       {props.favorites.length === 0 && (
@@ -129,14 +131,6 @@ export default function FavStrainsCards(props) {
             Some Favorites!
           </Typography>
         </div>
-      )}
-      {showDescriptionModal && (
-        <PerfectStrainDescriptionCard
-          setDescriptionModal={setDescriptionModal}
-          sID={strainID}
-          strainRace={strainRace}
-          strainName={strainName}
-        />
       )}
       <Grid container spacing={4}>
         {props.favorites.map((card) => (
@@ -154,7 +148,7 @@ export default function FavStrainsCards(props) {
                 title="species"
               />
               <CardContent className={classes.cardContent}>
-                <BioToolTip
+                {/* <BioToolTip
                   title={
                     <React.Fragment>
                       <Typography>Click For Bio</Typography>
@@ -162,28 +156,28 @@ export default function FavStrainsCards(props) {
                   }
                   placement="top"
                   TransitionComponent={Zoom}
+                > */}
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  // style={{ cursor: "pointer", color: "" }}
+                  id={card.strainId}
                 >
-                  <Typography
-                    variant="h5"
-                    component="h2"
-                    style={{ cursor: "pointer", color: "" }}
-                    id={card.strainId}
+                  <h2
+                    style={{
+                      color:
+                        card.strainSpecies === "sativa"
+                          ? "gold"
+                          : card.strainSpecies === "indica"
+                          ? "orchid"
+                          : "indianred",
+                    }}
                   >
-                    <h2
-                      style={{
-                        color:
-                          card.strainSpecies === "sativa"
-                            ? "gold"
-                            : card.strainSpecies === "indica"
-                            ? "orchid"
-                            : "indianred",
-                      }}
-                    >
-                      {card.strainName}
-                    </h2>
-                    <hr />
-                  </Typography>
-                </BioToolTip>
+                    {card.strainName}
+                  </h2>
+                  <hr />
+                </Typography>
+                {/* </BioToolTip> */}
                 <Typography variant="h5">
                   <div
                     style={{
@@ -209,7 +203,7 @@ export default function FavStrainsCards(props) {
                 >
                   <Typography>View</Typography>
                 </Button>
-                <Button
+                {/* <Button
                   size="small"
                   variant="contained"
                   color="secondary"
@@ -225,7 +219,7 @@ export default function FavStrainsCards(props) {
                   >
                     Bio
                   </Typography>
-                </Button>
+                </Button> */}
                 <RecordPreLog id={card.strainId} strainName={card.strainName} />
               </CardActions>
             </Card>

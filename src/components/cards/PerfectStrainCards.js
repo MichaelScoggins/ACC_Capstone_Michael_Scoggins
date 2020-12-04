@@ -124,6 +124,7 @@ export default function PerfectStrainCards(props) {
     fav.strainId = strain[1].id;
     fav.strainName = strain[0];
     fav.strainSpecies = strain[1].race;
+    props.setFavStrainObj(fav);
     props.setTitle(fav.strainName);
     axios.post("http://localhost:5500/favorites", fav);
     !existingFav && props.addFavorite(fav) && props.toggleSnackbar(true);

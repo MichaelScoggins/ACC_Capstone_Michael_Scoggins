@@ -45,15 +45,6 @@ const reviewForm = (state = {}, action) => {
   }
 };
 
-const favStrainObj = (state = {}, action) => {
-  switch (action.type) {
-    case "SET_FAV":
-      return Object.assign({}, state, action.value);
-    default:
-      return state;
-  }
-};
-
 const profile = (state = {}, action) => {
   switch (action.type) {
     case "SET_PROFILE":
@@ -118,6 +109,15 @@ const favorites = (state = [], action) => {
     case "ADD_FAVORITES":
       let newState = [...state, action.value];
       return newState.flat();
+    default:
+      return state;
+  }
+};
+
+const favStrainObj = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_FAV":
+      return Object.assign({}, state, action.value);
     default:
       return state;
   }

@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchDescription: (input) => dispatch(fetchDescription(input)),
     fetchEffects: (input) => dispatch(fetchEffects(input)),
     fetchFlavors: (input) => dispatch(fetchFlavors(input)),
-    addFavorite: (input) => dispatch(addFavorite(input)),
+    addFavorite: (fav) => dispatch(addFavorite(fav)),
     toggleSnackbar: (input) => dispatch(toggleSnackbar(input)),
     setPerfectStrainResults: (results) =>
       dispatch(setPerfectStrainResults(results)),
