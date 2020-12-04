@@ -5,9 +5,7 @@ import { Dialog, DialogContent, DialogTitle } from "@material-ui/core";
 export default function ViewPreTokeModal(props) {
   const [open, toggleOpen] = React.useState(true);
 
-  const preLog = props.experiences.preLogs.find(
-    (pre) => pre.strainId == props.sID
-  );
+  const preLog = props.preLogs.find((pre) => pre.strainId == props.sID);
 
   const handleClose = () => {
     toggleOpen(false);
@@ -30,19 +28,18 @@ export default function ViewPreTokeModal(props) {
           </DialogTitle>
           <DialogContent>
             While I'm feeling{" "}
-            <span style={{ color: "orange" }}>{preLog.mood}</span>, I'm hoping
-            to achieve <span style={{ color: "orange" }}>{preLog.reason}</span>,
+            <span style={{ color: "orange" }}>{preLog.preMood}</span>, I'm
+            hoping to achieve{" "}
+            <span style={{ color: "orange" }}>{preLog.sessionPurpose}</span>,
             and expecting{" "}
-            <span style={{ color: "orange" }}>{preLog.expectations}</span>. I'm
-            thinking about{" "}
-            <span style={{ color: "orange" }}>{preLog.worries}</span>, but{" "}
-            <span style={{ color: "orange" }}>{preLog.goals}</span>. I have
+            <span style={{ color: "orange" }}>{preLog.expectToAchieve}</span>.
+            I'm thinking about{" "}
+            <span style={{ color: "orange" }}>{preLog.lingeringWorries}</span>,
+            but <span style={{ color: "orange" }}>{preLog.goal}</span>. I have
             already{" "}
-            <span style={{ color: "orange" }}>
-              {preLog.alreadyAccomplished}
-            </span>
-            , and still need to{" "}
-            <span style={{ color: "orange" }}>{preLog.planToAccomplish}</span>.
+            <span style={{ color: "orange" }}>{preLog.alreadyDone}</span>, and
+            still need to <span style={{ color: "orange" }}>{preLog.todo}</span>
+            .
           </DialogContent>
         </Dialog>
       </Typography>

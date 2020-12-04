@@ -13,6 +13,8 @@ const mapStateToProps = (state) => {
     experiences: state.experiences,
     perfectStrainResults: state.perfectStrainResults,
     reviewForm: state.reviewForm,
+    reviews: state.reviews,
+    preLogs: state.preLogs,
   };
 };
 

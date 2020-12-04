@@ -5,13 +5,9 @@ import { Dialog, DialogContent, DialogTitle } from "@material-ui/core";
 export default function ViewReviewModal(props) {
   const [open, toggleOpen] = React.useState(true);
 
-  const preLog = props.experiences.preLogs.find(
-    (pre) => pre.strainId == props.sID
-  );
+  const preLog = props.preLogs.find((pre) => pre.strainId == props.sID);
 
-  const review = props.experiences.reviews.find(
-    (review) => review.strainId == props.sID
-  );
+  const review = props.reviews.find((review) => review.strainId == props.sID);
 
   const handleClose = () => {
     toggleOpen(false);
@@ -34,25 +30,28 @@ export default function ViewReviewModal(props) {
           </DialogTitle>
           <DialogContent>
             The bud was{" "}
-            <span style={{ color: "springgreen" }}>
-              {review.describeAppearance}
-            </span>
-            . This strain is good for{" "}
-            <span style={{ color: "springgreen" }}>{review.reason}</span>. I
+            <span style={{ color: "springgreen" }}>{review.budDescript}</span>.
+            This strain is good for{" "}
+            <span style={{ color: "springgreen" }}>{review.goodFor}</span>. I
             started out feeling{" "}
-            <span style={{ color: "orange" }}>{preLog.mood}</span>, and ended up
-            feeling <span style={{ color: "orange" }}>{review.mood}</span>. I
+            <span style={{ color: "orange" }}>{preLog.preMood}</span>, and ended
+            up feeling{" "}
+            <span style={{ color: "orange" }}>{review.transformedMood}</span>. I
             was expecting{" "}
-            <span style={{ color: "orange" }}>{preLog.expectations}; </span>
+            <span style={{ color: "orange" }}>{preLog.expectToAchieve}; </span>
             afterwards,{" "}
-            <span style={{ color: "orange" }}>{review.expectations}</span>. I
-            was thinking about{" "}
-            <span style={{ color: "orange" }}>{preLog.worries}</span>, and
-            believing <span style={{ color: "orange" }}>{preLog.goals}</span>. I
-            experienced{" "}
+            <span style={{ color: "orange" }}>
+              {review.transformedExpectations}
+            </span>
+            . I was thinking about{" "}
+            <span style={{ color: "orange" }}>{preLog.lingeringWorries}</span>,
+            and believing <span style={{ color: "orange" }}>{preLog.goal}</span>
+            . I experienced{" "}
             <span style={{ color: "orange" }}>{review.experience}</span> and my
-            worries <span style={{ color: "orange" }}>{review.worries}</span>.{" "}
-            <span style={{ color: "orange" }}>{review.goals}</span>.
+            worries{" "}
+            <span style={{ color: "orange" }}>{review.transformedWorries}</span>
+            . <span style={{ color: "orange" }}>{review.transformedGoals}</span>
+            .
           </DialogContent>
         </Dialog>
       </Typography>

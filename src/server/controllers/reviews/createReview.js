@@ -4,7 +4,7 @@ const { handleSQLError } = require("../../sql/error");
 
 const createReview = (req, res) => {
   const {
-    user_id,
+    username,
     session_id,
     budDescript,
     goodFor,
@@ -18,9 +18,9 @@ const createReview = (req, res) => {
     wouldRecommend,
   } = req.body;
   let sql =
-    "INSERT INTO usersExpReviews (user_id, session_id, budDescript, goodFor, transformedMood, transformedExpectations, experience, transformedWorries, transformedGoals, disappointments, wouldChangeNextTime, wouldRecommend) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO usersExpReviews (username, session_id, budDescript, goodFor, transformedMood, transformedExpectations, experience, transformedWorries, transformedGoals, disappointments, wouldChangeNextTime, wouldRecommend) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   sql = mysql.format(sql, [
-    user_id,
+    username,
     session_id,
     budDescript,
     goodFor,
@@ -37,7 +37,7 @@ const createReview = (req, res) => {
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
     return res.json({
-      message: `user ${user_id} session ${session_id} review added`,
+      message: `user ${username} session ${session_id} review added`,
     });
   });
 };

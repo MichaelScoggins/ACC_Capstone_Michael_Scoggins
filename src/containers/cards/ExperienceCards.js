@@ -33,6 +33,7 @@ const mapStateToProps = (state) => {
     perfectStrainResults: state.perfectStrainResults,
     experiences: state.experiences,
     preLogs: state.preLogs,
+    reviews: state.reviews,
   };
 };
 

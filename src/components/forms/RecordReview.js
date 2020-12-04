@@ -18,9 +18,7 @@ export default function RecordReview(props) {
 
   const toggleDialog = () => toggleOpen(!open);
 
-  const preLog = props.experiences.preLogs.find(
-    (prelog) => prelog.strainId == props.sID
-  );
+  const preLog = props.preLogs.find((prelog) => prelog.strainId == props.sID);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +30,7 @@ export default function RecordReview(props) {
     // props.reviewForm.sessionNum = props.reviewForm.sessionNum + 1;
     props.addReview(review);
     toggleOpen(false);
-    console.log("reviews", props.experiences.reviews);
+    console.log("reviews", props.reviews);
     clearAll();
   };
 

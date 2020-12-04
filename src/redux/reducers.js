@@ -85,6 +85,9 @@ const reviews = (state = [], action) => {
   switch (action.type) {
     case "ADD_REVIEW":
       return [...state, action.value];
+    case "ADD_REVIEWS":
+      let newState = [...state, action.value];
+      return newState.flat();
     default:
       return state;
   }
