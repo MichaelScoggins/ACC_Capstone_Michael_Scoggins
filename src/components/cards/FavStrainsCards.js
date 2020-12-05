@@ -7,13 +7,9 @@ import {
   CardMedia,
   Grid,
   Typography,
-  Tooltip,
-  // Zoom,
   Container,
 } from "@material-ui/core";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-// import PerfectStrainDetailsCard from "../../containers/cards/PerfectStrainDetailsCard";
-// import PerfectStrainDescriptionCard from "../../containers/cards/PerfectStrainDescriptionCard";
+import { makeStyles } from "@material-ui/core/styles";
 import RecordPreLog from "../../containers/forms/RecordPreLog";
 import FavsDetailsModal from "../../containers/modals/FavsDetailsModal";
 
@@ -61,20 +57,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BioToolTip = withStyles((theme) => ({
-  tooltip: {
-    backgroundColor: "#424242",
-    color: "orange",
-    maxWidth: 220,
-    fontSize: theme.typography.pxToRem(12),
-    border: "1px solid #dadde9",
-  },
-}))(Tooltip);
-
 export default function FavStrainsCards(props) {
   const classes = useStyles();
   const [showDetailsModal, setDetailsModal] = React.useState(false);
-  const [showDescriptionModal, setDescriptionModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
   const [strainRace, setStrainRace] = React.useState(null);
   const [strainName, setStrainName] = React.useState(null);
@@ -92,26 +77,6 @@ export default function FavStrainsCards(props) {
     setStrainRace(strain[1].id);
     setDetailsModal(true);
   };
-
-  // const handleDetailsModal = (e) => {
-  //   setID(e.currentTarget.id);
-  //   const strain = props.favorites.find(
-  //     (fav) => fav[1].id == e.currentTarget.id
-  //   );
-  //   setStrainRace(strain[1].race);
-  //   setStrainName(strain[0]);
-  //   setDetailsModal(true);
-  // };
-
-  // const handleDescriptionModal = (e) => {
-  //   setID(e.currentTarget.id);
-  //   const strain = props.favorites.find(
-  //     (fav) => fav[1].id == e.currentTarget.id
-  //   );
-  //   setStrainRace(strain[1].race);
-  //   setStrainName(strain[0]);
-  //   setDescriptionModal(true);
-  // };
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
@@ -148,21 +113,7 @@ export default function FavStrainsCards(props) {
                 title="species"
               />
               <CardContent className={classes.cardContent}>
-                {/* <BioToolTip
-                  title={
-                    <React.Fragment>
-                      <Typography>Click For Bio</Typography>
-                    </React.Fragment>
-                  }
-                  placement="top"
-                  TransitionComponent={Zoom}
-                > */}
-                <Typography
-                  variant="h5"
-                  component="h2"
-                  // style={{ cursor: "pointer", color: "" }}
-                  id={card.strainId}
-                >
+                <Typography variant="h5" component="h2" id={card.strainId}>
                   <h2
                     style={{
                       color:
@@ -177,7 +128,6 @@ export default function FavStrainsCards(props) {
                   </h2>
                   <hr />
                 </Typography>
-                {/* </BioToolTip> */}
                 <Typography variant="h5">
                   <div
                     style={{
@@ -203,23 +153,6 @@ export default function FavStrainsCards(props) {
                 >
                   <Typography>View</Typography>
                 </Button>
-                {/* <Button
-                  size="small"
-                  variant="contained"
-                  color="secondary"
-                  id={card.strainId}
-                  onClick={(e) => handleDetailsModal(e)}
-                >
-                  <Typography
-                    style={{
-                      fontWeight: "600",
-                      color: "green",
-                      textShadow: "1px 1px yellowgreen",
-                    }}
-                  >
-                    Bio
-                  </Typography>
-                </Button> */}
                 <RecordPreLog
                   id={card.strainId}
                   strainName={card.strainName}

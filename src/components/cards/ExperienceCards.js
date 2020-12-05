@@ -102,10 +102,6 @@ export default function Experience(props) {
     const strain = Object.entries(props.allStrains).find(
       (strain) => strain[1].id == e.currentTarget.id
     );
-
-    // const strain = props.experiences.preLogs.find(
-    //   (exp) => exp.strainId == e.currentTarget.id
-    // );
     setStrainName(strain[0]);
     setDetailsModal(true);
   };
@@ -114,15 +110,6 @@ export default function Experience(props) {
     setID(e.currentTarget.id);
     setViewPreTokeModal(true);
   };
-
-  // const handleDescriptionModal = (e) => {
-  //   setID(e.currentTarget.id);
-  //   const strain = Object.entries(props.allStrains).find(
-  //     (strain) => strain[1].id == e.currentTarget.id
-  //   );
-  //   setStrainName(strain[0]);
-  //   setDetailsModal(true);
-  // };
 
   const handleOpenReview = (e) => {
     const id = e.currentTarget.id;

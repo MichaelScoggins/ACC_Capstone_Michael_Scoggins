@@ -64,7 +64,6 @@ export default function RecordPreLog(props) {
     props.addPreExp(preLog);
     axios.post("http://localhost:5500/prelogs", preLog);
     toggleOpen(false);
-    console.log(props.experiences.preLogs);
     clearAll();
     toggleSnackbar(true);
   };
