@@ -142,7 +142,15 @@ const Navigation = (props) => {
               />
             </Link>
           </Typography>
-          <Typography>Higher Intentions</Typography>
+          <Typography style={{ fontWeight: 500, color: "#FFA726" }}>
+            {location.pathname === "/experience"
+              ? `Experience Archives`
+              : location.pathname === "/search"
+              ? `Search All Strains`
+              : location.pathname === "/favorites"
+              ? `Favorite Strains`
+              : `Higher Intentions`}
+          </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}></div>
           <ul className="nav-list">
