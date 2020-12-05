@@ -73,8 +73,8 @@ export default function FavStrainsCards(props) {
     props.fetchAllStrains();
   }, []);
 
-  const handleDelete = (e) => {
-    let id = e.currentTarget.id;
+  const handleDelete = (e, id) => {
+    // let id = e.currentTarget.id;
     props.removeFavorite(id);
     axios.delete(`http://localhost:5500/favorites/${id}`, {
       headers: {
@@ -162,7 +162,7 @@ export default function FavStrainsCards(props) {
                   variant="contained"
                   className="heartIcon"
                   id={card.strainId}
-                  onClick={(e) => handleDelete(e)}
+                  onClick={(e) => handleDelete(e, card.strainId)}
                 >
                   <FontAwesomeIcon
                     icon={faHeartBroken}
