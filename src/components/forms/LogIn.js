@@ -93,7 +93,11 @@ const LogIn = (props) => {
 
   const populatePreLogs = async () => {
     return await axios
-      .get(`http://localhost:5500/prelogs/${username}`)
+      .get(`http://localhost:5500/prelogs/${username}`, {
+        headers: {
+          Authentication: `Bearer ${props.bearerToken}`,
+        },
+      })
       .then((response) => {
         console.log("res data", response.data);
         props.addPreExps(response.data);
@@ -143,6 +147,7 @@ const LogIn = (props) => {
   const login = async (e) => {
     e.preventDefault();
     setDenyPopup(true);
+    await props.fetchToken(userObject);
     await axios.post("http://localhost:5500/auth/login", userObject);
     document.cookie = "loggedIn=true;max-age=60*1000";
     document.cookie = `user=${username};max-age=60*1000`;
