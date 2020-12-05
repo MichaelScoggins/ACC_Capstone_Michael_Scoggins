@@ -91,15 +91,15 @@ const LogIn = (props) => {
     password: password,
   };
 
-  const populatePreLogs = async () => {
+  const populatePreLogs = async (token) => {
     return await axios
       .get(`http://localhost:5500/prelogs/${username}`, {
         headers: {
-          Authentication: `Bearer ${props.bearerToken}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
-        console.log("res data", response.data);
+        console.log("res data and token", props.bearerToken, response.data);
         props.addPreExps(response.data);
       });
   };
@@ -108,7 +108,7 @@ const LogIn = (props) => {
     return await axios
       .get(`http://localhost:5500/reviews/${username}`)
       .then((response) => {
-        console.log("res data", response.data);
+        console.log("reviews res data", response.data);
         props.addReviews(response.data);
       });
   };
@@ -117,43 +117,25 @@ const LogIn = (props) => {
     return await axios
       .get(`http://localhost:5500/favorites/${username}`)
       .then((response) => {
-        console.log("res data", response.data);
+        console.log("favs res data", response.data);
         props.addFavorites(response.data);
       });
   };
-
-  // too messy for now. will probably just remove these routes altogether in the future
-  // const populatePrefs = async () => {
-  //   return await axios
-  //     .get(`http://localhost:5500/prefs/${username}`)
-  //     .then((response) => {
-  //       console.log("prefs data", response.data);
-  //       const {
-  //         flavorPrefs,
-  //         posPrefs,
-  //         negPrefs,
-  //         medicalConditions,
-  //         speciesPref,
-  //       } = response.data[0];
-  //       props.setAvoidPrefs(negPrefs.split(","));
-  //       props.setPosPrefs(posPrefs.split(","));
-  //       props.setMedPrefs(medicalConditions.split(","));
-  //       props.setFlavPrefs(flavorPrefs.split(","));
-  //       props.setSpeciesPrefs(speciesPref.split(","));
-  //       // props.populatePrefs(response.data);
-  //     });
-  // };
 
   const login = async (e) => {
     e.preventDefault();
     setDenyPopup(true);
     await props.fetchToken(userObject);
-    await axios.post("http://localhost:5500/auth/login", userObject);
-    document.cookie = "loggedIn=true;max-age=60*1000";
-    document.cookie = `user=${username};max-age=60*1000`;
-    document.cookie = `token=${props.bearerToken}`;
+    await axios
+      .post("http://localhost:5500/auth/login", userObject)
+      .then((res) => {
+        console.log(res.data.token);
+        populatePreLogs(res.data.token);
+      });
+    // document.cookie = "loggedIn=true;max-age=60*1000";
+    // document.cookie = `user=${username};max-age=60*1000`;
+    // document.cookie = `token=${props.bearerToken}`;
     props.setUser(username);
-    populatePreLogs();
     populateReviews();
     populateFavorites();
     // populatePrefs();
@@ -165,6 +147,8 @@ const LogIn = (props) => {
   };
 
   if (redirectHome) {
+    console.log(" token", props.bearerToken);
+    // populatePreLogs();
     return <Redirect to="/" />;
   }
   return (

@@ -69,7 +69,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Home(props) {
-  console.log("rev after", props.reviews, props.preLogs);
   const classes = useStyles();
   return (
     <React.Fragment>
