@@ -10,6 +10,7 @@ import {
   fetchFlavors,
   setUserSearchInput,
   addFavorite,
+  removeFavorite,
   addFavorites,
   toggleSnackbar,
   setPerfectStrainResults,
@@ -18,6 +19,7 @@ import {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    bearerToken: state.bearerToken,
     userSearchResults: state.userSearchResults,
     allStrains: state.allStrains,
     searchParams: state.searchParams,
@@ -44,7 +46,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchDescription: (input) => dispatch(fetchDescription(input)),
     fetchEffects: (input) => dispatch(fetchEffects(input)),
     fetchFlavors: (input) => dispatch(fetchFlavors(input)),
-    addFavorite: (input) => dispatch(addFavorite(input)),
+    addFavorite: (fav) => dispatch(addFavorite(fav)),
+    removeFavorite: (input) => dispatch(removeFavorite(input)),
     addFavorites: (arr) => dispatch(addFavorites(arr)),
     toggleSnackbar: (input) => dispatch(toggleSnackbar(input)),
     setPerfectStrainResults: (results) =>

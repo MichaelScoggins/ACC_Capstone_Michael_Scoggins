@@ -106,6 +106,8 @@ const favorites = (state = [], action) => {
   switch (action.type) {
     case "ADD_FAVORITE":
       return [...state, action.value];
+    case "REMOVE_FAVORITE":
+      return [...state.filter((x) => x.strainId !== action.value)];
     case "ADD_FAVORITES":
       let newState = [...state, action.value];
       return newState.flat();

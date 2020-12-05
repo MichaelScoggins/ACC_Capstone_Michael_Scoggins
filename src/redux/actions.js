@@ -250,6 +250,13 @@ export const addFavorite = (fav) => {
   };
 };
 
+export const removeFavorite = (id) => {
+  return {
+    type: "REMOVE_FAVORITE",
+    value: id,
+  };
+};
+
 export const addFavorites = (arr) => {
   return {
     type: "ADD_FAVORITES",

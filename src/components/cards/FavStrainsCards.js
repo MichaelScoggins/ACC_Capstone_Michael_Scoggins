@@ -1,4 +1,8 @@
 import React from "react";
+import axios from "axios";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
+import { faHeartBroken } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Button,
   Card,
@@ -25,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   cardGrid: {
+    marginTop: 10,
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
@@ -67,6 +72,16 @@ export default function FavStrainsCards(props) {
   React.useEffect(() => {
     props.fetchAllStrains();
   }, []);
+
+  const handleDelete = (e) => {
+    let id = e.currentTarget.id;
+    props.removeFavorite(id);
+    axios.delete(`http://localhost:5500/favorites/${id}`, {
+      headers: {
+        Authorization: `Bearer ${props.bearerToken}`,
+      },
+    });
+  };
 
   const handleDetailsModal = (e) => {
     setID(e.currentTarget.id);
@@ -113,8 +128,10 @@ export default function FavStrainsCards(props) {
                 title="species"
               />
               <CardContent className={classes.cardContent}>
-                <Typography variant="h5" component="h2" id={card.strainId}>
-                  <h2
+                <Grid container>
+                  <Typography
+                    variant="h4"
+                    id={card.strainId}
                     style={{
                       color:
                         card.strainSpecies === "sativa"
@@ -125,23 +142,8 @@ export default function FavStrainsCards(props) {
                     }}
                   >
                     {card.strainName}
-                  </h2>
-                  <hr />
-                </Typography>
-                <Typography variant="h5">
-                  <div
-                    style={{
-                      color:
-                        card.strainSpecies == "sativa"
-                          ? "orange"
-                          : card.strainSpecies == "indica"
-                          ? "purple"
-                          : "brown",
-                    }}
-                  >
-                    {card.strainSpecies}
-                  </div>
-                </Typography>
+                  </Typography>
+                </Grid>
               </CardContent>
               <CardActions>
                 <Button
@@ -152,6 +154,21 @@ export default function FavStrainsCards(props) {
                   id={card.strainId}
                 >
                   <Typography>View</Typography>
+                </Button>
+                <Button
+                  size="small"
+                  disableRipple
+                  color="secondary"
+                  variant="contained"
+                  className="heartIcon"
+                  id={card.strainId}
+                  onClick={(e) => handleDelete(e)}
+                >
+                  <FontAwesomeIcon
+                    icon={faHeartBroken}
+                    size="3x"
+                    className="brokenheart-icon"
+                  />
                 </Button>
                 <RecordPreLog
                   id={card.strainId}

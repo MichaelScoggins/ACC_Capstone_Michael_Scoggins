@@ -25,6 +25,14 @@ code {
   color: red;
 }
 
+.brokenheart-icon {
+  color: white;
+}
+
+.brokenheart-icon:hover {
+  color: red;
+}
+
 .info-icon:hover {
   color: springgreen;
 }

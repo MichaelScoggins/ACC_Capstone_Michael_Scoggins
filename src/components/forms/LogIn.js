@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import cookie from "cookie";
+// import cookie from "cookie";
 import { Redirect, Link } from "react-router-dom";
 import {
   Avatar,
@@ -91,8 +91,8 @@ const LogIn = (props) => {
     password: password,
   };
 
-  const populatePreLogs = async (token) => {
-    return await axios
+  const populatePreLogs = (token) => {
+    return axios
       .get(`http://localhost:5500/prelogs/${username}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -104,8 +104,8 @@ const LogIn = (props) => {
       });
   };
 
-  const populateReviews = async (token) => {
-    return await axios
+  const populateReviews = (token) => {
+    return axios
       .get(`http://localhost:5500/reviews/${username}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -117,8 +117,8 @@ const LogIn = (props) => {
       });
   };
 
-  const populateFavorites = async (token) => {
-    return await axios
+  const populateFavorites = (token) => {
+    return axios
       .get(`http://localhost:5500/favorites/${username}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -130,22 +130,20 @@ const LogIn = (props) => {
       });
   };
 
-  const login = async (e) => {
+  const login = (e) => {
     e.preventDefault();
     // await props.fetchToken(userObject);
     setDenyPopup(true);
-    await axios
-      .post("http://localhost:5500/auth/login", userObject)
-      .then((res) => {
-        let token = res.data.token;
-        props.setUser(username);
-        console.log("token", token);
-        populatePreLogs(token);
-        populateReviews(token);
-        populateFavorites(token);
-        props.fetchToken(token);
-        goHome();
-      });
+    axios.post("http://localhost:5500/auth/login", userObject).then((res) => {
+      let token = res.data.token;
+      props.setUser(username);
+      console.log("token", token);
+      populatePreLogs(token);
+      populateReviews(token);
+      populateFavorites(token);
+      props.fetchToken(token);
+      goHome();
+    });
     // document.cookie = "loggedIn=true;max-age=60*1000";
     // document.cookie = `user=${username};max-age=60*1000`;
     // document.cookie = `token=${props.bearerToken}`;
