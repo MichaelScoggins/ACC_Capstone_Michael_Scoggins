@@ -56,13 +56,17 @@ export default function RecordPreLog(props) {
     const preLog = props.preTokeForm;
     console.log({ preLog });
     // preLog.id = uuidv4();
-    preLog.strainId = props.strainName || strain[1].id;
+    preLog.strainId = props.strainId || strain[1].id;
     preLog.strainName = props.strainName;
     preLog.strainSpecies = props.strainSpecies || strain[1].race;
     preLog.preWhen = currentdate.toLocaleDateString();
     preLog.username = props.user;
     props.addPreExp(preLog);
-    axios.post("http://localhost:5500/prelogs", preLog);
+    axios.post("http://localhost:5500/prelogs", preLog, {
+      headers: {
+        Authorization: `Bearer ${props.bearerToken}`,
+      },
+    });
     toggleOpen(false);
     clearAll();
     toggleSnackbar(true);

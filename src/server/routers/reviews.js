@@ -2,6 +2,7 @@ const express = require("express");
 const createReviewController = require("../controllers/reviews/createreview");
 const getReviewByIdController = require("../controllers/reviews/getreviewbyid");
 // const { checkJwt } = require("../middleware");
+const { authenticate } = require("../middleware");
 const router = express.Router();
 
 // user profile functions
@@ -9,7 +10,7 @@ const router = express.Router();
 
 // router.get("/:id", getProfilesByIdController.getProfileById);
 
-router.post("/", createReviewController.createReview);
-router.get("/:id", getReviewByIdController.getReviewById);
+router.post("/", authenticate, createReviewController.createReview);
+router.get("/:id", authenticate, getReviewByIdController.getReviewById);
 
 module.exports = router;

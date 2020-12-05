@@ -10,6 +10,7 @@ import {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    bearerToken: state.bearerToken,
     preTokeForm: state.preTokeForm,
     experiences: state.experiences,
     perfectStrainResults: state.perfectStrainResults,

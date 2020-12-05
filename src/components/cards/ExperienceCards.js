@@ -10,16 +10,11 @@ import {
   Grid,
   Typography,
   Container,
-  // Tooltip,
-  // Zoom,
   CssBaseline,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-// import { withStyles } from "@material-ui/core/styles";
-// import PerfectStrainDetailsCard from "../../containers/cards/PerfectStrainDetailsCard";
 import ViewPreTokeModal from "../../containers/modals/ViewPreTokeModal";
 import SnackbarAddFav from "../../containers/modals/SnackbarAddFav";
-// import PerfectStrainDescriptionCard from "../../containers/cards/PerfectStrainDescriptionCard";
 import RecordReview from "../../containers/forms/RecordReview";
 import ViewReviewModal from "../../containers/modals/ViewReviewModal";
 import ExpDetailsModal from "../../containers/modals/ExpDetailsModal";
@@ -73,16 +68,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const BioToolTip = withStyles((theme) => ({
-//   tooltip: {
-//     backgroundColor: "#424242",
-//     color: "orange",
-//     maxWidth: 220,
-//     fontSize: theme.typography.pxToRem(12),
-//     border: "1px solid #dadde9",
-//   },
-// }))(Tooltip);
-
 export default function Experience(props) {
   const classes = useStyles();
   const [showDetailsModal, setDetailsModal] = React.useState(false);
@@ -91,13 +76,13 @@ export default function Experience(props) {
   const [showViewReviewModal, setViewReviewModal] = React.useState(false);
   const [strainID, setID] = React.useState(null);
   const [strainName, setStrainName] = React.useState(null);
-  console.log("exp cards", props.preLogs);
 
   React.useEffect(() => {
     props.fetchAllStrains();
   }, []);
 
   const handleDetailsModal = (e) => {
+    console.log("id", e.currentTarget.id);
     setID(e.currentTarget.id);
     const strain = Object.entries(props.allStrains).find(
       (strain) => strain[1].id == e.currentTarget.id

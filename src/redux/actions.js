@@ -127,24 +127,31 @@ export const fetchUserSearchResults = (input) => {
 };
 
 export const fetchToken = (input) => {
-  return async (dispatch) => {
-    await fetch("http://localhost:5500/auth/login", {
-      method: "POST",
-      body: JSON.stringify(input),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        const action = {
-          type: "BEARER_TOKEN",
-          value: response.token,
-        };
-        dispatch(action);
-      });
+  return {
+    type: "BEARER_TOKEN",
+    value: input,
   };
 };
+
+// export const fetchToken = (input) => {
+//   return async (dispatch) => {
+//     await fetch("http://localhost:5500/auth/login", {
+//       method: "POST",
+//       body: JSON.stringify(input),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     })
+//       .then((res) => res.json())
+//       .then((response) => {
+//         const action = {
+//           type: "BEARER_TOKEN",
+//           value: response.token,
+//         };
+//         dispatch(action);
+//       });
+//   };
+// };
 
 export const addUser = (input) => {
   return async (dispatch) => {

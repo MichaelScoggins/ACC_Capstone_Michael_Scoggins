@@ -104,18 +104,26 @@ const LogIn = (props) => {
       });
   };
 
-  const populateReviews = async () => {
+  const populateReviews = async (token) => {
     return await axios
-      .get(`http://localhost:5500/reviews/${username}`)
+      .get(`http://localhost:5500/reviews/${username}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         console.log("reviews res data", response.data);
         props.addReviews(response.data);
       });
   };
 
-  const populateFavorites = async () => {
+  const populateFavorites = async (token) => {
     return await axios
-      .get(`http://localhost:5500/favorites/${username}`)
+      .get(`http://localhost:5500/favorites/${username}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         console.log("favs res data", response.data);
         props.addFavorites(response.data);
@@ -124,22 +132,24 @@ const LogIn = (props) => {
 
   const login = async (e) => {
     e.preventDefault();
+    // await props.fetchToken(userObject);
     setDenyPopup(true);
-    await props.fetchToken(userObject);
     await axios
       .post("http://localhost:5500/auth/login", userObject)
       .then((res) => {
-        console.log(res.data.token);
-        populatePreLogs(res.data.token);
+        let token = res.data.token;
+        props.setUser(username);
+        console.log("token", token);
+        populatePreLogs(token);
+        populateReviews(token);
+        populateFavorites(token);
+        props.fetchToken(token);
+        goHome();
       });
     // document.cookie = "loggedIn=true;max-age=60*1000";
     // document.cookie = `user=${username};max-age=60*1000`;
     // document.cookie = `token=${props.bearerToken}`;
-    props.setUser(username);
-    populateReviews();
-    populateFavorites();
     // populatePrefs();
-    goHome();
   };
 
   const goHome = () => {
@@ -147,7 +157,7 @@ const LogIn = (props) => {
   };
 
   if (redirectHome) {
-    console.log(" token", props.bearerToken);
+    console.log("props.bearertoken", props.bearerToken);
     // populatePreLogs();
     return <Redirect to="/" />;
   }

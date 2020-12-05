@@ -10,7 +10,7 @@ const router = express.Router();
 
 // router.get("/:id", getProfilesByIdController.getProfileById);
 
-router.post("/", createPreLogController.createPreLog);
+router.post("/", authenticate, createPreLogController.createPreLog);
 router.get(
   "/:id",
   authenticate,

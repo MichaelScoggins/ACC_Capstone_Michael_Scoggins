@@ -20,6 +20,7 @@ import {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    bearerToken: state.bearerToken,
     userSearchResults: state.userSearchResults,
     allStrains: state.allStrains,
     searchParams: state.searchParams,

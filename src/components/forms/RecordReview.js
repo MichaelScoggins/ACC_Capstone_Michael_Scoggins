@@ -25,10 +25,15 @@ export default function RecordReview(props) {
     e.preventDefault();
     const review = props.reviewForm;
     console.log({ review });
+    console.log("token", props.bearerToken);
     // review.id = uuidv4();
     review.username = props.user;
     await axios
-      .get(`http://localhost:5500/prelogs/${props.user}`)
+      .get(`http://localhost:5500/prelogs/${props.user}`, {
+        headers: {
+          Authorization: `Bearer ${props.bearerToken}`,
+        },
+      })
       .then((response) => {
         review.session_id = response.data.find(
           (x) => x.strainId == props.sID
@@ -41,7 +46,11 @@ export default function RecordReview(props) {
     review.strainSpecies = preLog.strainSpecies;
     // props.reviewForm.sessionNum = props.reviewForm.sessionNum + 1;
     await props.addReview(review);
-    axios.post("http://localhost:5500/reviews", review);
+    axios.post("http://localhost:5500/reviews", review, {
+      headers: {
+        Authorization: `Bearer ${props.bearerToken}`,
+      },
+    });
     toggleOpen(false);
     console.log("reviews", props.reviews);
     clearAll();
