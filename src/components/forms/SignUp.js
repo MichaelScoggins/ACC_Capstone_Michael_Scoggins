@@ -92,16 +92,13 @@ const SignUp = (props) => {
     await axios
       .post("http://localhost:5500/auth/login", userCredsObject)
       .then((res) => {
-        console.log(res.data.token);
-        props.fetchToken(res.data.token);
+        props.storeToken(res.data.token);
       });
     await axios.post("http://localhost:5500/users", userObject);
     const profile = props.profile;
     props.setProfile(profile);
     props.setUser(props.profile.username);
     setRedirectHome(true);
-    // this is for the possible later addition of more profile info
-    // await axios.post("http://localhost:5500/profile", profile);
   };
 
   if (redirectHome) {

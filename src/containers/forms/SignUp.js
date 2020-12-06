@@ -6,7 +6,7 @@ import {
   setProfile,
   setUser,
   addUser,
-  fetchToken,
+  storeToken,
 } from "../../redux/actions";
 
 const mapStateToProps = (state) => {
@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
     setProfile: (input) => dispatch(setProfile(input)),
     addUser: (input) => dispatch(addUser(input)),
     setUser: (input) => dispatch(setUser(input)),
-    fetchToken: (input) => dispatch(fetchToken(input)),
+    storeToken: (input) => dispatch(storeToken(input)),
   };
 };
 

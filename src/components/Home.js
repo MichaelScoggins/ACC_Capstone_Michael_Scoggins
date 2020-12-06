@@ -70,6 +70,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home(props) {
   const classes = useStyles();
+
+  const userHeader = () => {
+    return <div style={{ color: "orange" }}>{props.user}</div>;
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -84,7 +89,14 @@ export default function Home(props) {
               color="textPrimary"
               gutterBottom
             >
-              Higher Intentions
+              {props.user ? (
+                <div>
+                  Welcome, <span style={{ color: "orange" }}>{props.user}</span>
+                  !
+                </div>
+              ) : (
+                "Higher Intentions"
+              )}
             </Typography>
             <Typography
               variant="h5"

@@ -3,7 +3,7 @@ import LogIn from "../../components/forms/LogIn";
 import {
   removeListing,
   setUser,
-  fetchToken,
+  storeToken,
   addPreExp,
   addPreExps,
   addReview,
@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     removeListing: (id) => dispatch(removeListing(id)),
     setUser: (username) => dispatch(setUser(username)),
-    fetchToken: (input) => dispatch(fetchToken(input)),
+    storeToken: (input) => dispatch(storeToken(input)),
     addPreExp: (exp) => dispatch(addPreExp(exp)),
     addPreExps: (exps) => dispatch(addPreExps(exps)),
     addReview: (exp) => dispatch(addReview(exp)),

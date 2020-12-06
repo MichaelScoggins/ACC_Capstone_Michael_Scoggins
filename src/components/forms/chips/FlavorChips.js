@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
     // maxWidth: 300,
-    display: 'flex',
-    wrap: 'nowrap',
+    display: "flex",
+    wrap: "nowrap",
     // fullWidth: true,
   },
   chips: {
@@ -119,7 +119,9 @@ export default function FlavorChips(props) {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="flavors-chips-label">Select One Or Two Enticing Aromas: </InputLabel>
+        <InputLabel id="flavors-chips-label">
+          Select One Or Two Enticing Aromas:{" "}
+        </InputLabel>
         <Select
           labelId="flavors-chips-label"
           id="flavors-chips"

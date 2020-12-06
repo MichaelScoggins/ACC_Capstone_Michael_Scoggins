@@ -126,14 +126,14 @@ export const fetchUserSearchResults = (input) => {
   };
 };
 
-export const fetchToken = (input) => {
+export const storeToken = (input) => {
   return {
     type: "BEARER_TOKEN",
     value: input,
   };
 };
 
-// export const fetchToken = (input) => {
+// export const storeToken = (input) => {
 //   return async (dispatch) => {
 //     await fetch("http://localhost:5500/auth/login", {
 //       method: "POST",
@@ -180,7 +180,6 @@ export const fetchEffects = (input) => {
     )
       .then((res) => res.json())
       .then((response) => {
-        console.log("res", response);
         const action = {
           type: "EFFECTS",
           value: response,

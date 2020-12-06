@@ -15,7 +15,6 @@ import {
   Typography,
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-// import { v4 as uuidv4 } from "uuid";
 import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SnackbarAddPreLog from "../modals/SnackbarAddPreLog";
@@ -54,8 +53,6 @@ export default function RecordPreLog(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const preLog = props.preTokeForm;
-    console.log({ preLog });
-    // preLog.id = uuidv4();
     preLog.strainId = props.strainId || strain[1].id;
     preLog.strainName = props.strainName;
     preLog.strainSpecies = props.strainSpecies || strain[1].race;

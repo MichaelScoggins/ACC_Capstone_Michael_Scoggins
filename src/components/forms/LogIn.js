@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-// import cookie from "cookie";
 import { Redirect, Link } from "react-router-dom";
 import {
   Avatar,
@@ -15,7 +14,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-// import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { faBong, faBan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -71,10 +70,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LogIn = (props) => {
-  // const cookies = cookie.parse(document.cookie);
   const classes = useStyles();
   const [username, setUsername] = React.useState("");
-  const [password, setpassword] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const [redirectHome, setRedirectHome] = React.useState(false);
   const [showDenyPopup, setDenyPopup] = React.useState(false);
 
@@ -83,7 +81,7 @@ const LogIn = (props) => {
   };
 
   const handlePasswordChange = (e) => {
-    setpassword(e.target.value);
+    setPassword(e.target.value);
   };
 
   const userObject = {
@@ -99,7 +97,6 @@ const LogIn = (props) => {
         },
       })
       .then((response) => {
-        console.log("res data and token", props.bearerToken, response.data);
         props.addPreExps(response.data);
       });
   };
@@ -112,7 +109,6 @@ const LogIn = (props) => {
         },
       })
       .then((response) => {
-        console.log("reviews res data", response.data);
         props.addReviews(response.data);
       });
   };
@@ -125,29 +121,26 @@ const LogIn = (props) => {
         },
       })
       .then((response) => {
-        console.log("favs res data", response.data);
         props.addFavorites(response.data);
       });
   };
 
-  const login = (e) => {
+  const login = async (e) => {
     e.preventDefault();
-    // await props.fetchToken(userObject);
+    setPassword("");
+    setUsername("");
     setDenyPopup(true);
-    axios.post("http://localhost:5500/auth/login", userObject).then((res) => {
-      let token = res.data.token;
-      props.setUser(username);
-      console.log("token", token);
-      populatePreLogs(token);
-      populateReviews(token);
-      populateFavorites(token);
-      props.fetchToken(token);
-      goHome();
-    });
-    // document.cookie = "loggedIn=true;max-age=60*1000";
-    // document.cookie = `user=${username};max-age=60*1000`;
-    // document.cookie = `token=${props.bearerToken}`;
-    // populatePrefs();
+    await axios
+      .post("http://localhost:5500/auth/login", userObject)
+      .then((res) => {
+        let token = res.data.token;
+        props.setUser(username);
+        populatePreLogs(token);
+        populateReviews(token);
+        populateFavorites(token);
+        props.storeToken(token);
+      });
+    goHome();
   };
 
   const goHome = () => {
@@ -155,8 +148,6 @@ const LogIn = (props) => {
   };
 
   if (redirectHome) {
-    console.log("props.bearertoken", props.bearerToken);
-    // populatePreLogs();
     return <Redirect to="/" />;
   }
   return (
@@ -167,12 +158,7 @@ const LogIn = (props) => {
         <div className={classes.paper}>
           {showDenyPopup ? (
             <Avatar className={classes.avatar}>
-              <FontAwesomeIcon
-                icon={faBan}
-                size="3x"
-                className="avatar"
-                style={{ color: "red" }}
-              />
+              <LockOutlinedIcon />
             </Avatar>
           ) : (
             <Avatar className={classes.avatar}>
@@ -183,9 +169,9 @@ const LogIn = (props) => {
           <Typography component="h1" variant="h5">
             Sign In
           </Typography>
-          {showDenyPopup && (
+          {/* {showDenyPopup && (
             <p style={{ color: "orange" }}>User and/or Password incorrect.</p>
-          )}
+          )} */}
           <form className={classes.form} onSubmit={login}>
             <TextField
               variant="outlined"

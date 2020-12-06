@@ -5,7 +5,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Typography from "@material-ui/core/Typography";
 import Select from "@material-ui/core/Select";
-// import { v4 as uuidv4 } from "uuid";
 import {
   Button,
   TextField,
@@ -24,9 +23,6 @@ export default function RecordReview(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const review = props.reviewForm;
-    console.log({ review });
-    console.log("token", props.bearerToken);
-    // review.id = uuidv4();
     review.username = props.user;
     await axios
       .get(`http://localhost:5500/prelogs/${props.user}`, {
@@ -40,11 +36,9 @@ export default function RecordReview(props) {
         ).id;
         return;
       });
-    // await review.session_id = getPreLogId();
     review.strainId = preLog.strainId;
     review.strainName = preLog.strainName;
     review.strainSpecies = preLog.strainSpecies;
-    // props.reviewForm.sessionNum = props.reviewForm.sessionNum + 1;
     await props.addReview(review);
     axios.post("http://localhost:5500/reviews", review, {
       headers: {
@@ -52,7 +46,6 @@ export default function RecordReview(props) {
       },
     });
     toggleOpen(false);
-    console.log("reviews", props.reviews);
     clearAll();
   };
 

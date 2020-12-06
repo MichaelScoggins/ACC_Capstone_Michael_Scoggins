@@ -12,6 +12,7 @@
 # below:
 .git
 .gitignore
+tables.sql
 
 # Node.js dependencies:
 node_modules/

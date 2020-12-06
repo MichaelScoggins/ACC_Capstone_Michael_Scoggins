@@ -83,7 +83,6 @@ export default function Experience(props) {
   }, []);
 
   const handleDetailsModal = (e) => {
-    console.log("id", e.currentTarget.id);
     setID(e.currentTarget.id);
     const strain = Object.entries(props.allStrains).find(
       (strain) => strain[1].id == e.currentTarget.id
