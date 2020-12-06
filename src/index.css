@@ -26,11 +26,11 @@ code {
 }
 
 .brokenheart-icon {
-  color: white;
+  color: red;
 }
 
 .brokenheart-icon:hover {
-  color: red;
+  color: slategray;
 }
 
 .info-icon:hover {

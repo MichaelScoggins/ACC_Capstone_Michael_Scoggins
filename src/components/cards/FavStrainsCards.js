@@ -166,7 +166,7 @@ export default function FavStrainsCards(props) {
                 >
                   <FontAwesomeIcon
                     icon={faHeartBroken}
-                    size="3x"
+                    size="2x"
                     className="brokenheart-icon"
                   />
                 </Button>

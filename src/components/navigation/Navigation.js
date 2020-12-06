@@ -157,7 +157,8 @@ const Navigation = (props) => {
             {props.user && (
               <Typography>
                 <span>
-                  Welcome <span style={{ color: "orange" }}>{props.user}</span>!
+                  Welcome, <span style={{ color: "orange" }}>{props.user}</span>
+                  !
                 </span>
               </Typography>
             )}
