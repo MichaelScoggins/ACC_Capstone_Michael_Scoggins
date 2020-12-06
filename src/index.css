@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -7,6 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* color: rgb(163, 163, 163); */
   /* background-color: rgba(0, 0, 0, 0.815); */
+  font-family: "Nerko One", cursive;
 }
 
 code {
@@ -14,52 +17,68 @@ code {
     monospace;
 }
 
-.listings a {
+/* .heartIcon {
+  color: black;
+} */
+
+.heartIcon:hover {
+  color: red;
+}
+
+.brokenheart-icon {
+  color: red;
+}
+
+.brokenheart-icon:hover {
+  color: slategray;
+}
+
+.info-icon:hover {
+  color: springgreen;
+}
+
+.info-icon {
+  color: #2196f3;
+}
+
+/* .bong-icon {
+  color: springgreen;
+} */
+
+.avatar {
+  color: #eee;
+}
+
+.avatar:hover {
+  color: springgreen;
+}
+
+.bong-icon:hover {
+  color: #2196f3;
+}
+
+.bong-icon {
+  color: slategrey;
+}
+
+.home-icon:hover {
+  color: #ffa726;
+}
+
+.card-title:hover {
+  color: springgreen;
+}
+
+a {
+  color: springgreen;
   text-decoration: none;
-  color: red;
 }
 
-#navHeader {
-  color: white;
+a:hover {
+  text-decoration: underline;
 }
 
-#loginButton a {
-  color: white;
-  text-decoration: none;
+.doodoo:hover {
+  color: springgreen;
 }
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  margin: 50px auto;
-  width: 33%;
-}
-
-.login-button {
-  margin-top: 20px !important;
-}
-
-li {
-  list-style: none;
-}
-
-.text-red {
-  color: red;
-}
-
-.text-gray {
-  color: gray;
-}
-
-.text-red {
-  color: red;
-}
-
-.nav-list {
-  list-style: none;
-  display: flex;
-}
-
-.nav-list-item {
-  margin: auto 20px;
-}
+/* 2196f3 */
