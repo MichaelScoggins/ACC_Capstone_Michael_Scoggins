@@ -73,6 +73,7 @@ You will probably want at least three properties in your Redux state:
 
 NOTE: You do not have to name these the same way.
 
+
 **Redux Actions**
 
 You'll want actions that delete a listing, add a listing, login/logout, and fetch coordinates for your map given a certain address. You may have more or less depending on how you structure your app.
@@ -115,3 +116,6 @@ zoom: 8,
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
   type="text/javascript"></script>
+=======
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ay
