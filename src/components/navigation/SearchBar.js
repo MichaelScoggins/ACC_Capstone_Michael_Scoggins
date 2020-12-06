@@ -1,13 +1,8 @@
 import React from "react";
-// import axios from "axios";
-// import cookie from "cookie";
-// import { useLocation } from "react-router-dom";
 import { InputBase } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import { Redirect } from "react-router-dom";
-
 import SearchIcon from "@material-ui/icons/Search";
-// import ListStrains from "./ListStrains";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -75,13 +70,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchBar(props) {
   const [redirect, setRedirect] = React.useState(null);
+  const classes = useStyles();
 
   React.useEffect(() => {
     setRedirect(null);
   });
-
-  const classes = useStyles();
-  // const [input, setInput] = React.useState("");
 
   const handleChange = (e) => {
     props.setUserSearchInput(e.target.value);

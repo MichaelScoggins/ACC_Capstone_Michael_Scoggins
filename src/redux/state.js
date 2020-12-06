@@ -18,10 +18,6 @@ export default {
   favorites: [],
   preLogs: [],
   reviews: [],
-  experiences: {
-    preLogs: [],
-    reviews: [],
-  },
   title: "",
   preTokeForm: {
     username: "",

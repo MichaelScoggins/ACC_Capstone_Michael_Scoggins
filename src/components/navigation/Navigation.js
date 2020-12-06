@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-// import cookie from "cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -48,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Navigation = (props) => {
   const classes = useStyles();
-  // const cookies = cookie.parse(document.cookie);
   const location = useLocation();
 
   const SignIn = () => {

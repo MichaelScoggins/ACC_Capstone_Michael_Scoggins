@@ -25,7 +25,7 @@ export default function RecordReview(props) {
     const review = props.reviewForm;
     review.username = props.user;
     await axios
-      .get(`http://localhost:5500/prelogs/${props.user}`, {
+      .get(`/prelogs/${props.user}`, {
         headers: {
           Authorization: `Bearer ${props.bearerToken}`,
         },
@@ -40,7 +40,7 @@ export default function RecordReview(props) {
     review.strainName = preLog.strainName;
     review.strainSpecies = preLog.strainSpecies;
     await props.addReview(review);
-    axios.post("http://localhost:5500/reviews", review, {
+    axios.post("/reviews", review, {
       headers: {
         Authorization: `Bearer ${props.bearerToken}`,
       },

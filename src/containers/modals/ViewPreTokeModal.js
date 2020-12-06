@@ -6,7 +6,6 @@ const mapStateToProps = (state) => {
   return {
     preTokeForm: state.preTokeForm,
     preLogs: state.preLogs,
-    experiences: state.experiences,
     perfectStrainResults: state.perfectStrainResults,
   };
 };

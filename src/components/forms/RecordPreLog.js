@@ -59,7 +59,7 @@ export default function RecordPreLog(props) {
     preLog.preWhen = currentdate.toLocaleDateString();
     preLog.username = props.user;
     props.addPreExp(preLog);
-    axios.post("http://localhost:5500/prelogs", preLog, {
+    axios.post("/prelogs", preLog, {
       headers: {
         Authorization: `Bearer ${props.bearerToken}`,
       },

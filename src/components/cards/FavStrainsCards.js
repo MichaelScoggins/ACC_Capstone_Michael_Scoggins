@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
 import { faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -74,9 +73,8 @@ export default function FavStrainsCards(props) {
   }, []);
 
   const handleDelete = (e, id) => {
-    // let id = e.currentTarget.id;
     props.removeFavorite(id);
-    axios.delete(`http://localhost:5500/favorites/${id}`, {
+    axios.delete(`/favorites/${id}`, {
       headers: {
         Authorization: `Bearer ${props.bearerToken}`,
       },

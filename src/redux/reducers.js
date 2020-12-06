@@ -18,15 +18,6 @@ const bearerToken = (state = "", action) => {
   }
 };
 
-const checkUser = (state = "", action) => {
-  switch (action.type) {
-    case "AUTH_LOGIN":
-      return action.value;
-    default:
-      return state;
-  }
-};
-
 const preTokeForm = (state = {}, action) => {
   switch (action.type) {
     case "SET_PRE_TOKE":
@@ -49,21 +40,6 @@ const profile = (state = {}, action) => {
   switch (action.type) {
     case "SET_PROFILE":
       return Object.assign({}, state, action.value);
-    default:
-      return state;
-  }
-};
-
-const experiences = (state = {}, action) => {
-  switch (action.type) {
-    case "ADD_PRE_EXP":
-      let newPreExpState = Object.assign({}, state, action.value);
-      newPreExpState.preLogs = [...newPreExpState.preLogs, action.value];
-      return newPreExpState;
-    case "ADD_REVIEW":
-      let newReviewState = Object.assign({}, state, action.value);
-      newReviewState.reviews = [...newReviewState.reviews, action.value];
-      return newReviewState;
     default:
       return state;
   }
@@ -312,12 +288,10 @@ export default combineReducers({
   perfectStrainResults,
   title,
   preTokeForm,
-  experiences,
   profile,
   reviewForm,
   isLoading,
   bearerToken,
-  checkUser,
   preLogs,
   reviews,
   favStrainObj,

@@ -18,6 +18,7 @@ import {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    bearerToken: state.bearerToken,
     userSearchResults: state.userSearchResults,
     allStrains: state.allStrains,
     searchParams: state.searchParams,
@@ -31,8 +32,6 @@ const mapStateToProps = (state) => {
     favorites: state.favorites,
     toggleSnackbar: state.toggleSnackbar,
     perfectStrainResults: state.perfectStrainResults,
-    bearerToken: state.bearerToken,
-    experiences: state.experiences,
   };
 };
 

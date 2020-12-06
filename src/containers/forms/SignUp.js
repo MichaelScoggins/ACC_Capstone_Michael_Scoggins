@@ -11,8 +11,9 @@ import {
 
 const mapStateToProps = (state) => {
   return {
+    user: state.user,
+    bearerToken: state.bearerToken,
     preTokeForm: state.preTokeForm,
-    experiences: state.experiences,
     perfectStrainResults: state.perfectStrainResults,
     firstName: state.profile.firstName,
     lastName: state.profile.lastName,
@@ -21,8 +22,6 @@ const mapStateToProps = (state) => {
     city: state.profile.city,
     state: state.profile.state,
     profile: state.profile,
-    checkUser: state.checkUser,
-    bearerToken: state.bearerToken,
   };
 };
 
