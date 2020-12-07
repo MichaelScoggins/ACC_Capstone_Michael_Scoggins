@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Redirect, useLocation } from "react-router-dom";
 // import cookie from "cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCannabis } from "@fortawesome/free-solid-svg-icons";
@@ -108,7 +108,9 @@ const Navigation = (props) => {
         onClick={() => {
           document.cookie = "loggedIn=";
           document.cookie = "token=";
-          window.location.replace("/login");
+          props.setUser("");
+          return <Redirect to="/login" />;
+          // window.location.replace("/login");
         }}
       >
         <Typography>Sign Out</Typography>

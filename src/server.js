@@ -12,7 +12,7 @@ const authRouter = require("./server/routers/auth");
 const { logger } = require("./server/middleware");
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5500;
 app.use(express.static("build"));
 app.use(cors());
 app.use(bodyParser.json());

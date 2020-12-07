@@ -51,10 +51,7 @@ const useStyles = makeStyles((theme) => ({
   info: {
     backgroundImage: "url(./../memorexijuana.jpg)",
     backgroundRepeat: "no-repeat",
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
+    backgroundColor: theme.palette.grey[900],
     backgroundSize: "cover",
     backgroundPosition: "center",
     minHeight: "500px",

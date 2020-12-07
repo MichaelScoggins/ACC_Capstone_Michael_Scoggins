@@ -18,7 +18,6 @@ const theme = createMuiTheme({
     secondary: {
       main: orange[400],
     },
-
     type: "dark",
   },
   typography: {
