@@ -135,7 +135,7 @@ export const storeToken = (input) => {
 
 // export const storeToken = (input) => {
 //   return async (dispatch) => {
-//     await fetch("http://localhost:5500/auth/login", {
+//     await fetch("/auth/login", {
 //       method: "POST",
 //       body: JSON.stringify(input),
 //       headers: {
@@ -155,7 +155,7 @@ export const storeToken = (input) => {
 
 export const addUser = (input) => {
   return async (dispatch) => {
-    await fetch("http://localhost:5500/auth/signup", {
+    await fetch("/auth/signup", {
       method: "POST",
       body: JSON.stringify(input),
       headers: {

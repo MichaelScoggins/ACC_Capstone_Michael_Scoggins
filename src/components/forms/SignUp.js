@@ -88,13 +88,11 @@ const SignUp = (props) => {
 
   const setProfile = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:5500/auth/signup", userCredsObject);
-    await axios
-      .post("http://localhost:5500/auth/login", userCredsObject)
-      .then((res) => {
-        props.storeToken(res.data.token);
-      });
-    await axios.post("http://localhost:5500/users", userObject);
+    await axios.post("/auth/signup", userCredsObject);
+    await axios.post("/auth/login", userCredsObject).then((res) => {
+      props.storeToken(res.data.token);
+    });
+    await axios.post("/users", userObject);
     const profile = props.profile;
     props.setProfile(profile);
     props.setUser(props.profile.username);

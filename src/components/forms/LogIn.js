@@ -91,7 +91,7 @@ const LogIn = (props) => {
 
   const populatePreLogs = (token) => {
     return axios
-      .get(`http://localhost:5500/prelogs/${username}`, {
+      .get(`/prelogs/${username}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -103,7 +103,7 @@ const LogIn = (props) => {
 
   const populateReviews = (token) => {
     return axios
-      .get(`http://localhost:5500/reviews/${username}`, {
+      .get(`/reviews/${username}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -115,7 +115,7 @@ const LogIn = (props) => {
 
   const populateFavorites = (token) => {
     return axios
-      .get(`http://localhost:5500/favorites/${username}`, {
+      .get(`/favorites/${username}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -130,16 +130,14 @@ const LogIn = (props) => {
     setPassword("");
     setUsername("");
     setDenyPopup(true);
-    await axios
-      .post("http://localhost:5500/auth/login", userObject)
-      .then((res) => {
-        let token = res.data.token;
-        props.setUser(username);
-        populatePreLogs(token);
-        populateReviews(token);
-        populateFavorites(token);
-        props.storeToken(token);
-      });
+    await axios.post("/auth/login", userObject).then((res) => {
+      let token = res.data.token;
+      props.setUser(username);
+      populatePreLogs(token);
+      populateReviews(token);
+      populateFavorites(token);
+      props.storeToken(token);
+    });
     goHome();
   };
 

@@ -76,7 +76,7 @@ export default function FavStrainsCards(props) {
   const handleDelete = (e, id) => {
     // let id = e.currentTarget.id;
     props.removeFavorite(id);
-    axios.delete(`http://localhost:5500/favorites/${id}`, {
+    axios.delete(`/favorites/${id}`, {
       headers: {
         Authorization: `Bearer ${props.bearerToken}`,
       },
