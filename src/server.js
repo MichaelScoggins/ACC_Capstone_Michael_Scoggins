@@ -28,6 +28,8 @@ app.get("/", (req, res) => {
   res.send("Higher Intentions");
 });
 
+app.use(express.static("/public"));
+
 app.listen(port, () => {
   console.log(`Web server is listening on port ${port}!`);
 });
