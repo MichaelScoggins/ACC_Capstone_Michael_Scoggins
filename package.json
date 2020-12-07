@@ -38,7 +38,7 @@
     "uuidv4": "^6.2.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run server\" \"react-scripts start\" ",
     "server": "nodemon src/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
