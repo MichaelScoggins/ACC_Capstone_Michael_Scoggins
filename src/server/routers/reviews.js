@@ -1,6 +1,6 @@
 const express = require("express");
-const createReviewController = require("../controllers/reviews/createreview");
-const getReviewByIdController = require("../controllers/reviews/getreviewbyid");
+const createReviewController = require("../controllers/reviews/createReview");
+const getReviewByIdController = require("../controllers/reviews/getReviewById");
 // const { checkJwt } = require("../middleware");
 const { authenticate } = require("../middleware");
 const router = express.Router();

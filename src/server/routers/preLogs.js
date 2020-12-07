@@ -1,5 +1,5 @@
 const express = require("express");
-const createPreLogController = require("../controllers/preLogs/createprelog");
+const createPreLogController = require("../controllers/preLogs/createPreLog");
 const getPreLogByUsernameController = require("../controllers/preLogs/getprelogsbyusername");
 // const { checkJwt } = require("../middleware");
 const { authenticate } = require("../middleware");
