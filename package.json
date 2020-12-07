@@ -39,7 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "nodemon server.js",
+    "server": "nodemon src/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -48,6 +48,7 @@
     "extends": "react-app"
   },
   "browserslist": {
+    "homepage": "/",
     "production": [
       ">0.2%",
       "not dead",
