@@ -12,7 +12,8 @@ const authRouter = require("./server/routers/auth");
 const { logger } = require("./server/middleware");
 
 const app = express();
-const port = process.env.SERVER_PORT;
+const port = process.env.PORT;
+app.use(express.static("build"));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(logger);
@@ -27,8 +28,6 @@ app.use("/auth", authRouter);
 app.get("/", (req, res) => {
   res.send("Higher Intentions");
 });
-
-app.use(express.static("../public"));
 
 app.listen(port, () => {
   console.log(`Web server is listening on port ${port}!`);
