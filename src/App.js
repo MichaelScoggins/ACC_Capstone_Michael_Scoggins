@@ -3,7 +3,7 @@ import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core";
+import { ThemeProvider, createMuiTheme, CssBaseline } from "@material-ui/core";
 import { orange } from "@material-ui/core/colors";
 import Navigation from "./containers/navigation/Navigation";
 import NavDrawer from "./containers/navigation/NavDrawer";
@@ -29,6 +29,7 @@ function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <BrowserRouter>
           <Navigation />
           <NavDrawer />
