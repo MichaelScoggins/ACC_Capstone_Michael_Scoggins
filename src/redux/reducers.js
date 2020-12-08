@@ -54,21 +54,6 @@ const profile = (state = {}, action) => {
   }
 };
 
-const experiences = (state = {}, action) => {
-  switch (action.type) {
-    case "ADD_PRE_EXP":
-      let newPreExpState = Object.assign({}, state, action.value);
-      newPreExpState.preLogs = [...newPreExpState.preLogs, action.value];
-      return newPreExpState;
-    case "ADD_REVIEW":
-      let newReviewState = Object.assign({}, state, action.value);
-      newReviewState.reviews = [...newReviewState.reviews, action.value];
-      return newReviewState;
-    default:
-      return state;
-  }
-};
-
 const preLogs = (state = [], action) => {
   switch (action.type) {
     case "ADD_PRE_EXP":
@@ -76,6 +61,8 @@ const preLogs = (state = [], action) => {
     case "ADD_PRE_EXPS":
       let newState = [...state, action.value];
       return newState.flat();
+    case "CLEAR_PRE_LOGS":
+      return (state = []);
     default:
       return state;
   }
@@ -88,15 +75,8 @@ const reviews = (state = [], action) => {
     case "ADD_REVIEWS":
       let newState = [...state, action.value];
       return newState.flat();
-    default:
-      return state;
-  }
-};
-
-const title = (state = "", action) => {
-  switch (action.type) {
-    case "SET_TITLE":
-      return action.value;
+    case "CLEAR_REVIEWS":
+      return (state = []);
     default:
       return state;
   }
@@ -111,6 +91,17 @@ const favorites = (state = [], action) => {
     case "ADD_FAVORITES":
       let newState = [...state, action.value];
       return newState.flat();
+    case "CLEAR_FAVORITES":
+      return (state = []);
+    default:
+      return state;
+  }
+};
+
+const title = (state = "", action) => {
+  switch (action.type) {
+    case "SET_TITLE":
+      return action.value;
     default:
       return state;
   }
@@ -312,7 +303,6 @@ export default combineReducers({
   perfectStrainResults,
   title,
   preTokeForm,
-  experiences,
   profile,
   reviewForm,
   isLoading,

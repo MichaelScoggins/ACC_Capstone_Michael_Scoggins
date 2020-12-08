@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, Redirect, useLocation } from "react-router-dom";
-// import cookie from "cookie";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -48,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Navigation = (props) => {
   const classes = useStyles();
-  // const cookies = cookie.parse(document.cookie);
   const location = useLocation();
 
   const SignIn = () => {
@@ -96,25 +94,26 @@ const Navigation = (props) => {
 
   const SignOut = () => {
     return (
-      <Button
-        variant="contained"
-        color="secondary"
-        style={{
-          fontWeight: 600,
-          color: "green",
-          textShadow: "1px 1px yellowgreen",
-        }}
-        className="nav-list-item"
-        onClick={() => {
-          document.cookie = "loggedIn=";
-          document.cookie = "token=";
-          props.setUser("");
-          return <Redirect to="/login" />;
-          // window.location.replace("/login");
-        }}
-      >
-        <Typography>Sign Out</Typography>
-      </Button>
+      <Link to="/login">
+        <Button
+          variant="contained"
+          color="secondary"
+          style={{
+            fontWeight: 600,
+            color: "green",
+            textShadow: "1px 1px yellowgreen",
+          }}
+          className="nav-list-item"
+          onClick={() => {
+            props.setUser("");
+            props.clearPreLogs();
+            props.clearReviews();
+            props.clearFavorites();
+          }}
+        >
+          <Typography>Sign Out</Typography>
+        </Button>
+      </Link>
     );
   };
 

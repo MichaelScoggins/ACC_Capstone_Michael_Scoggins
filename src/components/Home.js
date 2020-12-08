@@ -71,10 +71,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Home(props) {
   const classes = useStyles();
 
-  const userHeader = () => {
-    return <div style={{ color: "orange" }}>{props.user}</div>;
-  };
-
   return (
     <React.Fragment>
       <CssBaseline />

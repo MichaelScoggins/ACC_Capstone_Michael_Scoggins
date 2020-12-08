@@ -47,6 +47,34 @@ export const addReview = (exp) => {
   };
 };
 
+export const clearPreLogs = (input) => {
+  return {
+    type: "CLEAR_PRE_LOGS",
+    value: input,
+  };
+};
+
+export const clearReviews = (input) => {
+  return {
+    type: "CLEAR_REVIEWS",
+    value: input,
+  };
+};
+
+export const clearFavorites = (input) => {
+  return {
+    type: "CLEAR_FAVORITES",
+    value: input,
+  };
+};
+
+export const clearExperiences = (input) => {
+  return {
+    type: "CLEAR_EXPERIENCES",
+    value: input,
+  };
+};
+
 export const addReviews = (exps) => {
   return {
     type: "ADD_REVIEWS",
