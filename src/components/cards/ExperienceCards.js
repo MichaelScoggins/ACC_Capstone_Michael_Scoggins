@@ -96,8 +96,7 @@ export default function Experience(props) {
     setViewPreTokeModal(true);
   };
 
-  const handleOpenReview = (e) => {
-    const id = e.currentTarget.id;
+  const handleOpenReview = (e, id) => {
     setID(id);
     let existingReview = props.reviews.find((review) => review.strainId == id);
     existingReview ? setViewReviewModal(true) : setAddReviewForm(true);
@@ -208,7 +207,7 @@ export default function Experience(props) {
                     color="secondary"
                     variant="contained"
                     id={card.strainId}
-                    onClick={(e) => handleOpenReview(e)}
+                    onClick={(e) => handleOpenReview(e, card.strainId)}
                   >
                     <Typography style={{ fontWeight: 600 }}>review</Typography>
                   </Button>

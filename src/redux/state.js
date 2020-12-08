@@ -11,21 +11,17 @@ export default {
   },
   favStrainObj: {
     username: "",
-    strainId: "",
+    strainId: 0,
     strainName: "",
     strainSpecies: "",
   },
   favorites: [],
   preLogs: [],
   reviews: [],
-  experiences: {
-    preLogs: [],
-    reviews: [],
-  },
   title: "",
   preTokeForm: {
     username: "",
-    strainId: "",
+    strainId: 0,
     strainName: "",
     strainSpecies: "",
     preWhen: "",
@@ -40,7 +36,7 @@ export default {
   reviewForm: {
     username: "",
     session_id: 0,
-    strainId: "",
+    strainId: 0,
     strainName: "",
     strainSpecies: "",
     budDescript: "",

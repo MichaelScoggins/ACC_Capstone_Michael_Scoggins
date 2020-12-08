@@ -32,7 +32,6 @@ const mapStateToProps = (state) => {
     toggleSnackbar: state.toggleSnackbar,
     perfectStrainResults: state.perfectStrainResults,
     bearerToken: state.bearerToken,
-    experiences: state.experiences,
   };
 };
 

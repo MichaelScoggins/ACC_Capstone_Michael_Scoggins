@@ -20,38 +20,47 @@ export default function ViewReviewModal(props) {
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>
             <Typography variant="h5">
-              After Trying{" "}
+              The{" "}
               {
-                <span style={{ color: "springgreen" }}>
-                  {review.strainName}
-                </span>
+                <>
+                  <span style={{ color: "springgreen" }}>
+                    {review.strainName}
+                  </span>{" "}
+                  Experience
+                </>
               }
             </Typography>
           </DialogTitle>
           <DialogContent>
-            The bud was{" "}
-            <span style={{ color: "springgreen" }}>{review.budDescript}</span>.
-            This strain is good for{" "}
-            <span style={{ color: "springgreen" }}>{review.goodFor}</span>. I
-            started out feeling{" "}
-            <span style={{ color: "orange" }}>{preLog.preMood}</span>, and ended
-            up feeling{" "}
-            <span style={{ color: "orange" }}>{review.transformedMood}</span>. I
-            was expecting{" "}
-            <span style={{ color: "orange" }}>{preLog.expectToAchieve}; </span>
-            afterwards,{" "}
-            <span style={{ color: "orange" }}>
-              {review.transformedExpectations}
-            </span>
-            . I was thinking about{" "}
-            <span style={{ color: "orange" }}>{preLog.lingeringWorries}</span>,
-            and believing <span style={{ color: "orange" }}>{preLog.goal}</span>
-            . I experienced{" "}
-            <span style={{ color: "orange" }}>{review.experience}</span> and my
-            worries{" "}
-            <span style={{ color: "orange" }}>{review.transformedWorries}</span>
-            . <span style={{ color: "orange" }}>{review.transformedGoals}</span>
-            .
+            <Typography variant="h6">
+              The bud was{" "}
+              <span style={{ color: "springgreen" }}>
+                {review.budDescript}. This strain is good for {review.goodFor}
+              </span>
+              . I started out feeling{" "}
+              <span style={{ color: "orange" }}>{preLog.preMood}</span>, and
+              ended up feeling{" "}
+              <span style={{ color: "orchid" }}>{review.transformedMood}</span>.
+              I was expecting{" "}
+              <span style={{ color: "orange" }}>
+                {preLog.expectToAchieve};{" "}
+              </span>
+              afterwards,{" "}
+              <span style={{ color: "orchid" }}>
+                {review.transformedExpectations}
+              </span>
+              . I was thinking about{" "}
+              <span style={{ color: "orange" }}>{preLog.lingeringWorries}</span>
+              , and <span style={{ color: "orange" }}>{preLog.goal}</span>. I
+              experienced{" "}
+              <span style={{ color: "orchid" }}>{review.experience}</span> and
+              my worries{" "}
+              <span style={{ color: "orchid" }}>
+                {review.transformedWorries}
+              </span>
+              . <hr />
+              <span style={{ color: "cyan" }}>{review.transformedGoals}</span>.
+            </Typography>
           </DialogContent>
         </Dialog>
       </Typography>

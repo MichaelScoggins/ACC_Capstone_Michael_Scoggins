@@ -104,30 +104,26 @@ export default function RecordReview(props) {
                   {props.reviewForm.goodFor}
                 </span>
                 . I started out feeling{" "}
-                <span style={{ color: "orange" }}>
-                  {preLog.transformedMood}
-                </span>
-                , and ended up feeling{" "}
+                <span style={{ color: "orange" }}>{preLog.preMood}</span>, and
+                ended up feeling{" "}
                 <span style={{ color: "orange" }}>
                   {props.reviewForm.transformedMood}
                 </span>
                 . I was expecting{" "}
                 <span style={{ color: "orange" }}>
-                  {preLog.transformedExpectations}{" "}
+                  {preLog.expectToAchieve}
                 </span>
-                afterwards,{" "}
+                ; afterwards,{" "}
                 <span style={{ color: "orange" }}>
                   {props.reviewForm.transformedExpectations}
                 </span>
                 . I was thinking about{" "}
                 <span style={{ color: "orange" }}>
-                  {preLog.transformedWorries}
+                  {preLog.lingeringWorries}
                 </span>
-                , and believing{" "}
-                <span style={{ color: "orange" }}>
-                  {preLog.transformedGoals}
-                </span>
-                . I experienced{" "}
+                , and focusing on{" "}
+                <span style={{ color: "orange" }}>{preLog.goal}</span>. I
+                experienced{" "}
                 <span style={{ color: "orange" }}>
                   {props.reviewForm.experience}
                 </span>{" "}
@@ -166,10 +162,10 @@ export default function RecordReview(props) {
                   <MenuItem value={"stress relief"}>Stress Relief</MenuItem>
                   <MenuItem value={"a creativity mindset"}>Creativity</MenuItem>
                   <MenuItem value={"focus"}>Focus</MenuItem>
-                  <MenuItem value={"social awareness"}>Recreation</MenuItem>
+                  <MenuItem value={"recreation"}>Recreation</MenuItem>
                   <MenuItem value={"stillness"}>Meditation</MenuItem>
                   <MenuItem value={"modularity"}>Mental Modularity</MenuItem>
-                  <MenuItem value={"something personal"}>Other</MenuItem>
+                  <MenuItem value={"nothing!"}>Nothing</MenuItem>
                 </Select>
               </FormControl>
               <FormControl>

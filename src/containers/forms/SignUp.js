@@ -12,7 +12,6 @@ import {
 const mapStateToProps = (state) => {
   return {
     preTokeForm: state.preTokeForm,
-    experiences: state.experiences,
     perfectStrainResults: state.perfectStrainResults,
     firstName: state.profile.firstName,
     lastName: state.profile.lastName,

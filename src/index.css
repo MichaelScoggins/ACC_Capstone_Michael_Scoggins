@@ -34,11 +34,11 @@ code {
 }
 
 .info-icon:hover {
-  color: springgreen;
+  color: #2196f3;
 }
 
 .info-icon {
-  color: #2196f3;
+  color: springgreen;
 }
 
 /* .bong-icon {

@@ -27,19 +27,21 @@ export default function ViewPreTokeModal(props) {
             </Typography>
           </DialogTitle>
           <DialogContent>
-            While I'm feeling{" "}
-            <span style={{ color: "orange" }}>{preLog.preMood}</span>, I'm
-            hoping to achieve{" "}
-            <span style={{ color: "orange" }}>{preLog.sessionPurpose}</span>,
-            and expecting{" "}
-            <span style={{ color: "orange" }}>{preLog.expectToAchieve}</span>.
-            I'm thinking about{" "}
-            <span style={{ color: "orange" }}>{preLog.lingeringWorries}</span>,
-            but <span style={{ color: "orange" }}>{preLog.goal}</span>. I have
-            already{" "}
-            <span style={{ color: "orange" }}>{preLog.alreadyDone}</span>, and
-            still need to <span style={{ color: "orange" }}>{preLog.todo}</span>
-            .
+            <Typography variant="h6">
+              While I'm feeling{" "}
+              <span style={{ color: "orange" }}>{preLog.preMood}</span>, I'm
+              hoping to achieve{" "}
+              <span style={{ color: "orange" }}>{preLog.sessionPurpose}</span>,
+              and expecting{" "}
+              <span style={{ color: "orange" }}>{preLog.expectToAchieve}</span>.
+              I'm thinking about{" "}
+              <span style={{ color: "orange" }}>{preLog.lingeringWorries}</span>
+              , but <span style={{ color: "orange" }}>{preLog.goal}</span>. I
+              have already{" "}
+              <span style={{ color: "orange" }}>{preLog.alreadyDone}</span>, and
+              still need to{" "}
+              <span style={{ color: "orange" }}>{preLog.todo}</span>.
+            </Typography>
           </DialogContent>
         </Dialog>
       </Typography>

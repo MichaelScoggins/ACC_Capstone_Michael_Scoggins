@@ -217,13 +217,13 @@ export default function RecordPreLog(props) {
                       Creativity
                     </MenuItem>
                     <MenuItem value={"focus"}>Focus</MenuItem>
-                    <MenuItem value={"social awareness"}>Recreation</MenuItem>
+                    <MenuItem value={"recreation"}>Recreation</MenuItem>
                     <MenuItem value={"an increased appreciation for art"}>
                       Art Enhancement
                     </MenuItem>
                     <MenuItem value={"stillness"}>Meditation</MenuItem>
                     <MenuItem value={"modularity"}>Mental Modularity</MenuItem>
-                    <MenuItem value={"something personal"}>Other</MenuItem>
+                    <MenuItem value={"nothing!"}>Nothing</MenuItem>
                   </Select>
                 </FormControl>
                 <TextField

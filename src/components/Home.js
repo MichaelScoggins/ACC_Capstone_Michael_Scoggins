@@ -100,10 +100,9 @@ export default function Home(props) {
               color="textSecondary"
               paragraph
             >
-              Use our expertly crafted algorithm to search thousands of strains
-              and locate the perfect mood.{" "}
               {!props.user
-                ? `Sign up to keep track of your
+                ? `Use our expertly crafted algorithm to search thousands of strains
+                and locate the perfect mood. Sign up to keep track of your
               experience with each strain--posting them for others to reference,
               or keeping them as a private collection.`
                 : `Click the strain's name for a short bio of each strain. Click the little astronaut to start tracking your experiences.`}
